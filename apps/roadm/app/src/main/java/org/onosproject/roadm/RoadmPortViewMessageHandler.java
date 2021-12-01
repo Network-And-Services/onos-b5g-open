@@ -237,11 +237,14 @@ public class RoadmPortViewMessageHandler extends UiMessageHandler {
 
         // Returns the current input power as a string, Unknown if no value can be found.
         private String getCurrentInputPower(DeviceId deviceId, PortNumber portNumber) {
-            PowerConfig powerConfig = deviceService.getDevice(deviceId).as(PowerConfig.class);
-            Optional<Double> currentInputPower = powerConfig.currentInputPower(portNumber, Direction.ALL);
             Double inputPowerVal = null;
-            if (currentInputPower.isPresent()) {
-                inputPowerVal = currentInputPower.orElse(Double.MIN_VALUE);
+            if (deviceService.getDevice(deviceId).is(PowerConfig.class)) {
+                PowerConfig powerConfig = deviceService.getDevice(deviceId).as(PowerConfig.class);
+                Optional<Double> currentInputPower = powerConfig.currentInputPower(portNumber, Direction.ALL);
+
+                if (currentInputPower.isPresent()) {
+                    inputPowerVal = currentInputPower.orElse(Double.MIN_VALUE);
+                }
             }
             return RoadmUtil.objectToString(inputPowerVal, RoadmUtil.UNKNOWN);
         }

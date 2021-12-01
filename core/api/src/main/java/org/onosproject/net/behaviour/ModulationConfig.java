@@ -53,5 +53,14 @@ public interface ModulationConfig<T> extends HandlerBehaviour {
      */
     void setModulationScheme(PortNumber port, T component, long bitRate);
 
+    /**
+     * Set the target Modulation Scheme on the component.
+     *
+     * @param port the port
+     * @param component the port component
+     * @param modulationScheme adopted modulation scheme
+     */
+    void setModulationScheme(PortNumber port, T component, ModulationScheme modulationScheme);
+
 }
 

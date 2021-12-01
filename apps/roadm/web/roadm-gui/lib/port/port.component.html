@@ -108,8 +108,9 @@
                     <td [ngClass]="(isDelta() ? 'delta' : '')">
                         <form [formGroup]="modulationForm" (ngSubmit)="submitModulation(devId, port.id)" *ngIf="port.type=='OCH'">
                             <select [(ngModel)]="port.modulation" formControlName="newModulation">
-                                <option value="dp_qpsk">qpsk</option>
-                                <option value="dp_16qam">16qam</option>
+                                <option value="DP_QPSK">DP_QPSK</option>
+                                <option value="DP_16QAM">DP_16QAM</option>
+                                <option value="DP_8QAM">DP_8QAM</option>
                             </select>
                             <button type="submit">Submit</button>
                         </form>

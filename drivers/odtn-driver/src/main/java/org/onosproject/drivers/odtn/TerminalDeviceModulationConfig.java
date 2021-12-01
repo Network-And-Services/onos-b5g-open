@@ -18,8 +18,6 @@
 
 package org.onosproject.drivers.odtn;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.configuration.HierarchicalConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.onlab.osgi.DefaultServiceDirectory;
@@ -39,7 +37,6 @@ import org.onosproject.netconf.NetconfSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.util.Optional;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -174,6 +171,10 @@ public class TerminalDeviceModulationConfig<T> extends AbstractHandlerBehaviour 
         }
     }
 
+    public void setModulationSchemeProcessor(PortNumber port, Object component, ModulationScheme modulationScheme) {
+        //TODO to be implemented
+    }
+
     public void setModulationSchemeProcessor(PortNumber port, Object component, long bitRate) {
         ModulationScheme modulation = null;
         String editConfig = null;
@@ -254,6 +255,19 @@ public class TerminalDeviceModulationConfig<T> extends AbstractHandlerBehaviour 
     public void setModulationScheme(PortNumber port, T component, long bitRate) {
         checkType(component);
         state.setModulationScheme(port, component, bitRate);
+    }
+
+    /**
+     * Set the target Modulation Scheme on the component.
+     *
+     * @param port      the port
+     * @param component the port component
+     * @param modulationScheme selected modulation scheme
+     **/
+    @Override
+    public void setModulationScheme(PortNumber port, T component, ModulationScheme modulationScheme) {
+        checkType(component);
+        state.setModulationScheme(port, component, modulationScheme);
     }
 
     /**
@@ -375,6 +389,16 @@ public class TerminalDeviceModulationConfig<T> extends AbstractHandlerBehaviour 
             terminalDevice.setModulationSchemeProcessor(port, component, bitRate);
         }
 
+        /*
+         * mirror method in the internal class.
+         * @param port port
+         * @param component component
+         * @param power target value
+         */
+        void setModulationScheme(PortNumber port, Object component, ModulationScheme modulationScheme) {
+            terminalDevice.setModulationSchemeProcessor(port, component, modulationScheme);
+        }
+
 
         /*
          * Get filtered content under <optical-channel><state>.
@@ -424,26 +448,6 @@ public class TerminalDeviceModulationConfig<T> extends AbstractHandlerBehaviour 
             DeviceService deviceService = DefaultServiceDirectory.getService(DeviceService.class);
             DeviceId deviceId = pc.handler().data().deviceId();
             return deviceService.getPort(deviceId, portNumber).annotations().value("oc-name");
-        }
-
-        private static String channelSpacing(TerminalDeviceModulationConfig modulationConfig, PortNumber portNumber) {
-            DeviceService deviceService = DefaultServiceDirectory.getService(DeviceService.class);
-            DeviceId deviceId = modulationConfig.handler().data().deviceId();
-            String lambda = deviceService.getPort(deviceId, portNumber).annotations().value("lambda");
-
-            ObjectMapper mapper = new ObjectMapper();
-            String channelSpacing = "";
-            try {
-                JsonNode actualObj = mapper.readTree(lambda);
-                JsonNode csNode = actualObj.get("channelSpacing");
-                channelSpacing = csNode.asText();
-                log.info("Channel_Spacing : " + channelSpacing);
-
-            } catch (IOException e) {
-                log.error("Error while parsing Json");
-            }
-            return channelSpacing;
-
         }
 
         private double fetchDeviceSnr(TerminalDeviceModulationConfig modulationConfig, PortNumber portNumber) {

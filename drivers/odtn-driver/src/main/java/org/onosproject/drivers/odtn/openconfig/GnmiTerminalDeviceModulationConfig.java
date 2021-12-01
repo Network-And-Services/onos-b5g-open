@@ -107,6 +107,11 @@ public class GnmiTerminalDeviceModulationConfig<T>
     }
 
     @Override
+    public void setModulationScheme(PortNumber portNumber, T component, ModulationScheme modulationScheme) {
+    //TODO to be implemented
+    }
+
+    @Override
     public void setModulationScheme(PortNumber portNumber, T component, long bitRate) {
         if (!setupBehaviour("getModulationScheme")) {
             return;
