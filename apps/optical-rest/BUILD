@@ -1,5 +1,6 @@
 COMPILE_DEPS = CORE_DEPS + JACKSON + REST + CLI + [
     "//apps/optical-model:onos-apps-optical-model",
+    "//core/common:onos-core-common-native",
 ]
 
 APPS = [

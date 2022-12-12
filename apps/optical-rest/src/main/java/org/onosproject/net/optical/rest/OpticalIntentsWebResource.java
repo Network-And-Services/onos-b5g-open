@@ -74,7 +74,7 @@ import static org.onlab.util.Tools.readTreeFromStream;
 
 
 /**
- * Query, submit and withdraw optical network intents.
+ * Query, submit and withdraw optical intents.
  */
 @Path("intents")
 public class OpticalIntentsWebResource extends AbstractWebResource {

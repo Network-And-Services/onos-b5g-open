@@ -26,6 +26,9 @@ import java.util.Set;
 public class OpticalWebApplication extends AbstractWebApplication {
     @Override
     public Set<Class<?>> getClasses() {
-        return getClasses(OpticalIntentsWebResource.class);
+        return getClasses(
+                OpticalNodesWebResource.class,
+                OpticalLinksWebResource.class,
+                OpticalIntentsWebResource.class);
     }
 }

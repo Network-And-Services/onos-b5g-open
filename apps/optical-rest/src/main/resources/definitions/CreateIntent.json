@@ -20,11 +20,11 @@
       "properties": {
         "device": {
           "type": "string",
-          "example": "netconf:10.10.255.14:2022"
+          "example": "netconf:10.100.101.22:2022"
         },
         "port": {
           "type": "string",
-          "example": "10102"
+          "example": "11003"
         }
       }
     },
@@ -38,17 +38,17 @@
       "properties": {
         "device": {
           "type": "string",
-          "example": "netconf:10.10.255.15:2022"
+          "example": "netconf:10.100.101.24:2022"
         },
         "port": {
           "type": "string",
-          "example": "10102"
+          "example": "11003"
         }
       }
     },
     "bidirectional": {
       "type": "boolean",
-      "example": false
+      "example": true
     },
     "signal": {
       "type": "object",
