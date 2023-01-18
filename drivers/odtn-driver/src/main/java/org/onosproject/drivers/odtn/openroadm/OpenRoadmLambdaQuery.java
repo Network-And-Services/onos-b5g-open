@@ -32,7 +32,7 @@ public class OpenRoadmLambdaQuery extends OpenRoadmCBandLambdaQuery {
     @Override
     public Set<OchSignal> queryLambdas(PortNumber port) {
         channelSpacing = ChannelSpacing.CHL_50GHZ;
-        lambdaCount = 32;
+        lambdaCount = 96;
         slotGranularity = 4;
         Set<OchSignal> set = super.queryLambdas(port);
         return set;
