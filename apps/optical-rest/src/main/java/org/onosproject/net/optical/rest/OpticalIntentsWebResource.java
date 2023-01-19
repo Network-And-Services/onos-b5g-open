@@ -317,10 +317,11 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
                     listLinks.add(link);
                 }
 
-                if ((!listLinks.get(0).src().deviceId().equals(ingress.deviceId())) ||
-                        (!listLinks.get(0).src().port().equals(ingress.port())) ||
-                        (!listLinks.get(listLinks.size() - 1).dst().deviceId().equals(egress.deviceId())) ||
-                        (!listLinks.get(listLinks.size() - 1).dst().port().equals(egress.port()))) {
+                if ((!listLinks.get(0).src().deviceId().equals(ingress.deviceId()))
+                        //|| (!listLinks.get(0).src().port().equals(ingress.port()))
+                        || (!listLinks.get(listLinks.size() - 1).dst().deviceId().equals(egress.deviceId()))
+                        //||(!listLinks.get(listLinks.size() - 1).dst().port().equals(egress.port()))
+                ) {
                     throw new IllegalArgumentException(
                             "Suggested path not compatible with ingress or egress connect points");
                 }
