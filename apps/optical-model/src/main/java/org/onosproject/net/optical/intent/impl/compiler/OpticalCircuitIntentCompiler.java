@@ -23,14 +23,7 @@ import org.onlab.util.Tools;
 import org.onosproject.cfg.ComponentConfigService;
 import org.onosproject.core.ApplicationId;
 import org.onosproject.core.CoreService;
-import org.onosproject.net.AnnotationKeys;
-import org.onosproject.net.CltSignalType;
-import org.onosproject.net.ConnectPoint;
-import org.onosproject.net.OduSignalId;
-import org.onosproject.net.OduSignalType;
-import org.onosproject.net.OduSignalUtils;
-import org.onosproject.net.Port;
-import org.onosproject.net.TributarySlot;
+import org.onosproject.net.*;
 import org.onosproject.net.behaviour.TributarySlotQuery;
 import org.onosproject.net.device.DeviceService;
 import org.onosproject.net.driver.Driver;
@@ -240,7 +233,18 @@ public class OpticalCircuitIntentCompiler implements IntentCompiler<OpticalCircu
             required = resources;
         } else {
             // Find OCh ports with available resources
-            Pair<OchPort, OchPort> ochPorts = findPorts(intent.getSrc(), intent.getDst(), intent.getSignalType());
+            Pair<OchPort, OchPort> ochPorts = null;
+
+            if (intent.suggestedPath().isPresent()) {
+                PortNumber srcPortNumber = intent.suggestedPath().get().src().port();
+                PortNumber dstPortNumber = intent.suggestedPath().get().dst().port();
+
+                ochPorts = Pair.of(
+                        (OchPort) deviceService.getPort(intent.getSrc().deviceId(), srcPortNumber),
+                        (OchPort) deviceService.getPort(intent.getDst().deviceId(), dstPortNumber));
+            } else {
+                findPorts(intent.getSrc(), intent.getDst(), intent.getSignalType());
+            }
 
             if (ochPorts == null) {
                 throw new OpticalIntentCompilationException("Unable to find suitable OCH ports for intent " + intent);

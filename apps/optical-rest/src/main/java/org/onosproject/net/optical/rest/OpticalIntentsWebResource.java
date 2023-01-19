@@ -25,13 +25,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.onlab.graph.ScalarWeight;
 import org.onosproject.core.ApplicationId;
 import org.onosproject.core.CoreService;
-import org.onosproject.net.Device;
-import org.onosproject.net.AnnotationKeys;
-import org.onosproject.net.Link;
-import org.onosproject.net.DefaultPath;
-import org.onosproject.net.ConnectPoint;
-import org.onosproject.net.OchSignal;
-import org.onosproject.net.DeviceId;
+import org.onosproject.net.*;
 import org.onosproject.net.device.DeviceService;
 import org.onosproject.net.flow.criteria.Criterion;
 import org.onosproject.net.flow.criteria.OchSignalCriterion;
@@ -332,6 +326,12 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
                 }
 
                 suggestedPath = new DefaultPath(PROVIDER_ID, listLinks, new ScalarWeight(1));
+
+                if (!deviceService.getPort(suggestedPath.src()).type().equals(Port.Type.OCH)
+                || !deviceService.getPort(suggestedPath.dst()).type().equals(Port.Type.OCH)) {
+                    throw new IllegalArgumentException(
+                            "End-points of suggested path must be ports of type OCH");
+                }
 
                 log.debug("OpticalIntent along suggestedPath {}", suggestedPath);
             }

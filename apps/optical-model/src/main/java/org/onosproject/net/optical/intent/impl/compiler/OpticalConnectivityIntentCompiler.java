@@ -142,7 +142,7 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
         // If there is a valid suggestedPath, use this path without further checking
         // Otherwise trigger path computation
         Stream<Path> paths;
-        if (checkSuggestedPath(intent)) {
+        if (intent.suggestedPath().isPresent()) {
             paths = Stream.of(intent.suggestedPath().get());
         } else {
             paths = getOpticalPaths(intent);
@@ -167,25 +167,6 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
             log.error("Unable to find suitable lightpath for intent {}", intent);
             throw new OpticalIntentCompilationException("Unable to find suitable lightpath for intent " + intent);
         }
-    }
-
-    private boolean checkSuggestedPath(OpticalConnectivityIntent intent) {
-
-        if (!intent.suggestedPath().isPresent()) {
-            return false;
-        } else {
-            //Check that source of ConnectivityIntent is equal to source of suggested path
-            if (!intent.suggestedPath().get().src().equals(intent.getSrc())) {
-                log.warn("SuggestedPath not used, specify instead line port {}", intent.getSrc());
-                return false;
-            }
-            //Check that destination of ConnectivityIntent is equal to destination of suggested path
-            if (!intent.suggestedPath().get().dst().equals(intent.getDst())) {
-                log.warn("SuggestedPath not used, specify instead line port {}", intent.getDst());
-                return false;
-            }
-        }
-        return true;
     }
 
     /**
