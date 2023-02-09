@@ -28,7 +28,6 @@ import org.onosproject.net.flow.FlowId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 class OpenRoadmConnectionBase {
 
     protected static final Logger log = LoggerFactory.getLogger(OpenRoadmConnection.class);
@@ -146,7 +145,7 @@ public class OpenRoadmConnection extends OpenRoadmConnectionBase {
       // Conversion from ochSignal (center frequency + diameter) to OpenRoadm
       // Media Channel (start - end)
       Frequency freqRadius = Frequency.ofHz(
-          xc.ochSignal().channelSpacing().frequency().asHz() / 2);
+          xc.ochSignal().slotWidth().asHz() / 2);
       Frequency centerFreq = xc.ochSignal().centralFrequency();
 
       // e.g. DEG1-TTP-RX
@@ -161,12 +160,15 @@ public class OpenRoadmConnection extends OpenRoadmConnectionBase {
 
       srcMcMinFrequency = centerFreq.subtract(freqRadius);
       srcMcMaxFrequency = centerFreq.add(freqRadius);
+
+      log.error("OPENROADM CONNECTION GENERATED min {} max {}", srcMcMinFrequency, srcMcMaxFrequency);
+
       dstMcMinFrequency = srcMcMinFrequency;
       dstMcMaxFrequency = srcMcMaxFrequency;
       srcNmcFrequency = centerFreq;
       dstNmcFrequency = centerFreq;
-      srcNmcWidth = xc.ochSignal().channelSpacing().frequency();
-      dstNmcWidth = xc.ochSignal().channelSpacing().frequency();
+      srcNmcWidth = xc.ochSignal().slotWidth();
+      dstNmcWidth = xc.ochSignal().slotWidth();
 
       srcMcSupportingInterface =
           "OMS-" +

@@ -18,5 +18,5 @@ curl -u karaf:karaf -X POST --header 'Content-Type: application/json' --header '
      "spacingMultiplier": -8,
      "slotGranularity": 4
    }
- }' 'http://193.205.83.89:8181/onos/optical/intents'
+ }' 'http://localhost:8181/onos/optical/intents'
 

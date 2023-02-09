@@ -83,7 +83,9 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
 
     private static final Logger log = LoggerFactory.getLogger(OpticalConnectivityIntentCompiler.class);
     // By default, allocate 50 GHz lambdas (4 slots of 12.5 GHz) for each intent.
-    private static final int SLOT_COUNT = 4;
+    private static final int DEFAULT_SLOT_GRANULARITY = 4;
+    private static final GridType DEFAULT_GRID_TYPE = GridType.DWDM;
+    private static final ChannelSpacing DEFAULT_CHANNEL_SPACING = ChannelSpacing.CHL_50GHZ;
     private static final ProviderId PROVIDER_ID = new ProviderId("opticalConnectivityIntent",
             "org.onosproject.net.optical.intent");
 
@@ -110,9 +112,20 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
         intentManager.unregisterCompiler(OpticalConnectivityIntent.class);
     }
 
+    /**
+     * Path computation and spectrum assignment.
+     * Supports fixed and flex grids.
+     *
+     * Path and signal can be provided within the intent.
+     * If not provided they are computed in this function.
+     * If signal is not provided a default channel is allocated with width 50 GHz, on the 50 GHz spacing.
+     *
+     * @param intent this intent (used for resource tracking)
+     * @param installable intents
+     * @return list of optical path intents (one per direction)
+     */
     @Override
-    public List<Intent> compile(OpticalConnectivityIntent intent,
-                                List<Intent> installable) {
+    public List<Intent> compile(OpticalConnectivityIntent intent, List<Intent> installable) {
         // Check if source and destination are optical OCh ports
         ConnectPoint src = intent.getSrc();
         ConnectPoint dst = intent.getDst();
@@ -127,7 +140,7 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
         // TODO: try to release intent resources in IntentManager.
         resourceService.release(intent.key());
 
-        // Check OCh port availability
+        // Check OCH src and dst port availability
         // If ports are not available, compilation fails
         // Else add port to resource reservation list
         Resource srcPortResource = Resources.discrete(src.deviceId(), src.port()).resource();
@@ -158,11 +171,19 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
 
         // Allocate resources and create optical path intent
         if (found.isPresent()) {
-            log.debug("Suitable lightpath FOUND for intent {}", intent);
+            log.debug("Suitable path and lambdas FOUND for intent {}", intent);
             resources.addAll(convertToResources(found.get().getKey(), found.get().getValue()));
             allocateResources(intent, resources);
-            OchSignal ochSignal = OchSignal.toFixedGrid(found.get().getValue(), ChannelSpacing.CHL_50GHZ);
+
+            if (intent.ochSignal().isPresent()) {
+                if (intent.ochSignal().get().gridType() == GridType.FLEX) {
+                    return ImmutableList.of(createIntent(intent, found.get().getKey(), intent.ochSignal().get()));
+                }
+            }
+
+            OchSignal ochSignal = OchSignal.toFixedGrid(found.get().getValue(), DEFAULT_CHANNEL_SPACING);
             return ImmutableList.of(createIntent(intent, found.get().getKey(), ochSignal));
+
         } else {
             log.error("Unable to find suitable lightpath for intent {}", intent);
             throw new OpticalIntentCompilationException("Unable to find suitable lightpath for intent " + intent);
@@ -171,7 +192,7 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
 
     /**
      * Create installable optical path intent.
-     * Only supports fixed grid for now.
+     * Supports fixed and flex grids.
      *
      * @param parentIntent this intent (used for resource tracking)
      * @param path         the path to use
@@ -179,7 +200,12 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
      * @return optical path intent
      */
     private Intent createIntent(OpticalConnectivityIntent parentIntent, Path path, OchSignal lambda) {
-        OchSignalType signalType = OchSignalType.FIXED_GRID;
+        OchSignalType signalType;
+        if (lambda.gridType().equals(GridType.FLEX)) {
+            signalType = OchSignalType.FLEX_GRID;
+        } else {
+            signalType = OchSignalType.FIXED_GRID;
+        }
 
         return OpticalPathIntent.builder()
                 .appId(parentIntent.appId())
@@ -244,18 +270,23 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
             //create lambdas w.r.t. slotGanularity/slotWidth
             OchSignal ochSignal = intent.ochSignal().get();
             if (ochSignal.gridType() == GridType.FLEX) {
-                // multiplier sits in the middle of slots
-                int startMultiplier = ochSignal.spacingMultiplier() - (ochSignal.slotGranularity() / 2);
-                return IntStream.range(0, ochSignal.slotGranularity())
+                int startMultiplier = (int) (1 - ochSignal.slotGranularity() + ochSignal.spacingMultiplier());
+
+                List<OchSignal> channels = IntStream.range(0, ochSignal.slotGranularity())
                         .mapToObj(x -> OchSignal.newFlexGridSlot(startMultiplier + (2 * x)))
                         .collect(Collectors.toList());
+
+                return channels;
             } else if (ochSignal.gridType() == GridType.DWDM) {
                 int startMultiplier = (int) (1 - ochSignal.slotGranularity() +
                         ochSignal.spacingMultiplier() * ochSignal.channelSpacing().frequency().asHz() /
                                 ChannelSpacing.CHL_6P25GHZ.frequency().asHz());
-                return IntStream.range(0, ochSignal.slotGranularity())
+
+                List<OchSignal> channels = IntStream.range(0, ochSignal.slotGranularity())
                         .mapToObj(x -> OchSignal.newFlexGridSlot(startMultiplier + (2 * x)))
                         .collect(Collectors.toList());
+
+                return channels;
             }
             //TODO: add support for other gridTypes
             log.error("Grid type: {} not supported for user defined signal intents", ochSignal.gridType());
@@ -267,19 +298,7 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
             return Collections.emptyList();
         }
 
-        return findFirstLambda(lambdas, slotCount());
-    }
-
-    /**
-     * Get the number of 12.5 GHz slots required for the path.
-     * <p>
-     * For now this returns a constant value of 4 (i.e., fixed grid 50 GHz slot),
-     * but in the future can depend on optical reach, line rate, transponder port capabilities, etc.
-     *
-     * @return number of slots
-     */
-    private int slotCount() {
-        return SLOT_COUNT;
+        return findFirstLambda(lambdas, DEFAULT_SLOT_GRANULARITY);
     }
 
     /**
@@ -459,7 +478,6 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
                         return path;
                     });
         }
-
         return paths;
     }
 }

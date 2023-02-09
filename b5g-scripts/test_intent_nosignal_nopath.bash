@@ -12,5 +12,5 @@ curl -u karaf:karaf -X POST --header 'Content-Type: application/json' --header '
      "port": "11003"
    },
    "bidirectional": true
- }' 'http://193.205.83.89:8181/onos/optical/intents'
+ }' 'http://localhost:8181/onos/optical/intents'
 

@@ -163,7 +163,7 @@ public final class OpticalIntentUtility {
 
         if (ingress == null || egress == null) {
             log.error("Invalid endpoint(s); could not create optical intent");
-            return intent;
+            return null;
         }
 
         DeviceService ds = opticalView(deviceService);
@@ -178,7 +178,7 @@ public final class OpticalIntentUtility {
             // continue only if both OduClt port's Devices are of the same type
             if (!(srcDevice.type().equals(dstDevice.type()))) {
                 log.debug("Devices without same deviceType: SRC={} and DST={}", srcDevice.type(), dstDevice.type());
-                return intent;
+                return null;
             }
 
             CltSignalType signalType = ((OduCltPort) srcPort).signalType();

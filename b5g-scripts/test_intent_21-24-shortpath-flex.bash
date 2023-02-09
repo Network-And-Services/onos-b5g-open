@@ -13,8 +13,8 @@ curl -u karaf:karaf -X POST --header 'Content-Type: application/json' --header '
    },
    "bidirectional": true,
    "signal": {
-     "channelSpacing": "CHL_50GHZ",
-     "gridType": "DWDM",
+     "channelSpacing": "CHL_6P25GHZ",
+     "gridType": "FLEX",
      "spacingMultiplier": -8,
      "slotGranularity": 4
    },

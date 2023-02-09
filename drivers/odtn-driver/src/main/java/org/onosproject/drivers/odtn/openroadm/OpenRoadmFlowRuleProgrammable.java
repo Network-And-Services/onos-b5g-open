@@ -34,23 +34,14 @@ import org.onosproject.net.ChannelSpacing;
 import org.onosproject.net.DeviceId;
 import org.onosproject.net.GridType;
 import org.onosproject.net.OchSignal;
-import org.onosproject.net.OchSignalType;
 import org.onosproject.net.Port;
 import org.onosproject.net.PortNumber;
 import org.onosproject.net.device.DeviceService;
 import org.onosproject.net.driver.AbstractHandlerBehaviour;
 import org.onosproject.net.flow.DefaultFlowEntry;
-import org.onosproject.net.flow.DefaultFlowRule;
-import org.onosproject.net.flow.DefaultTrafficSelector;
-import org.onosproject.net.flow.DefaultTrafficTreatment;
 import org.onosproject.net.flow.FlowEntry;
 import org.onosproject.net.flow.FlowRule;
 import org.onosproject.net.flow.FlowRuleProgrammable;
-import org.onosproject.net.flow.TrafficSelector;
-import org.onosproject.net.flow.TrafficTreatment;
-import org.onosproject.net.flow.criteria.Criteria;
-import org.onosproject.net.flow.instructions.Instruction;
-import org.onosproject.net.flow.instructions.Instructions;
 import org.onosproject.netconf.DatastoreId;
 import org.onosproject.netconf.NetconfController;
 import org.onosproject.netconf.NetconfException;
@@ -104,7 +95,6 @@ public class OpenRoadmFlowRuleProgrammable
         log.info("OPENROADM {}: " + format, did(), arguments);
     }
 
-
     /**
      * Get a list of Port numbers that are LINE ports (degree).
      * <p>
@@ -156,7 +146,6 @@ public class OpenRoadmFlowRuleProgrammable
         }
     }
 
-
     /**
      * Get the flow entries that are present on the device, called by
      * FlowRuleDriverProvider. <p> The flow entries must match exactly the
@@ -181,7 +170,6 @@ public class OpenRoadmFlowRuleProgrammable
         return entries;
     }
 
-
     /**
      * Apply the flow entries specified in the collection rules.
      *
@@ -203,7 +191,6 @@ public class OpenRoadmFlowRuleProgrammable
         openRoadmLog("applyFlowRules added {}", added.size());
         return added;
     }
-
 
     /**
      * Remove the specified flow rules.
@@ -287,34 +274,8 @@ public class OpenRoadmFlowRuleProgrammable
         } else {
             openRoadmLog("connection retrieved {}", name);
         }
-        OpenRoadmFlowRule xc = new OpenRoadmFlowRule(flowRule, getLinePorts());
-        DeviceService deviceService = this.handler().get(DeviceService.class);
-        OpenRoadmConnection conn = OpenRoadmConnectionFactory.create(name, xc, deviceService);
-        OchSignal och = toOchSignalCenterWidth(conn.srcNmcFrequency, conn.srcNmcWidth);
-        // Build the rule selector and treatment
-        TrafficSelector selector =
-          DefaultTrafficSelector.builder()
-            .matchInPort(conn.inPortNumber)
-            .add(Criteria.matchOchSignalType(OchSignalType.FIXED_GRID))
-            .add(Criteria.matchLambda(och))
-            .build();
-        Instruction ochInstruction = Instructions.modL0Lambda(och);
-        TrafficTreatment treatment = DefaultTrafficTreatment.builder()
-                                       .add(ochInstruction)
-                                       .setOutput(conn.outPortNumber)
-                                       .build();
-
-        return DefaultFlowRule.builder()
-          .forDevice(data().deviceId())
-          .makePermanent()
-          .withSelector(selector)
-          .withTreatment(treatment)
-          .withPriority(conn.priority)
-          .withCookie(conn.id.value())
-          .build();
+        return flowRule;
     }
-
-
 
     /**
      * Delete a ROADM Interface given its name.
@@ -333,8 +294,6 @@ public class OpenRoadmFlowRuleProgrammable
             log.error("OPENROADM {}: failed to delete interface{}", did(), interfaceName);
         }
     }
-
-
 
     /**
      * Delete a ROADM Connection given its name.
@@ -393,8 +352,6 @@ public class OpenRoadmFlowRuleProgrammable
         return true;
     }
 
-
-
     /**
      * Entry point to remove a Crossconnect.
      *
@@ -428,7 +385,6 @@ public class OpenRoadmFlowRuleProgrammable
             (conn.getType() != OpenRoadmFlowRule.Type.LOCAL)) {
             editConfigDeleteInterfaceEntry(conn.dstMcName);
         }
-
 
         return true;
     }
@@ -587,7 +543,6 @@ public class OpenRoadmFlowRuleProgrammable
         return true;
     }
 
-
     /**
      * Create a ROADM Connection given its data.
      *
@@ -740,7 +695,6 @@ public class OpenRoadmFlowRuleProgrammable
 
             return new OchSignal(GridType.DWDM, ChannelSpacing.CHL_100GHZ, multiplier, slots);
         }
-
         return null;
     }
 }

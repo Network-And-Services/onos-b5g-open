@@ -604,7 +604,7 @@ public class ClientLineTerminalDeviceFlowRuleProgrammable
         //Retrieved rules and cached rules are considered equal if both selector and treatment are equal
         cacheAddRule = null;
         cacheDropRule = null;
-        if (getConnectionCache().size(did()) != 0) {
+        /*if (getConnectionCache().size(did()) != 0) {
             cacheDropRule = getConnectionCache().get(did()).stream()
                     .filter(r -> (r.selector().equals(selectorDrop) && r.treatment().equals(treatmentDrop)))
                     .findFirst()
@@ -614,6 +614,11 @@ public class ClientLineTerminalDeviceFlowRuleProgrammable
                     .filter(r -> (r.selector().equals(selectorAdd) && r.treatment().equals(treatmentAdd)))
                     .findFirst()
                     .orElse(null);
+        }*/
+
+        if (getConnectionCache().size(did()) != 0) {
+            cacheDropRule = findDropRule(inputPortNumber, outputPortNumber, centralFreq);
+            cacheAddRule = findAddRule(inputPortNumber, outputPortNumber, centralFreq);
         }
 
         //Include the DROP rule to the retrieved rules if found in cache
@@ -937,6 +942,33 @@ public class ClientLineTerminalDeviceFlowRuleProgrammable
                 .collect(Collectors.toList());
 
         return linePorts;
+    }
 
+    private FlowRule findDropRule(PortNumber inPort, PortNumber outPort, Frequency freq) {
+
+        FlowRule rule = getConnectionCache().get(did()).stream()
+                .filter(r -> r instanceof TerminalDeviceFlowRule)
+                .filter(r -> ((TerminalDeviceFlowRule) r).type.equals(TerminalDeviceFlowRule.Type.LINE_EGRESS))
+                .filter(r -> ((TerminalDeviceFlowRule) r).ochSignal().centralFrequency().equals(freq))
+                .filter(r -> ((TerminalDeviceFlowRule) r).inPort().equals(inPort))
+                .filter(r -> ((TerminalDeviceFlowRule) r).outPort().equals(outPort))
+                .findFirst()
+                .orElse(null);
+
+        return rule;
+    }
+
+    private FlowRule findAddRule(PortNumber inPort, PortNumber outPort, Frequency freq) {
+
+        FlowRule rule = getConnectionCache().get(did()).stream()
+                .filter(r -> r instanceof TerminalDeviceFlowRule)
+                .filter(r -> ((TerminalDeviceFlowRule) r).type.equals(TerminalDeviceFlowRule.Type.LINE_INGRESS))
+                .filter(r -> ((TerminalDeviceFlowRule) r).ochSignal().centralFrequency().equals(freq))
+                .filter(r -> ((TerminalDeviceFlowRule) r).inPort().equals(inPort))
+                .filter(r -> ((TerminalDeviceFlowRule) r).outPort().equals(outPort))
+                .findFirst()
+                .orElse(null);
+
+        return rule;
     }
 }

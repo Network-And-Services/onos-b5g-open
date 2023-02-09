@@ -25,8 +25,10 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.onlab.graph.ScalarWeight;
 import org.onosproject.core.ApplicationId;
 import org.onosproject.core.CoreService;
+import org.onosproject.net.ChannelSpacing;
 import org.onosproject.net.Device;
 import org.onosproject.net.AnnotationKeys;
+import org.onosproject.net.GridType;
 import org.onosproject.net.Link;
 import org.onosproject.net.DefaultPath;
 import org.onosproject.net.ConnectPoint;
@@ -279,6 +281,49 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
                 throw new IllegalArgumentException(JSON_INVALID);
             } else {
                 signal = OchSignalCodec.decode((ObjectNode) signalJson);
+
+                if (signal.gridType() == GridType.FLEX) {
+                    if (signal.channelSpacing() != ChannelSpacing.CHL_6P25GHZ) {
+                        throw new IllegalArgumentException("FLEX grid requires CHL_6P25GHZ spacing");
+                    }
+                    if (isOdd(signal.slotGranularity()) && !isOdd(signal.spacingMultiplier())) {
+                        throw new IllegalArgumentException("FLEX grid using odd Granularity requires odd Multiplier");
+                    }
+                    if (!isOdd(signal.slotGranularity()) && isOdd(signal.spacingMultiplier())) {
+                        throw new IllegalArgumentException("FLEX grid using even Granularity requires even Multiplier");
+                    }
+                }
+
+                if (signal.gridType() == GridType.DWDM) {
+                    if (signal.channelSpacing() == ChannelSpacing.CHL_6P25GHZ) {
+                        throw new IllegalArgumentException("DWDM grid requires spacing CHL_12P5GHZ, " +
+                                "CHL_25GHZ, CHL_50GHZ or CHL_100GHZ");
+                    }
+
+                    if (signal.channelSpacing() == ChannelSpacing.CHL_12P5GHZ) {
+                        if (signal.slotGranularity() != 1) {
+                            throw new IllegalArgumentException("Spacing CHL_12P5GHZ requires granularity 1");
+                        }
+                    }
+
+                    if (signal.channelSpacing() == ChannelSpacing.CHL_25GHZ) {
+                        if (signal.slotGranularity() != 2) {
+                            throw new IllegalArgumentException("Spacing CHL_25GHZ requires granularity 2");
+                        }
+                    }
+
+                    if (signal.channelSpacing() == ChannelSpacing.CHL_50GHZ) {
+                        if (signal.slotGranularity() != 4) {
+                            throw new IllegalArgumentException("Spacing CHL_50GHZ requires granularity 4");
+                        }
+                    }
+
+                    if (signal.channelSpacing() == ChannelSpacing.CHL_100GHZ) {
+                        if (signal.slotGranularity() != 8) {
+                            throw new IllegalArgumentException("Spacing CHL_100GHZ requires granularity 8");
+                        }
+                    }
+                }
             }
         }
 
@@ -319,9 +364,7 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
                 }
 
                 if ((!listLinks.get(0).src().deviceId().equals(ingress.deviceId()))
-                        //|| (!listLinks.get(0).src().port().equals(ingress.port()))
                         || (!listLinks.get(listLinks.size() - 1).dst().deviceId().equals(egress.deviceId()))
-                        //||(!listLinks.get(listLinks.size() - 1).dst().port().equals(egress.port()))
                 ) {
                     throw new IllegalArgumentException(
                             "Suggested path not compatible with ingress or egress connect points");
@@ -362,5 +405,12 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
             }
         }
         return true;
+    }
+
+    private boolean isOdd(int n) {
+        if (n%2 != 0) {
+            return true;
+        }
+        return false;
     }
 }
