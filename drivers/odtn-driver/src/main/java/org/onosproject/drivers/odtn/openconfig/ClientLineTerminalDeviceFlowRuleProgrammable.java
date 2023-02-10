@@ -604,17 +604,6 @@ public class ClientLineTerminalDeviceFlowRuleProgrammable
         //Retrieved rules and cached rules are considered equal if both selector and treatment are equal
         cacheAddRule = null;
         cacheDropRule = null;
-        /*if (getConnectionCache().size(did()) != 0) {
-            cacheDropRule = getConnectionCache().get(did()).stream()
-                    .filter(r -> (r.selector().equals(selectorDrop) && r.treatment().equals(treatmentDrop)))
-                    .findFirst()
-                    .orElse(null);
-
-            cacheAddRule = getConnectionCache().get(did()).stream()
-                    .filter(r -> (r.selector().equals(selectorAdd) && r.treatment().equals(treatmentAdd)))
-                    .findFirst()
-                    .orElse(null);
-        }*/
 
         if (getConnectionCache().size(did()) != 0) {
             cacheDropRule = findDropRule(inputPortNumber, outputPortNumber, centralFreq);
