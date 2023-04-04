@@ -24,6 +24,7 @@ import org.onosproject.net.device.DeviceService;
 import org.onosproject.net.topology.ClusterId;
 import org.onosproject.net.topology.TopologyService;
 import org.onosproject.rest.AbstractWebResource;
+import org.slf4j.Logger;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -33,11 +34,16 @@ import javax.ws.rs.core.Response;
 import java.util.Iterator;
 import java.util.Set;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 /**
  * Query optical devices, ports and resources.
  */
 @Path("nodes")
 public class OpticalNodesWebResource extends AbstractWebResource {
+
+    private static final Logger log = getLogger(OpticalNodesWebResource.class);
+
     /**
      * Get the optical intents on the network.
      *

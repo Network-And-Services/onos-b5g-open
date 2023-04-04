@@ -142,7 +142,7 @@ public class ClientLineTerminalDeviceFlowRuleProgrammable
                 .collect(Collectors.toList());
 
         //Print out number of rules actually found on the device that are also included in the cache
-        openConfigLog("getFlowEntries fetched connections {}", fetched.size());
+        log.debug("getFlowEntries fetched connections {}", fetched.size());
 
         return fetched;
     }
@@ -881,7 +881,7 @@ public class ClientLineTerminalDeviceFlowRuleProgrammable
 
         //Returns rules that are both on the device and on the cache
         if (confirmedRules.size() != 0) {
-            log.info("fetchConnectionsFromDevice {} number of confirmed rules {}", did(), confirmedRules.size());
+            log.debug("fetchConnectionsFromDevice {} number of confirmed rules {}", did(), confirmedRules.size());
             return confirmedRules;
         } else {
             return ImmutableList.of();

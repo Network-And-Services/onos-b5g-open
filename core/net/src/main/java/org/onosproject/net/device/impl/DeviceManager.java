@@ -674,7 +674,7 @@ public class DeviceManager
             }
             // Switch failed to acknowledge master role we asked for.
             // Yield mastership to other instance
-            log.warn("Failed to assert role onto device {}. requested={}, no response",
+            log.debug("Failed to assert role onto device {}. requested={}, no response",
                     deviceId, myRole);
             updateMastershipFor(deviceId);
         }
