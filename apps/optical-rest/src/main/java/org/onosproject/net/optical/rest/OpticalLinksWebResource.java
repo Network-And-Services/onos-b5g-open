@@ -136,61 +136,58 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
     /**
      * Get details of the specified optical link.
      *
+     * @param srcConnectPoint link source
+     * @param dstConnectPoint link destination
      * @return 200 OK
      */
     @GET
-    @Path("perBandChannels/device/{deviceId}/port/{portId}")
+    @Path("perBandChannels/link")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getLinkChannels(@PathParam("deviceId") String deviceId,
-                                    @PathParam("portId") String portId) {
+    public Response getLinkChannels(@QueryParam("srcConnectPoint") String srcConnectPoint,
+                                    @QueryParam("dstConnectPoint") String dstConnectPoint) {
 
         ArrayNode arrayLinks = mapper().createArrayNode();
 
-        TopologyService topologyService = get(TopologyService.class);
-        Set<Link> links = topologyService.getClusterLinks(
-                topologyService.currentTopology(),
-                topologyService.getCluster(topologyService.currentTopology(), ClusterId.clusterId(0)));
+        LinkService linkService = get(LinkService.class);
+        ConnectPoint srcCP = ConnectPoint.deviceConnectPoint(srcConnectPoint);
+        ConnectPoint dstCP = ConnectPoint.deviceConnectPoint(dstConnectPoint);
+        Link link = linkService.getLink(srcCP, dstCP);
 
-        Iterator linksItr = links.iterator();
+        if (link != null) {
+            LinkCodec linkCodec = new LinkCodec();
+            ObjectNode linkObjectNode = linkCodec.encode(link, this);
 
-        while (linksItr.hasNext()) {
+            ObjectNode lBand = mapper().createObjectNode();
+            ObjectNode cBand = mapper().createObjectNode();
+            ObjectNode sBand = mapper().createObjectNode();
 
-            Link link = (Link) linksItr.next();
+            //linkObjectNode.put("L-band-avail", findAvailableLambdas(link, Optional.of(L_BAND)).toString());
+            //linkObjectNode.put("L-band-regis", findRegisteredLambdas(link, Optional.of(L_BAND)).toString());
+            //linkObjectNode.put("C-band-avail", findAvailableLambdas(link, Optional.of(C_BAND)).toString());
+            // linkObjectNode.put("C-band-regis", findRegisteredLambdas(link, Optional.of(C_BAND)).toString());
+            //linkObjectNode.put("S-band-avail", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
+            //linkObjectNode.put("S-band-regis", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
 
-            if (link.src().equals(ConnectPoint.deviceConnectPoint(deviceId + "/" + portId))) {
+            lBand.put("available-channels", findAvailableLambdas(link, Optional.of(L_BAND)).toString());
+            lBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(L_BAND)).toString());
+            linkObjectNode.set("L-band", lBand);
 
-                LinkCodec linkCodec = new LinkCodec();
-                ObjectNode linkObjectNode = linkCodec.encode(link,this);
+            cBand.put("available-channels", findAvailableLambdas(link, Optional.of(C_BAND)).toString());
+            cBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(C_BAND)).toString());
+            linkObjectNode.set("C-band", cBand);
 
-                ObjectNode lBand = mapper().createObjectNode();
-                ObjectNode cBand = mapper().createObjectNode();
-                ObjectNode sBand = mapper().createObjectNode();
+            sBand.put("available-channels", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
+            sBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
+            linkObjectNode.set("S-band", sBand);
 
-                //linkObjectNode.put("L-band-avail", findAvailableLambdas(link, Optional.of(L_BAND)).toString());
-                //linkObjectNode.put("L-band-regis", findRegisteredLambdas(link, Optional.of(L_BAND)).toString());
-                //linkObjectNode.put("C-band-avail", findAvailableLambdas(link, Optional.of(C_BAND)).toString());
-                //linkObjectNode.put("C-band-regis", findRegisteredLambdas(link, Optional.of(C_BAND)).toString());
-                //linkObjectNode.put("S-band-avail", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
-                //linkObjectNode.put("S-band-regis", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
+            arrayLinks.add(linkObjectNode);
 
-                lBand.put("available-channels", findAvailableLambdas(link, Optional.of(L_BAND)).toString());
-                lBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(L_BAND)).toString());
-                linkObjectNode.set("L-band", lBand);
-
-                cBand.put("available-channels", findAvailableLambdas(link, Optional.of(C_BAND)).toString());
-                cBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(C_BAND)).toString());
-                linkObjectNode.set("C-band", cBand);
-
-                sBand.put("available-channels", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
-                sBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
-                linkObjectNode.set("S-band", sBand);
-
-                arrayLinks.add(linkObjectNode);
-            }
+            ObjectNode root = this.mapper().createObjectNode().putPOJO("Links", arrayLinks);
+            return ok(root).build();
+        } else {
+            throw new IllegalArgumentException(
+                    "Specified link does not exist");
         }
-
-        ObjectNode root = this.mapper().createObjectNode().putPOJO("Links", arrayLinks);
-        return ok(root).build();
     }
 
     /**

@@ -15,8 +15,8 @@
         "driver": "openroadm"
       },
       "annotation": {
-	"animale": "pecora",
-        "oggetto": "sedia"
+	"flapping": "pecora",
+        "availability": "sedia"
       }	
     }
   }
