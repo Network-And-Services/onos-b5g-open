@@ -19,13 +19,21 @@ package org.onosproject.net.optical.rest;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.onlab.util.Tools;
+import org.onosproject.cli.net.AnnotateLinkCommand;
 import org.onosproject.codec.impl.LinkCodec;
 import org.onosproject.net.ConnectPoint;
+import org.onosproject.net.DefaultAnnotations;
 import org.onosproject.net.OpticalBandType;
 import org.onosproject.net.OpticalBandUtils;
 import org.onosproject.net.flow.FlowRuleService;
+import org.onosproject.net.link.DefaultLinkDescription;
+import org.onosproject.net.link.LinkDescription;
+import org.onosproject.net.link.LinkProvider;
+import org.onosproject.net.link.LinkProviderRegistry;
+import org.onosproject.net.link.LinkProviderService;
 import org.onosproject.net.link.LinkService;
 import org.onosproject.net.optical.json.OchSignalCodec;
+import org.onosproject.net.provider.ProviderId;
 import org.onosproject.net.resource.DiscreteResourceId;
 import org.onosproject.net.resource.Resource;
 import org.onosproject.net.resource.ResourceService;
@@ -58,6 +66,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.google.common.base.Preconditions.checkNotNull;
 import static org.onosproject.net.OpticalBandType.L_BAND;
 import static org.onosproject.net.OpticalBandType.C_BAND;
 import static org.onosproject.net.OpticalBandType.S_BAND;
@@ -71,6 +80,8 @@ import static org.slf4j.LoggerFactory.getLogger;
 public class OpticalLinksWebResource extends AbstractWebResource  {
 
     private static final Logger log = getLogger(OpticalLinksWebResource.class);
+
+    static final ProviderId PID = new ProviderId("rest", "org.onosproject.optical-rest");
 
     @Context
     private UriInfo uriInfo;
@@ -302,25 +313,84 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
     }
 
     /**
-     * Get annotations on optical links.
+     * Set an annotation on an optical link.
      *
+     * @param dstConnectPoint link source
+     * @param srcConnectPoint link destination
+     * @param key annotation key
+     * @param value annotation value
      * @return 200 OK
-
+    */
     @POST
-    @Path("annotations")
+    @Path("annotate/oneLink")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response annotateLink(@QueryParam("linkString") String link,
-                                    @QueryParam("portId") String portId) {
-        LinkService service = get(LinkService.class);
+    public Response annotateLink(@QueryParam("srcConnectPoint") String srcConnectPoint,
+                                 @QueryParam("dstConnectPoint") String dstConnectPoint,
+                                 @QueryParam("key") String key,
+                                 @QueryParam("value") String value) {
 
-        service.getLink()
-        DeviceService deviceService = get(DeviceService.class);
+        LinkService linkService = get(LinkService.class);
+        ConnectPoint srcCP = ConnectPoint.deviceConnectPoint(srcConnectPoint);
+        ConnectPoint dstCP = ConnectPoint.deviceConnectPoint(dstConnectPoint);
+        Link link = linkService.getLink(srcCP, dstCP);
+
+        LinkProviderRegistry registry = get(LinkProviderRegistry.class);
+        RestLinkProvider provider = new RestLinkProvider();
+        LinkProviderService providerService = registry.register(provider);
+
+        try {
+            providerService.linkDetected(description(link, key, value));
+        } finally {
+            registry.unregister(provider);
+        }
 
         ObjectNode root = mapper().createObjectNode();
-
         return Response.ok(root).build();
-    }*/
+    }
+
+    /**
+     * Set the annotation on all optical links.
+     *
+     * @param key annotation key
+     * @param value annotation value
+     * @return 200 OK
+     */
+    @POST
+    @Path("annotate/allLinks")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response annotateLinks(@QueryParam("key") String key,
+                                 @QueryParam("value") String value) {
+
+        TopologyService topologyService = get(TopologyService.class);
+        Set<Link> links = topologyService.getClusterLinks(
+                topologyService.currentTopology(),
+                topologyService.getCluster(topologyService.currentTopology(), ClusterId.clusterId(0)));
+
+        Iterator linksItr = links.iterator();
+
+        while (linksItr.hasNext()) {
+
+            Link link = (Link) linksItr.next();
+
+            if (link.type() == Link.Type.OPTICAL) {
+
+                LinkProviderRegistry registry = get(LinkProviderRegistry.class);
+                RestLinkProvider provider = new RestLinkProvider();
+                LinkProviderService providerService = registry.register(provider);
+
+                try {
+                    providerService.linkDetected(description(link, key, value));
+                } finally {
+                    registry.unregister(provider);
+                }
+            }
+        }
+
+        ObjectNode root = mapper().createObjectNode();
+        return Response.ok(root).build();
+    }
 
     private List<OchSignal> findAvailableLambdas(Link link, Optional<OpticalBandType> band) {
         //Available lambdas on a link: i.e., lambdas available on the src port of the link
@@ -374,5 +444,27 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
         listOch.sort(new DefaultOchSignalComparator());
 
         return listOch;
+    }
+
+    private static final class RestLinkProvider implements LinkProvider {
+        @Override
+        public ProviderId id() {
+            return PID;
+        }
+    }
+
+    private LinkDescription description(Link link, String key, String value) {
+        checkNotNull(key, "Key cannot be null");
+        DefaultAnnotations.Builder builder = DefaultAnnotations.builder();
+        if (value != null) {
+            builder.set(key, value);
+        } else {
+            builder.remove(key);
+        }
+        return new DefaultLinkDescription(link.src(),
+                link.dst(),
+                link.type(),
+                link.isExpected(),
+                builder.build());
     }
 }
