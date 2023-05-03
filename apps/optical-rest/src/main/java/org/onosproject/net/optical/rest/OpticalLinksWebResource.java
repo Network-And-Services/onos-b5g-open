@@ -19,20 +19,18 @@ package org.onosproject.net.optical.rest;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.onlab.util.Tools;
-import org.onosproject.cli.net.AnnotateLinkCommand;
 import org.onosproject.codec.impl.LinkCodec;
+import org.onosproject.net.AnnotationKeys;
 import org.onosproject.net.ConnectPoint;
 import org.onosproject.net.DefaultAnnotations;
 import org.onosproject.net.OpticalBandType;
 import org.onosproject.net.OpticalBandUtils;
-import org.onosproject.net.flow.FlowRuleService;
 import org.onosproject.net.link.DefaultLinkDescription;
 import org.onosproject.net.link.LinkDescription;
 import org.onosproject.net.link.LinkProvider;
 import org.onosproject.net.link.LinkProviderRegistry;
 import org.onosproject.net.link.LinkProviderService;
 import org.onosproject.net.link.LinkService;
-import org.onosproject.net.optical.json.OchSignalCodec;
 import org.onosproject.net.provider.ProviderId;
 import org.onosproject.net.resource.DiscreteResourceId;
 import org.onosproject.net.resource.Resource;
@@ -51,18 +49,19 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -81,7 +80,17 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
 
     private static final Logger log = getLogger(OpticalLinksWebResource.class);
 
-    static final ProviderId PID = new ProviderId("rest", "org.onosproject.optical-rest");
+    private static final ProviderId PID = new ProviderId("rest", "org.onosproject.optical-rest");
+
+    private static final Set<String> allowedKeys = new HashSet<>(Arrays.asList(
+            AnnotationKeys.FIBER_LENGTH,
+            AnnotationKeys.FIBER_DISPERSION,
+            AnnotationKeys.FIBER_DISPERSION_SLOPE,
+            AnnotationKeys.FIBER_LOSS,
+            AnnotationKeys.FIBER_PMD,
+            AnnotationKeys.FIBER_EFFECTIVE_AREA));
+
+    private static final Random randomGenerator = new Random();
 
     @Context
     private UriInfo uriInfo;
@@ -330,6 +339,10 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
                                  @QueryParam("key") String key,
                                  @QueryParam("value") String value) {
 
+        if (!allowedKeys.contains(value)) {
+            throw new IllegalArgumentException("Specified key is not valid to annotate an optical link.");
+        }
+
         LinkService linkService = get(LinkService.class);
         ConnectPoint srcCP = ConnectPoint.deviceConnectPoint(srcConnectPoint);
         ConnectPoint dstCP = ConnectPoint.deviceConnectPoint(dstConnectPoint);
@@ -363,6 +376,10 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
     public Response annotateLinks(@QueryParam("key") String key,
                                  @QueryParam("value") String value) {
 
+        if (!allowedKeys.contains(value)) {
+            throw new IllegalArgumentException("Specified key is not valid to annotate an optical link.");
+        }
+
         TopologyService topologyService = get(TopologyService.class);
         Set<Link> links = topologyService.getClusterLinks(
                 topologyService.currentTopology(),
@@ -382,6 +399,51 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
 
                 try {
                     providerService.linkDetected(description(link, key, value));
+                } finally {
+                    registry.unregister(provider);
+                }
+            }
+        }
+
+        ObjectNode root = mapper().createObjectNode();
+        return Response.ok(root).build();
+    }
+
+    /**
+     * Set the length (integer km) annotation on all optical links generating random values in a range.
+     *
+     * @param min minimum
+     * @param max maximum
+     * @return 200 OK
+     */
+    @POST
+    @Path("annotate/allLinksLength")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response annotateLinks(@QueryParam("min") int min,
+                                  @QueryParam("max") int max) {
+
+        TopologyService topologyService = get(TopologyService.class);
+        Set<Link> links = topologyService.getClusterLinks(
+                topologyService.currentTopology(),
+                topologyService.getCluster(topologyService.currentTopology(), ClusterId.clusterId(0)));
+
+        Iterator linksItr = links.iterator();
+
+        while (linksItr.hasNext()) {
+
+            Link link = (Link) linksItr.next();
+
+            if (link.type() == Link.Type.OPTICAL) {
+
+                LinkProviderRegistry registry = get(LinkProviderRegistry.class);
+                RestLinkProvider provider = new RestLinkProvider();
+                LinkProviderService providerService = registry.register(provider);
+
+                int value = min + randomGenerator.nextInt(max - min + 1);
+
+                try {
+                    providerService.linkDetected(description(link, AnnotationKeys.FIBER_LENGTH, String.valueOf(value)));
                 } finally {
                     registry.unregister(provider);
                 }

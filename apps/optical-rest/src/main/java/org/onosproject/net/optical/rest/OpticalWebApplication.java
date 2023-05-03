@@ -29,6 +29,7 @@ public class OpticalWebApplication extends AbstractWebApplication {
         return getClasses(
                 OpticalNodesWebResource.class,
                 OpticalLinksWebResource.class,
-                OpticalIntentsWebResource.class);
+                OpticalIntentsWebResource.class,
+                OperationalModesWebResource.class);
     }
 }

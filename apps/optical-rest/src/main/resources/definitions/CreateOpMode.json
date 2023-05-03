@@ -1,0 +1,291 @@
+{
+  "type": "object",
+  "title": "createOpMode",
+  "properties": {
+    "mode-id": {
+      "type": "integer",
+      "example": 100
+    },
+    "mode-type": {
+      "type": "string",
+      "enum": [
+        "TRANSCEIVER_MODE_TYPE_EXPLICIT",
+        "TRANSCEIVER_MODE_TYPE_STANDARD"
+      ],
+      "example": "TRANSCEIVER_MODE_TYPE_EXPLICIT"
+    },
+    "operational-mode-capabilities": {
+      "type": "object",
+      "properties": {
+        "optical-channel-spectrum-width": {
+          "type": "string",
+          "example": "50.0"
+        },
+        "min-rx-osnr": {
+          "type": "string",
+          "example": "33.0"
+        },
+        "bit-rate": {
+          "type": "string",
+          "example": "TRIB_RATE_40G"
+        },
+        "max-differential-group-delay": {
+          "type": "string",
+          "example": "1.0"
+        },
+        "modulation-format": {
+          "type": "string",
+          "enum": [
+            "MODULATION_FORMAT_BPSK",
+            "MODULATION_FORMAT_DPSK",
+            "MODULATION_FORMAT_QPSK",
+            "MODULATION_FORMAT_DP_QPSK",
+            "MODULATION_FORMAT_8QAM",
+            "MODULATION_FORMAT_DP_8QAM",
+            "MODULATION_FORMAT_DC_DP_8QAM",
+            "MODULATION_FORMAT_16QAM",
+            "MODULATION_FORMAT_DP_16QAM",
+            "MODULATION_FORMAT_DC_DP_16QAM",
+            "MODULATION_FORMAT_32QAM",
+            "MODULATION_FORMAT_DP_32QAM",
+            "MODULATION_FORMAT_DC_DP_32QAM",
+            "MODULATION_FORMAT_64QAM",
+            "MODULATION_FORMAT_DP_64QAM",
+            "MODULATION_FORMAT_DC_DP_64QAM",
+            "MODULATION_FORMAT_PAM4",
+            "MODULATION_FORMAT_PAM8",
+            "MODULATION_FORMAT_PROPRIETARY"
+          ],
+          "example": "MODULATION_FORMAT_QPSK"
+        },
+        "baud-rate": {
+          "type": "string",
+          "example": "20000000000.0"
+        },
+        "max-chromatic-dispersion": {
+          "type": "string",
+          "example": "200.0"
+        },
+        "min-tx-osnr": {
+          "type": "string",
+          "example": "40.0"
+        },
+        "max-input-power": {
+          "type": "string",
+          "example": "9.0"
+        },
+        "min-input-power": {
+          "type": "string",
+          "example": "0.0"
+        },
+        "max-polarization-dependent-loss": {
+          "type": "string",
+          "example": "0.12"
+        }
+      },
+      "required": [
+        "optical-channel-spectrum-width",
+        "min-rx-osnr",
+        "bit-rate",
+        "max-differential-group-delay",
+        "modulation-format",
+        "baud-rate",
+        "max-chromatic-dispersion",
+        "min-tx-osnr",
+        "max-input-power",
+        "min-input-power",
+        "max-polarization-dependent-loss"
+      ]
+    },
+    "fec": {
+      "type": "object",
+      "properties": {
+        "pre-fec-ber-threshold": {
+          "type": "string",
+          "example": "0.000000000001"
+        },
+        "coding-gain": {
+          "type": "string",
+          "example": "8.53"
+        },
+        "fec-coding": {
+          "type": "string",
+          "enum": [
+            "FEC_HD",
+            "FEC_G",
+            "FEC_E",
+            "FEC_O",
+            "FEC_C",
+            "FEC_OTHER"
+          ],
+          "example": "FEC_HD"
+        },
+        "coding-overhead": {
+          "type": "string",
+          "example": "7.0"
+        }
+      },
+      "required": [
+        "pre-fec-ber-threshold",
+        "coding-gain",
+        "fec-coding",
+        "coding-overhead"
+      ]
+    },
+    "penalties": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "parameter-and-unit": {
+              "type": "string",
+              "example": "CD_PS_NM"
+            },
+            "up-to-boundary": {
+              "type": "string",
+              "example": "800.0"
+            },
+            "penalty-value": {
+              "type": "string",
+              "example": "10.0"
+            }
+          },
+          "required": [
+            "parameter-and-unit",
+            "up-to-boundary",
+            "penalty-value"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "parameter-and-unit": {
+              "type": "string",
+              "example": "PMD_PS"
+            },
+            "up-to-boundary": {
+              "type": "string",
+              "example": "0.77"
+            },
+            "penalty-value": {
+              "type": "string",
+              "example": "1.0"
+            }
+          },
+          "required": [
+            "parameter-and-unit",
+            "up-to-boundary",
+            "penalty-value"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "parameter-and-unit": {
+              "type": "string",
+              "example": "PDL_DB"
+            },
+            "up-to-boundary": {
+              "type": "string",
+              "example": "0.12"
+            },
+            "penalty-value": {
+              "type": "string",
+              "example": "1.0"
+            }
+          },
+          "required": [
+            "parameter-and-unit",
+            "up-to-boundary",
+            "penalty-value"
+          ]
+        }
+      ]
+    },
+    "filter": {
+      "type": "object",
+      "properties": {
+        "pulse-shaping-type": {
+          "type": "string",
+          "enum": [
+            "RC",
+            "RRC",
+            "OFF"
+          ],
+          "example": "OFF"
+        }
+      },
+      "required": [
+        "pulse-shaping-type"
+      ]
+    },
+    "optical-channel-config-value-constraints": {
+      "type": "object",
+      "properties": {
+        "max-central-frequency": {
+          "type": "string",
+          "example": "205281058"
+        },
+        "grid-type": {
+          "type": "string",
+          "enum": [
+            "DWDM",
+            "CWDM",
+            "FLEX",
+            "GRIDLESS",
+            "UNSPECIFIED"
+          ],
+          "example": "FLEX"
+        },
+        "max-output-power": {
+          "type": "string",
+          "example": 25.0
+        },
+        "adjustment-granularity": {
+          "type": "string",
+          "enum": [
+            "G_100GHZ",
+            "G_50GHZ",
+            "G_25GHZ",
+            "G_12_5GHZ",
+            "G_6_25GHZ",
+            "G_3_125GHZ",
+            "UNCONSTRAINED"
+          ],
+          "example": "G_50GHZ"
+        },
+        "min-central-frequency": {
+          "type": "string",
+          "example": "191675804"
+        },
+        "min-channel-spacing": {
+          "type": "string",
+          "example": "50.0"
+        },
+        "min-output-power": {
+          "type": "string",
+          "example": "0.0"
+        }
+      },
+      "required": [
+        "max-central-frequency",
+        "grid-type",
+        "max-output-power",
+        "adjustment-granularity",
+        "min-central-frequency",
+        "min-channel-spacing",
+        "min-output-power"
+      ]
+    }
+  },
+  "required": [
+    "mode-id",
+    "mode-type",
+    "operational-mode-capabilities",
+    "fec",
+    "penalties",
+    "filter",
+    "optical-channel-config-value-constraints"
+  ]
+}
