@@ -18,10 +18,10 @@ load(
 #
 profiles([
     "minimal",
-    "seba",
-    "stratum",
-    "sdfabric",
-    "sona",
+    #"seba",
+    #"stratum",
+    #"sdfabric",
+    #"sona",
 ])
 
 filegroup(
@@ -33,10 +33,10 @@ filegroup(
         ":onos-package",
     ] + select({
         ":minimal_profile": extensions("minimal") + apps("minimal"),
-        ":seba_profile": extensions("seba") + apps("seba"),
-        ":stratum_profile": extensions("stratum") + apps("stratum"),
-        ":sdfabric_profile": extensions("sdfabric") + apps("sdfabric"),
-        ":sona_profile": extensions("sona") + apps("sona"),
+        #":seba_profile": extensions("seba") + apps("seba"),
+        #":stratum_profile": extensions("stratum") + apps("stratum"),
+        #":sdfabric_profile": extensions("sdfabric") + apps("sdfabric"),
+        #":sona_profile": extensions("sona") + apps("sona"),
         "//conditions:default": extensions() + apps(),
     }),
     visibility = ["//visibility:public"],
@@ -75,10 +75,10 @@ genrule(
         ":onos-karaf",
     ] + FEATURES + select({
         ":minimal_profile": apps("minimal"),
-        ":seba_profile": apps("seba"),
-        ":stratum_profile": apps("stratum"),
-        ":sdfabric_profile": apps("sdfabric"),
-        ":sona_profile": apps("sona"),
+        #":seba_profile": apps("seba"),
+        #":stratum_profile": apps("stratum"),
+        #":sdfabric_profile": apps("sdfabric"),
+        #":sona_profile": apps("sona"),
         "//conditions:default": apps(),
     }),
     outs = ["onos.tar.gz"],

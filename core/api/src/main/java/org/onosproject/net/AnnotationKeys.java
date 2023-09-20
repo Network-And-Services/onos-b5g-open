@@ -16,6 +16,12 @@
  */
 package org.onosproject.net;
 
+import org.slf4j.Logger;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+
+import static org.slf4j.LoggerFactory.getLogger;
 /**
  * Collection of keys for annotation.
  * <p>
@@ -26,6 +32,8 @@ package org.onosproject.net;
 public final class AnnotationKeys {
 
     private static final double DEFAULT_VALUE = 1.0;
+
+    private static final Logger log = getLogger(AnnotationKeys.class);
 
     // Prohibit instantiation
     private AnnotationKeys() {
@@ -273,6 +281,20 @@ public final class AnnotationKeys {
     public static final String DATAPATH_DESCRIPTION = "datapathDescription";
 
     /**
+     * Annotation keys for optical links impairments.
+     */
+
+    public static final String FIBER_LENGTH = "fiber-length"; // double km
+    public static final String FIBER_LOSS = "fiber-loss"; // double dB/km
+    public static final String FIBER_PMD = "fiber-pmd"; // double ps/km
+    public static final String FIBER_DISPERSION = "fiber-dispersion"; // double ps/km/nm
+    public static final String FIBER_DISPERSION_SLOPE = "fiber-dispersion-slope"; // double ps/km/nm^2
+    public static final String FIBER_EFFECTIVE_AREA = "fiber-effective-area"; // um^2 (micrometro al quadrato)
+
+    // List of operational modes (integers, separated by commas)
+    public static final String OPENCONFIG_OP_MODE = "openconfig-op-modes";
+
+    /**
      * Returns the value annotated object for the specified annotation key.
      * The annotated value is expected to be String that can be parsed as double.
      * If parsing fails, the returned value will be {@value #DEFAULT_VALUE}.
@@ -289,5 +311,28 @@ public final class AnnotationKeys {
             value = DEFAULT_VALUE;
         }
         return value;
+    }
+
+    /**
+     * Returns true if specified string is one of the static Keys of the class.
+     *
+     * @param inputKey annotated object whose annotated value is obtained
+     * @return boolean
+     */
+    public  static boolean isValidKey(String inputKey) {
+        Field[] fields = AnnotationKeys.class.getDeclaredFields();
+        try {
+            for (Field field : fields) {
+                if (Modifier.isStatic(field.getModifiers()) && Modifier.isFinal(field.getModifiers())
+                        && field.getType() == String.class) {
+                    if (field.get(null).toString().equals(inputKey)) {
+                        return true;
+                    }
+                }
+            }
+        } catch (IllegalAccessException e) {
+            log.error("Error loading the value of a final static field.");
+        }
+        return false;
     }
 }

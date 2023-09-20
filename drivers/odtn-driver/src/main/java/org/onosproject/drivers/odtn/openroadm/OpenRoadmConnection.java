@@ -161,7 +161,7 @@ public class OpenRoadmConnection extends OpenRoadmConnectionBase {
       srcMcMinFrequency = centerFreq.subtract(freqRadius);
       srcMcMaxFrequency = centerFreq.add(freqRadius);
 
-      log.error("OPENROADM CONNECTION GENERATED min {} max {}", srcMcMinFrequency, srcMcMaxFrequency);
+      log.info("OPENROADM CONNECTION GENERATED min {} max {}", srcMcMinFrequency, srcMcMaxFrequency);
 
       dstMcMinFrequency = srcMcMinFrequency;
       dstMcMaxFrequency = srcMcMaxFrequency;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-present Open Networking Foundation
+ * Copyright 2023-present Open Networking Foundation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,24 +12,20 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ * This Work is contributed by CNR within the B5G-OPEN project.
  */
 
-package org.onosproject.net.optical.rest;
+package org.onosproject.net;
 
-import org.onlab.rest.AbstractWebApplication;
-
-import java.util.Set;
 
 /**
- * Optical Model Web application.
+ * Represents type of optical bands.
+ *
  */
-public class OpticalWebApplication extends AbstractWebApplication {
-    @Override
-    public Set<Class<?>> getClasses() {
-        return getClasses(
-                OpticalNodesWebResource.class,
-                OpticalLinksWebResource.class,
-                OpticalIntentsWebResource.class,
-                OperationalModesWebResource.class);
-    }
+public enum OpticalBandType {
+    L_BAND,
+    C_BAND,
+    S_BAND;
 }
+

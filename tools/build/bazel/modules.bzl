@@ -135,12 +135,12 @@ DRIVER_MAP = {
     "//drivers/arista:onos-drivers-arista-oar": [],
     "//drivers/bmv2:onos-drivers-bmv2-oar": ["stratum", "sdfabric"],
     "//drivers/barefoot:onos-drivers-barefoot-oar": ["stratum", "sdfabric"],
-    "//drivers/ciena/waveserver:onos-drivers-ciena-waveserver-oar": [],
-    "//drivers/ciena/c5162:onos-drivers-ciena-c5162-oar": [],
-    "//drivers/ciena/c5170:onos-drivers-ciena-c5170-oar": [],
-    "//drivers/ciena/waveserverai:onos-drivers-ciena-waveserverai-oar": [],
-    "//drivers/cisco/netconf:onos-drivers-cisco-netconf-oar": [],
-    "//drivers/cisco/rest:onos-drivers-cisco-rest-oar": [],
+    #"//drivers/ciena/waveserver:onos-drivers-ciena-waveserver-oar": [],
+    #"//drivers/ciena/c5162:onos-drivers-ciena-c5162-oar": [],
+    #"//drivers/ciena/c5170:onos-drivers-ciena-c5170-oar": [],
+    #"//drivers/ciena/waveserverai:onos-drivers-ciena-waveserverai-oar": [],
+    #"//drivers/cisco/netconf:onos-drivers-cisco-netconf-oar": [],
+    #"//drivers/cisco/rest:onos-drivers-cisco-rest-oar": [],
     "//drivers/corsa:onos-drivers-corsa-oar": [],
     "//drivers/czechlight:onos-drivers-czechlight-oar": [],
     "//drivers/flowspec:onos-drivers-flowspec-oar": [],
@@ -148,7 +148,7 @@ DRIVER_MAP = {
     "//drivers/gnmi:onos-drivers-gnmi-oar": ["stratum", "sdfabric", "sona"],
     "//drivers/gnoi:onos-drivers-gnoi-oar": ["stratum", "sdfabric"],
     "//drivers/hp:onos-drivers-hp-oar": [],
-    "//drivers/juniper:onos-drivers-juniper-oar": [],
+    #"//drivers/juniper:onos-drivers-juniper-oar": [],
     "//drivers/lisp:onos-drivers-lisp-oar": [],
     "//drivers/lumentum:onos-drivers-lumentum-oar": [],
     "//drivers/mellanox:onos-drivers-mellanox-oar": ["stratum"],
@@ -158,12 +158,12 @@ DRIVER_MAP = {
     "//drivers/optical:onos-drivers-optical-oar": [],
     "//drivers/ovsdb:onos-drivers-ovsdb-oar": ["sona"],
     "//drivers/p4runtime:onos-drivers-p4runtime-oar": ["stratum", "sdfabric"],
-    "//drivers/polatis/netconf:onos-drivers-polatis-netconf-oar": [],
-    "//drivers/polatis/openflow:onos-drivers-polatis-openflow-oar": [],
+    #"//drivers/polatis/netconf:onos-drivers-polatis-netconf-oar": [],
+    #"//drivers/polatis/openflow:onos-drivers-polatis-openflow-oar": [],
     "//drivers/server:onos-drivers-server-oar": [],
     "//drivers/stratum:onos-drivers-stratum-oar": ["stratum", "sdfabric"],
     "//drivers/stratum-odtn:onos-drivers-stratum-odtn-oar": [],
-    "//drivers/zte:onos-drivers-zte-oar": [],
+    #"//drivers/zte:onos-drivers-zte-oar": [],
 }
 
 #
@@ -303,7 +303,7 @@ MODELS_MAP = {
     "//models/openroadm:onos-models-openroadm-oar": [],
     "//models/tapi:onos-models-tapi-oar": [],
     "//models/polatis:onos-models-polatis-oar": [],
-    "//models/ciena/waveserverai:onos-models-ciena-waveserverai-oar": [],
+    #"//models/ciena/waveserverai:onos-models-ciena-waveserverai-oar": [],
 }
 
 #
