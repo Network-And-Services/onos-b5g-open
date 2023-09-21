@@ -1,0 +1,20 @@
+{
+  "devices": {
+    "netconf:10.100.101.21:2022": {
+      "netconf": {
+        "ip": "10.100.101.21",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 0,
+        "gridY" : 400,
+        "name": "Transp-1",
+        "driver": "client-line-terminal-device"
+      }
+    }
+  }
+}
+

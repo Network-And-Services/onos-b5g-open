@@ -31,12 +31,11 @@ import org.onosproject.net.PortNumber;
 import org.onosproject.net.CltSignalType;
 import org.onosproject.net.OduSignalType;
 import org.onosproject.net.optical.device.OduCltPortHelper;
+import org.onosproject.net.optical.rest.OperationalMode;
+import org.onosproject.net.optical.rest.OperationalModesManager;
 import org.slf4j.Logger;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.concurrent.CompletableFuture;
 
@@ -283,6 +282,11 @@ public class ClientLineTerminalDeviceDiscovery
             "<components xmlns='http://openconfig.net/yang/platform'/>");
     }
 
+    private String getOperationalModesBuilder() {
+        return filteredGetBuilder(
+            "<operational-modes xmlns='http://example.net/yang/openconfig-terminal-device-properties'/>");
+    }
+
 
     /**
      * Builds a request to get Device Ports, config and operational data.
@@ -326,6 +330,8 @@ public class ClientLineTerminalDeviceDiscovery
      */
     @Override
     public DeviceDescription discoverDeviceDetails() {
+        OperationalModesManager modesManager = checkNotNull(handler().get(OperationalModesManager.class));
+
         boolean defaultAvailable = true;
         SparseAnnotations annotations = DefaultAnnotations.builder().build();
 
@@ -368,6 +374,14 @@ public class ClientLineTerminalDeviceDiscovery
         log.info("SWVERSION {}", swVersion);
         log.info("SERIAL    {}", serialNumber);
         log.info("CHASSISID {}", chassisId);
+
+        if (vendor.equals("CTTC")) {
+            List<OperationalMode> modes = discoverOperationalModes();
+
+            for (OperationalMode mode : modes) {
+                modesManager.addToDatabase(mode);
+            }
+        }
 
         return new DefaultDeviceDescription(did().uri(),
                     type, vendor, hwVersion, swVersion, serialNumber,
@@ -414,7 +428,8 @@ public class ClientLineTerminalDeviceDiscovery
             XMLConfiguration xconf = (XMLConfiguration) XmlConfigParser.loadXmlString(rpcReply);
             xconf.setExpressionEngine(xpe);
 
-            log.debug("REPLY {}", rpcReply);
+            log.debug("REPLY PORTS details {}", rpcReply);
+
             HierarchicalConfiguration components = xconf.configurationAt("data/components");
             return parsePorts(components);
         } catch (Exception e) {
@@ -459,6 +474,63 @@ public class ClientLineTerminalDeviceDiscovery
             .collect(Collectors.toList());
     }
 
+    /**
+     * Parses operational mode information from OpenConfig XML configuration.
+     *
+     * @param modes the XML document with components root.
+     * @return List of ports
+     *
+     * //CHECKSTYLE:OFF
+     * <pre>{@code
+     *   <operational-modes xmlns='http://example.net/yang/openconfig-terminal-device-properties'/>
+     *     <mode-descriptor>....
+     *     </mode-descriptor>
+     *     <mode-descriptor>....
+     *     </mode-descriptor>
+     *   </operational-modes>
+     * }</pre>
+     * //CHECKSTYLE:ON
+     */
+    protected List<OperationalMode> parseOperationalModes(HierarchicalConfiguration modes) {
+        return modes.configurationsAt("mode-descriptor").stream()
+                .map(mode -> {
+                            try {
+                                // Pass the root document for cross-reference
+                                return parseOperationalMode(mode, modes);
+                            } catch (Exception e) {
+                                return null;
+                            }
+                        }
+                )
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+    }
+
+    public List<OperationalMode> discoverOperationalModes() {
+
+        try {
+            XPathExpressionEngine xpe = new XPathExpressionEngine();
+            NetconfSession session = getNetconfSession(did());
+            if (session == null) {
+                log.error("discoverOperationalModes called with null session for {}", did());
+                return null;
+            }
+
+            CompletableFuture<String> fut = session.rpc(getOperationalModesBuilder());
+            String rpcReply = fut.get();
+
+            XMLConfiguration xconf = (XMLConfiguration) XmlConfigParser.loadXmlString(rpcReply);
+            xconf.setExpressionEngine(xpe);
+
+            log.info("REPLY OP_MODES {}", rpcReply);
+            HierarchicalConfiguration modes = xconf.configurationAt("data/operational-modes");
+            return parseOperationalModes(modes);
+        } catch (Exception e) {
+            log.error("Exception discoverOperationalModes() {}", did(), e);
+            //return ImmutableList.of();
+            return null;
+        }
+    }
 
     /**
      * Checks if a given component has a subcomponent of a given type.
@@ -569,7 +641,7 @@ public class ClientLineTerminalDeviceDiscovery
         }
 
         // Build the port
-        // NOTE: using portNumber(id, name) breaks things. Intent parsing, port resorce management, etc. There seems
+        // NOTE: using portNumber(id, name) breaks things. Intent parsing, port resource management, etc. There seems
         // to be an issue with resource mapping
         if (annotations.get(PORT_TYPE).equals(OdtnPortType.CLIENT.value())) {
             log.debug("PORT {} number {} added as CLIENT port", name, portNum);
@@ -594,5 +666,82 @@ public class ClientLineTerminalDeviceDiscovery
         }
         log.error("PORT {} number {} is of UNKNOWN type", name, portNum);
         return null;
+    }
+
+    /**
+     * Parses a mode-descriptor XML doc into a PortDescription.
+     *
+     * @param mode subtree to parse.
+     * @param modes the full components tree.
+     *
+     * @return null
+     */
+    private OperationalMode parseOperationalMode(HierarchicalConfiguration mode, HierarchicalConfiguration modes) {
+        //Map<String, String> annotations = new HashMap<>();
+        int id = Integer.decode(mode.getString("state/mode-id"));
+        String type = mode.getString("state/mode-type");
+
+        log.info("Parsing Operational Mode id {} type {}", id, type);
+
+        //OperationalMode opMode = new OperationalMode(id, type);
+        OperationalMode opMode = OperationalMode.decodeFromXml(mode);
+        return opMode;
+
+        /*annotations.put(OdtnDeviceDescriptionDiscovery.OC_NAME, name);
+        annotations.put(OdtnDeviceDescriptionDiscovery.OC_TYPE, type);
+
+        // Store all properties as port properties
+        component.configurationsAt("properties/property")
+                .forEach(property -> {
+                    String pn = property.getString("name");
+                    String pv = property.getString("state/value");
+                    annotations.put(pn, pv);
+                });
+
+        // Assing an ONOS port number
+        PortNumber portNum;
+        if (annotations.containsKey(ONOS_PORT_INDEX)) {
+            portNum = PortNumber.portNumber(Long.parseLong(annotations.get(ONOS_PORT_INDEX)));
+        } else {
+            log.warn("PORT {} does not include onos-index, hashing...", name);
+            portNum = PortNumber.portNumber(name.hashCode());
+        }
+        log.debug("PORT {} number {}", name, portNum);
+
+        // The heuristic to know if it is client or line side
+        if (!annotations.containsKey(PORT_TYPE)) {
+            if (hasTransceiverSubComponent(component, components)) {
+                annotations.put(PORT_TYPE, OdtnPortType.CLIENT.value());
+            } else if (hasOpticalChannelSubComponent(component, components)) {
+                annotations.put(PORT_TYPE, OdtnPortType.LINE.value());
+            }
+        }
+
+        // Build the port
+        // NOTE: using portNumber(id, name) breaks things. Intent parsing, port resorce management, etc. There seems
+        // to be an issue with resource mapping
+        if (annotations.get(PORT_TYPE).equals(OdtnPortType.CLIENT.value())) {
+            log.debug("PORT {} number {} added as CLIENT port", name, portNum);
+
+            return OduCltPortHelper.oduCltPortDescription(portNum,
+                    true,
+                    CltSignalType.CLT_10GBE,
+                    DefaultAnnotations.builder().putAll(annotations).build());
+        }
+        if (annotations.get(PORT_TYPE).equals(OdtnPortType.LINE.value())) {
+            log.debug("PORT {} number {} added as LINE port", name, portNum);
+
+            // TODO: To be configured
+            OchSignal signalId = OchSignal.newDwdmSlot(ChannelSpacing.CHL_50GHZ, 1);
+
+            return OchPortHelper.ochPortDescription(
+                    portNum, true,
+                    OduSignalType.ODU4, // TODO Client signal to be discovered
+                    true,
+                    signalId,
+                    DefaultAnnotations.builder().putAll(annotations).build());
+        }
+        log.error("PORT {} number {} is of UNKNOWN type", name, portNum);
+        return null;*/
     }
 }
