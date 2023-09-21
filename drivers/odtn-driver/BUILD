@@ -8,6 +8,7 @@ COMPILE_DEPS = CORE_DEPS + JACKSON + [
     "//protocols/rest/api:onos-protocols-rest-api",
     "//apps/odtn/api:onos-apps-odtn-api",
     "//apps/optical-model:onos-apps-optical-model",
+    "//apps/optical-rest:onos-apps-optical-rest",
     "//drivers/optical:onos-drivers-optical",
     "//apps/faultmanagement/fmcli:onos-apps-faultmanagement-fmcli",  # Enabling Alarm stuff
     "//apps/faultmanagement/fmmgr:onos-apps-faultmanagement-fmmgr-native",
@@ -47,6 +48,7 @@ onos_app(
         "org.onosproject.drivers.netconf",
         "org.onosproject.drivers.optical",
         "org.onosproject.optical-model",
+        "org.onosproject.optical-rest",
         "org.onosproject.drivers.gnmi",
     ],
     title = "ODTN Driver",
