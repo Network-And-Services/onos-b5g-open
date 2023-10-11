@@ -37,6 +37,7 @@ import org.onosproject.net.optical.OchPort;
 import static org.onosproject.net.Device.Type;
 import static org.onosproject.net.optical.device.OpticalDeviceServiceView.opticalView;
 
+import org.onosproject.net.optical.OmsPort;
 import org.slf4j.Logger;
 
 import java.util.Optional;
@@ -121,7 +122,13 @@ public final class OpticalIntentUtility {
             } else {
                 log.debug("Wrong Device Type for connect points {} and {}", ingress, egress);
             }
-        } else if (srcPort instanceof OchPort && dstPort instanceof OchPort) {
+        } else if ((srcPort instanceof OchPort && dstPort instanceof OchPort)
+                || (srcPort instanceof OmsPort && dstPort instanceof OmsPort)
+                || (srcPort instanceof OchPort && dstPort instanceof OmsPort)
+                || (srcPort instanceof OmsPort && dstPort instanceof OchPort)) {
+
+            log.debug("Creating an optical intent between connect points {} and {}", ingress, egress);
+
             OduSignalType signalType = ((OchPort) srcPort).signalType();
             intent = OpticalConnectivityIntent.builder()
                     .appId(appId)

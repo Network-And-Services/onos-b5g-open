@@ -19,21 +19,8 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import org.onosproject.net.ConnectPoint;
-import org.onosproject.net.GridType;
-import org.onosproject.net.OchSignal;
-import org.onosproject.net.Path;
-import org.onosproject.net.ChannelSpacing;
-import org.onosproject.net.Port;
-import org.onosproject.net.Link;
-import org.onosproject.net.DeviceId;
-import org.onosproject.net.Annotations;
-import org.onosproject.net.AnnotationKeys;
-import org.onosproject.net.DefaultAnnotations;
-import org.onosproject.net.DefaultPath;
-import org.onosproject.net.OchSignalType;
-import org.onosproject.net.DefaultOchSignalComparator;
-import org.onosproject.net.DefaultLink;
+import org.onosproject.net.*;
+import org.onosproject.net.intent.*;
 import org.onosproject.net.resource.Resource;
 import org.onosproject.net.resource.ResourceAllocation;
 import org.onosproject.net.resource.ResourceService;
@@ -46,11 +33,6 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.onlab.graph.ScalarWeight;
 import org.onlab.graph.Weight;
 import org.onosproject.net.device.DeviceService;
-import org.onosproject.net.intent.Intent;
-import org.onosproject.net.intent.IntentCompiler;
-import org.onosproject.net.intent.IntentExtensionService;
-import org.onosproject.net.intent.OpticalConnectivityIntent;
-import org.onosproject.net.intent.OpticalPathIntent;
 import org.onosproject.net.optical.OchPort;
 import org.onosproject.net.provider.ProviderId;
 import org.onosproject.net.topology.LinkWeigher;
@@ -206,6 +188,31 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
         } else {
             signalType = OchSignalType.FIXED_GRID;
         }
+
+        Device.Type srcDeviceType = deviceService.getDevice(parentIntent.getSrc().deviceId()).type();
+        Device.Type dstDeviceType = deviceService.getDevice(parentIntent.getDst().deviceId()).type();
+        if (!srcDeviceType.equals(dstDeviceType)) {
+            log.error("OpticalConnectivityIntent requested between two devices of different type");
+        }
+
+        if (srcDeviceType.equals(Device.Type.ROADM) && dstDeviceType.equals(Device.Type.ROADM)) {
+            log.warn("OpticalConnectivityIntent requested between two ROADMs");
+            log.warn("OpticalMediaChannelIntent building...");
+            return OpticalRoadmIntent.builder()
+                    .appId(parentIntent.appId())
+                    .key(parentIntent.key())
+                    .priority(parentIntent.priority())
+                    .src(parentIntent.getSrc())
+                    .dst(parentIntent.getDst())
+                    .path(path)
+                    .lambda(lambda)
+                    .signalType(signalType)
+                    .bidirectional(parentIntent.isBidirectional())
+                    .resourceGroup(parentIntent.resourceGroup())
+                    .build();
+        }
+        log.warn("OpticalConnectivityIntent requested between two Transponders");
+        log.warn("OpticalPathIntent building...");
 
         return OpticalPathIntent.builder()
                 .appId(parentIntent.appId())
