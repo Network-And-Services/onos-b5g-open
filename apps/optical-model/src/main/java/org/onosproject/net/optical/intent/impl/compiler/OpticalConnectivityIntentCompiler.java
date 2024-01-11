@@ -136,15 +136,15 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
 
         // If there is a valid suggestedPath, use this path without further checking
         // Otherwise trigger path computation
-        Stream<Path> paths;
+        List<Path> paths;
         if (intent.suggestedPath().isPresent()) {
-            paths = Stream.of(intent.suggestedPath().get());
+            paths = List.of(intent.suggestedPath().get());
         } else {
             paths = getOpticalPaths(intent);
         }
 
         // Find first path that has the required resources
-        Optional<Map.Entry<Path, List<OchSignal>>> found = paths
+        Optional<Map.Entry<Path, List<OchSignal>>> found = paths.stream()
                 .map(path -> Maps.immutableEntry(path, findFirstAvailableLambda(intent, path)))
                 .filter(entry -> !entry.getValue().isEmpty())
                 .filter(entry -> convertToResources(entry.getKey(),
@@ -157,15 +157,23 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
             resources.addAll(convertToResources(found.get().getKey(), found.get().getValue()));
             allocateResources(intent, resources);
 
+            //If och signal is specified use FLEX grid or map it on specified spacing
             if (intent.ochSignal().isPresent()) {
                 if (intent.ochSignal().get().gridType() == GridType.FLEX) {
                     return ImmutableList.of(createIntent(intent, found.get().getKey(), intent.ochSignal().get()));
+                } else {
+                    OchSignal ochSignal = OchSignal
+                            .toFixedGrid(found.get().getValue(), intent.ochSignal().get().channelSpacing());
+
+                    return ImmutableList.of(createIntent(intent, found.get().getKey(), ochSignal));
                 }
             }
 
-            OchSignal ochSignal = OchSignal.toFixedGrid(found.get().getValue(), DEFAULT_CHANNEL_SPACING);
-            return ImmutableList.of(createIntent(intent, found.get().getKey(), ochSignal));
+            //If och signal is not specified a 50 GHz slot is assumed
+            OchSignal ochSignal = OchSignal
+                    .toFixedGrid(found.get().getValue(), DEFAULT_CHANNEL_SPACING);
 
+            return ImmutableList.of(createIntent(intent, found.get().getKey(), ochSignal));
         } else {
             log.error("Unable to find suitable lightpath for intent {}", intent);
             throw new OpticalIntentCompilationException("Unable to find suitable lightpath for intent " + intent);
@@ -305,6 +313,8 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
             return Collections.emptyList();
         }
 
+        log.info("List of common lambdas for intent {}", lambdas);
+
         return findFirstLambda(lambdas, DEFAULT_SLOT_GRANULARITY);
     }
 
@@ -386,7 +396,7 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
      * @param intent optical connectivity intent
      * @return set of paths in WDM topology
      */
-    private Stream<Path> getOpticalPaths(OpticalConnectivityIntent intent) {
+    private List<Path> getOpticalPaths(OpticalConnectivityIntent intent) {
         // Route in WDM topology
         Topology topology = topologyService.currentTopology();
         //TODO: refactor with LinkWeigher class Implementation
@@ -463,28 +473,30 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
             List<Link> links = ImmutableList.<Link>builder().add(defaultLink).build();
             Annotations annotations = DefaultAnnotations.builder().build();
             DefaultPath defaultPath = new DefaultPath(PROVIDER_ID, links, null, annotations);
-            return ImmutableList.<Path>builder().add(defaultPath).build().stream();
+            return ImmutableList.<Path>builder().add(defaultPath).build();
         }
 
         //head link's src port should be same as intent src port and tail link dst port
         //should be same as intent dst port in the path.
+        //by alessio... just removed this contraint to allow intents between OCH ports of ROADMs
         Stream<Path> paths = topologyService.getKShortestPaths(topology,
                 start.deviceId(),
                 end.deviceId(),
-                weight)
-                .filter(p -> p.links().get(0).src().port().equals(start.port()) &&
-                        p.links().get(p.links().size() - 1).dst().port().equals(end.port()));
-        if (log.isDebugEnabled()) {
-            return paths
-                    .map(path -> {
-                        // no-op map stage to add debug logging
-                        log.debug("Candidate path: {}",
-                                path.links().stream()
-                                        .map(lk -> lk.src() + "-" + lk.dst())
-                                        .collect(Collectors.toList()));
-                        return path;
-                    });
+                weight);
+        //.filter(p -> p.links().get(0).src().port().equals(start.port()) &&
+        //        p.links().get(p.links().size() - 1).dst().port().equals(end.port()));
+        List<Path> pathList = paths.collect(Collectors.toList());
+        if (pathList.size() != 0) {
+            for (Path path : pathList) {
+                log.warn("Computed path: {}", path);
+            }
         }
-        return paths;
+        else {
+            log.error("NO path found on the optical topology");
+        }
+
+        log.info("Found paths {}", pathList.size());
+
+        return pathList;
     }
 }

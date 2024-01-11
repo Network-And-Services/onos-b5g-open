@@ -5,19 +5,13 @@ curl -u karaf:karaf -X POST --header 'Content-Type: application/json' --header '
    "appId": "org.onosproject.optical-rest",
    "ingressPoint": {
      "device": "netconf:10.100.101.21:2022",
-     "port": "11003"
+     "port": "11001"
    },
    "egressPoint": {
      "device": "netconf:10.100.101.24:2022",
-     "port": "11003"
+     "port": "11001"
    },
-   "bidirectional": true,
-   "signal": {
-     "channelSpacing": "CHL_6P25GHZ",
-     "gridType": "FLEX",
-     "spacingMultiplier": -230,
-     "slotGranularity": 4
-   },
+   "bidirectional": false,
    "suggestedPath": {
      "links": [
        {
@@ -25,8 +19,16 @@ curl -u karaf:karaf -X POST --header 'Content-Type: application/json' --header '
          "dst": "netconf:10.100.101.11:2022/1011"
        },
        {
-         "src": "netconf:10.100.101.11:2022/11",
-         "dst": "netconf:10.100.101.14:2022/12"
+         "src": "netconf:10.100.101.11:2022/31",
+         "dst": "netconf:10.100.101.12:2022/32"
+       },
+       {
+         "src": "netconf:10.100.101.12:2022/21",
+         "dst": "netconf:10.100.101.13:2022/22"
+       },
+              {
+         "src": "netconf:10.100.101.13:2022/31",
+         "dst": "netconf:10.100.101.14:2022/32"
        },
        {
          "src": "netconf:10.100.101.14:2022/1010",

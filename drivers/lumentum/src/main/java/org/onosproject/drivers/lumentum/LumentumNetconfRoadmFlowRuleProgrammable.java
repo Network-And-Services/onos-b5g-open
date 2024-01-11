@@ -103,7 +103,7 @@ public class LumentumNetconfRoadmFlowRuleProgrammable extends AbstractHandlerBeh
                 .collect(Collectors.toList());
 
         //Print out number of rules actually found on the device that are also included in the cache
-        log.debug("Device {} getFlowEntries fetched connections {}", did(), fetched.size());
+        log.info("Device {} getFlowEntries fetched connections {}", did(), fetched.size());
 
         return fetched;
     }
@@ -130,12 +130,12 @@ public class LumentumNetconfRoadmFlowRuleProgrammable extends AbstractHandlerBeh
             if (rpcAddConnection(lumFlowRule)) {
                 added.add(lumFlowRule);
                 getConnectionCache().add(did(), lumFlowRule.getConnectionName(), lumFlowRule);
-                log.debug("Adding connection with selector {}", lumFlowRule.selector());
+                log.info("Adding connection with selector {}", lumFlowRule.selector());
             }
         }
 
         //Print out number of rules sent to the device (without receiving errors)
-        log.debug("Device {} applyFlowRules added {}", did(), added.size());
+        log.info("Device {} applyFlowRules added {}", did(), added.size());
 
         return added;
     }
@@ -163,7 +163,7 @@ public class LumentumNetconfRoadmFlowRuleProgrammable extends AbstractHandlerBeh
         }
 
         //Print out number of removed rules from the device (without receiving errors)
-        log.debug("Device {} removeFlowRules removed {}", did(), removed.size());
+        log.info("Device {} removeFlowRules removed {}", did(), removed.size());
 
         return removed;
     }
@@ -196,7 +196,7 @@ public class LumentumNetconfRoadmFlowRuleProgrammable extends AbstractHandlerBeh
 
         try {
             reply = session.get(requestBuilder.toString(), null);
-            log.debug("Lumentum NETCONF - fetchConnectionsFromDevice reply {}", reply);
+            log.info("Lumentum NETCONF - fetchConnectionsFromDevice reply {}", reply);
         } catch (NetconfException e) {
             log.error("Failed to retrieve configuration details for device {}",
                       handler().data().deviceId(), e);
@@ -250,7 +250,7 @@ public class LumentumNetconfRoadmFlowRuleProgrammable extends AbstractHandlerBeh
             return null;
         }
 
-        log.debug("Lumentum NETCONF - retrieved FlowRule module {} connection {}", moduleId, connId);
+        log.info("Lumentum NETCONF - retrieved FlowRule module {} connection {}", moduleId, connId);
 
         HierarchicalConfiguration config = connection.configurationAt(CONFIG);
         double startFreq = config.getDouble(START_FREQ);
@@ -273,8 +273,8 @@ public class LumentumNetconfRoadmFlowRuleProgrammable extends AbstractHandlerBeh
                 .add(Criteria.matchLambda(toOchSignal(startFreq, endFreq)))
                 .build();
 
-        log.debug("Lumentum NETCONF - retrieved FlowRule startFreq {} endFreq {}", startFreq, endFreq);
-        log.debug("Lumentum NETCONF - retrieved FlowRule selector {}", selector);
+        log.info("Lumentum NETCONF - retrieved FlowRule startFreq {} endFreq {}", startFreq, endFreq);
+        log.info("Lumentum NETCONF - retrieved FlowRule selector {}", selector);
 
         //Lookup of connection
         //Retrieved rules, cached rules are considered equal if the selector is equal
@@ -294,7 +294,7 @@ public class LumentumNetconfRoadmFlowRuleProgrammable extends AbstractHandlerBeh
             return null;
         } else {
             //Update monitored values
-            log.debug("Attenuation retrieved {} dB for connection {}",
+            log.info("Attenuation retrieved {} dB for connection {}",
                     attenuation, ((LumentumFlowRule) cacheRule).getConnectionId());
             ((LumentumFlowRule) cacheRule).setAttenuation(attenuation);
             ((LumentumFlowRule) cacheRule).setInputPower(inputPower);
@@ -360,7 +360,7 @@ public class LumentumNetconfRoadmFlowRuleProgrammable extends AbstractHandlerBeh
         String module = pair.getLeft().toString();
         String connectionId = pair.getRight().toString();
 
-        log.debug("Lumentum driver new connection sent moduleId {} connId {}",
+        log.info("Lumentum driver new connection sent moduleId {} connId {}",
                 xc.getConnectionModule(),
                 xc.getConnectionId());
 
@@ -397,7 +397,7 @@ public class LumentumNetconfRoadmFlowRuleProgrammable extends AbstractHandlerBeh
         stringBuilder.append("</rpc>" + "\n");
 
         log.info("Lumentum ROADM20 - RPC add-connection sent to device {}", did());
-        log.debug("Lumentum ROADM20 - RPC add-connection sent to device {} {}", did(), stringBuilder);
+        log.info("Lumentum ROADM20 - RPC add-connection sent to device {} {}", did(), stringBuilder);
 
         return editCrossConnect(stringBuilder.toString());
     }
@@ -434,7 +434,7 @@ public class LumentumNetconfRoadmFlowRuleProgrammable extends AbstractHandlerBeh
         stringBuilder.append("</rpc>" + "\n");
 
         log.info("Lumentum ROADM20 - edit-connection sent to device {}", did());
-        log.debug("Lumentum ROADM20 - edit-connection sent to device {} {}", did(), stringBuilder);
+        log.info("Lumentum ROADM20 - edit-connection sent to device {} {}", did(), stringBuilder);
 
         return editCrossConnect(stringBuilder.toString());
     }
@@ -467,7 +467,7 @@ public class LumentumNetconfRoadmFlowRuleProgrammable extends AbstractHandlerBeh
         stringBuilder.append("</rpc>" + " \n");
 
         log.info("Lumentum ROADM20 - RPC delete-connection sent to device {}", did());
-        log.debug("Lumentum ROADM20 - - RPC delete-connection sent to device {} {}", did(), stringBuilder);
+        log.info("Lumentum ROADM20 - - RPC delete-connection sent to device {} {}", did(), stringBuilder);
 
         return editCrossConnect(stringBuilder.toString());
     }
@@ -485,7 +485,7 @@ public class LumentumNetconfRoadmFlowRuleProgrammable extends AbstractHandlerBeh
         stringBuilder.append("</rpc>" + "\n");
 
         log.info("Lumentum ROADM20 - RPC delete-external-connection sent to device {}", did());
-        log.debug("Lumentum ROADM20 - - RPC delete-external-connection sent to device {} {}", did(), stringBuilder);
+        log.info("Lumentum ROADM20 - - RPC delete-external-connection sent to device {} {}", did(), stringBuilder);
 
         return editCrossConnect(stringBuilder.toString());
     }
@@ -503,7 +503,7 @@ public class LumentumNetconfRoadmFlowRuleProgrammable extends AbstractHandlerBeh
         } catch (NetconfException e) {
             log.error("Failed to edit the CrossConnect edit-cfg for device {}",
                       handler().data().deviceId(), e);
-            log.debug("Failed configuration {}", xcString);
+            log.info("Failed configuration {}", xcString);
             return false;
         }
     }

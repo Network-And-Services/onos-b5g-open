@@ -26,14 +26,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.onlab.packet.ChassisId;
 import org.onlab.util.Frequency;
 import org.onosproject.drivers.utilities.XmlConfigParser;
-import org.onosproject.net.ChannelSpacing;
-import org.onosproject.net.SparseAnnotations;
-import org.onosproject.net.DefaultAnnotations;
-import org.onosproject.net.DeviceId;
-import org.onosproject.net.Device;
-import org.onosproject.net.Port;
-import org.onosproject.net.PortNumber;
-import org.onosproject.net.AnnotationKeys;
+import org.onosproject.net.*;
 import org.onosproject.net.device.DefaultDeviceDescription;
 import org.onosproject.net.device.DefaultPortDescription;
 import org.onosproject.net.device.DeviceDescription;
@@ -53,6 +46,7 @@ import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static org.onosproject.net.optical.device.OmsPortHelper.omsPortDescription;
+import static org.onosproject.net.optical.device.OchPortHelper.ochPortDescription;
 import static org.slf4j.LoggerFactory.getLogger;
 
 /**
@@ -328,12 +322,22 @@ public class LumentumNetconfRoadmDiscovery
                             (annotations.build().value(AnnotationKeys.PORT_NAME)).contains(LINE_PORT_NAME))) {
 
                 //These are the ports supporting OchSignals
-                portDescriptions.add(omsPortDescription(portNum,
-                        isEnabled,
-                        START_CENTER_FREQ_50,
-                        END_CENTER_FREQ_50,
-                        CHANNEL_SPACING_50.frequency(),
-                        annotations.build()));
+                if (portNum.toLong() == 3001) {
+                    portDescriptions.add(ochPortDescription(portNum,
+                            isEnabled,
+                            OduSignalType.ODU4,
+                            true,
+                            OchSignal.newDwdmSlot(ChannelSpacing.CHL_50GHZ, 1),
+                            annotations.build()));
+                }
+                else {
+                    portDescriptions.add(omsPortDescription(portNum,
+                            isEnabled,
+                            START_CENTER_FREQ_50,
+                            END_CENTER_FREQ_50,
+                            CHANNEL_SPACING_50.frequency(),
+                            annotations.build()));
+                }
             } else {
                 //These are COPPER ports, or FIBER ports not supporting OchSignals
                 DefaultPortDescription.Builder portDescriptionBuilder = DefaultPortDescription.builder();
