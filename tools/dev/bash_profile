@@ -3,7 +3,7 @@
 # Simply include in your own .bash_aliases or .bash_profile
 
 # Root of the ONOS source tree
-export ONOS_ROOT=${ONOS_ROOT:-~/onos}
+export ONOS_ROOT=${ONOS_ROOT:-~/onos-b5g-open}
 
 # This is a hack to remove symlinks from the ONOS_ROOT path. To be removed when
 # the protobuf buck rules can handle symlinks
