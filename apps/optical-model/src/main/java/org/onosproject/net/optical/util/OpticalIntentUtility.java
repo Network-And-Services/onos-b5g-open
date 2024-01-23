@@ -122,12 +122,9 @@ public final class OpticalIntentUtility {
             } else {
                 log.debug("Wrong Device Type for connect points {} and {}", ingress, egress);
             }
-        } else if ((srcPort instanceof OchPort && dstPort instanceof OchPort)
-                || (srcPort instanceof OmsPort && dstPort instanceof OmsPort)
-                || (srcPort instanceof OchPort && dstPort instanceof OmsPort)
-                || (srcPort instanceof OmsPort && dstPort instanceof OchPort)) {
+        } else if (srcPort instanceof OchPort && dstPort instanceof OchPort) {
 
-            log.debug("Creating an optical intent between connect points {} and {}", ingress, egress);
+            log.info("Creating an optical intent between connect points {} and {}", ingress, egress);
 
             OduSignalType signalType = ((OchPort) srcPort).signalType();
             intent = OpticalConnectivityIntent.builder()
@@ -218,6 +215,9 @@ public final class OpticalIntentUtility {
                         ingress, srcDevice.type(), egress, dstDevice.type());
             }
         } else if (srcPort instanceof OchPort && dstPort instanceof OchPort) {
+
+            log.info("Creating an optical intent between connect points {} and {}", ingress, egress);
+
             OduSignalType signalType = ((OchPort) srcPort).signalType();
             intent = OpticalConnectivityIntent.builder()
                     .appId(appId)
@@ -230,7 +230,9 @@ public final class OpticalIntentUtility {
                     .suggestedPath(Optional.ofNullable(suggestedPath))
                     .build();
         } else {
-            log.error("Unable to create explicit optical intent between connect points {} and {}", ingress, egress);
+            log.error("Unable to create explicit optical intent {} and {}, types {} and {}",
+                    ingress, egress,
+                    srcPort.type(), dstPort.type());
         }
 
         return intent;

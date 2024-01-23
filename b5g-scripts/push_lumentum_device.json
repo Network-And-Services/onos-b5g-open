@@ -8,6 +8,10 @@
         "password": "Sup%9User"
       },
       "basic": {
+	"locType" : "grid",
+        "gridX" : -200,
+        "gridY" : 625,
+        "name": "Lumentum ROADM-20",
         "driver": "lumentum-roadm20whitebox-netconf"
       }
     }

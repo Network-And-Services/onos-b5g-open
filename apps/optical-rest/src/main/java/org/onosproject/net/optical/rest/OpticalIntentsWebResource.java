@@ -377,11 +377,11 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
 
                 suggestedPath = new DefaultPath(PROVIDER_ID, listLinks, new ScalarWeight(1));
 
-                if (!deviceService.getPort(suggestedPath.src()).type().equals(Port.Type.OCH)
+                /*if (!deviceService.getPort(suggestedPath.src()).type().equals(Port.Type.OCH)
                 || !deviceService.getPort(suggestedPath.dst()).type().equals(Port.Type.OCH)) {
                     throw new IllegalArgumentException(
                             "End-points of suggested path must be ports of type OCH");
-                }
+                }*/
 
                 log.debug("OpticalIntent along suggestedPath {}", suggestedPath);
             }
