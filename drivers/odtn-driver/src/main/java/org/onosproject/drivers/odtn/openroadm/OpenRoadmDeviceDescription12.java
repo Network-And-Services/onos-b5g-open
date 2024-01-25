@@ -1,41 +1,13 @@
-/*
- * Copyright 2018-present Open Networking Foundation
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
-
- * This work was partially supported by EC H2020 project METRO-HAUL (761727).
- */
 package org.onosproject.drivers.odtn.openroadm;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import org.apache.commons.configuration.HierarchicalConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.commons.configuration.tree.xpath.XPathExpressionEngine;
 import org.onlab.packet.ChassisId;
 import org.onlab.util.Frequency;
 import org.onosproject.drivers.utilities.XmlConfigParser;
-import org.onosproject.net.AnnotationKeys;
-import org.onosproject.net.ChannelSpacing;
-import org.onosproject.net.DefaultAnnotations;
-import org.onosproject.net.OchSignal;
-import org.onosproject.net.OduSignalType;
-import org.onosproject.net.PortNumber;
+import org.onosproject.net.*;
 import org.onosproject.net.device.DefaultDeviceDescription;
 import org.onosproject.net.device.DeviceDescription;
 import org.onosproject.net.device.DeviceDescriptionDiscovery;
@@ -48,48 +20,56 @@ import org.onosproject.netconf.NetconfDevice;
 import org.onosproject.netconf.NetconfException;
 import org.onosproject.netconf.NetconfSession;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
- * Driver Implementation of the DeviceDescrption discovery for OpenROADM.
+ * Driver Implementation of the DeviceDescrption discovery for OpenROADM v12.
  */
-public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
-  implements DeviceDescriptionDiscovery {
+public class OpenRoadmDeviceDescription12 extends OpenRoadmNetconfHandlerBehaviour
+        implements DeviceDescriptionDiscovery {
 
     // These annotations are added to the device and ports
     public final class AnnotationKeys {
         public static final String OPENROADM_NODEID = "openroadm-node-id";
         public static final String OPENROADM_CIRCUIT_PACK_NAME =
-          "openroadm-circuit-pack-name";
+                "openroadm-circuit-pack-name";
         public static final String OPENROADM_PORT_NAME = "openroadm-port-name";
         public static final String OPENROADM_PARTNER_CIRCUIT_PACK_NAME =
-          "openroadm-partner-circuit-pack-name";
+                "openroadm-partner-circuit-pack-name";
         public static final String OPENROADM_PARTNER_PORT_NAME =
-          "openroadm-partner-port-name";
+                "openroadm-partner-port-name";
         public static final String OPENROADM_LOGICAL_CONNECTION_POINT =
-          "openroadm-logical-connection-point";
+                "openroadm-logical-connection-point";
+        public static final String OPENROADM_PORT_POWER_CAP_MIN_RX =
+                "openroadm-port-power-cap-min-rx";
+        public static final String OPENROADM_PORT_POWER_CAP_MIN_TX =
+                "openroadm-port-power-cap-min-tx";
+        public static final String OPENROADM_PORT_POWER_CAP_MAX_RX =
+                "openroadm-port-power-cap-max-rx";
+        public static final String OPENROADM_PORT_POWER_CAP_MAX_TX =
+                "openroadm-port-power-cap-max-tx";
         private AnnotationKeys() {
             // utility class
         }
     }
 
     public static final ChannelSpacing CHANNEL_SPACING =
-      ChannelSpacing.CHL_50GHZ;
-
-
-    /*
-     * The following 2 values are not specified by the OpenROADM standard,
-     * but they are a reasonable default for a tunable C-band, defined from
-     * Channel C1 at 191.35 to C96 at 196.10 GHz (for a spacing at 50GHz)
-     */
-    public static final Frequency START_CENTER_FREQ = Frequency.ofGHz(191_350);
-    public static final Frequency STOP_CENTER_FREQ = Frequency.ofGHz(196_100);
-
+            ChannelSpacing.CHL_50GHZ;
 
     public static final String OPENROADM_DEVICE_OPEN = //
-      "<org-openroadm-device xmlns=\"http://org/openroadm/device\">";
+            "<org-openroadm-device xmlns=\"http://org/openroadm/device\">";
     public static final String OPENROADM_DEVICE_CLOSE = //
-      "</org-openroadm-device>";
-
+            "</org-openroadm-device>";
+    public static final String CAPABILITY_OPENROADM_DEVICE =
+            "http://org/openroadm/device?module=org-openroadm-device&amp;revision=";
+    public static final String CAPABILITY_OPENROADM_ALARM =
+            "http://org/openroadm/alarm?module=org-openroadm-alarm&amp;revision=";
 
     /**
      * Builds a request to get OpenRoadm Device main node (within root).
@@ -124,9 +104,32 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
         StringBuilder filter = new StringBuilder();
         filter.append(OPENROADM_DEVICE_OPEN);
         filter.append("<circuit-packs>");
-        filter.append(" <circuit-pack-name>");
+        filter.append("<circuit-pack-name>");
         filter.append(cpName);
-        filter.append(" </circuit-pack-name>");
+        filter.append("</circuit-pack-name>");
+        filter.append("</circuit-packs>");
+        filter.append(OPENROADM_DEVICE_CLOSE);
+        return filteredGetBuilder(filter.toString());
+    }
+
+    /**
+     * Builds a request to get specific port data.
+     * Ports are uniquely identified by the couple (circuit-pack-name, port-name)
+     *
+     * @return A string with the Netconf filter for the get-config operation.
+     */
+    private String getDevicePortBuilder(String cpName, String portName) {
+        StringBuilder filter = new StringBuilder();
+        filter.append(OPENROADM_DEVICE_OPEN);
+        filter.append("<circuit-packs>");
+        filter.append("<circuit-pack-name>");
+        filter.append(cpName);
+        filter.append("</circuit-pack-name>");
+        filter.append("<ports>");
+        filter.append("<port-name>");
+        filter.append(portName);
+        filter.append("</port-name>");
+        filter.append("</ports>");
         filter.append("</circuit-packs>");
         filter.append(OPENROADM_DEVICE_CLOSE);
         return filteredGetBuilder(filter.toString());
@@ -148,8 +151,7 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
     /**
      * Builds a request to get Device Degrees, config and operational data.
      *
-     * @return A string with the Netconf RPC for a get with subtree rpcing based
-     * on /components/component/state/type being oc-platform-types:PORT
+     * @return A string with the Netconf RPC for a get with subtree
      */
     private String getDeviceDegreesBuilder() {
         return getDeviceXmlNodeBuilder("<degree/>");
@@ -175,7 +177,7 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
     private String getDeviceExternalPortsBuilderXPath() {
         StringBuilder filter = new StringBuilder();
         filter.append(
-          "/org-openroadm-device/circuit-packs/ports[port-qual='roadm-external']");
+                "/org-openroadm-device/circuit-packs/ports[port-qual='roadm-external']");
         return xpathFilteredGetBuilder(filter.toString());
     }
 
@@ -216,7 +218,7 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
      * @return A string with the Netconf RPC
      */
     private String getDeviceExternalLinkForPortBuilderXPath(
-      String nodeId, String circuitPackName, String portName) {
+            String nodeId, String circuitPackName, String portName) {
         StringBuilder filter = new StringBuilder();
         filter.append("/org-openroadm-device/external-link[");
         filter.append("./source/node-id='");
@@ -254,6 +256,7 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
     }
 
 
+
     /**
      * Returns a DeviceDescription with Device info.
      *
@@ -268,7 +271,7 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
             return null;
         }
         DefaultAnnotations.Builder annotationsBuilder =
-          DefaultAnnotations.builder();
+                DefaultAnnotations.builder();
 
         // Some defaults
         String vendor = "UNKNOWN";
@@ -284,9 +287,9 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
             try {
                 String reply = session.rpc(getDeviceDetailsBuilder()).get();
                 XMLConfiguration xconf =
-                  (XMLConfiguration) XmlConfigParser.loadXmlString(reply);
+                        (XMLConfiguration) XmlConfigParser.loadXmlString(reply);
                 String nodeId =
-                  xconf.getString("data.org-openroadm-device.info.node-id", "");
+                        xconf.getString("data.org-openroadm-device.info.node-id", "");
                 if (nodeId.equals("")) {
                     log.error("[OPENROADM] {} org-openroadm-device node-id undefined, returning", did());
                     return null;
@@ -298,27 +301,27 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
                     return null;
                 }
                 vendor = xconf.getString(
-                  "data.org-openroadm-device.info.vendor", vendor);
+                        "data.org-openroadm-device.info.vendor", vendor);
                 hwVersion = xconf.getString(
-                  "data.org-openroadm-device.info.model", hwVersion);
+                        "data.org-openroadm-device.info.model", hwVersion);
                 swVersion = xconf.getString(
-                  "data.org-openroadm-device.info.softwareVersion", swVersion);
+                        "data.org-openroadm-device.info.softwareVersion", swVersion);
                 serialNumber = xconf.getString(
-                  "data.org-openroadm-device.info.serial-id", serialNumber);
+                        "data.org-openroadm-device.info.serial-id", serialNumber);
                 chassisId = xconf.getString(
-                  "data.org-openroadm-device.info.node-number", chassisId);
+                        "data.org-openroadm-device.info.node-number", chassisId);
 
                 // GEOLOCATION
                 String longitudeStr = xconf.getString(
-                  "data.org-openroadm-device.info.geoLocation.longitude");
+                        "data.org-openroadm-device.info.geoLocation.longitude");
                 String latitudeStr = xconf.getString(
-                  "data.org-openroadm-device.info.geoLocation.latitude");
+                        "data.org-openroadm-device.info.geoLocation.latitude");
                 if (longitudeStr != null && latitudeStr != null) {
                     annotationsBuilder
-                      .set(org.onosproject.net.AnnotationKeys.LONGITUDE,
-                           longitudeStr)
-                      .set(org.onosproject.net.AnnotationKeys.LATITUDE,
-                           latitudeStr);
+                            .set(org.onosproject.net.AnnotationKeys.LONGITUDE,
+                                    longitudeStr)
+                            .set(org.onosproject.net.AnnotationKeys.LATITUDE,
+                                    latitudeStr);
                 }
             } catch (NetconfException | InterruptedException | ExecutionException e) {
                 log.error("[OPENROADM] {} exception", did());
@@ -356,6 +359,32 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
         return desc;
     }
 
+    /**
+     * Get config and status info for a specific port as a
+     * list of XML hierarchical configs.
+     * @param session the NETConf session to the OpenROADM device.
+     * @param cpName the name of the circuit-pack hosting the port
+     * @param portName the name of the requested port
+     * @return the hierarchical conf. for the port.
+     */
+    HierarchicalConfiguration getPortState(NetconfSession session, String cpName, String portName) {
+        try {
+            String reply = session.rpc(getDevicePortBuilder(cpName, portName)).get();
+            XMLConfiguration cpConf =
+                    (XMLConfiguration) XmlConfigParser.loadXmlString(reply);
+            cpConf.setExpressionEngine(new XPathExpressionEngine());
+            List<HierarchicalConfiguration> port = cpConf.configurationsAt(
+                    "/data/org-openroadm-device/circuit-packs/ports");
+            // Security check but it shouldn't happen
+            if (port.size() > 1) {
+                log.warn("[OPENROADM] More than one port with the same name. Using first one");
+            }
+            return port.get(0);
+        } catch (NetconfException | InterruptedException | ExecutionException e) {
+            log.error("[OPENROADM] {} exception getting port {}/{}: {}", did(), cpName, portName, e);
+            return null;
+        }
+    }
 
     /**
      * Get the external links as a list of XML hieriarchical configs.
@@ -366,7 +395,7 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
         try {
             String reply = session.getConfig(DatastoreId.RUNNING, getDeviceExternalLinksBuilder());
             XMLConfiguration extLinksConf =
-                (XMLConfiguration) XmlConfigParser.loadXmlString(reply);
+                    (XMLConfiguration) XmlConfigParser.loadXmlString(reply);
             extLinksConf.setExpressionEngine(new XPathExpressionEngine());
             return extLinksConf.configurationsAt(
                     "/data/org-openroadm-device/external-link");
@@ -388,7 +417,7 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
         try {
             String reply = session.rpc(getDeviceCircuitPackByNameBuilder(cpName)).get();
             XMLConfiguration cpConf =
-                (XMLConfiguration) XmlConfigParser.loadXmlString(reply);
+                    (XMLConfiguration) XmlConfigParser.loadXmlString(reply);
             cpConf.setExpressionEngine(new XPathExpressionEngine());
             List<HierarchicalConfiguration> cPacks = cpConf.configurationsAt(
                     "/data/org-openroadm-device/circuit-packs");
@@ -415,7 +444,7 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
         try {
             String reply = session.rpc(getDeviceDegreesBuilder()).get();
             XMLConfiguration conf =
-                (XMLConfiguration) XmlConfigParser.loadXmlString(reply);
+                    (XMLConfiguration) XmlConfigParser.loadXmlString(reply);
             conf.setExpressionEngine(new XPathExpressionEngine());
             return conf.configurationsAt(
                     "/data/org-openroadm-device/degree");
@@ -436,7 +465,7 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
         try {
             String reply = session.rpc(getDeviceSharedRiskGroupsBuilder()).get();
             XMLConfiguration conf =
-                (XMLConfiguration) XmlConfigParser.loadXmlString(reply);
+                    (XMLConfiguration) XmlConfigParser.loadXmlString(reply);
             conf.setExpressionEngine(new XPathExpressionEngine());
             return conf.configurationsAt(
                     "/data/org-openroadm-device/shared-risk-group");
@@ -446,17 +475,14 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
         }
     }
 
-
     /**
      * Returns a list of PortDescriptions for the device.
      *
      * @return a list of descriptions.
      */
     /*
-     * Assumptions: ROADM degree ports are Oms carrying 80 lambdas (should be
-     *              configurable)
-     *              ROADM SRG (client) ports are OCh carrying ODU4 (should be
-     *              configurable)
+     * Assumption: ROADM SRG (client) ports are OCh carrying ODU4 (should be
+     *             configurable)
      */
 
     @Override
@@ -468,8 +494,8 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
         }
         if (!getDevice().annotations().keys().contains("openroadm-node-id")) {
             log.error("Unable to run PortDiscovery: missing openroadm-node-id annotation." +
-                      " Probable failure during DeviceDiscovery. Aborting!");
-        return ImmutableList.of();
+                    " Probable failure during DeviceDiscovery. Aborting!");
+            return ImmutableList.of();
         }
 
         List<HierarchicalConfiguration> externalLinks = getExternalLinks(session);
@@ -479,35 +505,35 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
         return list;
     }
 
-   /**
-    * Parses degree (ROADM) port information.
-    *
-    * @param session the NETConf session to the OpenROADM device.
-    * @param list  List of port descriptions to append to.
-    * @param externalLinks Hierarchical configuration containing all the external
-    *        links.
-    * Port-id is obtained from degree-number and from the index contained
-    * in the <connection-ports> leaf.
-    * For OpenROADM Device model 2.2 both <degree-number> and <index> inside
-    * <connection-ports> are key for the related lists, so composing them
-    * assures identificator uniqueness.
-    * Degree IDs are chosen as 10 * degree-number + index to avoid overlapping
-    * with SRGs IDs.
-    * The above formula allows making a two-digit number starting from two
-    * one-digit numbers (actually, only port index needs to be single digit and
-    * this assumption is assured by what stated in the model:
-    *     OpenROADM Device model 2.2 (line 675):
-    *        (connection-ports) description "Port associated with degree: One if bi-directional; two if uni-directional"
-    * If my numbers are A and B, to have a number in the form AB (i.e. 11, 12, 21,
-    * 31, 42, ...) I have to multiply A by 10.
-    *
-    * Note that both bidirectional and unidirectional ports IDs are taken from
-    * the datastore.
-    * Ex. DEG1 bidirectional port
-    *          ONOS port ID: 11
-    *     DEG3 unidirectional port
-    *          ONOS port IDs: 31 and 32
-    */
+    /**
+     * Parses degree (ROADM) port information.
+     *
+     * @param session the NETConf session to the OpenROADM device.
+     * @param list  List of port descriptions to append to.
+     * @param externalLinks Hierarchical configuration containing all the external
+     *        links.
+     * Port-id is obtained from degree-number and from the index contained
+     * in the <connection-ports> leaf.
+     * For OpenROADM Device model 2.2 both <degree-number> and <index> inside
+     * <connection-ports> are key for the related lists, so composing them
+     * assures identificator uniqueness.
+     * Degree IDs are chosen as 10 * degree-number + index to avoid overlapping
+     * with SRGs IDs.
+     * The above formula allows making a two-digit number starting from two
+     * one-digit numbers (actually, only port index needs to be single digit and
+     * this assumption is assured by what stated in the model:
+     *     OpenROADM Device model 2.2 (line 675):
+     *        (connection-ports) description "Port associated with degree: One if bi-directional; two if uni-directional"
+     * If digits are A and B, to have a number in the form AB (i.e. 11, 12, 21,
+     * 31, 42, ...) A must be multiplied by 10.
+     *
+     * Note that both bidirectional and unidirectional ports IDs are taken from
+     * the datastore.
+     * Ex. DEG1 bidirectional port
+     *          ONOS port ID: 11
+     *     DEG3 unidirectional ports
+     *          ONOS port IDs: 31 and 32
+     */
     private List<PortDescription>
     discoverDegreePorts(NetconfSession session,
                         List<PortDescription> list,
@@ -523,8 +549,23 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
                 continue;
             }
 
+            // Collect degree optical parameters, common to all ports.
+            // Note that this might change in the future when supporting
+            // more recent OpenROADM models.
+            Map<String, String> degreeAnnotations = new HashMap<>();
+            String maxWavelengths = degree.getString("max-wavelengths", "");
+            String slotWidthGranularity = degree.getString("mc-capabilities/slot-width-granularity", "");
+            String centerFreqGranularity = degree.getString("mc-capabilities/center-freq-granularity", "");
+            String minSlots = degree.getString("mc-capabilities/min-slots", "");
+            String maxSlots = degree.getString("mc-capabilities/max-slots", "");
+            degreeAnnotations.put("openroadm-port-max-wavelengths", maxWavelengths);
+            degreeAnnotations.put("openroadm-port-slot-width-granularity", slotWidthGranularity);
+            degreeAnnotations.put("openroadm-port-center-freq-granularity", centerFreqGranularity);
+            degreeAnnotations.put("openroadm-port-min-slots", minSlots);
+            degreeAnnotations.put("openroadm-port-max-slots", maxSlots);
+
             List<HierarchicalConfiguration> connectionPorts =
-                degree.configurationsAt("connection-ports");
+                    degree.configurationsAt("connection-ports");
             if (connectionPorts.size() == 0) {
                 log.warn("[OPENROADM] Device {} there are not connection-ports for degree-number {}", did(), degreeNumber);
             }
@@ -535,15 +576,21 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
                 String cpName = cport.getString("circuit-pack-name", "");
                 String portName = cport.getString("port-name", "");
                 PortNumber reversepNum = findDegreeReversePort(degreeNumber, portIndex, connectionPorts);
-                HierarchicalConfiguration eLink = parseExternalLink(externalLinks, nodeId, cpName, portName);
-                HierarchicalConfiguration circuitPack = getCircuitPackByName(session, cpName);
-                List<HierarchicalConfiguration> cpPorts =
-                    circuitPack.configurationsAt("ports[port-name='" + portName + "']");
-                if (cpPorts.size() > 1) {
-                    log.warn("[OPENROADM] {}: more than one port with the same name. Using first one", did());
-                }
-                HierarchicalConfiguration port = cpPorts.get(0);
-                PortDescription pd = buildDegreePortDesc(nodeId, cpName, pNum, reversepNum, port, eLink);
+                HierarchicalConfiguration eLink = parseExternalLink(externalLinks, cpName, portName);
+                HierarchicalConfiguration port = getPortState(session, cpName, portName);
+                DefaultAnnotations annotations = createPortAnnotations(degreeAnnotations,
+                        cpName,
+                        reversepNum,
+                        port,
+                        eLink);
+                // Relationship : START and STOP Freq not being used (See
+                // LambdaQuery)
+                PortDescription pd =  OmsPortHelper.omsPortDescription(pNum,
+                        true /* enabled */,
+                        OpenRoadmCBandLambdaQuery.C_BAND_FIRST_CENTER_FREQ,
+                        OpenRoadmCBandLambdaQuery.C_BAND_LAST_CENTER_FREQ,
+                        CHANNEL_SPACING.frequency(),
+                        annotations);
                 if (pd != null) {
                     list.add(pd);
                 }
@@ -553,46 +600,45 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
         return list;
     }
 
-   /**
-    * Parses SRG (ROADM) port information.
-    *
-    * @param session the NETConf session to the OpenROADM device.
-    * @param list  List of port descriptions to append to.
-    * @param externalLinks Hierarchical configuration containing all the external
-    *        links.
-    *
-    * Port-id is obtained from srg-number and the number of the client
-    * port contained in the <logical-connection-point> leaf.
-    * OpenROADM Device Whitepaper for release 2.2, sect. 7.2.2.2.1:
-    *     "For the ROADM SRG add/drop port, the logical connection point should
-    *      be set to the format “SRG<n>-PP<m>”, where <n> is the SRG number
-    *      and <m> is the add/drop port pair identifier. For example SRG1
-    *      add/drop port #7 would have the logical connection point set to
-    *      SRG1-PP7".
-    * The method extract <m> following the sustring PP and use it in conjuncion
-    * with the degree-number taken from the <degree> branch (If the datastore is
-    * consistent this should be the same number in SRG<n>).
-    * To avoid overlapping with IDs assigned to degrees, the srg-number is multiplied
-    * by 1000. The to cover the uni-directional case (that needs two IDs, one per
-    * direction) the port index is multiplied by 10.
-    * Using 1000 as multiplier avoids overlapping with degree port IDs as long as
-    * the number of degree in the ROADM is less than 100. Current optical
-    * technologies don't allow ROADMs having such a high number of degrees.
-    *
-    * For unidirectional links the logical connection point is assumed to
-    * have the form DEGn-PPi[-TX/-RX] and to the RX link is assigned an ID
-    * following (+1) the TX one.
-    * Ex. SRG1 second port bidirectional link (SRG1-PP2)
-    *                      ONOS port ID: 1020
-    *     SRG2 third port, unidirectional link (SRG2-PP3-TX, SRG2-PP3-RX)
-    *                      ONOS port IDs: 2030 and 2031
-    */
+    /**
+     * Parses SRG (ROADM) port information.
+     *
+     * @param session the NETConf session to the OpenROADM device.
+     * @param list  List of port descriptions to append to.
+     * @param externalLinks Hierarchical configuration containing all the external
+     *        links.
+     *
+     * Port-id is obtained from srg-number and the number of the client
+     * port contained in the <logical-connection-point> leaf.
+     * OpenROADM Device Whitepaper for release 2.2, sect. 7.2.2.2.1:
+     *     "For the ROADM SRG add/drop port, the logical connection point should
+     *      be set to the format “SRG<n>-PP<m>”, where <n> is the SRG number
+     *      and <m> is the add/drop port pair identifier. For example SRG1
+     *      add/drop port #7 would have the logical connection point set to
+     *      SRG1-PP7".
+     * The method extract <m> following the sustring PP and use it in conjuncion
+     * with the degree-number taken from the <degree> branch (If the datastore is
+     * consistent this should be the same number in SRG<n>).
+     * To avoid overlapping with IDs assigned to degrees, the srg-number is multiplied
+     * by 1000. The to cover the uni-directional case (that needs two IDs, one per
+     * direction) the port index is multiplied by 10.
+     * Using 1000 as multiplier avoids overlapping with degree port IDs as long as
+     * the number of degree in the ROADM is less than 100. Current optical
+     * technologies don't allow ROADMs having such a high number of degrees.
+     *
+     * For unidirectional links the logical connection point is assumed to
+     * have the form DEGn-PPi[-TX/-RX] and to the RX link is assigned an ID
+     * following (+1) the TX one.
+     * Ex. SRG1 second port bidirectional link (SRG1-PP2)
+     *                      ONOS port ID: 1020
+     *     SRG2 third port, unidirectional link (SRG2-PP3-TX, SRG2-PP3-RX)
+     *                      ONOS port IDs: 2030 and 2031
+     */
     private List<PortDescription>
     discoverSrgPorts(NetconfSession session,
                      List<PortDescription> list,
                      List<HierarchicalConfiguration> externalLinks) {
         int srgNumber = 0;
-        String nodeId = getDevice().annotations().value(AnnotationKeys.OPENROADM_NODEID);
         List<HierarchicalConfiguration> srgs = getSrgs(session);
         for (HierarchicalConfiguration s : srgs) {
             srgNumber = s.getInt("srg-number", 0);
@@ -602,8 +648,21 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
                 continue;
             }
 
+            // Collect SRG optical parameters, common to all ports.
+            // Note that this might change in the future when supporting
+            // more recent OpenROADM models.
+            Map<String, String> srgAnnotations = new HashMap<>();
+            String slotWidthGranularity = s.getString("mc-capabilities/slot-width-granularity", "");
+            String centerFreqGranularity = s.getString("mc-capabilities/center-freq-granularity", "");
+            String minSlots = s.getString("mc-capabilities/min-slots", "");
+            String maxSlots = s.getString("mc-capabilities/max-slots", "");
+            srgAnnotations.put("openroadm-port-slot-width-granularity", slotWidthGranularity);
+            srgAnnotations.put("openroadm-port-center-freq-granularity", centerFreqGranularity);
+            srgAnnotations.put("openroadm-port-min-slots", minSlots);
+            srgAnnotations.put("openroadm-port-max-slots", maxSlots);
+
             List<HierarchicalConfiguration> srgCircuitPacks =
-                s.configurationsAt("circuit-packs");
+                    s.configurationsAt("circuit-packs");
             for (HierarchicalConfiguration scp : srgCircuitPacks) {
                 String srgCpName = scp.getString("circuit-pack-name");
                 HierarchicalConfiguration cpConf = getCircuitPackByName(session, srgCpName);
@@ -622,18 +681,30 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
                         // with IDs for degree ports that have 10 as base value
                         long basePort = srgNumber * 1000 + Long.parseLong(split[1].replace("PP", "")) * 10;
                         if (split.length > 2) {
-                        // Unidirectional port
+                            // Unidirectional port
                             portNum = basePort + (split[2].equals("RX") ? 1 : 0);
                             revPortNum = basePort + (split[2].equals("RX") ? 0 : 1);
                         } else {
-                        // Bidirectional port
+                            // Bidirectional port
                             portNum = basePort;
                             revPortNum = 0;
                         }
                         PortNumber pNum = PortNumber.portNumber(portNum);
                         PortNumber reversepNum = PortNumber.portNumber(revPortNum);
-                        HierarchicalConfiguration eLink = parseExternalLink(externalLinks, nodeId, srgCpName, portName);
-                        PortDescription pd = buildSrgPortDesc(nodeId, srgCpName, pNum, reversepNum, p, eLink);
+                        HierarchicalConfiguration eLink = parseExternalLink(externalLinks, srgCpName, portName);
+                        DefaultAnnotations annotations = createPortAnnotations(srgAnnotations,
+                                srgCpName,
+                                reversepNum,
+                                p,
+                                eLink);
+                        OchSignal signalId =
+                                OchSignal.newDwdmSlot(ChannelSpacing.CHL_50GHZ, 4);
+                        PortDescription pd =  OchPortHelper.ochPortDescription(pNum,
+                                true /* enabled */,
+                                OduSignalType.ODU4,
+                                true /* tunable */,
+                                signalId,
+                                annotations);
                         if (pd != null) {
                             list.add(pd);
                         }
@@ -651,26 +722,26 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
      *
      * @param extLinks Hierarchical configuration containing all the external
      *        links.
-     * @param nodeId The OpenRoadm nodeId of the current node.
      * @param circuitPackName name of the circuit pack of the port.
      * @param portName name of the port.
      * @return the external link.
      */
     private HierarchicalConfiguration parseExternalLink(List<HierarchicalConfiguration> extLinks,
-                                                        String nodeId,
                                                         String circuitPackName,
                                                         String portName) {
+        String nodeId = getDevice().annotations().value(AnnotationKeys.OPENROADM_NODEID);
+
         HierarchicalConfiguration eLink = null;
         try {
             for (HierarchicalConfiguration extLink : extLinks) {
                 String eln =
-                    checkNotNull(extLink.getString("external-link-name"));
+                        checkNotNull(extLink.getString("external-link-name"));
                 String esnid =
-                    checkNotNull(extLink.getString("source/node-id"));
+                        checkNotNull(extLink.getString("source/node-id"));
                 String escpn =
-                    checkNotNull(extLink.getString("source/circuit-pack-name"));
+                        checkNotNull(extLink.getString("source/circuit-pack-name"));
                 String espn =
-                    checkNotNull(extLink.getString("source/port-name"));
+                        checkNotNull(extLink.getString("source/port-name"));
                 if (nodeId.equals(esnid) && circuitPackName.equals(escpn) &&
                         portName.equals(espn)) {
                     eLink = extLink;
@@ -711,115 +782,55 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
     }
 
     /**
-     * Parses a component XML doc into a PortDescription.
-     * An OMS port description is constructed from XML parsed data.
-     *
-     * @param nodeId The OpenRoadm nodeId of the current node.
-     * @param circuitPackName name of circuit pack containing the port.
-     * @param pNum the portNumber of the port.
-     * @param reversepNum the portNumber of the partner port.
-     * @param port the hierarchical configuration of the port to parse
-     * @param extLink Hierarchical configuration for the external links.
-     * @return PortDescription or null.
-     */
-    private PortDescription
-    buildDegreePortDesc(String nodeId, String circuitPackName,
-                        PortNumber pNum, PortNumber reversepNum,
-                        HierarchicalConfiguration port,
-                        HierarchicalConfiguration extLink) {
-        DefaultAnnotations annotations = createPortAnnotations(nodeId,
-                                                               circuitPackName,
-                                                               pNum,
-                                                               reversepNum,
-                                                               port,
-                                                               extLink);
-
-               // Relationship : START and STOP Freq not being used (See
-               // LambdaQuery)
-        return OmsPortHelper.omsPortDescription(pNum,
-                                                true /* enabled */,
-                                                START_CENTER_FREQ,
-                                                STOP_CENTER_FREQ,
-                                                CHANNEL_SPACING.frequency(),
-                                                annotations);
-    }
-
-    /**
-     * Parses a component XML doc into a PortDescription.
-     * An Och port description is constructed from XML parsed data.
-     *
-     * @param nodeId The OpenRoadm nodeId of the current node.
-     * @param circuitPackName name of circuit pack containing the port.
-     * @param pNum the portNumber of the port.
-     * @param reversepNum the portNumber of the partner port.
-     * @param port the hierarchical configuration of the port to parse
-     * @param extLink Hierarchical configuration for the external links.
-     * @return PortDescription or null.
-     */
-    private PortDescription
-    buildSrgPortDesc(String nodeId, String circuitPackName,
-                     PortNumber pNum, PortNumber reversepNum,
-                     HierarchicalConfiguration port,
-                     HierarchicalConfiguration extLink) {
-        DefaultAnnotations annotations = createPortAnnotations(nodeId,
-                                                               circuitPackName,
-                                                               pNum,
-                                                               reversepNum,
-                                                               port,
-                                                               extLink);
-
-        OchSignal signalId =
-                  OchSignal.newDwdmSlot(ChannelSpacing.CHL_50GHZ, 3);
-        return OchPortHelper.ochPortDescription(pNum,
-                                                true /* enabled */,
-                                                OduSignalType.ODU4,
-                                                true /* tunable */,
-                                                signalId,
-                                                annotations);
-
-    }
-    /**
      * Creates annotations for the port.
      *
-     * @param nodeId The OpenRoadm nodeId of the current node.
+     * @param opticalAnnotations annotations for some optical parameters.
      * @param circuitPackName name of circuit pack containing the port.
-     * @param pNum the portNumber of the port.
      * @param reversepNum the portNumber of the partner port.
      * @param port the hierarchical configuration of the port to parse
      * @param extLink Hierarchical configuration for the external links.
      * @return DefaultAnnotation.
      */
     private DefaultAnnotations
-    createPortAnnotations(String nodeId,
+    createPortAnnotations(Map<String, String> opticalAnnotations,
                           String circuitPackName,
-                          PortNumber pNum,
                           PortNumber reversepNum,
                           HierarchicalConfiguration port,
                           HierarchicalConfiguration extLink) {
+        String nodeId = getDevice().annotations().value(AnnotationKeys.OPENROADM_NODEID);
         Map<String, String> annotations = new HashMap<>();
+        annotations.putAll(opticalAnnotations);
         String portName = port.getString("port-name");
         annotations.put(AnnotationKeys.OPENROADM_NODEID, nodeId);
         annotations.put(AnnotationKeys.OPENROADM_CIRCUIT_PACK_NAME,
-                        circuitPackName);
+                circuitPackName);
         annotations.put(org.onosproject.net.AnnotationKeys.PORT_NAME, portName);
         annotations.put(AnnotationKeys.OPENROADM_PORT_NAME, portName);
         annotations.put(AnnotationKeys.OPENROADM_PARTNER_CIRCUIT_PACK_NAME,
-                        port.getString("partner-port/circuit-pack-name", ""));
+                port.getString("partner-port/circuit-pack-name", ""));
         annotations.put(AnnotationKeys.OPENROADM_PARTNER_PORT_NAME,
-                        port.getString("partner-port/port-name", ""));
+                port.getString("partner-port/port-name", ""));
         annotations.put(AnnotationKeys.OPENROADM_LOGICAL_CONNECTION_POINT,
-                        port.getString("logical-connection-point", ""));
+                port.getString("logical-connection-point", ""));
+        annotations.put(AnnotationKeys.OPENROADM_PORT_POWER_CAP_MIN_RX,
+                port.getString("roadm-port/port-power-capability-min-rx", ""));
+        annotations.put(AnnotationKeys.OPENROADM_PORT_POWER_CAP_MIN_TX,
+                port.getString("roadm-port/port-power-capability-min-tx", ""));
+        annotations.put(AnnotationKeys.OPENROADM_PORT_POWER_CAP_MAX_RX,
+                port.getString("roadm-port/port-power-capability-max-rx", ""));
+        annotations.put(AnnotationKeys.OPENROADM_PORT_POWER_CAP_MAX_TX,
+                port.getString("roadm-port/port-power-capability-max-tx", ""));
         // Annotate the reverse port, this is needed for bidir intents
         // (Partner port is present in the datastore only for
         // unidirectional ports).
         if (reversepNum.toLong() != 0) {
             annotations.put(OpticalPathIntent.REVERSE_PORT_ANNOTATION_KEY,
-                            Long.toString(reversepNum.toLong()));
+                    Long.toString(reversepNum.toLong()));
         }
 
         // for backwards compatibility
         annotations.put("logical-connection-point",
-                        port.getString("logical-connection-point", ""));
+                port.getString("logical-connection-point", ""));
         // Annotate external link if we found one for this port
         if (extLink != null) {
             String ednid = extLink.getString("destination/node-id");

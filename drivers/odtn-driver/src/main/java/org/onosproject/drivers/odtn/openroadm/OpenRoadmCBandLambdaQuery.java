@@ -20,6 +20,9 @@ package org.onosproject.drivers.odtn.openroadm;
 import com.google.common.collect.ImmutableSet;
 import java.util.Set;
 import java.util.stream.IntStream;
+
+import org.onlab.util.Frequency;
+import org.onlab.util.Spectrum;
 import org.onosproject.net.ChannelSpacing;
 import org.onosproject.net.GridType;
 import org.onosproject.net.OchSignal;
@@ -31,19 +34,31 @@ import org.onosproject.net.driver.AbstractHandlerBehaviour;
  * Abstract C-band DWDM plan lambda query.
  *
  */
+/**
+ * Abstract C-band DWDM plan lambda query.
+ *
+ */
 public abstract class OpenRoadmCBandLambdaQuery
-  extends AbstractHandlerBehaviour implements LambdaQuery {
-
+        extends AbstractHandlerBehaviour implements LambdaQuery {
     protected ChannelSpacing channelSpacing;
     protected int lambdaCount;
     protected int slotGranularity;
-
+    protected GridType gridType;
+    /*
+     * The following 2 values are not specified by the OpenROADM standard,
+     * but they are a reasonable default for a tunable C-band, defined from
+     * Channel C1 at 191.35 to C96 at 196.10 GHz (for a spacing at 50GHz)
+     */
+    public static final Frequency C_BAND_FIRST_CENTER_FREQ = Frequency.ofGHz(191_350);
+    public static final Frequency C_BAND_LAST_CENTER_FREQ = Frequency.ofGHz(196_100);
     @Override
     public Set<OchSignal> queryLambdas(PortNumber port) {
+        // 193.1 THz corresponds to C36 instead of C48 (halfway between 1 and 96)
+        long minFreq = C_BAND_FIRST_CENTER_FREQ.asHz();
+        long centerFreq = Spectrum.CENTER_FREQUENCY.asHz();
+        int offset = (int) ((centerFreq - minFreq) / (channelSpacing.frequency().asHz()));
         return IntStream.range(0, lambdaCount)
-          .mapToObj(
-            x
-            -> new OchSignal(GridType.DWDM, channelSpacing, x - (lambdaCount / 2), slotGranularity))
-          .collect(ImmutableSet.toImmutableSet());
+                .mapToObj(x -> new OchSignal(gridType, channelSpacing, x - offset, slotGranularity))
+                .collect(ImmutableSet.toImmutableSet());
     }
 }

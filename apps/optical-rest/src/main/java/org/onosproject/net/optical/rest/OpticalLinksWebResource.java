@@ -40,8 +40,6 @@ import org.onosproject.net.resource.Resources;
 import org.onosproject.net.Link;
 import org.onosproject.net.OchSignal;
 import org.onosproject.net.DefaultOchSignalComparator;
-import org.onosproject.net.topology.ClusterId;
-import org.onosproject.net.topology.TopologyService;
 import org.onosproject.rest.AbstractWebResource;
 import org.slf4j.Logger;
 
@@ -107,11 +105,8 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
 
         ArrayNode arrayLinks = mapper().createArrayNode();
 
-        TopologyService topologyService = get(TopologyService.class);
-        Set<Link> links = topologyService.getClusterLinks(
-                topologyService.currentTopology(),
-                topologyService.getCluster(topologyService.currentTopology(), ClusterId.clusterId(0)));
-
+        LinkService linkService = get(LinkService.class);
+        Iterable<Link> links = linkService.getLinks();
         Iterator linksItr = links.iterator();
 
         while (linksItr.hasNext()) {
@@ -222,11 +217,8 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
 
         ArrayNode arrayLinks = mapper().createArrayNode();
 
-        TopologyService topologyService = get(TopologyService.class);
-        Set<Link> links = topologyService.getClusterLinks(
-                topologyService.currentTopology(),
-                topologyService.getCluster(topologyService.currentTopology(), ClusterId.clusterId(0)));
-
+        LinkService linkService = get(LinkService.class);
+        Iterable<Link> links = linkService.getLinks();
         Iterator linksItr = links.iterator();
 
         while (linksItr.hasNext()) {
@@ -260,11 +252,8 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
 
         ArrayNode arrayLinks = mapper().createArrayNode();
 
-        TopologyService topologyService = get(TopologyService.class);
-        Set<Link> links = topologyService.getClusterLinks(
-                topologyService.currentTopology(),
-                topologyService.getCluster(topologyService.currentTopology(), ClusterId.clusterId(0)));
-
+        LinkService linkService = get(LinkService.class);
+        Iterable<Link> links = linkService.getLinks();
         Iterator linksItr = links.iterator();
 
         while (linksItr.hasNext()) {
@@ -298,11 +287,8 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
 
         ArrayNode arrayLinks = mapper().createArrayNode();
 
-        TopologyService topologyService = get(TopologyService.class);
-        Set<Link> links = topologyService.getClusterLinks(
-                topologyService.currentTopology(),
-                topologyService.getCluster(topologyService.currentTopology(), ClusterId.clusterId(0)));
-
+        LinkService linkService = get(LinkService.class);
+        Iterable<Link> links = linkService.getLinks();
         Iterator linksItr = links.iterator();
 
         while (linksItr.hasNext()) {
@@ -380,11 +366,8 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
             throw new IllegalArgumentException("Specified key is not valid to annotate an optical link.");
         }
 
-        TopologyService topologyService = get(TopologyService.class);
-        Set<Link> links = topologyService.getClusterLinks(
-                topologyService.currentTopology(),
-                topologyService.getCluster(topologyService.currentTopology(), ClusterId.clusterId(0)));
-
+        LinkService linkService = get(LinkService.class);
+        Iterable<Link> links = linkService.getLinks();
         Iterator linksItr = links.iterator();
 
         while (linksItr.hasNext()) {
@@ -423,11 +406,8 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
     public Response annotateLinks(@QueryParam("min") int min,
                                   @QueryParam("max") int max) {
 
-        TopologyService topologyService = get(TopologyService.class);
-        Set<Link> links = topologyService.getClusterLinks(
-                topologyService.currentTopology(),
-                topologyService.getCluster(topologyService.currentTopology(), ClusterId.clusterId(0)));
-
+        LinkService linkService = get(LinkService.class);
+        Iterable<Link> links = linkService.getLinks();
         Iterator linksItr = links.iterator();
 
         while (linksItr.hasNext()) {
@@ -455,14 +435,14 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
     }
 
     private List<OchSignal> findAvailableLambdas(Link link, Optional<OpticalBandType> band) {
-        //Available lambdas on a link: i.e., lambdas available on the src port of the link
+        //Available lambdas on a link: i.e., lambdas available on the dst port of the link
 
         DeviceService deviceService = get(DeviceService.class);
         ResourceService resourceService = get(ResourceService.class);
 
         DiscreteResourceId resourceId = Resources.discrete(
-                link.src().deviceId(),
-                deviceService.getPort(link.src().deviceId(), link.src().port()).number()).id();
+                link.dst().deviceId(),
+                deviceService.getPort(link.dst().deviceId(), link.dst().port()).number()).id();
 
         Set<OchSignal> ochSignals = resourceService.getAvailableResourceValues(resourceId, OchSignal.class);
 
