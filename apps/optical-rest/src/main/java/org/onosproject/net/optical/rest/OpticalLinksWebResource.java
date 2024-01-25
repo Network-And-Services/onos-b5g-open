@@ -459,14 +459,14 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
     }
 
     private List<OchSignal> findRegisteredLambdas(Link link, Optional<OpticalBandType> band) {
-        //Registered lambdas on a link: i.e., lambdas registered on the src port of the link
+        //Registered lambdas on a link: i.e., lambdas registered on the dst port of the link
 
         DeviceService deviceService = get(DeviceService.class);
         ResourceService resourceService = get(ResourceService.class);
 
         DiscreteResourceId resourceId = Resources.discrete(
-                link.src().deviceId(),
-                deviceService.getPort(link.src().deviceId(), link.src().port()).number()).id();
+                link.dst().deviceId(),
+                deviceService.getPort(link.dst().deviceId(), link.dst().port()).number()).id();
 
         Set<Resource> resources = resourceService.getRegisteredResources(resourceId);
 
