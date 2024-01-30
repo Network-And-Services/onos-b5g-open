@@ -26,7 +26,16 @@ import org.apache.commons.lang3.StringUtils;
 import org.onlab.packet.ChassisId;
 import org.onlab.util.Frequency;
 import org.onosproject.drivers.utilities.XmlConfigParser;
-import org.onosproject.net.*;
+import org.onosproject.net.ChannelSpacing;
+import org.onosproject.net.SparseAnnotations;
+import org.onosproject.net.DefaultAnnotations;
+import org.onosproject.net.DeviceId;
+import org.onosproject.net.Device;
+import org.onosproject.net.Port;
+import org.onosproject.net.PortNumber;
+import org.onosproject.net.AnnotationKeys;
+import org.onosproject.net.OduSignalType;
+import org.onosproject.net.OchSignal;
 import org.onosproject.net.device.DefaultDeviceDescription;
 import org.onosproject.net.device.DefaultPortDescription;
 import org.onosproject.net.device.DeviceDescription;
@@ -322,15 +331,14 @@ public class LumentumNetconfRoadmDiscovery
                             (annotations.build().value(AnnotationKeys.PORT_NAME)).contains(LINE_PORT_NAME))) {
 
                 //These are the ports supporting OchSignals
-                if (portNum.toLong() == 3001) {
+                if (portNum.toLong() != 3001) {
                     portDescriptions.add(ochPortDescription(portNum,
                             isEnabled,
                             OduSignalType.ODU4,
                             true,
                             OchSignal.newDwdmSlot(ChannelSpacing.CHL_50GHZ, 1),
                             annotations.build()));
-                }
-                else {
+                } else {
                     portDescriptions.add(omsPortDescription(portNum,
                             isEnabled,
                             START_CENTER_FREQ_50,

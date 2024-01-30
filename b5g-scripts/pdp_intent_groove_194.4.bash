@@ -1,0 +1,22 @@
+#! /bin/bash
+
+#post OPTICAL intents from ASE to OSA
+curl --noproxy '*' -u karaf:karaf -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+   "appId": "org.onosproject.optical-rest",
+   "ingressPoint": {
+     "device": "netconf:10.100.101.11:830",
+     "port": "1031"
+   },
+   "egressPoint": {
+     "device": "netconf:163.162.95.101:830",
+     "port": "5213"
+   },
+   "bidirectional": false,
+   "signal": {
+     "channelSpacing": "CHL_50GHZ",
+     "gridType": "DWDM",
+     "spacingMultiplier": 26,
+     "slotGranularity": 8
+   }
+}' 'http://localhost:8181/onos/optical/intents'
+

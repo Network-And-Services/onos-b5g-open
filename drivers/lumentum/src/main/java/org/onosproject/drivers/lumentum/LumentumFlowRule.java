@@ -122,9 +122,6 @@ public class LumentumFlowRule extends DefaultFlowRule {
                 .findAny()
                 .orElse(null);
 
-        checkArgument(ochSignal.slotGranularity() == 4 || ochSignal.slotGranularity() == 8,
-        "Lumentum device, only supports 50 GHz and 100 GHz frequency slots");
-
         inputPort = criteria.stream()
                 .filter(c -> c instanceof PortCriterion)
                 .map(c -> ((PortCriterion) c).port())
@@ -155,7 +152,7 @@ public class LumentumFlowRule extends DefaultFlowRule {
             isAddRule = false;
         }
 
-        connectionName =  "inPort" + inputPort.toString() + "-ochSig-" + ochSignal.centralFrequency().toString();
+        connectionName =  "inPort-" + getOchPort().toString() + "-centralFreq-" + ochSignal.centralFrequency().asGHz();
     }
 
     public PortNumber addDrop() {
@@ -176,6 +173,15 @@ public class LumentumFlowRule extends DefaultFlowRule {
 
     public PortNumber getOutputPort() {
         return outputPort;
+    }
+
+    public PortNumber getOchPort() {
+        if (isAddRule) {
+            return inputPort;
+        }
+        else {
+            return outputPort;
+        }
     }
 
     public String getConnectionName() {

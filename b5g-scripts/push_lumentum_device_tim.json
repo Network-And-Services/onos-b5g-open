@@ -1,0 +1,20 @@
+{
+  "devices": {
+    "netconf:163.162.95.164:830": {
+      "netconf": {
+        "ip": "163.162.95.164",
+        "port": "830",
+        "username": "superuser",
+        "password": "Sup%9User"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 200,
+        "gridY" : 625,
+        "name": "Lumentum ROADM-20",
+        "driver": "lumentum-roadm20whitebox-netconf"
+      }
+    }
+  }
+}
+

@@ -416,7 +416,7 @@ public class OpenRoadmFlowRuleProgrammable12
                     conn.srcMcSupportingCircuitPack +
                     "</supporting-circuit-pack-name>");
             sb.append("  <supporting-port>" + conn.srcMcSupportingPort + "</supporting-port>");
-            sb.append("  <supporting-interface>" + conn.srcMcSupportingInterface + "</supporting-interface>");
+            sb.append("  <supporting-interface-list>" + conn.srcMcSupportingInterface + "</supporting-interface-list>");
             sb.append("  <mc-ttp xmlns='http://org/openroadm/media-channel-interfaces'>");
             sb.append("    <min-freq>" + conn.srcMcMinFrequency.asTHz() + "</min-freq>");
             sb.append("    <max-freq>" + conn.srcMcMaxFrequency.asTHz() + "</max-freq>");
@@ -443,7 +443,7 @@ public class OpenRoadmFlowRuleProgrammable12
                 conn.dstMcSupportingCircuitPack +
                 "</supporting-circuit-pack-name>");
             sb.append("  <supporting-port>" + conn.dstMcSupportingPort + "</supporting-port>");
-            sb.append("  <supporting-interface>" + conn.dstMcSupportingInterface + "</supporting-interface>");
+            sb.append("  <supporting-interface-list>" + conn.dstMcSupportingInterface + "</supporting-interface-list>");
             sb.append("  <mc-ttp xmlns='http://org/openroadm/media-channel-interfaces'>");
             sb.append("    <min-freq>" + conn.dstMcMinFrequency.asTHz() + "</min-freq>");
             sb.append("    <max-freq>" + conn.dstMcMaxFrequency.asTHz() + "</max-freq>");
@@ -483,7 +483,7 @@ public class OpenRoadmFlowRuleProgrammable12
         sb.append("  <supporting-port>" + conn.srcNmcSupportingPort + "</supporting-port>");
         if ((conn.getType() != OpenRoadmFlowRule.Type.ADD_LINK) &&
             (conn.getType() != OpenRoadmFlowRule.Type.LOCAL)) {
-            sb.append("<supporting-interface>" + conn.srcNmcSupportingInterface + "</supporting-interface>");
+            sb.append("<supporting-interface-list>" + conn.srcNmcSupportingInterface + "</supporting-interface-list>");
         }
         sb.append("  <nmc-ctp xmlns='http://org/openroadm/network-media-channel-interfaces'>");
         sb.append("    <frequency>" + conn.srcNmcFrequency.asTHz() + "</frequency>");
@@ -511,7 +511,7 @@ public class OpenRoadmFlowRuleProgrammable12
         sb.append("  <supporting-port>" + conn.dstNmcSupportingPort + "</supporting-port>");
         if ((conn.getType() != OpenRoadmFlowRule.Type.DROP_LINK) &&
             (conn.getType() != OpenRoadmFlowRule.Type.LOCAL)) {
-            sb.append("<supporting-interface>" + conn.dstNmcSupportingInterface + "</supporting-interface>");
+            sb.append("<supporting-interface-list>" + conn.dstNmcSupportingInterface + "</supporting-interface-list>");
         }
         sb.append("  <nmc-ctp xmlns='http://org/openroadm/network-media-channel-interfaces'>");
         sb.append("    <frequency>" + conn.dstNmcFrequency.asTHz() + "</frequency>");

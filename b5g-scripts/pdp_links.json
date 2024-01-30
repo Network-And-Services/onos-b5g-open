@@ -1,0 +1,19 @@
+{
+  "links": {
+	"netconf:10.100.101.11:830/11-netconf:163.162.95.53:830/12": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+        "netconf:163.162.95.53:830/11-netconf:10.100.101.11:830/10": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+
+        "netconf:163.162.95.53:830/31-netconf:163.162.95.80:830/12": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:163.162.95.80:830/11-netconf:163.162.95.53:830/32": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+
+	"netconf:163.162.95.80:830/31-netconf:163.162.95.101:830/3001": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:163.162.95.101:830/3001-netconf:163.162.95.80:830/32": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}}, 
+
+	"netconf:163.162.95.101:830/5220-netconf:163.162.95.102:830/4120": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+        "netconf:163.162.95.102:830/5220-netconf:163.162.95.101:830/4120": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}}, 
+
+	"netconf:163.162.95.102:830/3001-netconf:163.162.95.164:830/3001": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+        "netconf:163.162.95.164:830/3001-netconf:163.162.95.102:830/3001": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}}
+  }
+}
+
