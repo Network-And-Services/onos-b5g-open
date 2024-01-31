@@ -178,8 +178,7 @@ public class LumentumFlowRule extends DefaultFlowRule {
     public PortNumber getOchPort() {
         if (isAddRule) {
             return inputPort;
-        }
-        else {
+        } else {
             return outputPort;
         }
     }

@@ -9,9 +9,9 @@
       },
       "basic": {
         "locType" : "grid",
-        "gridX" : -200,
+        "gridX" : 0,
         "gridY" : 300,
-        "name": "Emulated",
+        "name": "Emulated-Hub-1",
         "driver": "openroadm12"
       }
     }

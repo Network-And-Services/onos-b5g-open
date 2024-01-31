@@ -13,9 +13,9 @@ curl --noproxy '*' -u karaf:karaf -X POST --header 'Content-Type: application/js
    },
    "bidirectional": false,
    "signal": {
-     "channelSpacing": "CHL_50GHZ",
-     "gridType": "DWDM",
-     "spacingMultiplier": 46,
+     "channelSpacing": "CHL_6P25GHZ",
+     "gridType": "FLEX",
+     "spacingMultiplier": 400,
      "slotGranularity": 8
    }
 }' 'http://localhost:8181/onos/optical/intents'

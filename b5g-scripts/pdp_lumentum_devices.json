@@ -9,9 +9,9 @@
       },
       "basic": {
 	"locType" : "grid",
-        "gridX" : -200,
+        "gridX" : 0,
         "gridY" : 500,
-        "name": "Lum-TIM-101-Hub-1",
+        "name": "Lum-TIM-101-Hub-2",
         "driver": "lumentum-roadm20whitebox-netconf"
       }
     },
@@ -24,7 +24,7 @@
       },
       "basic": {
         "locType" : "grid",
-        "gridX" : -100,
+        "gridX" : 100,
         "gridY" : 550,
         "name": "Lum-TIM-102-Metro-1",
         "driver": "lumentum-roadm20whitebox-netconf"
@@ -39,7 +39,7 @@
       },
       "basic": {
         "locType" : "grid",
-        "gridX" : 600,
+        "gridX" : 500,
         "gridY" : 550,
         "name": "Lum-CNIT-164-Metro-2",
         "driver": "lumentum-roadm20whitebox-netconf"

@@ -9,8 +9,8 @@
       },
       "basic": {
         "locType" : "grid",
-        "gridX" : -700,
-        "gridY" : 300,
+        "gridX" : -300,
+        "gridY" : 325,
         "name": "TwinWSS-Access-1",
         "driver": "openroadm12"
       }
@@ -24,8 +24,8 @@
       },
       "basic": {
         "locType" : "grid",
-        "gridX" : -700,
-        "gridY" : 500,
+        "gridX" : -300,
+        "gridY" : 475,
         "name": "TwinWSS-Access-2",
         "driver": "openroadm12"
       }
