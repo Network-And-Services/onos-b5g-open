@@ -15,11 +15,12 @@ echo "Post incoming intra-domain links"
 onos-netcfg localhost ./b5g_links-101.100.json
 sleep 2
 
-#post incoming interdomain links
-#echo "Post incoming inter-domain links"
-#onos-netcfg localhost ./b5g_links_interdomain_to_113.json
+#annotate interdomain links
+echo "Annotate ports with inter-domain links"
+./b5g_links_interdomain_to_113.bash
 
 #annotate link lenghts
 echo "Annotate links lengths"
 ./b5g_links_length.bash
 
+echo
