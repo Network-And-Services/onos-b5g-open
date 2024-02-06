@@ -294,6 +294,9 @@ public final class AnnotationKeys {
     // List of operational modes (integers, separated by commas)
     public static final String OPENCONFIG_OP_MODE = "openconfig-op-modes";
 
+    //
+    public static final String INTERDOMAIN_CONNECT_POINT = "interdomain-connect-point";
+
     /**
      * Returns the value annotated object for the specified annotation key.
      * The annotated value is expected to be String that can be parsed as double.

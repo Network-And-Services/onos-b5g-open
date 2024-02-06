@@ -19,11 +19,11 @@ package org.onosproject.net.optical.rest;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.onosproject.net.AnnotationKeys;
-import org.onosproject.net.Device;
-import org.onosproject.net.DeviceId;
+import com.google.common.collect.Lists;
+import org.onosproject.net.*;
 import org.onosproject.net.config.NetworkConfigService;
 import org.onosproject.net.config.basics.DeviceAnnotationConfig;
+import org.onosproject.net.config.basics.PortAnnotationConfig;
 import org.onosproject.net.device.DeviceService;
 import org.onosproject.net.topology.ClusterId;
 import org.onosproject.net.topology.TopologyService;
@@ -42,6 +42,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -55,11 +57,14 @@ public class OpticalNodesWebResource extends AbstractWebResource {
 
     private static final Set<String> allowedFields = new HashSet<>(Arrays.asList(
             "id", "type", "annotations"));
-    private static final Set<String> allowedAnnotationKeys = new HashSet<>(Arrays.asList(
+    private static final Set<String> allowedAnnotationKeysNodes = new HashSet<>(Arrays.asList(
             AnnotationKeys.OPENCONFIG_OP_MODE));
 
+    private static final Set<String> allowedAnnotationKeysPorts = new HashSet<>(Arrays.asList(
+            AnnotationKeys.INTERDOMAIN_CONNECT_POINT));
+
     /**
-     * Get the optical intents on the network.
+     * Get the optical nodes on the network.
      *
      * @return 200 OK
      */
@@ -110,7 +115,7 @@ public class OpticalNodesWebResource extends AbstractWebResource {
     }
 
     /**
-     * Set an annotation on an optical link.
+     * Set an annotation on an optical node.
      *
      * @param deviceId device
      * @param key annotation key
@@ -125,7 +130,7 @@ public class OpticalNodesWebResource extends AbstractWebResource {
                                  @QueryParam("key") String key,
                                  @QueryParam("value") String value) {
 
-        if (!allowedAnnotationKeys.contains(value)) {
+        if (!allowedAnnotationKeysNodes.contains(key)) {
             throw new IllegalArgumentException("Specified key is not valid to annotate an optical device.");
         }
 
@@ -145,7 +150,7 @@ public class OpticalNodesWebResource extends AbstractWebResource {
     }
 
     /**
-     * Set the annotation on all optical links.
+     * Set the annotation on all optical nodes.
      *
      * @param key annotation key
      * @param value annotation value
@@ -158,7 +163,7 @@ public class OpticalNodesWebResource extends AbstractWebResource {
     public Response annotateNodes(@QueryParam("key") String key,
                                   @QueryParam("value") String value) {
 
-        if (!allowedAnnotationKeys.contains(value)) {
+        if (!allowedAnnotationKeysNodes.contains(key)) {
             throw new IllegalArgumentException("Specified key is not valid to annotate an optical device.");
         }
 
@@ -182,6 +187,68 @@ public class OpticalNodesWebResource extends AbstractWebResource {
             cfg.annotation(key, value);
             netcfgService.applyConfig(device, DeviceAnnotationConfig.class, cfg.node());
         }
+
+        ObjectNode root = mapper().createObjectNode();
+        return Response.ok(root).build();
+    }
+
+    /**
+     * Gets ports of all infrastructure devices.
+     * Returns port details of all infrastructure devices.
+     *
+     * @return 200 OK with a collection of ports for all devices
+     */
+    @GET
+    @Path("opticalNodes/ports")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getDevicesPorts() {
+        DeviceService service = get(DeviceService.class);
+        List<Port> result = Lists.newArrayList();
+        service.getDevices().forEach(device -> {
+            Optional<List<Port>> list = Optional.ofNullable(service.getPorts(device.id()));
+            list.ifPresent(ports -> result.addAll(ports));
+        });
+        return ok(encodeArray(Port.class, "ports", result)).build();
+    }
+
+    /**
+     * Set an annotation on a specific port.
+     *
+     * @param connectPoint connectPoint to be annotated
+     * @param key annotation key (e.g., interdomain-connect-point)
+     * @param value annotation value (e.g., remote connectPoint)
+     * @return 200 OK
+     */
+    @POST
+    @Path("annotate/onePort")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response annotatePort(@QueryParam("connectPoint") String connectPoint,
+                                 @QueryParam("key") String key,
+                                 @QueryParam("value") String value) {
+
+        if (!allowedAnnotationKeysPorts.contains(key)) {
+            throw new IllegalArgumentException("Specified key is not valid to annotate an optical port.");
+        }
+        NetworkConfigService netcfgService = get(NetworkConfigService.class);
+        ConnectPoint cPort = ConnectPoint.deviceConnectPoint(connectPoint);
+
+        DeviceService deviceService = get(DeviceService.class);
+        Device device = deviceService.getDevice(cPort.deviceId());
+        if (device == null) {
+            throw new IllegalArgumentException("Specified device does not exist.");
+        }
+        Port port = deviceService.getPort(cPort);
+        if (port == null) {
+            throw new IllegalArgumentException("Specified port does not exist on device.");
+        }
+
+        PortAnnotationConfig cfg = netcfgService.getConfig(cPort, PortAnnotationConfig.class);
+        if (cfg == null) {
+            cfg = new PortAnnotationConfig(cPort);
+        }
+        cfg.annotation(key, value);
+        netcfgService.applyConfig(cPort, PortAnnotationConfig.class, cfg.node());
 
         ObjectNode root = mapper().createObjectNode();
         return Response.ok(root).build();

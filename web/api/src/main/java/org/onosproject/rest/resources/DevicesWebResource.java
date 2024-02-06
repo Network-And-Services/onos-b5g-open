@@ -50,7 +50,8 @@ import static org.onosproject.net.DeviceId.deviceId;
  * Manage inventory of infrastructure devices.
  */
 @Path("devices")
-public class DevicesWebResource extends AbstractWebResource {
+public class
+DevicesWebResource extends AbstractWebResource {
 
     private static final String ENABLED = "enabled";
 
