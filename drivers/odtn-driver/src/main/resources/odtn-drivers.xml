@@ -75,7 +75,7 @@
         <behaviour api="org.onosproject.net.flow.FlowRuleProgrammable"
                    impl="org.onosproject.drivers.odtn.openroadm.OpenRoadmFlowRuleProgrammable"/>
         <behaviour api ="org.onosproject.net.behaviour.LambdaQuery"
-                   impl="org.onosproject.drivers.odtn.openconfig.MultiBand10LambdaQuery"/>
+                   impl="org.onosproject.drivers.odtn.openconfig.MultiBandCplusObands"/>
         <behaviour api ="org.onosproject.net.optical.OpticalDevice"
                    impl="org.onosproject.net.optical.DefaultOpticalDevice"/>
    </driver>

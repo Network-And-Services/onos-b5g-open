@@ -26,6 +26,7 @@ package org.onosproject.net;
 public enum OpticalBandType {
     L_BAND,
     C_BAND,
-    S_BAND;
+    S_BAND,
+    O_BAND;
 }
 

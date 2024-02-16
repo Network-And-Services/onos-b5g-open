@@ -67,6 +67,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static org.onosproject.net.OpticalBandType.L_BAND;
 import static org.onosproject.net.OpticalBandType.C_BAND;
 import static org.onosproject.net.OpticalBandType.S_BAND;
+import static org.onosproject.net.OpticalBandType.O_BAND;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -120,6 +121,7 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
                 ObjectNode lBand = mapper().createObjectNode();
                 ObjectNode cBand = mapper().createObjectNode();
                 ObjectNode sBand = mapper().createObjectNode();
+                ObjectNode oBand = mapper().createObjectNode();
 
                 //linkObjectNode.put("L-band-avail", findAvailableLambdas(link, Optional.of(L_BAND)).toString());
                 //linkObjectNode.put("L-band-regis", findRegisteredLambdas(link, Optional.of(L_BAND)).toString());
@@ -139,6 +141,10 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
                 sBand.put("available-channels", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
                 sBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
                 linkObjectNode.set("S-band", sBand);
+
+                oBand.put("available-channels", findAvailableLambdas(link, Optional.of(O_BAND)).toString());
+                oBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(O_BAND)).toString());
+                linkObjectNode.set("O-band", sBand);
 
                 arrayLinks.add(linkObjectNode);
             }
@@ -175,6 +181,7 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
             ObjectNode lBand = mapper().createObjectNode();
             ObjectNode cBand = mapper().createObjectNode();
             ObjectNode sBand = mapper().createObjectNode();
+            ObjectNode oBand = mapper().createObjectNode();
 
             //linkObjectNode.put("L-band-avail", findAvailableLambdas(link, Optional.of(L_BAND)).toString());
             //linkObjectNode.put("L-band-regis", findRegisteredLambdas(link, Optional.of(L_BAND)).toString());
@@ -194,6 +201,10 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
             sBand.put("available-channels", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
             sBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
             linkObjectNode.set("S-band", sBand);
+
+            oBand.put("available-channels", findAvailableLambdas(link, Optional.of(O_BAND)).toString());
+            oBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(O_BAND)).toString());
+            linkObjectNode.set("O-band", sBand);
 
             arrayLinks.add(linkObjectNode);
 

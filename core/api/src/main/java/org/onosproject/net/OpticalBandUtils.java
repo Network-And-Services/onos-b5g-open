@@ -28,9 +28,11 @@ public final class OpticalBandUtils {
     private static final Frequency L_BAND_START_FREQ = Frequency.ofGHz(184500);
     private static final Frequency L_BAND_STOP_FREQ = Frequency.ofGHz(191500);
     private static final Frequency C_BAND_START_FREQ = Frequency.ofGHz(191500);
-    private static final Frequency C_BAND_STOP_FREQ = Frequency.ofGHz(195500);
-    private static final Frequency S_BAND_START_FREQ = Frequency.ofGHz(195500);
+    private static final Frequency C_BAND_STOP_FREQ = Frequency.ofGHz(195900);
+    private static final Frequency S_BAND_START_FREQ = Frequency.ofGHz(195900);
     private static final Frequency S_BAND_STOP_FREQ = Frequency.ofGHz(205300);
+    private static final Frequency O_BAND_START_FREQ = Frequency.ofGHz(228000); //220500
+    private static final Frequency O_BAND_STOP_FREQ = Frequency.ofGHz(232000); //238000
 
     // prohibit instantiation
     private OpticalBandUtils() {}
@@ -48,6 +50,10 @@ public final class OpticalBandUtils {
                 && S_BAND_STOP_FREQ.isGreaterThan(ochSignal.centralFrequency())) {
             return OpticalBandType.S_BAND;
         }
+        if (O_BAND_START_FREQ.isLessThan(ochSignal.centralFrequency())
+                && O_BAND_STOP_FREQ.isGreaterThan(ochSignal.centralFrequency())) {
+            return OpticalBandType.O_BAND;
+        }
         return null;
     }
 
@@ -59,6 +65,8 @@ public final class OpticalBandUtils {
                 return C_BAND_START_FREQ;
             case S_BAND:
                 return S_BAND_START_FREQ;
+            case O_BAND:
+                return O_BAND_START_FREQ;
             default:
                 log.error("Unsupported OpticalBandType {}", bandType);
                 return null;
@@ -73,6 +81,8 @@ public final class OpticalBandUtils {
                 return C_BAND_STOP_FREQ;
             case S_BAND:
                 return S_BAND_STOP_FREQ;
+            case O_BAND:
+                return O_BAND_STOP_FREQ;
             default:
                 log.error("Unsupported OpticalBandType {}", bandType);
                 return null;

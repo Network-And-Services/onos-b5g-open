@@ -33,7 +33,7 @@ import static org.slf4j.LoggerFactory.getLogger;
  */
 public class MultiBand10LambdaQuery extends MultiBandLambdaQuery {
 
-    protected static final Logger log = getLogger(TerminalDeviceLambdaQuery.class);
+    protected static final Logger log = getLogger(MultiBandLambdaQuery.class);
 
     @Override
     public Set<OchSignal> queryLambdas(PortNumber port) {
@@ -46,6 +46,7 @@ public class MultiBand10LambdaQuery extends MultiBandLambdaQuery {
         lBandLambdaCount = 10;
         cBandLambdaCount = 10;
         sBandLambdaCount = 10;
+        oBandLambdaCount = 10;
 
         return super.queryLambdas(port);
     }

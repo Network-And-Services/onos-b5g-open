@@ -28,6 +28,7 @@ import org.onosproject.net.PortNumber;
 import org.onosproject.net.behaviour.LambdaQuery;
 import org.onosproject.net.driver.AbstractHandlerBehaviour;
 import org.onosproject.net.optical.util.OpticalChannelUtility;
+import org.slf4j.Logger;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -35,6 +36,8 @@ import java.util.Set;
 import static org.onosproject.net.OpticalBandType.L_BAND;
 import static org.onosproject.net.OpticalBandType.C_BAND;
 import static org.onosproject.net.OpticalBandType.S_BAND;
+import static org.onosproject.net.OpticalBandType.O_BAND;
+import static org.slf4j.LoggerFactory.getLogger;
 
 
 /**
@@ -44,6 +47,7 @@ import static org.onosproject.net.OpticalBandType.S_BAND;
  *
  */
 public class MultiBandLambdaQuery extends AbstractHandlerBehaviour implements LambdaQuery {
+    protected static final Logger log = getLogger(MultiBandLambdaQuery.class);
 
     protected ChannelSpacing channelSpacing;
     protected int slotGranularity;
@@ -51,15 +55,24 @@ public class MultiBandLambdaQuery extends AbstractHandlerBehaviour implements La
     protected int lBandLambdaCount;
     protected int cBandLambdaCount;
     protected int sBandLambdaCount;
+    protected int oBandLambdaCount;
 
     @Override
     public Set<OchSignal> queryLambdas(PortNumber port) {
 
         Set<OchSignal> lambdas = new HashSet<>();
 
+        log.info("Quering L_Band");
         addChannels(lambdas, L_BAND, lBandLambdaCount);
+
+        log.info("Quering C_Band");
         addChannels(lambdas, C_BAND, cBandLambdaCount);
+
+        log.info("Quering S_Band");
         addChannels(lambdas, S_BAND, sBandLambdaCount);
+
+        log.info("Quering O_Band");
+        addChannels(lambdas, O_BAND, oBandLambdaCount);
 
         return lambdas;
     }
@@ -75,12 +88,16 @@ public class MultiBandLambdaQuery extends AbstractHandlerBehaviour implements La
 
         Frequency startFreq = OpticalBandUtils.startFrequency(bandType);
 
-        for (int i = 0; i <= lambdaCount; i++) {
-            lambdas.add(OpticalChannelUtility.createOchSignalFromBounds(
+        for (int i = 0; i < lambdaCount; i++) {
+            OchSignal ochSignal = OpticalChannelUtility.createOchSignalFromBounds(
                     startFreq.add(channelSpacing.frequency().multiply(i)),
                     startFreq.add(channelSpacing.frequency().multiply(i + 1)),
                     GridType.DWDM,
-                    channelSpacing));
+                    channelSpacing);
+
+            log.info("Created OchSignal {}", ochSignal);
+
+            lambdas.add(ochSignal);
         }
     }
 }
