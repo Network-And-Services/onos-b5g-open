@@ -33,7 +33,7 @@ public class MultiBandCplusObands extends MultiBandLambdaQuery {
         if (port.toString().equals("10") || port.toString().equals("11") || port.toString().equals("12")) {
             log.info("OPENCONFIG: queried lambdas C for port {}", port);
             lBandLambdaCount = 0;
-            cBandLambdaCount = 86;
+            cBandLambdaCount = 90;
             sBandLambdaCount = 0;
             oBandLambdaCount = 0;
 
@@ -42,7 +42,7 @@ public class MultiBandCplusObands extends MultiBandLambdaQuery {
 
         log.info("OPENCONFIG: queried lambdas O+C for port {}", port);
         lBandLambdaCount = 0;
-        cBandLambdaCount = 86;
+        cBandLambdaCount = 90;
         sBandLambdaCount = 0;
         oBandLambdaCount = 80;
 

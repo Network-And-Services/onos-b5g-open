@@ -153,7 +153,7 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
 
         // Allocate resources and create optical path intent
         if (found.isPresent()) {
-            log.debug("Suitable path and lambdas FOUND for intent {}", intent);
+            log.info("Suitable path and lambdas FOUND for intent {}", intent);
             resources.addAll(convertToResources(found.get().getKey(), found.get().getValue()));
             allocateResources(intent, resources);
 
@@ -281,6 +281,7 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
      * @return list of consecutive and available OChSignals
      */
     private List<OchSignal> findFirstAvailableLambda(OpticalConnectivityIntent intent, Path path) {
+        log.info("Spectrum research for path {}", path.weight());
         if (intent.ochSignal().isPresent()) {
             //create lambdas w.r.t. slotGanularity/slotWidth
             OchSignal ochSignal = intent.ochSignal().get();
