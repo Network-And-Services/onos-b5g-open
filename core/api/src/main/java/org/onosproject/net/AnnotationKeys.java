@@ -296,6 +296,8 @@ public final class AnnotationKeys {
 
     //
     public static final String INTERDOMAIN_CONNECT_POINT = "interdomain-connect-point";
+    public static final String INCOMING_INTERDOMAIN_LINK = "incoming-interdomain-link";
+    public static final String OUTGOING_INTERDOMAIN_LINK = "outgoing-interdomain-link";
 
     /**
      * Returns the value annotated object for the specified annotation key.

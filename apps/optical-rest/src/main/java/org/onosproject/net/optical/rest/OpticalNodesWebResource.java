@@ -61,7 +61,9 @@ public class OpticalNodesWebResource extends AbstractWebResource {
             AnnotationKeys.OPENCONFIG_OP_MODE));
 
     private static final Set<String> allowedAnnotationKeysPorts = new HashSet<>(Arrays.asList(
-            AnnotationKeys.INTERDOMAIN_CONNECT_POINT));
+            AnnotationKeys.INTERDOMAIN_CONNECT_POINT,
+            AnnotationKeys.INCOMING_INTERDOMAIN_LINK,
+            AnnotationKeys.OUTGOING_INTERDOMAIN_LINK));
 
     /**
      * Get the optical nodes on the network.
@@ -215,7 +217,7 @@ public class OpticalNodesWebResource extends AbstractWebResource {
      * Set an annotation on a specific port.
      *
      * @param connectPoint connectPoint to be annotated
-     * @param key annotation key (e.g., interdomain-connect-point)
+     * @param key annotation key (e.g., incoming-interdomain-link)
      * @param value annotation value (e.g., remote connectPoint)
      * @return 200 OK
      */
