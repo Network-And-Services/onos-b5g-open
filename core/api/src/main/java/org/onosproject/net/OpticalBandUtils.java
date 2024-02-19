@@ -54,6 +54,8 @@ public final class OpticalBandUtils {
                 && O_BAND_STOP_FREQ.isGreaterThan(ochSignal.centralFrequency())) {
             return OpticalBandType.O_BAND;
         }
+
+        log.error("There is a channel not included in any band");
         return null;
     }
 
