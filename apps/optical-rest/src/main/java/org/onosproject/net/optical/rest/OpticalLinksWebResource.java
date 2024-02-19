@@ -455,6 +455,7 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
 
     private List<OchSignal> findAvailableLambdas(Link link, Optional<OpticalBandType> band) {
         //Available lambdas on a link: i.e., lambdas available on the dst port of the link
+        log.info("Link src {} band {}", link.src(), band);
 
         DeviceService deviceService = get(DeviceService.class);
         ResourceService resourceService = get(ResourceService.class);
