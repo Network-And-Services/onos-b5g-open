@@ -190,21 +190,29 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
             //linkObjectNode.put("S-band-avail", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
             //linkObjectNode.put("S-band-regis", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
 
-            lBand.put("available-channels", findAvailableLambdas(link, Optional.of(L_BAND)).toString());
-            lBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(L_BAND)).toString());
-            linkObjectNode.set("L-band", lBand);
+            if (findRegisteredLambdas(link, Optional.of(L_BAND)).size() != 0) {
+                lBand.put("available-channels", findAvailableLambdas(link, Optional.of(L_BAND)).toString());
+                lBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(L_BAND)).toString());
+                linkObjectNode.set("L-band", lBand);
+            }
 
-            cBand.put("available-channels", findAvailableLambdas(link, Optional.of(C_BAND)).toString());
-            cBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(C_BAND)).toString());
-            linkObjectNode.set("C-band", cBand);
+            if (findRegisteredLambdas(link, Optional.of(C_BAND)).size() != 0) {
+                cBand.put("available-channels", findAvailableLambdas(link, Optional.of(C_BAND)).toString());
+                cBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(C_BAND)).toString());
+                linkObjectNode.set("C-band", cBand);
+            }
 
-            sBand.put("available-channels", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
-            sBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
-            linkObjectNode.set("S-band", sBand);
+            if (findRegisteredLambdas(link, Optional.of(S_BAND)).size() != 0) {
+                sBand.put("available-channels", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
+                sBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
+                linkObjectNode.set("S-band", sBand);
+            }
 
-            oBand.put("available-channels", findAvailableLambdas(link, Optional.of(O_BAND)).toString());
-            oBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(O_BAND)).toString());
-            linkObjectNode.set("O-band", sBand);
+            if (findRegisteredLambdas(link, Optional.of(O_BAND)).size() != 0) {
+                oBand.put("available-channels", findAvailableLambdas(link, Optional.of(O_BAND)).toString());
+                oBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(O_BAND)).toString());
+                linkObjectNode.set("O-band", sBand);
+            }
 
             arrayLinks.add(linkObjectNode);
 
