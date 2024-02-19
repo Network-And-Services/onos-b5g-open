@@ -31,7 +31,7 @@ public final class OpticalBandUtils {
     private static final Frequency C_BAND_STOP_FREQ = Frequency.ofGHz(195900);
     private static final Frequency S_BAND_START_FREQ = Frequency.ofGHz(195900);
     private static final Frequency S_BAND_STOP_FREQ = Frequency.ofGHz(205300);
-    private static final Frequency O_BAND_START_FREQ = Frequency.ofGHz(228000); //220500
+    private static final Frequency O_BAND_START_FREQ = Frequency.ofGHz(227975); //220500
     private static final Frequency O_BAND_STOP_FREQ = Frequency.ofGHz(232000); //238000
 
     // prohibit instantiation
@@ -55,7 +55,7 @@ public final class OpticalBandUtils {
             return OpticalBandType.O_BAND;
         }
 
-        log.error("There is a channel not included in any band");
+        log.error("There is a channel not included in any band {}", ochSignal);
         return null;
     }
 

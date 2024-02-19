@@ -21,7 +21,7 @@ public class MultiBandCplusObands extends MultiBandLambdaQuery {
         slotGranularity = 4;
 
         if (port.toString().equals("30") || port.toString().equals("31") || port.toString().equals("32")) {
-            log.info("OPENCONFIG: queried lambdas O for port {}", port);
+            //log.info("OPENCONFIG: queried lambdas O for port {}", port);
             lBandLambdaCount = 0;
             cBandLambdaCount = 0;
             sBandLambdaCount = 0;
@@ -31,18 +31,18 @@ public class MultiBandCplusObands extends MultiBandLambdaQuery {
         }
 
         if (port.toString().equals("10") || port.toString().equals("11") || port.toString().equals("12")) {
-            log.info("OPENCONFIG: queried lambdas C for port {}", port);
+            //log.info("OPENCONFIG: queried lambdas C for port {}", port);
             lBandLambdaCount = 0;
-            cBandLambdaCount = 90;
+            cBandLambdaCount = 88;
             sBandLambdaCount = 0;
             oBandLambdaCount = 0;
 
             return super.queryLambdas(port);
         }
 
-        log.info("OPENCONFIG: queried lambdas O+C for port {}", port);
+        //log.info("OPENCONFIG: queried lambdas O+C for port {}", port);
         lBandLambdaCount = 0;
-        cBandLambdaCount = 90;
+        cBandLambdaCount = 88;
         sBandLambdaCount = 0;
         oBandLambdaCount = 80;
 

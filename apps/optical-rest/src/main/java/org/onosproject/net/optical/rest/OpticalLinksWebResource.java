@@ -123,21 +123,21 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
                 ObjectNode sBand = mapper().createObjectNode();
                 ObjectNode oBand = mapper().createObjectNode();
 
-                //lBand.put("available-channels", findAvailableLambdas(link, Optional.of(L_BAND)).toString());
-                //lBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(L_BAND)).toString());
+                lBand.put("available-channels", findAvailableLambdas(link, Optional.of(L_BAND)).toString());
+                lBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(L_BAND)).toString());
                 linkObjectNode.set("L-band", lBand);
 
                 cBand.put("available-channels", findAvailableLambdas(link, Optional.of(C_BAND)).toString());
                 cBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(C_BAND)).toString());
                 linkObjectNode.set("C-band", cBand);
 
-                //sBand.put("available-channels", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
-                //sBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
+                sBand.put("available-channels", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
+                sBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
                 linkObjectNode.set("S-band", sBand);
 
                 oBand.put("available-channels", findAvailableLambdas(link, Optional.of(O_BAND)).toString());
                 oBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(O_BAND)).toString());
-                linkObjectNode.set("O-band", sBand);
+                linkObjectNode.set("O-band", oBand);
 
                 arrayLinks.add(linkObjectNode);
             }
@@ -176,22 +176,21 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
             ObjectNode sBand = mapper().createObjectNode();
             ObjectNode oBand = mapper().createObjectNode();
 
-
-            //lBand.put("available-channels", findAvailableLambdas(link, Optional.of(L_BAND)).toString());
-            //lBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(L_BAND)).toString());
+            lBand.put("available-channels", findAvailableLambdas(link, Optional.of(L_BAND)).toString());
+            lBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(L_BAND)).toString());
             linkObjectNode.set("L-band", lBand);
 
             cBand.put("available-channels", findAvailableLambdas(link, Optional.of(C_BAND)).toString());
             cBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(C_BAND)).toString());
             linkObjectNode.set("C-band", cBand);
 
-            //sBand.put("available-channels", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
-            //sBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
+            sBand.put("available-channels", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
+            sBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
             linkObjectNode.set("S-band", sBand);
 
             oBand.put("available-channels", findAvailableLambdas(link, Optional.of(O_BAND)).toString());
             oBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(O_BAND)).toString());
-            linkObjectNode.set("O-band", sBand);
+            linkObjectNode.set("O-band", oBand);
 
             arrayLinks.add(linkObjectNode);
 
@@ -434,7 +433,7 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
 
     private List<OchSignal> findAvailableLambdas(Link link, Optional<OpticalBandType> band) {
         //Available lambdas on a link: i.e., lambdas available on the dst port of the link
-        log.info("Link src {} band {}", link.src(), band);
+        //log.info("Link src {} band {}", link.src(), band);
 
         DeviceService deviceService = get(DeviceService.class);
         ResourceService resourceService = get(ResourceService.class);
@@ -459,7 +458,7 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
 
     private List<OchSignal> findRegisteredLambdas(Link link, Optional<OpticalBandType> band) {
         //Registered lambdas on a link: i.e., lambdas registered on the dst port of the link
-        log.info("Link src {} band {}", link.src(), band);
+        //log.info("Link src {} band {}", link.src(), band);
 
         DeviceService deviceService = get(DeviceService.class);
         ResourceService resourceService = get(ResourceService.class);
