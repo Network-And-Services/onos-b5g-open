@@ -183,36 +183,22 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
             ObjectNode sBand = mapper().createObjectNode();
             ObjectNode oBand = mapper().createObjectNode();
 
-            //linkObjectNode.put("L-band-avail", findAvailableLambdas(link, Optional.of(L_BAND)).toString());
-            //linkObjectNode.put("L-band-regis", findRegisteredLambdas(link, Optional.of(L_BAND)).toString());
-            //linkObjectNode.put("C-band-avail", findAvailableLambdas(link, Optional.of(C_BAND)).toString());
-            // linkObjectNode.put("C-band-regis", findRegisteredLambdas(link, Optional.of(C_BAND)).toString());
-            //linkObjectNode.put("S-band-avail", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
-            //linkObjectNode.put("S-band-regis", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
 
-            if (findRegisteredLambdas(link, Optional.of(L_BAND)) != null) {
-                lBand.put("available-channels", findAvailableLambdas(link, Optional.of(L_BAND)).toString());
-                lBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(L_BAND)).toString());
-                linkObjectNode.set("L-band", lBand);
-            }
+            //lBand.put("available-channels", findAvailableLambdas(link, Optional.of(L_BAND)).toString());
+            //lBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(L_BAND)).toString());
+            linkObjectNode.set("L-band", lBand);
 
-            if (findRegisteredLambdas(link, Optional.of(C_BAND)) != null) {
-                cBand.put("available-channels", findAvailableLambdas(link, Optional.of(C_BAND)).toString());
-                cBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(C_BAND)).toString());
-                linkObjectNode.set("C-band", cBand);
-            }
+            cBand.put("available-channels", findAvailableLambdas(link, Optional.of(C_BAND)).toString());
+            cBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(C_BAND)).toString());
+            linkObjectNode.set("C-band", cBand);
 
-            if (findRegisteredLambdas(link, Optional.of(S_BAND)) != null) {
-                sBand.put("available-channels", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
-                sBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
-                linkObjectNode.set("S-band", sBand);
-            }
+            //sBand.put("available-channels", findAvailableLambdas(link, Optional.of(S_BAND)).toString());
+            //sBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(S_BAND)).toString());
+            linkObjectNode.set("S-band", sBand);
 
-            if (findRegisteredLambdas(link, Optional.of(O_BAND)) != null) {
-                oBand.put("available-channels", findAvailableLambdas(link, Optional.of(O_BAND)).toString());
-                oBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(O_BAND)).toString());
-                linkObjectNode.set("O-band", sBand);
-            }
+            oBand.put("available-channels", findAvailableLambdas(link, Optional.of(O_BAND)).toString());
+            oBand.put("registered-channels", findRegisteredLambdas(link, Optional.of(O_BAND)).toString());
+            linkObjectNode.set("O-band", sBand);
 
             arrayLinks.add(linkObjectNode);
 
@@ -498,17 +484,6 @@ public class OpticalLinksWebResource extends AbstractWebResource  {
 
 
         if (band.isPresent()) {
-            boolean bandChannels = false;
-
-            //Check that at least one channel exists in the specified band
-            for (OchSignal signal : ochSignals) {
-                if (OpticalBandUtils.computeOpticalBand(signal).equals(band.get())) {
-                    bandChannels = true;
-                }
-            }
-            if (!bandChannels) return null;
-
-            //Filter only channels on the specified band
             ochSignals = ochSignals.stream()
                         .filter(x -> OpticalBandUtils.computeOpticalBand(x).equals(band.get()))
                         .collect(Collectors.toSet());
