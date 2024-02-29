@@ -113,9 +113,9 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
         ConnectPoint dst = intent.getDst();
         checkArgument(deviceService.getPort(src.deviceId(), src.port()) instanceof OchPort);
         checkArgument(deviceService.getPort(dst.deviceId(), dst.port()) instanceof OchPort);
-        List<Resource> resources = new LinkedList<>();
+        List<Resource> ochPortResources = new LinkedList<>();
 
-        log.debug("Compiling optical connectivity intent between {} and {}", src, dst);
+        log.info("Compiling optical connectivity intent between {} and {}", src, dst);
 
         // Release of intent resources here is only a temporary solution for handling the
         // case of recompiling due to intent restoration (when intent state is FAILED).
@@ -131,31 +131,68 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
             log.error("Ports for the intent are not available. Intent: {}", intent);
             throw new OpticalIntentCompilationException("Ports for the intent are not available. Intent: " + intent);
         }
-        resources.add(srcPortResource);
-        resources.add(dstPortResource);
+        ochPortResources.add(srcPortResource);
+        ochPortResources.add(dstPortResource);
 
         // If there is a valid suggestedPath, use this path without further checking
         // Otherwise trigger path computation
         List<Path> paths;
         if (intent.suggestedPath().isPresent()) {
             paths = List.of(intent.suggestedPath().get());
+            log.info("Using suggested path {}", paths.size());
         } else {
             paths = getOpticalPaths(intent);
+            log.info("Computed paths {}", paths.size());
         }
 
+        Optional<Map.Entry<Path, List<OchSignal>>> found = Optional.empty();
+        for (Path path : paths) {
+
+            boolean attempt = false;
+            if (intent.ochSignal().isPresent()) {
+                List<Resource> resourcesLocal =  new LinkedList<>();
+                resourcesLocal.addAll(ochPortResources);
+                resourcesLocal.addAll(convertToResources(path, convertToFlexChannels(intent.ochSignal().get())));
+                log.debug("Current resources {}", resourcesLocal);
+                attempt = allocateResourcesAttempt(intent, resourcesLocal);
+            } else {
+                log.error("This request do not include a suggested lambda");
+                //TODO use findCommonLambdas to support this case
+                throw new OpticalIntentCompilationException("This path has not a suggested lambda for intent " + intent);
+            }
+
+            if (attempt) {
+                log.info("This path has common lambdas");
+                found = Optional.of(Maps.immutableEntry(path, findFirstAvailableLambda(intent, path)));
+            } else {
+                log.info("This path has NO common lambdas");
+            }
+        }
+
+        //Evaluate lambdas availability
+        /*Optional<Map.Entry<Path, List<OchSignal>>> found = Optional.empty();
+        for (Path path : paths) {
+            Set<OchSignal> commonLambdas = findCommonLambdas(path);
+            if (!commonLambdas.isEmpty()) {
+                log.info("This path has common lambdas");
+                found = Optional.of(Maps.immutableEntry(path, findFirstAvailableLambda(intent, path)));
+            } else {
+                log.info("This path has NO common lambdas");
+            }
+        }*/
         // Find first path that has the required resources
-        Optional<Map.Entry<Path, List<OchSignal>>> found = paths.stream()
+        /*Optional<Map.Entry<Path, List<OchSignal>>> found = paths.stream()
                 .map(path -> Maps.immutableEntry(path, findFirstAvailableLambda(intent, path)))
                 .filter(entry -> !entry.getValue().isEmpty())
                 .filter(entry -> convertToResources(entry.getKey(),
                         entry.getValue()).stream().allMatch(resourceService::isAvailable))
-                .findFirst();
+                .findFirst();*/
 
         // Allocate resources and create optical path intent
         if (found.isPresent()) {
             log.info("Suitable path and lambdas FOUND for intent {}", intent);
-            resources.addAll(convertToResources(found.get().getKey(), found.get().getValue()));
-            allocateResources(intent, resources);
+            //resources.addAll(convertToResources(found.get().getKey(), found.get().getValue()));
+            //allocateResources(intent, resources);
 
             //If och signal is specified use FLEX grid or map it on specified spacing
             if (intent.ochSignal().isPresent()) {
@@ -274,6 +311,42 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
         }
     }
 
+    private boolean allocateResourcesAttempt(Intent intent, List<Resource> resources) {
+        List<ResourceAllocation> allocations = resourceService.allocate(intent.key(), resources);
+        if (allocations.isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
+    private List<OchSignal> convertToFlexChannels(OchSignal ochSignal) {
+        //create lambdas w.r.t. slotGanularity/slotWidth
+        if (ochSignal.gridType() == GridType.FLEX) {
+            int startMultiplier = (int) (1 - ochSignal.slotGranularity() + ochSignal.spacingMultiplier());
+
+            List<OchSignal> channels = IntStream.range(0, ochSignal.slotGranularity())
+                    .mapToObj(x -> OchSignal.newFlexGridSlot(startMultiplier + (2 * x)))
+                    .collect(Collectors.toList());
+
+            log.info("Grid type {} channels {}", ochSignal.gridType(), channels);
+            return channels;
+        } else if (ochSignal.gridType() == GridType.DWDM) {
+            int startMultiplier = (int) (1 - ochSignal.slotGranularity() +
+                    ochSignal.spacingMultiplier() * ochSignal.channelSpacing().frequency().asHz() /
+                            ChannelSpacing.CHL_6P25GHZ.frequency().asHz());
+
+            List<OchSignal> channels = IntStream.range(0, ochSignal.slotGranularity())
+                    .mapToObj(x -> OchSignal.newFlexGridSlot(startMultiplier + (2 * x)))
+                    .collect(Collectors.toList());
+
+            log.info("Grid type {} channels {}", ochSignal.gridType(), channels);
+            return channels;
+        }
+
+        log.error("Grid type: {} is not supported", ochSignal.gridType());
+        return Collections.emptyList();
+    }
+
     /**
      * Find the first available lambda on the given path by checking all the port resources.
      *
@@ -281,7 +354,13 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
      * @return list of consecutive and available OChSignals
      */
     private List<OchSignal> findFirstAvailableLambda(OpticalConnectivityIntent intent, Path path) {
-        log.info("Spectrum research for path {}", path.weight());
+        log.debug("Spectrum research for path {}", path.links());
+
+        /*Set<OchSignal> lambdas = findCommonLambdas(path);
+        if (lambdas.isEmpty()) {
+            return Collections.emptyList();
+        }*/
+
         if (intent.ochSignal().isPresent()) {
             //create lambdas w.r.t. slotGanularity/slotWidth
             OchSignal ochSignal = intent.ochSignal().get();
@@ -292,7 +371,14 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
                         .mapToObj(x -> OchSignal.newFlexGridSlot(startMultiplier + (2 * x)))
                         .collect(Collectors.toList());
 
-                return channels;
+                //if (lambdas.containsAll(channels)) {
+                    log.info("Selected suggested lambdas FLEX", channels);
+                    return channels;
+                //} else {
+                    //log.info("This path does not contain specified signal FLEX {}", channels);
+                    //log.info("List of available channels FLEX {}", lambdas);
+                    //return Collections.emptyList();
+                //}
             } else if (ochSignal.gridType() == GridType.DWDM) {
                 int startMultiplier = (int) (1 - ochSignal.slotGranularity() +
                         ochSignal.spacingMultiplier() * ochSignal.channelSpacing().frequency().asHz() /
@@ -302,21 +388,21 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
                         .mapToObj(x -> OchSignal.newFlexGridSlot(startMultiplier + (2 * x)))
                         .collect(Collectors.toList());
 
-                return channels;
+                //if (lambdas.containsAll(channels)) {
+                    log.info("Selected suggested lambdas DWDM", channels);
+                    return channels;
+                //} else {
+                    //log.info("This path does not contain specified signal DWDM {}", channels);
+                    //log.info("List of available channels DWDM {}", lambdas);
+                    //return Collections.emptyList();
+                //}
             }
             //TODO: add support for other gridTypes
             log.error("Grid type: {} not supported for user defined signal intents", ochSignal.gridType());
             return Collections.emptyList();
+        } else {
+            return findFirstLambda(findCommonLambdas(path), DEFAULT_SLOT_GRANULARITY);
         }
-
-        Set<OchSignal> lambdas = findCommonLambdas(path);
-        if (lambdas.isEmpty()) {
-            return Collections.emptyList();
-        }
-
-        log.info("List of common lambdas for intent {}", lambdas);
-
-        return findFirstLambda(lambdas, DEFAULT_SLOT_GRANULARITY);
     }
 
     /**
@@ -487,16 +573,6 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
         //.filter(p -> p.links().get(0).src().port().equals(start.port()) &&
         //        p.links().get(p.links().size() - 1).dst().port().equals(end.port()));
         List<Path> pathList = paths.collect(Collectors.toList());
-        if (pathList.size() != 0) {
-            for (Path path : pathList) {
-                log.warn("Computed path: {}", path);
-            }
-        }
-        else {
-            log.error("NO path found on the optical topology");
-        }
-
-        log.info("Found paths {}", pathList.size());
 
         return pathList;
     }

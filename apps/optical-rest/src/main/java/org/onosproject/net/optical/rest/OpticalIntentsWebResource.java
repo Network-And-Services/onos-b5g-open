@@ -357,6 +357,7 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
 
                     Link link = linkService.getLink(srcConnectPoint, dstConnectPoint);
                     if (link == null) {
+                        log.error("Link source {} destination {}", srcConnectPoint, dstConnectPoint);
                         throw new IllegalArgumentException("Not existing link in the suggested path");
                     }
 
