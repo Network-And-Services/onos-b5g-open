@@ -1,0 +1,35 @@
+{
+  "devices": {
+    "netconf:10.100.101.21:2022": {
+      "netconf": {
+        "ip": "10.100.101.21",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 0,
+        "gridY" : 400,
+        "name": "SONiC-1",
+        "driver": "client-line-terminal-device"
+      }
+    },
+    "netconf:10.100.101.23:2022": {
+      "netconf": {
+        "ip": "10.100.101.23",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 600,
+        "gridY" : 400,
+        "name": "SONiC-2",
+        "driver": "client-line-terminal-device"
+      }
+    }
+  }
+}
+

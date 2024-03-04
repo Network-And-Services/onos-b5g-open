@@ -1,0 +1,35 @@
+{
+  "devices": {
+    "netconf:192.168.1.35:830": {
+      "netconf": {
+        "ip": "192.168.1.35",
+        "port": "830",
+        "username": "openroadm",
+        "password": "openroadm"
+      },
+      "basic": {
+        "locType" : "grid",
+        "gridX" : -300,
+        "gridY" : 275,
+        "name": "Oband-Access-1",
+        "driver": "openroadm"
+      }
+    },
+    "netconf:192.168.1.36:830": {
+      "netconf": {
+        "ip": "192.168.1.36",
+        "port": "830",
+        "username": "openroadm",
+        "password": "openroadm"
+      },
+      "basic": {
+        "locType" : "grid",
+        "gridX" : -300,
+        "gridY" : 525,
+        "name": "Oband-Access-2",
+        "driver": "openroadm"
+      }
+    }
+  }
+}
+

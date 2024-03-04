@@ -1,0 +1,35 @@
+{
+  "devices": {
+    "netconf:192.168.1.53:830": {
+      "netconf": {
+        "ip": "192.168.1.53",
+        "port": "830",
+        "username": "openroadm",
+        "password": "openroadm"
+      },
+      "basic": {
+        "locType" : "grid",
+        "gridX" : -300,
+        "gridY" : 325,
+        "name": "TwinWSS-Access-1",
+        "driver": "openroadm12"
+      }
+    },
+    "netconf:192.168.1.201:830": {
+      "netconf": {
+        "ip": "192.168.1.201",
+        "port": "830",
+        "username": "openroadm",
+        "password": "openroadm"
+      },
+      "basic": {
+        "locType" : "grid",
+        "gridX" : -300,
+        "gridY" : 475,
+        "name": "TwinWSS-Access-2",
+        "driver": "openroadm12"
+      }
+    }
+  }
+}
+

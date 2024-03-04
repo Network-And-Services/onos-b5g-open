@@ -1,0 +1,1 @@
+curl --noproxy '*' -u karaf:karaf -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' 'http://localhost:8181/onos/optical/nodes/annotate/onePort?connectPoint=netconf%3A192.168.1.102%3A830%2F4120&key=incoming-interdomain-link&value=netconf%3A192.168.1.101%3A830%2F5220'

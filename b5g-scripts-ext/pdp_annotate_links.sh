@@ -1,0 +1,1 @@
+curl --noproxy '*' -u karaf:karaf -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' 'http://localhost:8181/onos/optical/links/annotate/allLinksLength?min=10&max=20'

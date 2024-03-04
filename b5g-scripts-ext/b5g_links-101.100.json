@@ -1,0 +1,22 @@
+{
+  "links": {
+	"netconf:10.100.101.111:2022/11-netconf:10.100.101.113:2022/12": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:10.100.101.111:2022/31-netconf:10.100.101.112:2022/32": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:10.100.101.112:2022/21-netconf:10.100.101.114:2022/22": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:10.100.101.112:2022/31-netconf:10.100.101.111:2022/32": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:10.100.101.113:2022/21-netconf:10.100.101.111:2022/22": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:10.100.101.113:2022/31-netconf:10.100.101.114:2022/32": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:10.100.101.114:2022/31-netconf:10.100.101.113:2022/32": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:10.100.101.114:2022/11-netconf:10.100.101.112:2022/12": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+
+	"netconf:10.100.101.111:2022/1010-netconf:10.100.101.121:2022/11003": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:10.100.101.121:2022/11003-netconf:10.100.101.111:2022/1011": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:10.100.101.112:2022/1010-netconf:10.100.101.122:2022/11003": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:10.100.101.122:2022/11003-netconf:10.100.101.112:2022/1011": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:10.100.101.113:2022/1010-netconf:10.100.101.123:2022/11003": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:10.100.101.123:2022/11003-netconf:10.100.101.113:2022/1011": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:10.100.101.114:2022/1010-netconf:10.100.101.124:2022/11003": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:10.100.101.124:2022/11003-netconf:10.100.101.114:2022/1011": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}}
+ }
+}
+

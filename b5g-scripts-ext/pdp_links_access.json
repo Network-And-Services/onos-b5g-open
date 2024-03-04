@@ -1,0 +1,13 @@
+{
+  "links": {
+	"netconf:10.100.101.11:830/11-netconf:192.168.1.53:830/12": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+        "netconf:192.168.1.53:830/11-netconf:10.100.101.11:830/10": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+
+        "netconf:192.168.1.53:830/31-netconf:192.168.1.201:830/12": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:192.168.1.201:830/11-netconf:192.168.1.53:830/32": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+
+	"netconf:192.168.1.201:830/31-netconf:192.168.1.101:830/3001": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:192.168.1.101:830/3001-netconf:192.168.1.201:830/32": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}}
+  }
+}
+

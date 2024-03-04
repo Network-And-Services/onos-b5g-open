@@ -1,0 +1,50 @@
+{
+  "devices": {
+    "netconf:192.168.1.101:830": {
+      "netconf": {
+        "ip": "192.168.1.101",
+        "port": "830",
+        "username": "superuser",
+        "password": "Sup%9User"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 0,
+        "gridY" : 500,
+        "name": "Lum-TIM-101-Hub-2",
+        "driver": "lumentum-roadm20whitebox-netconf"
+      }
+    },
+    "netconf:192.168.1.102:830": {
+      "netconf": {
+        "ip": "192.168.1.102",
+        "port": "830",
+        "username": "superuser",
+        "password": "Sup%9User"
+      },
+      "basic": {
+        "locType" : "grid",
+        "gridX" : 100,
+        "gridY" : 550,
+        "name": "Lum-TIM-102-Metro-1",
+        "driver": "lumentum-roadm20whitebox-netconf"
+      }
+    },
+    "netconf:192.168.1.164:830": {
+      "netconf": {
+        "ip": "192.168.1.164",
+        "port": "830",
+        "username": "superuser",
+        "password": "Sup%9User"
+      },
+      "basic": {
+        "locType" : "grid",
+        "gridX" : 500,
+        "gridY" : 550,
+        "name": "Lum-CNIT-164-Metro-2",
+        "driver": "lumentum-roadm20whitebox-netconf"
+      }
+    }
+  }
+}
+

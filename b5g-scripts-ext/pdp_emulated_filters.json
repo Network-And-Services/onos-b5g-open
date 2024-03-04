@@ -1,0 +1,95 @@
+{
+  "devices": {
+    "netconf:10.100.101.111:2022": {
+      "netconf": {
+        "ip": "10.100.101.111",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+        "locType" : "grid",
+        "gridX" : 50,
+        "gridY" : 275,
+        "name": "Filter-1",
+        "driver": "openroadm"
+      }
+    },
+    "netconf:10.100.101.112:2022": {
+      "netconf": {
+        "ip": "10.100.101.112",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : -250,
+        "gridY" : 300,
+        "name": "Filter-2",
+        "driver": "openroadm"
+      }
+    },
+    "netconf:10.100.101.113:2022": {
+      "netconf": {
+        "ip": "10.100.101.113",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : -350,
+        "gridY" : 300,
+        "name": "Filter-3",
+        "driver": "openroadm"
+      }
+    },
+    "netconf:10.100.101.114:2022": {
+      "netconf": {
+        "ip": "10.100.101.114",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : -350,
+        "gridY" : 500,
+        "name": "Filter-4",
+        "driver": "openroadm"
+      }
+    },
+    "netconf:10.100.101.115:2022": {
+      "netconf": {
+        "ip": "10.100.101.115",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+        "locType" : "grid",
+        "gridX" : -250,
+        "gridY" : 500,
+        "name": "Filter-5",
+        "driver": "openroadm"
+      }
+    },
+    "netconf:10.100.101.116:2022": {
+      "netconf": {
+        "ip": "10.100.101.116",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+        "locType" : "grid",
+        "gridX" : 50,
+        "gridY" : 525,
+        "name": "Filter-6",
+        "driver": "openroadm"
+      }
+    }
+  }
+}
+

@@ -124,9 +124,9 @@ public class OpenRoadmDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
         StringBuilder filter = new StringBuilder();
         filter.append(OPENROADM_DEVICE_OPEN);
         filter.append("<circuit-packs>");
-        filter.append(" <circuit-pack-name>");
+        filter.append("<circuit-pack-name>");
         filter.append(cpName);
-        filter.append(" </circuit-pack-name>");
+        filter.append("</circuit-pack-name>");
         filter.append("</circuit-packs>");
         filter.append(OPENROADM_DEVICE_CLOSE);
         return filteredGetBuilder(filter.toString());

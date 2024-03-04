@@ -1,0 +1,35 @@
+{
+  "devices": {
+    "netconf:10.100.101.11:2022": {
+      "netconf": {
+        "ip": "10.100.101.11",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+        "locType" : "grid",
+        "gridX" : 100,
+        "gridY" : 500,
+        "name": "ROADM-1",
+        "driver": "openroadm"
+      }
+    },
+    "netconf:10.100.101.12:2022": {
+      "netconf": {
+        "ip": "10.100.101.12",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 100,
+        "gridY" : 750,
+        "name": "ROADM-2",
+        "driver": "openroadm"
+      }
+    }
+  }
+}
+
