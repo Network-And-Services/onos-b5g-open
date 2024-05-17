@@ -1,0 +1,21 @@
+{
+  "devices": {
+    "netconf:10.100.101.52:830": {
+      "netconf": {
+        "ip": "10.100.101.52",
+        "port": "830",
+        "username": "openroadm",
+        "password": "openroadm",
+	"idle-timeout": "0"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 600,
+        "gridY" : 800,
+        "name": "ROADM-HHI",
+        "driver": "openroadm12"
+      }
+    }
+  }
+}
+
