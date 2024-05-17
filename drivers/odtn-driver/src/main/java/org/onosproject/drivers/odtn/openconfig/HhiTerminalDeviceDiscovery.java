@@ -402,7 +402,7 @@ public class HhiTerminalDeviceDiscovery
             XMLConfiguration xconf = (XMLConfiguration) XmlConfigParser.loadXmlString(rpcReply);
             xconf.setExpressionEngine(xpe);
 
-            log.debug("REPLY PORTS details {}", rpcReply);
+            log.info("REPLY PORTS details {}", rpcReply);
 
             HierarchicalConfiguration components = xconf.configurationAt("data/components");
             return parsePorts(components);
@@ -434,6 +434,7 @@ public class HhiTerminalDeviceDiscovery
                 .map(component -> {
                             try {
                                 // Pass the root document for cross-reference
+                                log.info("Parsing port component ---");
                                 return parsePortComponent(component, components);
                             } catch (Exception e) {
                                 return null;
@@ -578,7 +579,7 @@ public class HhiTerminalDeviceDiscovery
         String name = component.getString("name");
         String type = component.getString("state/type");
 
-        log.info("Parsing Component {} type {}", name, " --- HHI universal component ---");
+        log.info("Parsing Port Component {} type {}", name, " --- HHI universal component ---");
 
         annotations.put(OdtnDeviceDescriptionDiscovery.OC_NAME, "channel-1");
         annotations.put(OdtnDeviceDescriptionDiscovery.OC_TYPE, OdtnPortType.LINE.value());
