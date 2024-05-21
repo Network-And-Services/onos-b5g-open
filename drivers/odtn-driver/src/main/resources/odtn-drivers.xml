@@ -66,7 +66,7 @@
         <behaviour api ="org.onosproject.net.behaviour.LambdaQuery"
                    impl="org.onosproject.drivers.odtn.openconfig.MultiBandBerlinLambdaQuery"/>
         <behaviour api="org.onosproject.net.flow.FlowRuleProgrammable"
-                   impl="org.onosproject.drivers.odtn.openconfig.ClientLineTerminalDeviceFlowRuleProgrammable"/>
+                   impl="org.onosproject.drivers.odtn.openconfig.HhiTerminalDeviceFlowRuleProgrammable"/>
         <behaviour api="org.onosproject.net.behaviour.InternalConnectivity"
                    impl="org.onosproject.drivers.odtn.FullMeshInternalConnectivity"/>
     </driver>
