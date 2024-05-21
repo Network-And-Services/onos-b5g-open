@@ -806,7 +806,7 @@ public class HhiTerminalDeviceFlowRuleProgrammable
 
         //Retrieve the ENABLED line ports
         List<String> enabledOpticalChannels = logicalChannels.stream()
-                .filter(r -> r.getString("optical-channel.config.target-output-power").equals("-10"))
+                .filter(r -> !r.getString("optical-channel.config.target-output-power").equals("-10"))
                 .map(r -> "channel-1")
                 .collect(Collectors.toList());
 
