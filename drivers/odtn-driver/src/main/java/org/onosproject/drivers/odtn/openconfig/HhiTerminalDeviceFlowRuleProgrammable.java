@@ -790,7 +790,7 @@ public class HhiTerminalDeviceFlowRuleProgrammable
 
         try {
             reply = session.get(requestFilter.toString(), null);
-            //log.debug("TRANSPONDER CONNECTIONS - fetchConnectionsFromDevice {} reply {}", did(), reply);
+            log.info("TRANSPONDER CONNECTIONS - fetchConnectionsFromDevice {} reply {}", did(), reply);
         } catch (NetconfException e) {
             log.error("Failed to retrieve configuration details for device {}", handler().data().deviceId(), e);
             return ImmutableList.of();
@@ -806,7 +806,7 @@ public class HhiTerminalDeviceFlowRuleProgrammable
 
         //Retrieve the ENABLED line ports
         List<String> enabledOpticalChannels = logicalChannels.stream()
-                .filter(r -> !r.getString("optical-channel.config.target-output-power").equals("-10"))
+                .filter(r -> r.getString("optical-channel.config.target-output-power").equals("13.0"))
                 .map(r -> "channel-1")
                 .collect(Collectors.toList());
 
