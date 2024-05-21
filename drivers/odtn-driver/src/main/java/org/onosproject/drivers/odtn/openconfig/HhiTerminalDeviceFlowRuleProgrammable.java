@@ -804,6 +804,9 @@ public class HhiTerminalDeviceFlowRuleProgrammable
         List<HierarchicalConfiguration> components =
                 cfg.configurationsAt("data.components.component");
 
+        log.info("TRANSPONDER CONNECTIONS - fetchConnectionsFromDevice {} components {}", did(), components);
+
+
         //Retrieve the ENABLED line ports
         List<String> enabledOpticalChannels = logicalChannels.stream()
                 .filter(r -> r.getString("optical-channel.config.target-output-power").equals("13.0"))
