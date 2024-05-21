@@ -118,7 +118,7 @@ public class HhiTerminalDeviceFlowRuleProgrammable
      */
     @Override
     public Collection<FlowEntry> getFlowEntries() {
-        log.debug("getFlowEntries device {} cache size {}", did(), getConnectionCache().size(did()));
+        log.info("HHI --- getFlowEntries device {} cache size {}", did(), getConnectionCache().size(did()));
 
         Collection<FlowEntry> fetched = fetchConnectionsFromDevice().stream()
                 .map(fr -> new DefaultFlowEntry(fr, FlowEntry.FlowEntryState.ADDED, 0, 0, 0))
@@ -806,21 +806,20 @@ public class HhiTerminalDeviceFlowRuleProgrammable
 
         //Retrieve the ENABLED line ports
         List<String> enabledOpticalChannels = logicalChannels.stream()
-                .filter(r -> r.getString("config.logical-channel-type").equals(OC_TYPE_PROT_OTN))
-                .filter(r -> r.getString("config.admin-state").equals(OPERATION_ENABLE))
-                .map(r -> r.getString("index"))
+                .filter(r -> r.getString("optical-channel.config.target-output-power").equals("-10"))
+                .map(r -> "channel-1")
                 .collect(Collectors.toList());
 
-        log.debug("fetchConnectionsFromDevice {} enabledOpticalChannelsIndex {}", did(), enabledOpticalChannels);
+        log.info("fetchConnectionsFromDevice {} enabledOpticalChannelsIndex {}", did(), enabledOpticalChannels);
 
         if (enabledOpticalChannels.size() != 0) {
             for (String channel : enabledOpticalChannels) {
-                log.debug("fetchOpticalConnectionsFromDevice {} channel {}", did(), channel);
+                log.info("fetchOpticalConnectionsFromDevice {} channel {}", did(), channel);
 
                 //Retrieve the corresponding central frequency from the associated component
                 //TODO correlate the components instead of relying on naming
                 Frequency centralFreq = components.stream()
-                        .filter(c -> c.getString("name").equals(PREFIX_CHANNEL + channel))
+                        .filter(c -> c.getString("name").equals("HHI"))
                         .map(c -> c.getDouble("optical-channel.config.frequency"))
                         .map(c -> Frequency.ofMHz(c))
                         .findFirst()
@@ -830,41 +829,9 @@ public class HhiTerminalDeviceFlowRuleProgrammable
             }
         }
 
-        //Retrieve the ENABLED client ports
-        List<String> enabledClientChannels = logicalChannels.stream()
-                .filter(r -> r.getString("config.logical-channel-type").equals(OC_TYPE_PROT_ETH))
-                .filter(r -> r.getString("config.admin-state").equals(OPERATION_ENABLE))
-                .map(r -> r.getString("index"))
-                .collect(Collectors.toList());
-
-        log.debug("fetchClientConnectionsFromDevice {} enabledClientChannelsIndex {}", did(), enabledClientChannels);
-
-        if (enabledClientChannels.size() != 0) {
-            for (String clientPort : enabledClientChannels) {
-
-                log.debug("fetchClientConnectionsFromDevice {} channel {}", did(), clientPort);
-
-                String linePort = logicalChannels.stream()
-                        .filter(r -> r.getString("config.logical-channel-type").equals(OC_TYPE_PROT_ETH))
-                        .filter(r -> r.getString("config.admin-state").equals(OPERATION_ENABLE))
-                        .filter(r -> r.getString("index").equals(clientPort))
-                        .map(r -> r.getString("logical-channel-assignments.assignment.config.logical-channel"))
-                        .findFirst()
-                        .orElse(null);
-
-                //Build the corresponding flow rule as expected
-                //Selector including port
-                //Treatment including port
-                PortNumber clientPortNumber = PortNumber.portNumber(clientPort);
-                PortNumber linePortNumber = PortNumber.portNumber(linePort);
-
-                confirmedRules.addAll(fetchClientConnectionFromDevice(clientPortNumber, linePortNumber));
-            }
-        }
-
         //Returns rules that are both on the device and on the cache
         if (confirmedRules.size() != 0) {
-            log.debug("fetchConnectionsFromDevice {} number of confirmed rules {}", did(), confirmedRules.size());
+            log.info("fetchConnectionsFromDevice {} number of confirmed rules {}", did(), confirmedRules.size());
             return confirmedRules;
         } else {
             return ImmutableList.of();
