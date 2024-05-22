@@ -71,6 +71,8 @@ public class HhiTerminalDeviceFlowRuleProgrammable
     private static final String PREFIX_CHANNEL = "channel-";
     private static final String DEFAULT_OPERATIONAL_MODE = "0";
     private static final String DEFAULT_TARGET_POWER = "0";
+    private static final String DEFAULT_TARGET_POWER_OFF = "-10.0";
+    private static final String DEFAULT_TARGET_POWER_ON = "10.0";
     private static final String DEFAULT_ASSIGNMENT_INDEX = "1";
     private static final String DEFAULT_ALLOCATION_INDEX = "10";
     private static final int DEFAULT_RULE_PRIORITY = 10;
@@ -380,6 +382,28 @@ public class HhiTerminalDeviceFlowRuleProgrammable
         }
     }
 
+    private void setOpticalTargetPower(NetconfSession session, String power)
+            throws NetconfException {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("<components xmlns='http://openconfig.net/yang/platform'>");
+        sb.append("<component>");
+        sb.append("<name>HHI</name>");
+        sb.append("<oc-opt-term:optical-channel xmlns:oc-opt-term='http://openconfig.net/yang/terminal-device'>");
+        sb.append("<oc-opt-term:config>");
+        sb.append("<oc-opt-term:target-output-power>" + power + "</oc-opt-term:target-output-power>");
+        sb.append("</oc-opt-term:config>");
+        sb.append("</oc-opt-term:optical-channel>");
+        sb.append("</component>");
+        sb.append("</components>");
+
+        boolean ok =
+                session.editConfig(DatastoreId.RUNNING, null, sb.toString());
+        if (!ok) {
+            throw new NetconfException("error writing channel frequency");
+        }
+    }
+
     private void setLogicalChannelAssignment(NetconfSession session, String operation, String client, String line,
                                              String assignmentIndex, String allocationIndex)
             throws NetconfException {
@@ -511,7 +535,7 @@ public class HhiTerminalDeviceFlowRuleProgrammable
             log.info("Removing LINE FlowRule device {} line port {}", did(), componentName);
 
             try {
-                setLogicalChannel(session, OPERATION_DISABLE, componentName);
+                setOpticalTargetPower(session, DEFAULT_TARGET_POWER_OFF);
             } catch (NetconfException e) {
                 log.error("Error disabling the logical channel line side");
                 return false;
@@ -563,7 +587,7 @@ public class HhiTerminalDeviceFlowRuleProgrammable
         PortNumber inputPortNumber = PortNumber.portNumber(channel);
         PortNumber outputPortNumber = PortNumber.portNumber(channel);
 
-        log.debug("fetchOpticalConnectionsFromDevice {} port {}-{}", did(), inputPortNumber, outputPortNumber);
+        log.info("fetchOpticalConnectionsFromDevice {} port {}-{}", did(), inputPortNumber, outputPortNumber);
 
         TrafficSelector selectorDrop = DefaultTrafficSelector.builder()
                 .matchInPort(inputPortNumber)
@@ -809,14 +833,13 @@ public class HhiTerminalDeviceFlowRuleProgrammable
         //Retrieve the ENABLED line ports
         List<String> enabledOpticalChannels = components.stream()
                 .filter(r -> !r.getString("optical-channel.config.target-output-power").equals("-10.0"))
-                .map(r -> "channel-1")
+                .map(r -> "1011")
                 .collect(Collectors.toList());
 
         log.info("fetchConnectionsFromDevice {} enabledOpticalChannelsIndex {}", did(), enabledOpticalChannels);
 
         if (enabledOpticalChannels.size() != 0) {
             for (String channel : enabledOpticalChannels) {
-                log.info("fetchOpticalConnectionsFromDevice {} channel {}", did(), channel);
 
                 //Retrieve the corresponding central frequency from the associated component
                 //TODO correlate the components instead of relying on naming
@@ -826,6 +849,8 @@ public class HhiTerminalDeviceFlowRuleProgrammable
                         .map(c -> Frequency.ofMHz(c))
                         .findFirst()
                         .orElse(null);
+
+                log.info("fetchOpticalConnectionsFromDevice {} channel {} frequency {}", did(), channel, centralFreq);
 
                 confirmedRules.addAll(fetchLineConnectionFromDevice(channel, centralFreq));
             }
