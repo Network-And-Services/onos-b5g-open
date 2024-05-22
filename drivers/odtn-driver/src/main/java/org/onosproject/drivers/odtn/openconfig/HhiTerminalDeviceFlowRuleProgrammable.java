@@ -363,13 +363,11 @@ public class HhiTerminalDeviceFlowRuleProgrammable
 
         sb.append("<components xmlns='http://openconfig.net/yang/platform'>");
         sb.append("<component>");
-        sb.append("<name>" + PREFIX_CHANNEL + optChannel + "</name>");
+        sb.append("<name>HHI</name>");
         sb.append("<oc-opt-term:optical-channel xmlns:oc-opt-term='http://openconfig.net/yang/terminal-device'>");
         sb.append("<oc-opt-term:config>");
         sb.append("<oc-opt-term:frequency>" + (long) freq.asMHz() + "</oc-opt-term:frequency>");
         sb.append("<oc-opt-term:target-output-power>" + DEFAULT_TARGET_POWER + "</oc-opt-term:target-output-power>");
-        sb.append("<oc-opt-term:operational-mode>" + DEFAULT_OPERATIONAL_MODE + "</oc-opt-term:operational-mode>");
-        sb.append("<oc-opt-term:line-port>" + PREFIX_PORT + optChannel + "</oc-opt-term:line-port>");
         sb.append("</oc-opt-term:config>");
         sb.append("</oc-opt-term:optical-channel>");
         sb.append("</component>");
@@ -558,7 +556,7 @@ public class HhiTerminalDeviceFlowRuleProgrammable
                 linePortName = rule.inPort().toString();
             }
 
-            log.debug("Removing CLIENT FlowRule device {} client port: {}, line port {}",
+            log.info("Removing CLIENT FlowRule device {} client port: {}, line port {}",
                     did(), clientPortName, linePortName);
 
             try {
@@ -579,7 +577,7 @@ public class HhiTerminalDeviceFlowRuleProgrammable
         FlowRule cacheDropRule;
         NetconfSession session = getNetconfSession();
 
-        log.debug("fetchOpticalConnectionsFromDevice {} frequency {}", did(), centralFreq);
+        log.info("fetchLineConnectionsFromDevice {} frequency {}", did(), centralFreq);
 
         //Build the corresponding flow rule as expected
         //Selector including port and ochSignal
@@ -587,7 +585,7 @@ public class HhiTerminalDeviceFlowRuleProgrammable
         PortNumber inputPortNumber = PortNumber.portNumber(channel);
         PortNumber outputPortNumber = PortNumber.portNumber(channel);
 
-        log.info("fetchOpticalConnectionsFromDevice {} port {}-{}", did(), inputPortNumber, outputPortNumber);
+        log.info("fetchLineConnectionsFromDevice {} port {}-{}", did(), inputPortNumber, outputPortNumber);
 
         TrafficSelector selectorDrop = DefaultTrafficSelector.builder()
                 .matchInPort(inputPortNumber)
@@ -828,15 +826,13 @@ public class HhiTerminalDeviceFlowRuleProgrammable
         List<HierarchicalConfiguration> components =
                 cfg.configurationsAt("data.components.component");
 
-        log.info("TRANSPONDER CONNECTIONS - fetchConnectionsFromDevice {} components {}", did(), components.get(0));
-
         //Retrieve the ENABLED line ports
         List<String> enabledOpticalChannels = components.stream()
                 .filter(r -> !r.getString("optical-channel.config.target-output-power").equals("-10.0"))
                 .map(r -> "1011")
                 .collect(Collectors.toList());
 
-        log.info("fetchConnectionsFromDevice {} enabledOpticalChannelsIndex {}", did(), enabledOpticalChannels);
+        log.info("HHI TX CONNECTIONS fetchConnectionsFromDevice {} enabledOpticalChannelsIndex {}", did(), enabledOpticalChannels);
 
         if (enabledOpticalChannels.size() != 0) {
             for (String channel : enabledOpticalChannels) {
@@ -850,7 +846,7 @@ public class HhiTerminalDeviceFlowRuleProgrammable
                         .findFirst()
                         .orElse(null);
 
-                log.info("fetchOpticalConnectionsFromDevice {} channel {} frequency {}", did(), channel, centralFreq);
+                log.info("HHI DRIVER - fetchOpticalConnectionsFromDevice {} channel {} frequency {}", did(), channel, centralFreq);
 
                 confirmedRules.addAll(fetchLineConnectionFromDevice(channel, centralFreq));
             }
