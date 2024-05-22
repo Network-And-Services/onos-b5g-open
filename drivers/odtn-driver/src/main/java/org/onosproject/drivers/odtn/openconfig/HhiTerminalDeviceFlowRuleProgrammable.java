@@ -807,8 +807,8 @@ public class HhiTerminalDeviceFlowRuleProgrammable
         log.info("TRANSPONDER CONNECTIONS - fetchConnectionsFromDevice {} components {}", did(), components.get(0));
 
         //Retrieve the ENABLED line ports
-        List<String> enabledOpticalChannels = logicalChannels.stream()
-                .filter(r -> r.getString("optical-channel.config.target-output-power").equals("13.0"))
+        List<String> enabledOpticalChannels = components.stream()
+                .filter(r -> !r.getString("optical-channel.config.target-output-power").equals("-10.0"))
                 .map(r -> "channel-1")
                 .collect(Collectors.toList());
 
