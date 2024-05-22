@@ -367,7 +367,7 @@ public class HhiTerminalDeviceFlowRuleProgrammable
         sb.append("<oc-opt-term:optical-channel xmlns:oc-opt-term='http://openconfig.net/yang/terminal-device'>");
         sb.append("<oc-opt-term:config>");
         sb.append("<oc-opt-term:frequency>" + (long) freq.asMHz() + "</oc-opt-term:frequency>");
-        sb.append("<oc-opt-term:target-output-power>" + DEFAULT_TARGET_POWER + "</oc-opt-term:target-output-power>");
+        sb.append("<oc-opt-term:target-output-power>" + DEFAULT_TARGET_POWER_ON + "</oc-opt-term:target-output-power>");
         sb.append("</oc-opt-term:config>");
         sb.append("</oc-opt-term:optical-channel>");
         sb.append("</component>");
@@ -476,12 +476,12 @@ public class HhiTerminalDeviceFlowRuleProgrammable
                 return false;
             }
 
-            try {
+            /*try {
                 setLogicalChannel(session, OPERATION_ENABLE, componentName);
             } catch (NetconfException e) {
                 log.error("Error enabling the logical channel");
                 return false;
-            }
+            }*/
         }
 
         //Configuration of CLIENT side, used for OpticalCircuit intents
