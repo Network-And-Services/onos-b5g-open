@@ -35,6 +35,7 @@ import org.onosproject.net.ConnectPoint;
 import org.onosproject.net.OchSignal;
 import org.onosproject.net.DeviceId;
 import org.onosproject.net.Port;
+import org.onosproject.net.behaviour.ModulationConfig;
 import org.onosproject.net.device.DeviceService;
 import org.onosproject.net.flow.criteria.Criterion;
 import org.onosproject.net.flow.criteria.OchSignalCriterion;
@@ -117,6 +118,7 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
             ObjectNode root = readTreeFromStream(mapper(), stream);
             Intent intent = decode(root);
             service.submit(intent);
+
             UriBuilder locationBuilder = uriInfo.getBaseUriBuilder()
                     .path("intents")
                     .path(intent.appId().name())
@@ -386,6 +388,18 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
 
                 log.debug("OpticalIntent along suggestedPath {}", suggestedPath);
             }
+        }
+
+        //Only for hhi demo
+        String uuIdString = nullIsIllegal(json.get("uuid"), "uuid" + MISSING_MEMBER_MESSAGE).asText();
+        log.warn("Received intent request with uuid {}", uuIdString);
+        Device device = deviceService.getDevice(ingress.deviceId());
+        if (device.is(ModulationConfig.class)) {
+            log.warn("Going to set telemetry uuid {}", uuIdString);
+            ModulationConfig<Object> modulationConfig = device.as(ModulationConfig.class);
+            modulationConfig.setModulationScheme(ingress.port(), uuIdString, 100);
+        } else {
+            log.error("Device is not capable of handling telemetry uuid");
         }
 
         return createExplicitOpticalIntent(
