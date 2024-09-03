@@ -15,11 +15,11 @@ public class OperationalMode {
     protected int modeId;
     protected String modeType;
 
-    private static ObjectNode opModeCaps = new ObjectMapper().createObjectNode();
-    private ObjectNode opModeCapsFec = new ObjectMapper().createObjectNode();
-    private ArrayNode opModeCapsPenalties = new ObjectMapper().createArrayNode();
-    private ObjectNode opModeCapsFilter = new ObjectMapper().createObjectNode();
-    private ObjectNode opModeCapsConstraints = new ObjectMapper().createObjectNode();
+    protected ObjectNode opModeCaps = new ObjectMapper().createObjectNode();
+    protected ObjectNode opModeCapsFec = new ObjectMapper().createObjectNode();
+    protected ArrayNode opModeCapsPenalties = new ObjectMapper().createArrayNode();
+    protected ObjectNode opModeCapsFilter = new ObjectMapper().createObjectNode();
+    protected ObjectNode opModeCapsConstraints = new ObjectMapper().createObjectNode();
 
     private static final Logger log = getLogger(OperationalMode.class);
 

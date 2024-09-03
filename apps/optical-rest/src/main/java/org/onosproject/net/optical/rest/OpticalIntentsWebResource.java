@@ -390,17 +390,18 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
             }
         }
 
-        //Only for hhi demo
         String uuIdString = nullIsIllegal(json.get("uuid"), "uuid" + MISSING_MEMBER_MESSAGE).asText();
         log.warn("Received intent request with uuid {}", uuIdString);
-        Device device = deviceService.getDevice(ingress.deviceId());
+
+        //Only for hhi demo
+        /*Device device = deviceService.getDevice(ingress.deviceId());
         if (device.is(ModulationConfig.class)) {
             log.warn("Going to set telemetry uuid {}", uuIdString);
             ModulationConfig<Object> modulationConfig = device.as(ModulationConfig.class);
             modulationConfig.setModulationScheme(ingress.port(), uuIdString, 100);
         } else {
             log.error("Device is not capable of handling telemetry uuid");
-        }
+        }*/
 
         return createExplicitOpticalIntent(
                 ingress, egress, deviceService, key, appId, bidirectional, signal, suggestedPath);

@@ -1,0 +1,54 @@
+{
+  "type": "object",
+  "title": "setOpMode",
+  "required": [
+    "ingressPoint",
+    "egressPoint"
+  ],
+  "properties": {
+    "appId": {
+      "type": "string",
+      "example": "org.onosproject.optical-rest"
+    },
+    "ingressPoint": {
+      "type": "object",
+      "title": "ingressPoint",
+      "required": [
+        "device",
+        "port"
+      ],
+      "properties": {
+        "device": {
+          "type": "string",
+          "example": "netconf:10.100.101.22:2022"
+        },
+        "port": {
+          "type": "string",
+          "example": "11003"
+        }
+      }
+    },
+    "egressPoint": {
+      "type": "object",
+      "title": "egressPoint",
+      "required": [
+        "device",
+        "port"
+      ],
+      "properties": {
+        "device": {
+          "type": "string",
+          "example": "netconf:10.100.101.24:2022"
+        },
+        "port": {
+          "type": "string",
+          "example": "11003"
+        }
+      }
+    },
+    "outputPower": {
+      "type": "string",
+      "example": "1"
+    }
+  }
+}

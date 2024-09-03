@@ -155,7 +155,8 @@ public class HhiTerminalDeviceChannelUuid<T> extends AbstractHandlerBehaviour
         StringBuilder rpc = new StringBuilder();
         rpc.append(RPC_TAG_NETCONF_BASE);
         rpc.append("<edit-config>");
-        rpc.append("<target><" + DatastoreId.CANDIDATE + "/></target>");
+        rpc.append("<target><" + DatastoreId.RUNNING + "/></target>");
+        //rpc.append("<target><" + DatastoreId.CANDIDATE + "/></target>");
         rpc.append("<config>");
         rpc.append(filterEditConfig);
         rpc.append("</config>");
@@ -214,19 +215,21 @@ public class HhiTerminalDeviceChannelUuid<T> extends AbstractHandlerBehaviour
         String filter = setOpModeFilter(port, (String) component);
         String rpcReq = filteredEditConfigBuilder(filter);
 
+        log.warn("Sent uuid telemetry configuration: {}", rpcReq);
+
         try {
             session.rpc(rpcReq);
         } catch (Exception e) {
             log.error("Error writing operational mode on CANDIDATE", e);
         }
 
-        //log.info("Modulation config sent {}", rpcReq);
+        log.info("Modulation config sent {}", rpcReq);
 
-        try {
+        /*try {
             session.commit();
         } catch (NetconfException e) {
             log.error("Error committing operational mode", e);
-        }
+        }*/
     }
 
     /*
@@ -262,11 +265,11 @@ public class HhiTerminalDeviceChannelUuid<T> extends AbstractHandlerBehaviour
 
         log.info("Modulation config sent {}", rpcReq);
 
-        try {
+        /*try {
             session.commit();
         } catch (NetconfException e) {
             log.error("Error committing channel power", e);
-        }
+        }*/
     }
 
     private String getOperationalMode(ModulationScheme modulation) {
