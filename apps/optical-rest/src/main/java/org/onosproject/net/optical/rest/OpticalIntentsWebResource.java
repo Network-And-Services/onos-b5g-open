@@ -89,7 +89,7 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
 
     private static final Logger log = getLogger(OpticalIntentsWebResource.class);
 
-    private static final String JSON_INVALID = "Invalid json input";
+    private static final String JSON_INVALID = "Invalid json input: ";
     private static final String APP_ID = "appId";
     private static final String INGRESS_POINT = "ingressPoint";
     private static final String EGRESS_POINT = "egressPoint";
@@ -355,8 +355,16 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
                 objectNode.put("srcName", srcDeviceName);
                 objectNode.put("dstName", dstDeviceName);
 
-                objectNode.put("operationalMode", opticalConnectivityIntent.operationalMode.get().modeId);
-                objectNode.put("targetOutputPower", opticalConnectivityIntent.targetOutputPower.get());
+                if (opticalConnectivityIntent.operationalMode.isPresent()) {
+                    objectNode.put("operationalMode", opticalConnectivityIntent.operationalMode.get().modeId);
+                } else {
+                    objectNode.put("operationalMode", "unknown");
+                }
+                if (opticalConnectivityIntent.targetOutputPower.isPresent()) {
+                    objectNode.put("targetOutputPower", opticalConnectivityIntent.targetOutputPower.get());
+                } else {
+                    objectNode.put("targetOutputPower", "unknown");
+                }
 
                 //Only for INSTALLED intents
                 if (intentService.getIntentState(intent.key()) == IntentState.INSTALLED) {
