@@ -183,7 +183,7 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
      * @return ok
      */
     @POST
-    @Path("opModeConfig/{appId}/{key}/{power}")
+    @Path("opModeConfig/{appId}/{key}/{opModeId}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response intentOpModeConfig(@PathParam("appId") String appId,
