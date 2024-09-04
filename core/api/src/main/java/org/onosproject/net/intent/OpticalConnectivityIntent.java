@@ -23,6 +23,7 @@ import org.onosproject.net.OchSignal;
 import org.onosproject.net.OduSignalType;
 import org.onosproject.net.ResourceGroup;
 import org.onosproject.net.Path;
+import org.onosproject.net.OperationalMode;
 
 import java.util.Collections;
 import java.util.Optional;
@@ -40,9 +41,11 @@ public final class OpticalConnectivityIntent extends Intent {
     private final ConnectPoint dst;
     private final OduSignalType signalType;
     private final boolean isBidirectional;
-
     private final Optional<OchSignal> ochSignal;
     private final Optional<Path> suggestedPath;
+
+    public Optional<OperationalMode> operationalMode = Optional.empty();
+    public Optional<Double> targetOutputPower = Optional.empty();
 
     /**
      * Creates an optical connectivity intent between the specified

@@ -1,4 +1,4 @@
-package org.onosproject.net.optical.rest;
+package org.onosproject.net;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,14 +12,13 @@ import java.util.*;
 import static org.slf4j.LoggerFactory.getLogger;
 
 public class OperationalMode {
-    protected int modeId;
-    protected String modeType;
-
-    protected ObjectNode opModeCaps = new ObjectMapper().createObjectNode();
-    protected ObjectNode opModeCapsFec = new ObjectMapper().createObjectNode();
-    protected ArrayNode opModeCapsPenalties = new ObjectMapper().createArrayNode();
-    protected ObjectNode opModeCapsFilter = new ObjectMapper().createObjectNode();
-    protected ObjectNode opModeCapsConstraints = new ObjectMapper().createObjectNode();
+    public int modeId;
+    public String modeType;
+    public ObjectNode opModeCaps = new ObjectMapper().createObjectNode();
+    public ObjectNode opModeCapsFec = new ObjectMapper().createObjectNode();
+    public ArrayNode opModeCapsPenalties = new ObjectMapper().createArrayNode();
+    public ObjectNode opModeCapsFilter = new ObjectMapper().createObjectNode();
+    public ObjectNode opModeCapsConstraints = new ObjectMapper().createObjectNode();
 
     private static final Logger log = getLogger(OperationalMode.class);
 

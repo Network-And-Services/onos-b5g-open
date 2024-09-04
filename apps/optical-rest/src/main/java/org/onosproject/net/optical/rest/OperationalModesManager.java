@@ -1,5 +1,6 @@
 package org.onosproject.net.optical.rest;
 
+import org.onosproject.net.OperationalMode;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;

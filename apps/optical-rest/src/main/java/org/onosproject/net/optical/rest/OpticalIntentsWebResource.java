@@ -28,14 +28,17 @@ import org.onosproject.core.CoreService;
 import org.onosproject.net.ChannelSpacing;
 import org.onosproject.net.Device;
 import org.onosproject.net.AnnotationKeys;
+import org.onosproject.net.Direction;
 import org.onosproject.net.GridType;
 import org.onosproject.net.Link;
 import org.onosproject.net.DefaultPath;
 import org.onosproject.net.ConnectPoint;
+import org.onosproject.net.ModulationScheme;
 import org.onosproject.net.OchSignal;
 import org.onosproject.net.DeviceId;
-import org.onosproject.net.Port;
+import org.onosproject.net.OperationalMode;
 import org.onosproject.net.behaviour.ModulationConfig;
+import org.onosproject.net.behaviour.PowerConfig;
 import org.onosproject.net.device.DeviceService;
 import org.onosproject.net.flow.criteria.Criterion;
 import org.onosproject.net.flow.criteria.OchSignalCriterion;
@@ -69,6 +72,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static org.onosproject.net.optical.util.OpticalIntentUtility.createExplicitOpticalIntent;
@@ -99,6 +103,186 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
 
     @Context
     private UriInfo uriInfo;
+
+    /**
+     * Configure the specified output power on a pair of transceivers from JSON request.
+     *
+     * @param appId application identifier
+     * @param keyString   intent key
+     * @param powerString float dBm
+     * @return ok
+     */
+    @POST
+    @Path("powerConfig/{appId}/{key}/{power}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response intentPowerConfig(@PathParam("appId") String appId,
+                                      @PathParam("key") String keyString,
+                                      @PathParam("power") String powerString) {
+
+        final ApplicationId app = get(CoreService.class).getAppId(appId);
+        nullIsNotFound(app, "Application Id not found");
+
+        IntentService intentService = get(IntentService.class);
+        Intent intent = intentService.getIntent(Key.of(keyString, app));
+        if (intent == null) {
+            intent = intentService.getIntent(Key.of(Long.decode(keyString), app));
+        }
+        nullIsNotFound(intent, "Intent Id is not found");
+
+        Double outputTargetPower = Double.valueOf(powerString);
+
+        if ((intent instanceof OpticalConnectivityIntent)) {
+            log.warn("Received output power request {} dBm for intent {}", outputTargetPower, intent.id());
+
+            //Retrieve source and destination devices
+            DeviceService deviceService = get(DeviceService.class);
+            ConnectPoint src = ((OpticalConnectivityIntent) intent).getSrc();
+            ConnectPoint dst = ((OpticalConnectivityIntent) intent).getDst();
+
+            Device srcDevice = deviceService.getDevice(src.deviceId());
+            Device dstDevice = deviceService.getDevice(dst.deviceId());
+
+            //Configuring SOURCE device
+            if (srcDevice.is(PowerConfig.class)) {
+                log.warn("Configuring target output power {} on SRC device {}", outputTargetPower, srcDevice.id());
+                PowerConfig<Object> powerConfig = srcDevice.as(PowerConfig.class);
+                powerConfig.setTargetPower(src.port(), Direction.ALL, outputTargetPower);
+            } else {
+                log.error("SRC device is not power config");
+                throw new IllegalArgumentException(JSON_INVALID);
+            }
+
+            //Configuring DESTINATION device
+            if (dstDevice.is(ModulationConfig.class)) {
+                log.warn("Configuring target output power {} on DST device {}", outputTargetPower, dstDevice.id());
+                PowerConfig<Object> powerConfig = dstDevice.as(PowerConfig.class);
+                powerConfig.setTargetPower(dst.port(), Direction.ALL, outputTargetPower);
+            } else {
+                log.error("DST device is not power config");
+                throw new IllegalArgumentException(JSON_INVALID);
+            }
+
+            //Write the configured value in the intent object
+            ((OpticalConnectivityIntent) intent).targetOutputPower = Optional.of(outputTargetPower);
+
+        } else {
+            throw new IllegalArgumentException("Specified intent is not of type OpticalConnectivityIntent");
+        }
+
+        ObjectNode response = mapper().createObjectNode();
+        return Response.ok(response).build();
+    }
+
+    /**
+     * Configure the specified output power on a pair of transceivers from JSON request.
+     *
+     * @param appId application identifier
+     * @param keyString   intent key
+     * @param opModeString integer id
+     * @return ok
+     */
+    @POST
+    @Path("opModeConfig/{appId}/{key}/{power}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response intentOpModeConfig(@PathParam("appId") String appId,
+                                      @PathParam("key") String keyString,
+                                      @PathParam("opModeId") String opModeString) {
+
+        final ApplicationId app = get(CoreService.class).getAppId(appId);
+        nullIsNotFound(app, "Application Id not found");
+
+        IntentService intentService = get(IntentService.class);
+        Intent intent = intentService.getIntent(Key.of(keyString, app));
+        if (intent == null) {
+            intent = intentService.getIntent(Key.of(Long.decode(keyString), app));
+        }
+        nullIsNotFound(intent, "Intent Id is not found");
+
+        Integer opModeId = Integer.valueOf(opModeString);
+
+        if ((intent instanceof OpticalConnectivityIntent)) {
+            log.warn("Received operational mode configuration request {} for intent {}", opModeId, intent.id());
+
+            //Retrieve source and destination devices
+            DeviceService deviceService = get(DeviceService.class);
+            ConnectPoint src = ((OpticalConnectivityIntent) intent).getSrc();
+            ConnectPoint dst = ((OpticalConnectivityIntent) intent).getDst();
+
+            Device srcDevice = deviceService.getDevice(src.deviceId());
+            Device dstDevice = deviceService.getDevice(dst.deviceId());
+
+            //Retrieve the modulation format from the specified Operational Mode ID
+            OperationalModesManager manager = get(OperationalModesManager.class);
+            OperationalMode opMode = manager.getFromDatabase(opModeId);
+
+            if (opMode == null) {
+                log.error(JSON_INVALID + "operational mode not defined");
+                throw new IllegalArgumentException(JSON_INVALID + "operational mode not defined");
+            }
+
+            ModulationScheme modulationScheme = null;
+            String opModeModulation = opMode.opModeCaps.get("modulation-format").asText();
+            log.warn("Received operational mode {} correspond to modulation {}", opModeId, opModeModulation);
+
+            if (opModeModulation.equals("MODULATION_FORMAT_DP_QPSK")) {
+                modulationScheme = ModulationScheme.DP_QPSK;
+                log.warn("Selected modulation scheme {}", modulationScheme);
+            }
+            if (opModeModulation.equals("MODULATION_FORMAT_DP_8QAM")) {
+                modulationScheme = ModulationScheme.DP_8QAM;
+                log.warn("Selected modulation scheme {}", modulationScheme);
+            }
+            if (opModeModulation.equals("MODULATION_FORMAT_DP_16QAM")) {
+                modulationScheme = ModulationScheme.DP_16QAM;
+                log.warn("Selected modulation scheme {}", modulationScheme);
+            }
+            if (modulationScheme == null) {
+                log.error(JSON_INVALID + "modulation format not supported");
+                throw new IllegalArgumentException(JSON_INVALID + "modulation format not supported");
+            }
+
+            if (srcDevice == null) {
+                log.error("source device does not exist");
+                throw new IllegalArgumentException(JSON_INVALID + "source device does not exist");
+            }
+
+            if (dstDevice == null) {
+                log.error("destination device does not exist");
+                throw new IllegalArgumentException(JSON_INVALID + "destination device does not exist");
+            }
+
+            //Configuring SOURCE device
+            if (srcDevice.is(ModulationConfig.class)) {
+                log.warn("Going to set OPERATIONAL MODE {} on SRC device {}", opModeId, srcDevice.id());
+                ModulationConfig<Object> modulationConfig = srcDevice.as(ModulationConfig.class);
+                modulationConfig.setModulationScheme(src.port(), Direction.ALL, modulationScheme);
+            } else {
+                log.error("SRC device is not modulation config");
+                throw new IllegalArgumentException(JSON_INVALID);
+            }
+
+            //Configuring DESTINATION device
+            if (dstDevice.is(ModulationConfig.class)) {
+                log.warn("Going to set OPERATIONAL MODE {} on DST device {}", opModeId, dstDevice.id());
+                ModulationConfig<Object> modulationConfig = dstDevice.as(ModulationConfig.class);
+                modulationConfig.setModulationScheme(dst.port(), Direction.ALL, modulationScheme);
+            } else {
+                log.error("DST device is not modulation config");
+                throw new IllegalArgumentException(JSON_INVALID);
+            }
+
+            //Write the configured value in the intent object
+            ((OpticalConnectivityIntent) intent).operationalMode = Optional.of(opMode);
+
+        } else {
+            throw new IllegalArgumentException("Specified intent is not of type OpticalConnectivityIntent");
+        }
+
+        ObjectNode response = mapper().createObjectNode();
+        return Response.ok(response).build();
+    }
 
     /**
      * Submits a new optical intent.
@@ -170,6 +354,9 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
                 objectNode.put("dst", opticalConnectivityIntent.getDst().toString());
                 objectNode.put("srcName", srcDeviceName);
                 objectNode.put("dstName", dstDeviceName);
+
+                objectNode.put("operationalMode", opticalConnectivityIntent.operationalMode.get().modeId);
+                objectNode.put("targetOutputPower", opticalConnectivityIntent.targetOutputPower.get());
 
                 //Only for INSTALLED intents
                 if (intentService.getIntentState(intent.key()) == IntentState.INSTALLED) {
@@ -390,8 +577,12 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
             }
         }
 
-        String uuIdString = nullIsIllegal(json.get("uuid"), "uuid" + MISSING_MEMBER_MESSAGE).asText();
-        log.warn("Received intent request with uuid {}", uuIdString);
+        String uuIdString = json.get("uuid").asText();
+        if (uuIdString != null) {
+            log.warn("Received intent request with uuid {}", uuIdString);
+        } else {
+            log.warn("Received intent request without uuid");
+        }
 
         //Only for hhi demo
         /*Device device = deviceService.getDevice(ingress.deviceId());

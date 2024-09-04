@@ -15,6 +15,7 @@ import org.onosproject.net.GridType;
 import org.onosproject.net.Link;
 import org.onosproject.net.ModulationScheme;
 import org.onosproject.net.OchSignal;
+import org.onosproject.net.OperationalMode;
 import org.onosproject.net.behaviour.ModulationConfig;
 import org.onosproject.net.behaviour.PowerConfig;
 import org.onosproject.net.device.DeviceService;

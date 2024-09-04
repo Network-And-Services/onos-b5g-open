@@ -13,7 +13,7 @@ import org.onosproject.net.PortNumber;
 import org.onosproject.net.CltSignalType;
 import org.onosproject.net.OduSignalType;
 import org.onosproject.net.optical.device.OduCltPortHelper;
-import org.onosproject.net.optical.rest.OperationalMode;
+import org.onosproject.net.OperationalMode;
 import org.onosproject.net.optical.rest.OperationalModesManager;
 import org.slf4j.Logger;
 
