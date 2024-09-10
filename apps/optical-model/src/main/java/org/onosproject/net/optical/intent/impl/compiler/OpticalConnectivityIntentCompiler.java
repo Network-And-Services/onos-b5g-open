@@ -21,6 +21,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import org.onosproject.net.*;
 import org.onosproject.net.intent.*;
+import org.onosproject.net.optical.OmsPort;
 import org.onosproject.net.resource.Resource;
 import org.onosproject.net.resource.ResourceAllocation;
 import org.onosproject.net.resource.ResourceService;
@@ -111,8 +112,7 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
         // Check if source and destination are optical OCh ports
         ConnectPoint src = intent.getSrc();
         ConnectPoint dst = intent.getDst();
-        checkArgument(deviceService.getPort(src.deviceId(), src.port()) instanceof OchPort);
-        checkArgument(deviceService.getPort(dst.deviceId(), dst.port()) instanceof OchPort);
+
         List<Resource> ochPortResources = new LinkedList<>();
 
         log.info("Compiling optical connectivity intent between {} and {}", src, dst);
@@ -122,17 +122,29 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
         // TODO: try to release intent resources in IntentManager.
         resourceService.release(intent.key());
 
-        // Check OCH src and dst port availability
+        // In case of intent between OCH ports, check OCH src and dst port availability
         // If ports are not available, compilation fails
         // Else add port to resource reservation list
-        Resource srcPortResource = Resources.discrete(src.deviceId(), src.port()).resource();
-        Resource dstPortResource = Resources.discrete(dst.deviceId(), dst.port()).resource();
-        if (!Stream.of(srcPortResource, dstPortResource).allMatch(resourceService::isAvailable)) {
-            log.error("Ports for the intent are not available. Intent: {}", intent);
-            throw new OpticalIntentCompilationException("Ports for the intent are not available. Intent: " + intent);
+        // This is not executed for OMS ports because OMS ports remain available on other channels
+        if ((deviceService.getPort(src.deviceId(), src.port()) instanceof OchPort) &&
+             deviceService.getPort(dst.deviceId(), dst.port()) instanceof OchPort) {
+
+            Resource srcPortResource = Resources.discrete(src.deviceId(), src.port()).resource();
+            Resource dstPortResource = Resources.discrete(dst.deviceId(), dst.port()).resource();
+
+            if (!Stream.of(srcPortResource, dstPortResource).allMatch(resourceService::isAvailable)) {
+                log.error("Ports OCH for the intent are not available. Intent: {}", intent);
+                throw new OpticalIntentCompilationException("Ports for the intent are not available. Intent: " + intent);
+            }
+            ochPortResources.add(srcPortResource);
+            ochPortResources.add(dstPortResource);
         }
-        ochPortResources.add(srcPortResource);
-        ochPortResources.add(dstPortResource);
+
+        if ((deviceService.getPort(src.deviceId(), src.port()) instanceof OmsPort) &&
+                deviceService.getPort(dst.deviceId(), dst.port()) instanceof OmsPort) {
+            //TODO in case of OMS ports allocate the used channel in the resources to be reserved
+            log.warn("Intent between OMS ports, availability of channel on src and dst ports is not checked TODO.");
+        }
 
         // If there is a valid suggestedPath, use this path without further checking
         // Otherwise trigger path computation

@@ -206,6 +206,11 @@ public class OperationalModesWebResource extends AbstractWebResource {
 
         OperationalMode opMode = manager.getFromDatabase(Integer.decode(id));
 
+        if (opMode == null) {
+            log.error(JSON_INVALID + "operational mode not defined");
+            throw new IllegalArgumentException(JSON_INVALID + "operational mode not defined");
+        }
+
         return ok(opMode.encode()).build();
     }
 

@@ -105,7 +105,7 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
     private UriInfo uriInfo;
 
     /**
-     * Configure the specified output power on a pair of transceivers from JSON request.
+     * Configure the specified target output power on the intent endpoints.
      *
      * @param appId application identifier
      * @param keyString   intent key
@@ -175,7 +175,7 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
     }
 
     /**
-     * Configure the specified output power on a pair of transceivers from JSON request.
+     * Configure the specified operational mode on the intent endpoints.
      *
      * @param appId application identifier
      * @param keyString   intent key

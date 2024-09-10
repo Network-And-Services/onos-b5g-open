@@ -176,6 +176,9 @@ public final class OpticalIntentUtility {
         Port dstPort = ds.getPort(egress.deviceId(), egress.port());
 
         if (srcPort instanceof OduCltPort && dstPort instanceof OduCltPort) {
+
+            log.info("Creating an optical intent between ODU connect points {} and {}", ingress, egress);
+
             Device srcDevice = ds.getDevice(ingress.deviceId());
             Device dstDevice = ds.getDevice(egress.deviceId());
 
@@ -214,9 +217,13 @@ public final class OpticalIntentUtility {
                         "ingress {} of type {}; egress {} of type {}",
                         ingress, srcDevice.type(), egress, dstDevice.type());
             }
-        } else if (srcPort instanceof OchPort && dstPort instanceof OchPort) {
 
-            log.info("Creating an optical intent between connect points {} and {}", ingress, egress);
+            return intent;
+        }
+
+        if (srcPort instanceof OchPort && dstPort instanceof OchPort) {
+
+            log.info("Creating an optical intent between OCH connect points {} and {}", ingress, egress);
 
             OduSignalType signalType = ((OchPort) srcPort).signalType();
             intent = OpticalConnectivityIntent.builder()
@@ -229,12 +236,33 @@ public final class OpticalIntentUtility {
                     .ochSignal(Optional.ofNullable(signal))
                     .suggestedPath(Optional.ofNullable(suggestedPath))
                     .build();
-        } else {
-            log.error("Unable to create explicit optical intent {} and {}, types {} and {}",
-                    ingress, egress,
-                    srcPort.type(), dstPort.type());
+
+            return intent;
         }
 
-        return intent;
+        if (srcPort instanceof OmsPort && dstPort instanceof OmsPort) {
+
+            log.info("Creating an optical intent between OMS connect points {} and {}", ingress, egress);
+
+            OduSignalType signalType = OduSignalType.ODU4;
+            intent = OpticalConnectivityIntent.builder()
+                    .appId(appId)
+                    .key(key)
+                    .src(ingress)
+                    .dst(egress)
+                    .signalType(signalType)
+                    .bidirectional(bidirectional)
+                    .ochSignal(Optional.ofNullable(signal))
+                    .suggestedPath(Optional.ofNullable(suggestedPath))
+                    .build();
+
+            return intent;
+        }
+
+        log.error("Unable to create explicit optical intent {} and {}, types {} and {}",
+                    ingress, egress,
+                    srcPort.type(), dstPort.type());
+
+        return null;
     }
 }

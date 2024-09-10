@@ -62,16 +62,16 @@ public class MultiBandLambdaQuery extends AbstractHandlerBehaviour implements La
 
         Set<OchSignal> lambdas = new HashSet<>();
 
-        log.info("Quering L_Band");
+        log.debug("Device {} - Quering L_Band", data().deviceId());
         addChannels(lambdas, L_BAND, lBandLambdaCount);
 
-        log.info("Quering C_Band");
+        log.debug("Device {} - Quering C_Band", data().deviceId());
         addChannels(lambdas, C_BAND, cBandLambdaCount);
 
-        log.info("Quering S_Band");
+        log.debug("Device {} - Quering S_Band", data().deviceId());
         addChannels(lambdas, S_BAND, sBandLambdaCount);
 
-        log.info("Quering O_Band");
+        log.debug("Device {} - Quering O_Band", data().deviceId());
         addChannels(lambdas, O_BAND, oBandLambdaCount);
 
         return lambdas;
@@ -95,7 +95,7 @@ public class MultiBandLambdaQuery extends AbstractHandlerBehaviour implements La
                     GridType.DWDM,
                     channelSpacing);
 
-            log.info("Created OchSignal {}", ochSignal);
+            log.debug("Created OchSignal {}", ochSignal);
 
             lambdas.add(ochSignal);
         }
