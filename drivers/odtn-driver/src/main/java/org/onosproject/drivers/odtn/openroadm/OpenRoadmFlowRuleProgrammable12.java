@@ -275,8 +275,8 @@ public class OpenRoadmFlowRuleProgrammable12
         log.info("Retrieved name from device {}", name);
 
         if (flowRule == null) {
-            log.error("OPENROADM {}: name {} not in cache... delete editConfig triggered", did(), name);
-            editConfigDeleteConnection(name);
+            log.error("OPENROADM {}: name {} not in cache... delete editConfig NOT - triggered", did(), name);
+            //editConfigDeleteConnection(name);
             return null;
         } else {
             openRoadmLog("connection retrieved {}", name);
