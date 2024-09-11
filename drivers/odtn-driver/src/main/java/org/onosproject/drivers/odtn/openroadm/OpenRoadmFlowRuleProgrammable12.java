@@ -56,7 +56,7 @@ public class OpenRoadmFlowRuleProgrammable12
   extends AbstractHandlerBehaviour implements FlowRuleProgrammable {
 
     private static final Logger log =
-      LoggerFactory.getLogger(OpenRoadmFlowRuleProgrammable.class);
+      LoggerFactory.getLogger(OpenRoadmFlowRuleProgrammable12.class);
 
     private static final String RPC_TAG_NETCONF_BASE =
       "<rpc xmlns='urn:ietf:params:xml:ns:netconf:base:1.0'>";
@@ -84,7 +84,7 @@ public class OpenRoadmFlowRuleProgrammable12
      * <p>
      */
     private void openRoadmLog(String format, Object... arguments) {
-        log.debug("OPENROADM {}: " + format, did(), arguments);
+        log.info("OPENROADM {}: " + format, did(), arguments);
     }
 
     /**
@@ -158,6 +158,8 @@ public class OpenRoadmFlowRuleProgrammable12
     public Collection<FlowEntry> getFlowEntries() {
         List<HierarchicalConfiguration> conf = getDeviceConnections();
         List<FlowEntry> entries = new ArrayList<>();
+
+        //Retrieve list of flowrules from device
         for (HierarchicalConfiguration c : conf) {
             openRoadmLog("Existing connection {}", c);
             FlowRule r = buildFlowrule(c);
@@ -167,6 +169,8 @@ public class OpenRoadmFlowRuleProgrammable12
                 entries.add(e);
             }
         }
+
+        //Retrieve list of flowrules directle from cache
         return entries;
     }
 
@@ -267,8 +271,11 @@ public class OpenRoadmFlowRuleProgrammable12
         }
         // If the flow entry is not in the cache: return null
         FlowRule flowRule = getConnectionCache().get(did(), name);
+
+        log.info("Retrieved name from device {}", name);
+
         if (flowRule == null) {
-            log.error("OPENROADM {}: name {} not in cache. delete editConfig", did(), name);
+            log.error("OPENROADM {}: name {} not in cache... delete editConfig triggered", did(), name);
             editConfigDeleteConnection(name);
             return null;
         } else {
@@ -291,7 +298,7 @@ public class OpenRoadmFlowRuleProgrammable12
         sb.append("  </interface>");
         sb.append(ORG_OPENROADM_DEVICE_CLOSE_TAG);
         if (!editConfig(sb.toString())) {
-            log.error("OPENROADM {}: failed to delete interface{}", did(), interfaceName);
+            log.error("OPENROADM {}: failed to delete interface {}", did(), interfaceName);
         }
     }
 
@@ -424,7 +431,7 @@ public class OpenRoadmFlowRuleProgrammable12
             sb.append("</interface>");
             sb.append(ORG_OPENROADM_DEVICE_CLOSE_TAG);
             if (!editConfig(sb.toString())) {
-                log.error("OPENROADM {}: failed to create interface\n {}", did(), sb.toString());
+                log.error("OPENROADM {}: failed to create interface {}", did(), sb.toString());
                 return false;
             }
         }
@@ -451,7 +458,7 @@ public class OpenRoadmFlowRuleProgrammable12
             sb.append("</interface>");
             sb.append(ORG_OPENROADM_DEVICE_CLOSE_TAG);
             if (!editConfig(sb.toString())) {
-                log.error("OPENROADM {}: failed to create interface\n {}", did(), sb.toString());
+                log.error("OPENROADM {}: failed to create interface {}", did(), sb.toString());
                 return false;
             }
         }
