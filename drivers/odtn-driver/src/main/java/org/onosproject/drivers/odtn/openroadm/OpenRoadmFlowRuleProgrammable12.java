@@ -158,10 +158,11 @@ public class OpenRoadmFlowRuleProgrammable12
     public Collection<FlowEntry> getFlowEntries() {
         List<HierarchicalConfiguration> conf = getDeviceConnections();
         List<FlowEntry> entries = new ArrayList<>();
+        openRoadmLog("Device {} getFlowEntries ()", did());
 
         //Retrieve list of flowrules from device
         for (HierarchicalConfiguration c : conf) {
-            openRoadmLog("Existing connection {}", c);
+            openRoadmLog("Device {} existing connections {}", did(), conf.size());
             FlowRule r = buildFlowrule(c);
             if (r != null) {
                 FlowEntry e = new DefaultFlowEntry(r, FlowEntry.FlowEntryState.ADDED, 0, 0, 0);
@@ -170,7 +171,7 @@ public class OpenRoadmFlowRuleProgrammable12
             }
         }
 
-        //Retrieve list of flowrules directle from cache
+        //Returns confirmed rules
         return entries;
     }
 
@@ -275,8 +276,8 @@ public class OpenRoadmFlowRuleProgrammable12
         log.info("Retrieved name from device {}", name);
 
         if (flowRule == null) {
-            log.error("OPENROADM {}: name {} not in cache... delete editConfig NOT - triggered", did(), name);
-            //editConfigDeleteConnection(name);
+            log.error("OPENROADM {}: name {} not in cache... delete editConfig triggered", did(), name);
+            editConfigDeleteConnection(name);
             return null;
         } else {
             openRoadmLog("connection retrieved {}", name);
