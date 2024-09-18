@@ -81,6 +81,8 @@ public class OperationalModesWebResource extends AbstractWebResource {
 
             manager.addToDatabase(opmode);
 
+            log.info("POST opmode from stream {} from REST", opmode.modeId);
+
             return Response.ok().build();
         } catch (IOException ioe) {
             throw new IllegalArgumentException(ioe);
@@ -106,6 +108,8 @@ public class OperationalModesWebResource extends AbstractWebResource {
         OperationalMode mode = new OperationalMode(Integer.decode(id), type);
 
         manager.addToDatabase(mode);
+
+        log.info("POST opmode empty {} from REST", mode.modeId);
 
         ObjectNode root = mapper().createObjectNode();
         return Response.ok(root).build();
@@ -172,6 +176,7 @@ public class OperationalModesWebResource extends AbstractWebResource {
 
         manager.addToDatabase(mode);
 
+        log.info("POST opmode random {} from REST", mode.modeId);
         return Response.ok(mode.encode()).build();
     }
 
@@ -189,6 +194,7 @@ public class OperationalModesWebResource extends AbstractWebResource {
         ObjectNode objectNode = mapper().createObjectNode();
         objectNode.put("available-op-modes", manager.getRegisteredModes());
 
+        log.info("GET opmodes {} from REST", manager.getRegisteredModes());
         return ok(objectNode).build();
     }
 
@@ -204,13 +210,14 @@ public class OperationalModesWebResource extends AbstractWebResource {
     public Response getOperationalMode(@QueryParam("id") String id) {
         OperationalModesManager manager = get(OperationalModesManager.class);
 
-        OperationalMode opMode = manager.getFromDatabase(Integer.decode(id));
+        OperationalMode opMode = manager.getFromDatabase(Integer.valueOf(id));
 
         if (opMode == null) {
             log.error(JSON_INVALID + "operational mode not defined");
             throw new IllegalArgumentException(JSON_INVALID + "operational mode not defined");
         }
 
+        log.info("GET opmode {} from REST", id);
         return ok(opMode.encode()).build();
     }
 
@@ -228,6 +235,7 @@ public class OperationalModesWebResource extends AbstractWebResource {
 
         manager.removeFromDatabase(Integer.valueOf(id));
 
+        log.info("DELETE opmode {} from REST", id);
         return Response.ok().build();
     }
 

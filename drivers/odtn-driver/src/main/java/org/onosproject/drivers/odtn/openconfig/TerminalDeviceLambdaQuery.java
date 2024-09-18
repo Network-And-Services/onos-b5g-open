@@ -42,7 +42,7 @@ public class TerminalDeviceLambdaQuery extends CBandLambdaQuery {
 
         // Profile 1
         channelSpacing = ChannelSpacing.CHL_50GHZ;
-        lambdaCount = 116;
+        lambdaCount = 126;
         slotGranularity = 4;
         return super.queryLambdas(port);
 
