@@ -23,8 +23,7 @@ import org.onosproject.net.OchSignal;
 import org.onosproject.net.OduSignalType;
 import org.onosproject.net.ResourceGroup;
 import org.onosproject.net.Path;
-import org.onosproject.net.OperationalMode;
-
+import org.onosproject.net.optical.ocopmode.OcOperationalMode;
 import java.util.Collections;
 import java.util.Optional;
 
@@ -44,7 +43,7 @@ public final class OpticalConnectivityIntent extends Intent {
     private final Optional<OchSignal> ochSignal;
     private final Optional<Path> suggestedPath;
 
-    public Optional<OperationalMode> operationalMode = Optional.empty();
+    public Optional<OcOperationalMode> operationalMode = Optional.empty();
     public Optional<Double> targetOutputPower = Optional.empty();
 
     /**

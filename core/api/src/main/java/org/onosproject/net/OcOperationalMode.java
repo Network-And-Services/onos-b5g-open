@@ -1,26 +1,43 @@
-package org.onosproject.net;
+package org.onosproject.net.optical.ocopmode;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.apache.commons.configuration.HierarchicalConfiguration;
+import org.onosproject.net.DeviceId;
 import org.slf4j.Logger;
 
 import java.util.*;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-public class OperationalMode {
+/**
+ * Implementation of Operational Mode descritpion following OpenConfig standard.
+ *
+ * <p>
+ * See openconfig-terminal-device-properties:
+ * --- openconfig-version: 0.2.0
+ * --- https://openconfig.net/projects/models/schemadocs/yangdoc/openconfig-terminal-device-properties.html
+ *
+ * Imports:
+ * --- openconfig-extensions
+ * --- openconfig-transport-types
+ * --- openconfig-terminal-device-property-types
+ * </p>
+ */
+
+public class OcOperationalMode {
     public int modeId;
     public String modeType;
+    public Set<DeviceId> supportingDevices = new HashSet<>();
     public ObjectNode opModeCaps = new ObjectMapper().createObjectNode();
     public ObjectNode opModeCapsFec = new ObjectMapper().createObjectNode();
     public ArrayNode opModeCapsPenalties = new ObjectMapper().createArrayNode();
     public ObjectNode opModeCapsFilter = new ObjectMapper().createObjectNode();
     public ObjectNode opModeCapsConstraints = new ObjectMapper().createObjectNode();
 
-    private static final Logger log = getLogger(OperationalMode.class);
+    private static final Logger log = getLogger(OcOperationalMode.class);
 
     private static final Set<String> keysOpModeCaps = new HashSet<>(Arrays.asList(
             //operational-mode-capabilities.state
@@ -45,36 +62,35 @@ public class OperationalMode {
             "min-central-frequency", "max-central-frequency", "grid-type", "adjustment-granularity",
             "min-channel-spacing", "min-output-power", "max-output-power"));
 
-    public OperationalMode(int id, String type) {
+    public OcOperationalMode(int id, String type) {
         modeId = id;
         modeType = type;
 
-        log.info("New OperationalMode created with id {}", modeId);
+        log.info("New OperationalMode created with id {} - no description", modeId);
     }
 
-    public OperationalMode() {
+    /**
+     * Create an empty OpMode to be filled from xml or json.
+     */
+    public OcOperationalMode() {
         Random random = new Random();
 
         modeId = random.nextInt(9999);
         modeType = "TRANSCEIVER_MODE_TYPE_EXPLICIT";
 
         for (String s : keysOpModeCaps) {
-            // Esegue un'azione specifica su ogni elemento di tipo stringa
             addOpModeCaps(s, String.valueOf(random.nextInt(100)));
         }
 
         for (String s : keysOpModeCapsFec) {
-            // Esegue un'azione specifica su ogni elemento di tipo stringa
             addOpModeCaps(s, String.valueOf(random.nextInt(100)));
         }
 
         for (String s : keysOpModeCapsFilter) {
-            // Esegue un'azione specifica su ogni elemento di tipo stringa
             addOpModeCaps(s, String.valueOf(random.nextInt(100)));
         }
 
         for (String s : keysOpModeCapsConstraints) {
-            // Esegue un'azione specifica su ogni elemento di tipo stringa
             addOpModeCaps(s, String.valueOf(random.nextInt(100)));
         }
 
@@ -82,9 +98,12 @@ public class OperationalMode {
         addOpModeCapsPenalty("PMD_PS", "800.0", "10.0");
         addOpModeCapsPenalty("PDL_DB", "800.0", "10.0");
 
-        log.info("New OperationalMode created with id {}", modeId);
+        log.info("New OperationalMode created with id {} - random description", modeId);
     }
 
+    /**
+     * Create an OpMode with random description.
+     */
     public boolean addOpModeCaps(String key, String value) {
 
         log.info("OpMode {} adding leaf  {}-{}", modeId, key, value);
@@ -133,6 +152,15 @@ public class OperationalMode {
 
         ocOperationalMode.put("mode-id", modeId);
         ocOperationalMode.put("mode-type", modeType);
+
+        ArrayNode devices = new ObjectMapper().createArrayNode();
+        for (DeviceId deviceId :  supportingDevices) {
+            ObjectNode deviceNode = new ObjectMapper().createObjectNode();
+            deviceNode.put("id", deviceId.toString());
+            devices.add(deviceNode);
+        }
+        ocOperationalMode.putPOJO("supporting-devices",devices);
+
         ocOperationalMode.put("operational-mode-capabilities", opModeCaps);
         ocOperationalMode.put("fec", opModeCapsFec);
         ocOperationalMode.put("filter", opModeCapsFilter);
@@ -142,9 +170,12 @@ public class OperationalMode {
         return ocOperationalMode;
     }
 
-    static public OperationalMode decodeFromJson(ObjectNode node) {
+    /**
+     * Decode a json description of an OpenConfig Operational Mode.
+     */
+    static public OcOperationalMode decodeFromJson(ObjectNode node) {
 
-        OperationalMode opMode = new OperationalMode(node.get("mode-id").asInt(),node.get("mode-type").asText());
+        OcOperationalMode opMode = new OcOperationalMode(node.get("mode-id").asInt(),node.get("mode-type").asText());
 
         JsonNode opModeCapsJson = node.get("operational-mode-capabilities");
         for (String key : keysOpModeCaps) {
@@ -174,49 +205,55 @@ public class OperationalMode {
                     penalty.get("penalty-value").asText());
         }
 
+        log.info("OpMode {} correctly parsed from json", opMode.modeId);
         return opMode;
     }
 
-    static public OperationalMode decodeFromXml(HierarchicalConfiguration mode) {
+    /**
+     * Decode a xml description of an OpenConfig Operational Mode.
+     */
+    static public OcOperationalMode decodeFromXml(HierarchicalConfiguration mode) {
         int id = Integer.decode(mode.getString("state/mode-id"));
         String type = mode.getString("state/mode-type");
 
-        OperationalMode opMode = new OperationalMode(id, type);
+        OcOperationalMode opMode = new OcOperationalMode(id, type);
 
-        log.info("STEP 1 keysOpModeCaps");
+        log.debug("STEP 1 keysOpModeCaps");
         for (String key : keysOpModeCaps) {
             opMode.addOpModeCaps(key, mode.getString("explicit-mode/operational-mode-capabilities/state/" + key));
         }
 
-        log.info("STEP 2 keysOpModeCapsFec");
+        log.debug("STEP 2 keysOpModeCapsFec");
         for (String key : keysOpModeCapsFec) {
             opMode.addOpModeCaps(key, mode.getString("explicit-mode/operational-mode-capabilities/fec/state/" + key));
         }
 
-        log.info("STEP 3 keysOpModeCapsFilter");
+        log.debug("STEP 3 keysOpModeCapsFilter");
         for (String key : keysOpModeCapsFilter) {
             opMode.addOpModeCaps(key, mode.getString("explicit-mode/operational-mode-capabilities/filter/state/" + key));
         }
 
-        log.info("STEP 4 keysOpModeCapsConstraints");
+        log.debug("STEP 4 keysOpModeCapsConstraints");
         for (String key : keysOpModeCapsConstraints) {
             opMode.addOpModeCaps(key, mode.getString("explicit-mode/optical-channel-config-value-constraints/state/" + key));
         }
 
-        //penalties
-        log.info("STEP 5 penalties");
-        HierarchicalConfiguration penalties = mode.configurationAt("explicit-mode/operational-mode-capabilities/penalties");
-        List<HierarchicalConfiguration> listPenalties = penalties.configurationsAt("penalty");
+        if (mode.containsKey("penalty")) {
+            log.debug("STEP 5 penalties");
+            HierarchicalConfiguration penalties = mode.configurationAt("explicit-mode/operational-mode-capabilities/penalties");
+            List<HierarchicalConfiguration> listPenalties = penalties.configurationsAt("penalty");
 
-        for (HierarchicalConfiguration penalty : listPenalties) {
-            //log.info("--- added penalty subfield.");
+            for (HierarchicalConfiguration penalty : listPenalties) {
+                log.debug("--- added penalty subfield.");
 
-            opMode.addOpModeCapsPenalty(
-                    penalty.getString("state/parameter-and-unit"),
-                    penalty.getString("state/up-to-boundary"),
-                    penalty.getString("state/penalty-value"));
+                opMode.addOpModeCapsPenalty(
+                        penalty.getString("state/parameter-and-unit"),
+                        penalty.getString("state/up-to-boundary"),
+                        penalty.getString("state/penalty-value"));
+            }
         }
 
+        log.info("OpMode {} correctly parsed from xml", opMode.modeId);
         return opMode;
     }
 }
