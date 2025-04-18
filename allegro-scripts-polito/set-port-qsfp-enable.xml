@@ -1,0 +1,12 @@
+<components xmlns="http://openconfig.net/yang/platform">
+    <component>
+      <name>qsfp-9</name>
+      <port>
+	<optical-port xmlns="http://openconfig.net/yang/transport-line-common">
+          <config>
+            <admin-state>ENABLED</admin-state>
+          </config>
+        </optical-port>
+      </port>
+    </component>
+</components>

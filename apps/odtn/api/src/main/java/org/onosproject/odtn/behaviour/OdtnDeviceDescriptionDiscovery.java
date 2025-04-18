@@ -45,6 +45,11 @@ public interface OdtnDeviceDescriptionDiscovery
     String OC_TYPE = "oc-type";
 
     /**
+     * Annotations key intended for an OpenConfig generic component, which stores component operational status.
+     */
+    String OC_STATUS = "oc-status";
+
+    /**
      * Annotations key intended for a Port, which stores OpenConfig optical channel component associated to the port.
      */
     String OC_OPTICAL_CHANNEL_NAME = "oc-optical-channel-name";

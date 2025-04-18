@@ -1,0 +1,77 @@
+{
+  "devices": {
+    "netconf:10.100.101.21:2022": {
+      "netconf": {
+        "ip": "10.100.101.21",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : -100,
+        "gridY" : 200,
+        "name": "ASE",
+        "driver": "client-line-terminal-device"
+      }
+    },
+    "netconf:10.100.101.22:2022": {
+      "netconf": {
+        "ip": "10.100.101.22",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 600,
+        "gridY" : 200,
+        "name": "OSA",
+        "driver": "client-line-terminal-device"
+      }
+    },
+    "netconf:10.100.101.11:2022": {
+      "netconf": {
+        "ip": "10.100.101.11",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"gridX" : -100,
+        "gridY" : 400,
+        "name": "vROADM-1",
+        "driver": "openroadm"
+      }
+    },
+    "netconf:10.100.101.12:2022": {
+      "netconf": {
+        "ip": "10.100.101.12",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"gridX" : 250,
+        "gridY" : 650,
+        "name": "vROADM-2",
+        "driver": "openroadm"
+      }
+    },
+    "netconf:10.100.101.13:2022": {
+      "netconf": {
+        "ip": "10.100.101.13",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"gridX" : 600,
+        "gridY" : 400,
+        "name": "vROADM-3",
+        "driver": "openroadm"
+      }
+    }
+  }
+}
+

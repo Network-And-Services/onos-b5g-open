@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<get xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <filter>
+    <terminal-device xmlns='http://openconfig.net/yang/terminal-device'>
+        <operational-modes/>
+    </terminal-device>
+  </filter>
+</get>

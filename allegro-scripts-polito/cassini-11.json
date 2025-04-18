@@ -1,0 +1,17 @@
+{
+  "devices" : {
+    "netconf:192.168.88.11:830" : {
+        "basic" : {
+        "name":"Cassini-1",
+        "driver":"cassini-polito-device"
+      },
+      "netconf" : {
+        "ip" : "192.168.88.11",
+        "port" : "830",
+        "username" : "ocnos",
+        "password" : "ocnos",
+        "idle-timeout" : "0"
+      }
+    }
+  }
+}

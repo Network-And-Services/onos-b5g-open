@@ -1,0 +1,16 @@
+{
+  "links": {
+    "netconf:192.168.88.31:830/5201-netconf:10.100.101.11:2022/12": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+    "netconf:10.100.101.11:2022/21-netconf:192.168.88.33:830/4101": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+    "netconf:192.168.88.31:830/5202-netconf:192.168.88.32:830/3001": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+    "netconf:192.168.88.32:830/5201-netconf:192.168.88.33:830/4102": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+
+    "netconf:10.100.101.21:2022/2001-netconf:192.168.88.31:830/3001": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+    "netconf:192.168.88.33:830/3001-netconf:10.100.101.22:2022/2001": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+    "netconf:10.100.101.21:2022/2002-netconf:192.168.88.31:830/3001": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+    "netconf:192.168.88.33:830/3001-netconf:10.100.101.22:2022/2002": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+    "netconf:10.100.101.21:2022/2003-netconf:192.168.88.31:830/3001": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+    "netconf:192.168.88.33:830/3001-netconf:10.100.101.22:2022/2003": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}}	
+  }
+}
+

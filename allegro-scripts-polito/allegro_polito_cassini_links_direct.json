@@ -1,0 +1,9 @@
+{
+  "links": {
+    "netconf:192.168.88.11:830/102-netconf:192.168.88.12:830/103": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+    "netconf:192.168.88.11:830/104-netconf:192.168.88.12:830/105": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+    "netconf:192.168.88.12:830/103-netconf:192.168.88.11:830/102": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+    "netconf:192.168.88.12:830/105-netconf:192.168.88.11:830/104": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}}
+  }
+}
+

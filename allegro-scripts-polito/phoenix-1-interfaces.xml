@@ -1,0 +1,3147 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:3d842c5d-ec2d-42cc-87a9-edfb29de406c">
+  <data>
+    <interfaces xmlns="http://openconfig.net/yang/interfaces">
+      <interface>
+        <name>logical-channel-24100101</name>
+        <config>
+          <name>logical-channel-24100101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-1</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100102</name>
+        <config>
+          <name>logical-channel-24100102</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100102</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-1</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100103</name>
+        <config>
+          <name>logical-channel-24100103</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100103</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-1</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100104</name>
+        <config>
+          <name>logical-channel-24100104</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100104</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-1</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100201</name>
+        <config>
+          <name>logical-channel-24100201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-2</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100202</name>
+        <config>
+          <name>logical-channel-24100202</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100202</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-2</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100203</name>
+        <config>
+          <name>logical-channel-24100203</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100203</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-2</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100204</name>
+        <config>
+          <name>logical-channel-24100204</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100204</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-2</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100301</name>
+        <config>
+          <name>logical-channel-24100301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-3</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100302</name>
+        <config>
+          <name>logical-channel-24100302</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100302</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-3</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100303</name>
+        <config>
+          <name>logical-channel-24100303</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100303</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-3</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100304</name>
+        <config>
+          <name>logical-channel-24100304</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100304</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-3</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100401</name>
+        <config>
+          <name>logical-channel-24100401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-4</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100402</name>
+        <config>
+          <name>logical-channel-24100402</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100402</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-4</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100403</name>
+        <config>
+          <name>logical-channel-24100403</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100403</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-4</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100404</name>
+        <config>
+          <name>logical-channel-24100404</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100404</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-4</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100501</name>
+        <config>
+          <name>logical-channel-24100501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-5</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100601</name>
+        <config>
+          <name>logical-channel-24100601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-6</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100701</name>
+        <config>
+          <name>logical-channel-24100701</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100701</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-7</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100801</name>
+        <config>
+          <name>logical-channel-24100801</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100801</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-8</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100901</name>
+        <config>
+          <name>logical-channel-24100901</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100901</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-9</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100902</name>
+        <config>
+          <name>logical-channel-24100902</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100902</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-9</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100903</name>
+        <config>
+          <name>logical-channel-24100903</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100903</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-9</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24100904</name>
+        <config>
+          <name>logical-channel-24100904</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24100904</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-9</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101001</name>
+        <config>
+          <name>logical-channel-24101001</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101001</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-10</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101002</name>
+        <config>
+          <name>logical-channel-24101002</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101002</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-10</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101003</name>
+        <config>
+          <name>logical-channel-24101003</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101003</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-10</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101004</name>
+        <config>
+          <name>logical-channel-24101004</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101004</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-10</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101101</name>
+        <config>
+          <name>logical-channel-24101101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-11</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101102</name>
+        <config>
+          <name>logical-channel-24101102</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101102</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-11</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101103</name>
+        <config>
+          <name>logical-channel-24101103</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101103</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-11</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101104</name>
+        <config>
+          <name>logical-channel-24101104</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101104</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-11</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101201</name>
+        <config>
+          <name>logical-channel-24101201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-12</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101202</name>
+        <config>
+          <name>logical-channel-24101202</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101202</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-12</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101203</name>
+        <config>
+          <name>logical-channel-24101203</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101203</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-12</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101204</name>
+        <config>
+          <name>logical-channel-24101204</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101204</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>true</enabled>
+          <admin-status>UP</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-12</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101301</name>
+        <config>
+          <name>logical-channel-24101301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-13</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101401</name>
+        <config>
+          <name>logical-channel-24101401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-14</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101501</name>
+        <config>
+          <name>logical-channel-24101501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-15</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24101601</name>
+        <config>
+          <name>logical-channel-24101601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+        </config>
+        <state>
+          <name>logical-channel-24101601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-16</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100101</name>
+        <config>
+          <name>logical-channel-23100101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-1</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100102</name>
+        <config>
+          <name>logical-channel-23100102</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100102</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-1</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100103</name>
+        <config>
+          <name>logical-channel-23100103</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100103</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-1</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100104</name>
+        <config>
+          <name>logical-channel-23100104</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100104</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-1</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100201</name>
+        <config>
+          <name>logical-channel-23100201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-2</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100202</name>
+        <config>
+          <name>logical-channel-23100202</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100202</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-2</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100203</name>
+        <config>
+          <name>logical-channel-23100203</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100203</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-2</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100204</name>
+        <config>
+          <name>logical-channel-23100204</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100204</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-2</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100301</name>
+        <config>
+          <name>logical-channel-23100301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-3</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100302</name>
+        <config>
+          <name>logical-channel-23100302</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100302</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-3</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100303</name>
+        <config>
+          <name>logical-channel-23100303</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100303</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-3</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100304</name>
+        <config>
+          <name>logical-channel-23100304</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100304</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-3</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100401</name>
+        <config>
+          <name>logical-channel-23100401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-4</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100402</name>
+        <config>
+          <name>logical-channel-23100402</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100402</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-4</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100403</name>
+        <config>
+          <name>logical-channel-23100403</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100403</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-4</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100404</name>
+        <config>
+          <name>logical-channel-23100404</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100404</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-4</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100501</name>
+        <config>
+          <name>logical-channel-23100501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-5</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100601</name>
+        <config>
+          <name>logical-channel-23100601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-6</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100701</name>
+        <config>
+          <name>logical-channel-23100701</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100701</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-7</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100801</name>
+        <config>
+          <name>logical-channel-23100801</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100801</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-8</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100901</name>
+        <config>
+          <name>logical-channel-23100901</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100901</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-9</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100902</name>
+        <config>
+          <name>logical-channel-23100902</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100902</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-9</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100903</name>
+        <config>
+          <name>logical-channel-23100903</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100903</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-9</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23100904</name>
+        <config>
+          <name>logical-channel-23100904</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23100904</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-9</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101001</name>
+        <config>
+          <name>logical-channel-23101001</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101001</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-10</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101002</name>
+        <config>
+          <name>logical-channel-23101002</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101002</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-10</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101003</name>
+        <config>
+          <name>logical-channel-23101003</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101003</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-10</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101004</name>
+        <config>
+          <name>logical-channel-23101004</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101004</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-10</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101101</name>
+        <config>
+          <name>logical-channel-23101101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-11</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101102</name>
+        <config>
+          <name>logical-channel-23101102</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101102</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-11</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101103</name>
+        <config>
+          <name>logical-channel-23101103</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101103</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-11</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101104</name>
+        <config>
+          <name>logical-channel-23101104</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101104</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-11</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101201</name>
+        <config>
+          <name>logical-channel-23101201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-12</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101202</name>
+        <config>
+          <name>logical-channel-23101202</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101202</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-12</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101203</name>
+        <config>
+          <name>logical-channel-23101203</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101203</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-12</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101204</name>
+        <config>
+          <name>logical-channel-23101204</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101204</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-12</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101301</name>
+        <config>
+          <name>logical-channel-23101301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-13</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101401</name>
+        <config>
+          <name>logical-channel-23101401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-14</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101501</name>
+        <config>
+          <name>logical-channel-23101501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-15</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-23101601</name>
+        <config>
+          <name>logical-channel-23101601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+        </config>
+        <state>
+          <name>logical-channel-23101601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <mtu>9600</mtu>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <link-pass-through xmlns="http://nec.com/yang/nec-optical-openconfig-interfaces">false</link-pass-through>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-16</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24300101</name>
+        <config>
+          <name>logical-channel-24300101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24300101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-1</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-24300201</name>
+        <config>
+          <name>logical-channel-24300201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24300201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-2</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-24300301</name>
+        <config>
+          <name>logical-channel-24300301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24300301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-3</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-24300401</name>
+        <config>
+          <name>logical-channel-24300401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24300401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-4</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-24300501</name>
+        <config>
+          <name>logical-channel-24300501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24300501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-5</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-24300601</name>
+        <config>
+          <name>logical-channel-24300601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24300601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-6</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-24300701</name>
+        <config>
+          <name>logical-channel-24300701</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24300701</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-7</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-24300801</name>
+        <config>
+          <name>logical-channel-24300801</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24300801</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-8</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-24300901</name>
+        <config>
+          <name>logical-channel-24300901</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24300901</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-9</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-24301001</name>
+        <config>
+          <name>logical-channel-24301001</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24301001</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-10</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-24301101</name>
+        <config>
+          <name>logical-channel-24301101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24301101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-11</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-24301201</name>
+        <config>
+          <name>logical-channel-24301201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24301201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-12</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-24301301</name>
+        <config>
+          <name>logical-channel-24301301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24301301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-13</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-24301401</name>
+        <config>
+          <name>logical-channel-24301401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24301401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-14</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-24301501</name>
+        <config>
+          <name>logical-channel-24301501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24301501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-15</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-24301601</name>
+        <config>
+          <name>logical-channel-24301601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-24301601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-16</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300101</name>
+        <config>
+          <name>logical-channel-23300101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-1</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300102</name>
+        <config>
+          <name>logical-channel-23300102</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300102</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-1</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300103</name>
+        <config>
+          <name>logical-channel-23300103</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300103</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-1</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300104</name>
+        <config>
+          <name>logical-channel-23300104</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300104</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-1</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300201</name>
+        <config>
+          <name>logical-channel-23300201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-2</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300202</name>
+        <config>
+          <name>logical-channel-23300202</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300202</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-2</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300203</name>
+        <config>
+          <name>logical-channel-23300203</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300203</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-2</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300204</name>
+        <config>
+          <name>logical-channel-23300204</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300204</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-2</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300301</name>
+        <config>
+          <name>logical-channel-23300301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-3</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300302</name>
+        <config>
+          <name>logical-channel-23300302</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300302</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-3</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300303</name>
+        <config>
+          <name>logical-channel-23300303</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300303</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-3</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300304</name>
+        <config>
+          <name>logical-channel-23300304</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300304</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-3</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300401</name>
+        <config>
+          <name>logical-channel-23300401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-4</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300402</name>
+        <config>
+          <name>logical-channel-23300402</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300402</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-4</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300403</name>
+        <config>
+          <name>logical-channel-23300403</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300403</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-4</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300404</name>
+        <config>
+          <name>logical-channel-23300404</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300404</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-4</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300501</name>
+        <config>
+          <name>logical-channel-23300501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-5</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300601</name>
+        <config>
+          <name>logical-channel-23300601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-6</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300701</name>
+        <config>
+          <name>logical-channel-23300701</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300701</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-7</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300801</name>
+        <config>
+          <name>logical-channel-23300801</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300801</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-8</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300901</name>
+        <config>
+          <name>logical-channel-23300901</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300901</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-9</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300902</name>
+        <config>
+          <name>logical-channel-23300902</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300902</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-9</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300903</name>
+        <config>
+          <name>logical-channel-23300903</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300903</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-9</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23300904</name>
+        <config>
+          <name>logical-channel-23300904</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23300904</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-9</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301001</name>
+        <config>
+          <name>logical-channel-23301001</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301001</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-10</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301002</name>
+        <config>
+          <name>logical-channel-23301002</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301002</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-10</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301003</name>
+        <config>
+          <name>logical-channel-23301003</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301003</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-10</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301004</name>
+        <config>
+          <name>logical-channel-23301004</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301004</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-10</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301101</name>
+        <config>
+          <name>logical-channel-23301101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-11</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301102</name>
+        <config>
+          <name>logical-channel-23301102</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301102</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-11</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301103</name>
+        <config>
+          <name>logical-channel-23301103</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301103</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-11</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301104</name>
+        <config>
+          <name>logical-channel-23301104</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301104</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-11</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301201</name>
+        <config>
+          <name>logical-channel-23301201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-12</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301202</name>
+        <config>
+          <name>logical-channel-23301202</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301202</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-12</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301203</name>
+        <config>
+          <name>logical-channel-23301203</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301203</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-12</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301204</name>
+        <config>
+          <name>logical-channel-23301204</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301204</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-12</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301301</name>
+        <config>
+          <name>logical-channel-23301301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-13</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301401</name>
+        <config>
+          <name>logical-channel-23301401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-14</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301501</name>
+        <config>
+          <name>logical-channel-23301501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301501</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-15</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-23301601</name>
+        <config>
+          <name>logical-channel-23301601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+        </config>
+        <state>
+          <name>logical-channel-23301601</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>DOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-16</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <config>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </config>
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_DISABLED</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-11000101</name>
+        <state>
+          <name>logical-channel-11000101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <oper-status>UP</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-1</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-11000301</name>
+        <state>
+          <name>logical-channel-11000301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <oper-status>UP</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-3</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-11100101</name>
+        <state>
+          <name>logical-channel-11100101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <oper-status>UP</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-1</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-11100301</name>
+        <state>
+          <name>logical-channel-11100301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <oper-status>UP</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-3</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-12000101</name>
+        <state>
+          <name>logical-channel-12000101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-1</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-12000102</name>
+        <state>
+          <name>logical-channel-12000102</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-1</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-12000103</name>
+        <state>
+          <name>logical-channel-12000103</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-1</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-12000104</name>
+        <state>
+          <name>logical-channel-12000104</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-1</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-12000301</name>
+        <state>
+          <name>logical-channel-12000301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-3</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-12000302</name>
+        <state>
+          <name>logical-channel-12000302</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-3</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-12000303</name>
+        <state>
+          <name>logical-channel-12000303</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-3</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-12000304</name>
+        <state>
+          <name>logical-channel-12000304</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-3</hardware-port>
+        </state>
+        <ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet">
+          <state>
+            <port-speed xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:SPEED_100GB</port-speed>
+            <fec-mode xmlns:oc-eth="http://openconfig.net/yang/interfaces/ethernet">oc-eth:FEC_RS544</fec-mode>
+          </state>
+        </ethernet>
+      </interface>
+      <interface>
+        <name>logical-channel-12100101</name>
+        <state>
+          <name>logical-channel-12100101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-1</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-12100102</name>
+        <state>
+          <name>logical-channel-12100102</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-1</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-12100103</name>
+        <state>
+          <name>logical-channel-12100103</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-1</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-12100104</name>
+        <state>
+          <name>logical-channel-12100104</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-1</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-12100301</name>
+        <state>
+          <name>logical-channel-12100301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-3</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-12100302</name>
+        <state>
+          <name>logical-channel-12100302</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-3</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-12100303</name>
+        <state>
+          <name>logical-channel-12100303</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-3</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-12100304</name>
+        <state>
+          <name>logical-channel-12100304</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">cfp2-3</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24200101</name>
+        <state>
+          <name>logical-channel-24200101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-1</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24200201</name>
+        <state>
+          <name>logical-channel-24200201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-2</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24200301</name>
+        <state>
+          <name>logical-channel-24200301</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-3</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24200401</name>
+        <state>
+          <name>logical-channel-24200401</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-4</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24200901</name>
+        <state>
+          <name>logical-channel-24200901</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-9</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24201001</name>
+        <state>
+          <name>logical-channel-24201001</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-10</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24201101</name>
+        <state>
+          <name>logical-channel-24201101</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-11</hardware-port>
+        </state>
+      </interface>
+      <interface>
+        <name>logical-channel-24201201</name>
+        <state>
+          <name>logical-channel-24201201</name>
+          <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+          <enabled>false</enabled>
+          <admin-status>DOWN</admin-status>
+          <oper-status>UNKNOWN</oper-status>
+          <hardware-port xmlns="http://openconfig.net/yang/platform/port">qsfp-12</hardware-port>
+        </state>
+      </interface>
+    </interfaces>
+  </data>
+</rpc-reply>

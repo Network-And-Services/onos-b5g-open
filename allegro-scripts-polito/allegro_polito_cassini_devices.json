@@ -1,0 +1,37 @@
+{
+  "devices": {
+    "netconf:192.168.88.12:830": {
+      "netconf": {
+        "ip": "192.168.88.12",
+        "port": "830",
+        "username": "ocnos",
+        "password": "ocnos",
+	"idle-timeout": "0"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 900,
+        "gridY" : 750,
+        "name": "Cassini-12",
+        "driver": "cassini-ocnos5"
+      }
+    },
+    "netconf:192.168.88.11:830": {
+      "netconf": {
+        "ip": "192.168.88.11",
+        "port": "830",
+        "username": "ocnos",
+        "password": "ocnos",
+        "idle-timeout": "0"
+      },
+      "basic": {
+        "locType" : "grid",
+        "gridX" : 700,
+        "gridY" : 750,
+        "name": "Cassini-11",
+        "driver": "cassini-ocnos5"
+      }
+    }
+  }
+}
+

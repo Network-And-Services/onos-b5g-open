@@ -23,7 +23,7 @@ import org.onosproject.net.OchSignal;
 import org.onosproject.net.OduSignalType;
 import org.onosproject.net.ResourceGroup;
 import org.onosproject.net.Path;
-import org.onosproject.net.optical.ocopmode.OcOperationalMode;
+import org.onosproject.net.OcOperationalMode;
 import java.util.Collections;
 import java.util.Optional;
 

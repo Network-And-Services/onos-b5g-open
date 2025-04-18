@@ -1,0 +1,17 @@
+{
+  "devices": {
+    "netconf:10.100.101.11:2022": {
+      "netconf": {
+        "ip": "10.100.101.11",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+        "name": "Roadm-1",
+        "driver": "openroadm"
+      }
+    }
+  }
+}
+

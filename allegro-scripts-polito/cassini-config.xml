@@ -1,0 +1,601 @@
+<data>
+    <nacm xmlns="urn:ietf:params:xml:ns:yang:ietf-netconf-acm">
+    </nacm><network-instances xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-network-instance">
+  <network-instance xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-network-instance">
+    <instance-name>default</instance-name>
+    <instance-type>vrf</instance-type>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-network-instance">
+      <instance-name>default</instance-name>
+      <instance-type>vrf</instance-type>
+    </config>
+    <vrf xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-vrf">
+      <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-vrf">
+        <vrf-name>default</vrf-name>
+      </config>
+    </vrf>
+  </network-instance>
+  <network-instance xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-network-instance">
+    <instance-name>management</instance-name>
+    <instance-type>vrf</instance-type>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-network-instance">
+      <instance-name>management</instance-name>
+      <instance-type>vrf</instance-type>
+    </config>
+    <vrf xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-vrf">
+      <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-vrf">
+        <vrf-name>management</vrf-name>
+      </config>
+    </vrf>
+  </network-instance>
+</network-instances>
+<interfaces xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce1/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce1/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce1/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce1/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce1/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce1/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce1/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce1/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce10/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce10/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce10/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce10/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce10/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce10/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce10/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce10/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce11/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce11/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce11/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce11/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce11/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce11/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce11/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce11/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce12/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce12/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce12/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce12/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce12/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce12/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce12/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce12/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce13/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce13/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce13/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce13/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce13/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce13/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce13/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce13/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce14/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce14/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce14/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce14/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce14/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce14/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce14/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce14/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce15/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce15/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce15/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce15/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce15/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce15/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce15/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce15/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce16/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce16/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce16/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce16/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce16/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce16/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce16/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce16/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce17</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce17</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce18</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce18</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce19</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce19</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce2/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce2/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce2/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce2/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce2/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce2/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce2/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce2/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce20</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce20</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce21</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce21</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce22</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce22</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce23</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce23</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce24</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce24</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce25</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce25</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce26</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce26</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce27</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce27</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce28</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce28</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce29</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce29</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce3/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce3/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce3/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce3/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce3/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce3/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce3/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce3/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce30</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce30</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce31</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce31</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce32</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce32</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce4/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce4/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce4/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce4/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce4/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce4/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce4/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce4/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce5/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce5/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce5/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce5/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce5/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce5/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce5/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce5/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce6/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce6/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce6/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce6/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce6/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce6/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce6/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce6/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce7/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce7/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce7/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce7/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce7/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce7/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce7/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce7/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce8/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce8/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce8/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce8/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce8/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce8/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce8/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce8/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce9/1</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce9/1</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce9/2</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce9/2</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce9/3</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce9/3</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>ce9/4</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>ce9/4</name>
+    </config>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>eth0</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>eth0</name>
+      <vrf-name>management</vrf-name>
+    </config>
+    <ipv4 xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-if-ip">
+      <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-if-ip">
+        <primary-ip-addr>192.168.88.11/24</primary-ip-addr>
+      </config>
+    </ipv4>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>lo</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>lo</name>
+    </config>
+    <ipv4 xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-if-ip">
+      <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-if-ip">
+        <primary-ip-addr>127.0.0.1/8</primary-ip-addr>
+      </config>
+    </ipv4>
+    <ipv6 xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-if-ip">
+      <addresses xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-if-ip">
+        <ipv6-address>::1/128</ipv6-address>
+        <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-if-ip">
+          <ipv6-address>::1/128</ipv6-address>
+        </config>
+      </addresses>
+    </ipv6>
+  </interface>
+  <interface xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+    <name>lo.management</name>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-interface">
+      <name>lo.management</name>
+      <vrf-name>management</vrf-name>
+    </config>
+    <ipv4 xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-if-ip">
+      <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-if-ip">
+        <primary-ip-addr>127.0.0.1/8</primary-ip-addr>
+      </config>
+    </ipv4>
+    <ipv6 xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-if-ip">
+      <addresses xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-if-ip">
+        <ipv6-address>::1/128</ipv6-address>
+        <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-if-ip">
+          <ipv6-address>::1/128</ipv6-address>
+        </config>
+      </addresses>
+    </ipv6>
+  </interface>
+  <global xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-if-extended">
+    <error-disable xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-if-extended">
+      <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-if-extended">
+        <error-disable-stp-bpdu-guard>true</error-disable-stp-bpdu-guard>
+      </config>
+    </error-disable>
+  </global>
+</interfaces>
+<logging xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-logging">
+  <rsyslog xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-logging">
+    <vrf>management</vrf>
+    <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-logging">
+      <vrf>management</vrf>
+      <enable-rsyslog>rsyslog</enable-rsyslog>
+    </config>
+  </rsyslog>
+</logging>
+<dhcp xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-dhcp">
+  <relay xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-dhcp">
+    <global xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-dhcp">
+      <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-dhcp">
+        <enable-dhcpv6-relay></enable-dhcpv6-relay>
+        <enable-dhcpv4-relay></enable-dhcpv4-relay>
+      </config>
+    </global>
+  </relay>
+</dhcp>
+<profiles xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-platform">
+  <hardware-profile xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-platform">
+    <filters xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-platform">
+      <config xmlns="http://www.ipinfusion.com/yang/ocnos/ipi-platform">
+        <ingress-ipv4></ingress-ipv4>
+        <egress-ipv6></egress-ipv6>
+      </config>
+    </filters>
+  </hardware-profile>
+</profiles>
+ 
+  </data>

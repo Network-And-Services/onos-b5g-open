@@ -1,0 +1,101 @@
+{
+  "devices": {
+    "netconf:10.100.101.21:2022": {
+      "netconf": {
+        "ip": "10.100.101.21",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+        "name": "Transp-1",
+        "driver": "client-line-terminal-device"
+      }
+    },
+    "netconf:10.100.101.22:2022": {
+      "netconf": {
+        "ip": "10.100.101.22",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+        "name": "Transp-2",
+        "driver": "client-line-terminal-device"
+      }
+    },
+    "netconf:10.100.101.23:2022": {
+      "netconf": {
+        "ip": "10.100.101.23",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+        "name": "Transp-3",
+        "driver": "client-line-terminal-device"
+      }
+    },
+    "netconf:10.100.101.24:2022": {
+      "netconf": {
+        "ip": "10.100.101.24",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+        "name": "Transp-4",
+        "driver": "client-line-terminal-device"
+      }
+    },
+    "netconf:10.100.101.11:2022": {
+      "netconf": {
+        "ip": "10.100.101.11",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+        "name": "Roadm-1",
+        "driver": "openroadm"
+      }
+    },
+    "netconf:10.100.101.12:2022": {
+      "netconf": {
+        "ip": "10.100.101.12",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+        "name": "Roadm-2",
+        "driver": "openroadm"
+      }
+    },
+    "netconf:10.100.101.13:2022": {
+      "netconf": {
+        "ip": "10.100.101.13",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+        "name": "Roadm-3",
+        "driver": "openroadm"
+      }
+    },
+    "netconf:10.100.101.14:2022": {
+      "netconf": {
+        "ip": "10.100.101.14",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+        "name": "Roadm-4",
+        "driver": "openroadm"
+      }
+    }
+  }
+}
+

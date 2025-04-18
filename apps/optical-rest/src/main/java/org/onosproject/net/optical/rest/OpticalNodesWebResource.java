@@ -28,6 +28,8 @@ import org.onosproject.net.device.DeviceService;
 import org.onosproject.net.topology.ClusterId;
 import org.onosproject.net.topology.TopologyService;
 import org.onosproject.rest.AbstractWebResource;
+import org.onosproject.net.OcOperationalMode;
+import org.onosproject.net.optical.ocopmode.OcOperationalModesManager;
 import org.slf4j.Logger;
 
 import javax.ws.rs.Consumes;
@@ -270,7 +272,7 @@ public class OpticalNodesWebResource extends AbstractWebResource {
     public Response annotateNode(@QueryParam("deviceId") String deviceId,
                                  @QueryParam("opModeId") String opModes) {
 
-        OperationalModesManager manager = get(OperationalModesManager.class);
+        OcOperationalModesManager manager = get(OcOperationalModesManager.class);
 
         //Check if all specified opmodes are known by the manager
         String[] opModesString = opModes.split(",");

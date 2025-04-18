@@ -15,7 +15,8 @@ import org.onosproject.net.GridType;
 import org.onosproject.net.Link;
 import org.onosproject.net.ModulationScheme;
 import org.onosproject.net.OchSignal;
-import org.onosproject.net.OperationalMode;
+import org.onosproject.net.OcOperationalMode;
+import org.onosproject.net.optical.ocopmode.OcOperationalModesManager;
 import org.onosproject.net.behaviour.ModulationConfig;
 import org.onosproject.net.behaviour.PowerConfig;
 import org.onosproject.net.device.DeviceService;
@@ -73,11 +74,11 @@ public class OperationalModesWebResource extends AbstractWebResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createIntent(InputStream stream) {
-        OperationalModesManager manager = get(OperationalModesManager.class);
+        OcOperationalModesManager manager = get(OcOperationalModesManager.class);
 
         try {
             ObjectNode root = readTreeFromStream(mapper(), stream);
-            OperationalMode opmode = OperationalMode.decodeFromJson(root);
+            OcOperationalMode opmode = OcOperationalMode.decodeFromJson(root);
 
             manager.addToDatabase(opmode);
 
@@ -103,9 +104,9 @@ public class OperationalModesWebResource extends AbstractWebResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response postOpMode(@QueryParam("id") String id,
                                @QueryParam("type") String type) {
-        OperationalModesManager manager = get(OperationalModesManager.class);
+        OcOperationalModesManager manager = get(OcOperationalModesManager.class);
 
-        OperationalMode mode = new OperationalMode(Integer.decode(id), type);
+        OcOperationalMode mode = new OcOperationalMode(Integer.decode(id), type);
 
         manager.addToDatabase(mode);
 
@@ -170,9 +171,9 @@ public class OperationalModesWebResource extends AbstractWebResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response postOpModeRandom() {
-        OperationalModesManager manager = get(OperationalModesManager.class);
+        OcOperationalModesManager manager = get(OcOperationalModesManager.class);
 
-        OperationalMode mode = new OperationalMode();
+        OcOperationalMode mode = new OcOperationalMode();
 
         manager.addToDatabase(mode);
 
@@ -189,7 +190,7 @@ public class OperationalModesWebResource extends AbstractWebResource {
     @Path("opModes")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAvailableOperationalModes() {
-        OperationalModesManager manager = get(OperationalModesManager.class);
+        OcOperationalModesManager manager = get(OcOperationalModesManager.class);
 
         ObjectNode objectNode = mapper().createObjectNode();
         objectNode.put("available-op-modes", manager.getRegisteredModes());
@@ -208,9 +209,9 @@ public class OperationalModesWebResource extends AbstractWebResource {
     @Path("opMode")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getOperationalMode(@QueryParam("id") String id) {
-        OperationalModesManager manager = get(OperationalModesManager.class);
+        OcOperationalModesManager manager = get(OcOperationalModesManager.class);
 
-        OperationalMode opMode = manager.getFromDatabase(Integer.valueOf(id));
+        OcOperationalMode opMode = manager.getFromDatabase(Integer.valueOf(id));
 
         if (opMode == null) {
             log.error(JSON_INVALID + "operational mode not defined");
@@ -231,7 +232,7 @@ public class OperationalModesWebResource extends AbstractWebResource {
     @Path("opMode")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteOperationalMode(@QueryParam("id") String id) {
-        OperationalModesManager manager = get(OperationalModesManager.class);
+        OcOperationalModesManager manager = get(OcOperationalModesManager.class);
 
         manager.removeFromDatabase(Integer.valueOf(id));
 
@@ -260,8 +261,8 @@ public class OperationalModesWebResource extends AbstractWebResource {
         log.warn("Received operational mode configuration request {} from {} to {}", opModeId, ingress, egress);
 
         //Retrieve the modulation format from the specified Operational Mode ID
-        OperationalModesManager manager = get(OperationalModesManager.class);
-        OperationalMode opMode = manager.getFromDatabase(Integer.decode(opModeId));
+        OcOperationalModesManager manager = get(OcOperationalModesManager.class);
+        OcOperationalMode opMode = manager.getFromDatabase(Integer.decode(opModeId));
 
         if (opMode == null) {
             log.error(JSON_INVALID + "operational mode not defined");

@@ -1,0 +1,17 @@
+{
+  "devices": {
+    "netconf:192.168.88.31:830": {
+      "netconf": {
+        "ip": "192.168.88.31",
+        "port": "830",
+        "username": "superuser",
+        "password": "Sup%9User"
+      },
+      "basic": {
+	"name": "ROADM1",
+        "driver": "lumentum-roadm20whitebox-netconf"
+      }
+    }
+  }
+}
+

@@ -1,0 +1,51 @@
+{
+  "devices": {
+    "netconf:172.18.0.31:830": {
+      "netconf": {
+        "ip": "172.18.0.31",
+        "port": "830",
+        "username": "openroadm",
+        "password": "openroadm"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 700,
+        "gridY" : 800,
+        "name": "ROADM1",
+        "driver": "openroadm12"
+      }
+    },
+    "netconf:172.18.0.32:830": {
+      "netconf": {
+        "ip": "172.18.0.32",
+        "port": "830",
+        "username": "openroadm",
+        "password": "openroadm"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 800,
+        "gridY" : 900,
+        "name": "ROADM2",
+        "driver": "openroadm12"
+      }
+    },
+    "netconf:172.18.0.33:830": {
+      "netconf": {
+        "ip": "172.18.0.33",
+        "port": "830",
+        "username": "openroadm",
+        "password": "openroadm"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 900,
+        "gridY" : 800,
+        "name": "ROADM3",
+        "driver": "openroadm12"
+      }
+    }
+
+  }
+}
+

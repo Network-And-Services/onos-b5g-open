@@ -24,10 +24,10 @@ public final class OsgiPropertyConstants {
     private OsgiPropertyConstants() {}
 
     public static final String NETCONF_CONNECT_TIMEOUT = "netconfConnectTimeout";
-    public static final int NETCONF_CONNECT_TIMEOUT_DEFAULT = 5;
+    public static final int NETCONF_CONNECT_TIMEOUT_DEFAULT = 30;
 
     public static final String NETCONF_REPLY_TIMEOUT = "netconfReplyTimeout";
-    public static final int NETCONF_REPLY_TIMEOUT_DEFAULT = 5;
+    public static final int NETCONF_REPLY_TIMEOUT_DEFAULT = 30;
 
     public static final String NETCONF_IDLE_TIMEOUT = "netconfIdleTimeout";
     public static final int NETCONF_IDLE_TIMEOUT_DEFAULT = 300;

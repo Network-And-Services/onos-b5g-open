@@ -36,7 +36,8 @@ import org.onosproject.net.ConnectPoint;
 import org.onosproject.net.ModulationScheme;
 import org.onosproject.net.OchSignal;
 import org.onosproject.net.DeviceId;
-import org.onosproject.net.OperationalMode;
+import org.onosproject.net.OcOperationalMode;
+import org.onosproject.net.optical.ocopmode.OcOperationalModesManager;
 import org.onosproject.net.behaviour.ModulationConfig;
 import org.onosproject.net.behaviour.PowerConfig;
 import org.onosproject.net.device.DeviceService;
@@ -214,8 +215,8 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
             Device dstDevice = deviceService.getDevice(dst.deviceId());
 
             //Retrieve the modulation format from the specified Operational Mode ID
-            OperationalModesManager manager = get(OperationalModesManager.class);
-            OperationalMode opMode = manager.getFromDatabase(opModeId);
+            OcOperationalModesManager manager = get(OcOperationalModesManager.class);
+            OcOperationalMode opMode = manager.getFromDatabase(opModeId);
 
             if (opMode == null) {
                 log.error(JSON_INVALID + "operational mode not defined");

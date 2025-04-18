@@ -1,0 +1,3847 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:c7f05ec7-453c-47b6-8bc1-58f89dd7b561">
+  <data>
+    <operational-modes xmlns="http://example.net/yang/openconfig-terminal-device-properties">
+      <mode-descriptor>
+        <mode-id>1101</mode-id>
+        <state>
+          <mode-id>1101</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1102</mode-id>
+        <state>
+          <mode-id>1102</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1103</mode-id>
+        <state>
+          <mode-id>1103</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1104</mode-id>
+        <state>
+          <mode-id>1104</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1105</mode-id>
+        <state>
+          <mode-id>1105</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1106</mode-id>
+        <state>
+          <mode-id>1106</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1107</mode-id>
+        <state>
+          <mode-id>1107</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1108</mode-id>
+        <state>
+          <mode-id>1108</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1109</mode-id>
+        <state>
+          <mode-id>1109</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1110</mode-id>
+        <state>
+          <mode-id>1110</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1111</mode-id>
+        <state>
+          <mode-id>1111</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1112</mode-id>
+        <state>
+          <mode-id>1112</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1201</mode-id>
+        <state>
+          <mode-id>1201</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1202</mode-id>
+        <state>
+          <mode-id>1202</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1203</mode-id>
+        <state>
+          <mode-id>1203</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1204</mode-id>
+        <state>
+          <mode-id>1204</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1205</mode-id>
+        <state>
+          <mode-id>1205</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1206</mode-id>
+        <state>
+          <mode-id>1206</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1207</mode-id>
+        <state>
+          <mode-id>1207</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1208</mode-id>
+        <state>
+          <mode-id>1208</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1209</mode-id>
+        <state>
+          <mode-id>1209</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1210</mode-id>
+        <state>
+          <mode-id>1210</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1211</mode-id>
+        <state>
+          <mode-id>1211</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1212</mode-id>
+        <state>
+          <mode-id>1212</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1301</mode-id>
+        <state>
+          <mode-id>1301</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1302</mode-id>
+        <state>
+          <mode-id>1302</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1303</mode-id>
+        <state>
+          <mode-id>1303</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1304</mode-id>
+        <state>
+          <mode-id>1304</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1305</mode-id>
+        <state>
+          <mode-id>1305</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1306</mode-id>
+        <state>
+          <mode-id>1306</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1307</mode-id>
+        <state>
+          <mode-id>1307</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1308</mode-id>
+        <state>
+          <mode-id>1308</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1309</mode-id>
+        <state>
+          <mode-id>1309</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1310</mode-id>
+        <state>
+          <mode-id>1310</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1311</mode-id>
+        <state>
+          <mode-id>1311</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1312</mode-id>
+        <state>
+          <mode-id>1312</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1401</mode-id>
+        <state>
+          <mode-id>1401</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1402</mode-id>
+        <state>
+          <mode-id>1402</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1403</mode-id>
+        <state>
+          <mode-id>1403</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1404</mode-id>
+        <state>
+          <mode-id>1404</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1405</mode-id>
+        <state>
+          <mode-id>1405</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1406</mode-id>
+        <state>
+          <mode-id>1406</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1407</mode-id>
+        <state>
+          <mode-id>1407</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1408</mode-id>
+        <state>
+          <mode-id>1408</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1409</mode-id>
+        <state>
+          <mode-id>1409</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1410</mode-id>
+        <state>
+          <mode-id>1410</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1411</mode-id>
+        <state>
+          <mode-id>1411</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>1412</mode-id>
+        <state>
+          <mode-id>1412</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_100G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2101</mode-id>
+        <state>
+          <mode-id>2101</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2102</mode-id>
+        <state>
+          <mode-id>2102</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2103</mode-id>
+        <state>
+          <mode-id>2103</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2104</mode-id>
+        <state>
+          <mode-id>2104</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2105</mode-id>
+        <state>
+          <mode-id>2105</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2106</mode-id>
+        <state>
+          <mode-id>2106</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2107</mode-id>
+        <state>
+          <mode-id>2107</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2108</mode-id>
+        <state>
+          <mode-id>2108</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2109</mode-id>
+        <state>
+          <mode-id>2109</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2110</mode-id>
+        <state>
+          <mode-id>2110</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2111</mode-id>
+        <state>
+          <mode-id>2111</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2112</mode-id>
+        <state>
+          <mode-id>2112</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2201</mode-id>
+        <state>
+          <mode-id>2201</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2202</mode-id>
+        <state>
+          <mode-id>2202</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2203</mode-id>
+        <state>
+          <mode-id>2203</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2204</mode-id>
+        <state>
+          <mode-id>2204</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2205</mode-id>
+        <state>
+          <mode-id>2205</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2206</mode-id>
+        <state>
+          <mode-id>2206</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2207</mode-id>
+        <state>
+          <mode-id>2207</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2208</mode-id>
+        <state>
+          <mode-id>2208</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2209</mode-id>
+        <state>
+          <mode-id>2209</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2210</mode-id>
+        <state>
+          <mode-id>2210</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2211</mode-id>
+        <state>
+          <mode-id>2211</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2212</mode-id>
+        <state>
+          <mode-id>2212</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2301</mode-id>
+        <state>
+          <mode-id>2301</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2302</mode-id>
+        <state>
+          <mode-id>2302</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2303</mode-id>
+        <state>
+          <mode-id>2303</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2304</mode-id>
+        <state>
+          <mode-id>2304</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2305</mode-id>
+        <state>
+          <mode-id>2305</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2306</mode-id>
+        <state>
+          <mode-id>2306</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2307</mode-id>
+        <state>
+          <mode-id>2307</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2308</mode-id>
+        <state>
+          <mode-id>2308</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2309</mode-id>
+        <state>
+          <mode-id>2309</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2310</mode-id>
+        <state>
+          <mode-id>2310</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2311</mode-id>
+        <state>
+          <mode-id>2311</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2312</mode-id>
+        <state>
+          <mode-id>2312</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2401</mode-id>
+        <state>
+          <mode-id>2401</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2402</mode-id>
+        <state>
+          <mode-id>2402</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2403</mode-id>
+        <state>
+          <mode-id>2403</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2404</mode-id>
+        <state>
+          <mode-id>2404</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2405</mode-id>
+        <state>
+          <mode-id>2405</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2406</mode-id>
+        <state>
+          <mode-id>2406</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2407</mode-id>
+        <state>
+          <mode-id>2407</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2408</mode-id>
+        <state>
+          <mode-id>2408</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2409</mode-id>
+        <state>
+          <mode-id>2409</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2410</mode-id>
+        <state>
+          <mode-id>2410</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2411</mode-id>
+        <state>
+          <mode-id>2411</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>2412</mode-id>
+        <state>
+          <mode-id>2412</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_200G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3101</mode-id>
+        <state>
+          <mode-id>3101</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3102</mode-id>
+        <state>
+          <mode-id>3102</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3103</mode-id>
+        <state>
+          <mode-id>3103</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3104</mode-id>
+        <state>
+          <mode-id>3104</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3105</mode-id>
+        <state>
+          <mode-id>3105</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3106</mode-id>
+        <state>
+          <mode-id>3106</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3107</mode-id>
+        <state>
+          <mode-id>3107</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3108</mode-id>
+        <state>
+          <mode-id>3108</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3109</mode-id>
+        <state>
+          <mode-id>3109</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3110</mode-id>
+        <state>
+          <mode-id>3110</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3111</mode-id>
+        <state>
+          <mode-id>3111</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3112</mode-id>
+        <state>
+          <mode-id>3112</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3201</mode-id>
+        <state>
+          <mode-id>3201</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3202</mode-id>
+        <state>
+          <mode-id>3202</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3203</mode-id>
+        <state>
+          <mode-id>3203</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3204</mode-id>
+        <state>
+          <mode-id>3204</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3205</mode-id>
+        <state>
+          <mode-id>3205</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3206</mode-id>
+        <state>
+          <mode-id>3206</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3207</mode-id>
+        <state>
+          <mode-id>3207</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3208</mode-id>
+        <state>
+          <mode-id>3208</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3209</mode-id>
+        <state>
+          <mode-id>3209</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3210</mode-id>
+        <state>
+          <mode-id>3210</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3211</mode-id>
+        <state>
+          <mode-id>3211</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3212</mode-id>
+        <state>
+          <mode-id>3212</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3301</mode-id>
+        <state>
+          <mode-id>3301</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3302</mode-id>
+        <state>
+          <mode-id>3302</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3303</mode-id>
+        <state>
+          <mode-id>3303</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3304</mode-id>
+        <state>
+          <mode-id>3304</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3305</mode-id>
+        <state>
+          <mode-id>3305</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3306</mode-id>
+        <state>
+          <mode-id>3306</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3307</mode-id>
+        <state>
+          <mode-id>3307</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3308</mode-id>
+        <state>
+          <mode-id>3308</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3309</mode-id>
+        <state>
+          <mode-id>3309</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3310</mode-id>
+        <state>
+          <mode-id>3310</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3311</mode-id>
+        <state>
+          <mode-id>3311</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3312</mode-id>
+        <state>
+          <mode-id>3312</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3401</mode-id>
+        <state>
+          <mode-id>3401</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3402</mode-id>
+        <state>
+          <mode-id>3402</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3403</mode-id>
+        <state>
+          <mode-id>3403</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3404</mode-id>
+        <state>
+          <mode-id>3404</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3405</mode-id>
+        <state>
+          <mode-id>3405</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3406</mode-id>
+        <state>
+          <mode-id>3406</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3407</mode-id>
+        <state>
+          <mode-id>3407</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3408</mode-id>
+        <state>
+          <mode-id>3408</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3409</mode-id>
+        <state>
+          <mode-id>3409</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3410</mode-id>
+        <state>
+          <mode-id>3410</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3411</mode-id>
+        <state>
+          <mode-id>3411</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>3412</mode-id>
+        <state>
+          <mode-id>3412</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_300G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4101</mode-id>
+        <state>
+          <mode-id>4101</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4102</mode-id>
+        <state>
+          <mode-id>4102</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4103</mode-id>
+        <state>
+          <mode-id>4103</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4104</mode-id>
+        <state>
+          <mode-id>4104</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4105</mode-id>
+        <state>
+          <mode-id>4105</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4106</mode-id>
+        <state>
+          <mode-id>4106</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4107</mode-id>
+        <state>
+          <mode-id>4107</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4108</mode-id>
+        <state>
+          <mode-id>4108</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4109</mode-id>
+        <state>
+          <mode-id>4109</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4110</mode-id>
+        <state>
+          <mode-id>4110</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4111</mode-id>
+        <state>
+          <mode-id>4111</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4112</mode-id>
+        <state>
+          <mode-id>4112</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_OTHER</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4201</mode-id>
+        <state>
+          <mode-id>4201</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4202</mode-id>
+        <state>
+          <mode-id>4202</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4203</mode-id>
+        <state>
+          <mode-id>4203</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4204</mode-id>
+        <state>
+          <mode-id>4204</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4205</mode-id>
+        <state>
+          <mode-id>4205</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4206</mode-id>
+        <state>
+          <mode-id>4206</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4207</mode-id>
+        <state>
+          <mode-id>4207</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4208</mode-id>
+        <state>
+          <mode-id>4208</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4209</mode-id>
+        <state>
+          <mode-id>4209</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4210</mode-id>
+        <state>
+          <mode-id>4210</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4211</mode-id>
+        <state>
+          <mode-id>4211</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4212</mode-id>
+        <state>
+          <mode-id>4212</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_C</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4301</mode-id>
+        <state>
+          <mode-id>4301</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4302</mode-id>
+        <state>
+          <mode-id>4302</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4303</mode-id>
+        <state>
+          <mode-id>4303</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4304</mode-id>
+        <state>
+          <mode-id>4304</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4305</mode-id>
+        <state>
+          <mode-id>4305</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4306</mode-id>
+        <state>
+          <mode-id>4306</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4307</mode-id>
+        <state>
+          <mode-id>4307</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4308</mode-id>
+        <state>
+          <mode-id>4308</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4309</mode-id>
+        <state>
+          <mode-id>4309</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4310</mode-id>
+        <state>
+          <mode-id>4310</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4311</mode-id>
+        <state>
+          <mode-id>4311</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4312</mode-id>
+        <state>
+          <mode-id>4312</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_O</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4401</mode-id>
+        <state>
+          <mode-id>4401</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4402</mode-id>
+        <state>
+          <mode-id>4402</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>nec-optical-openconfig-terminal-device:MODULATION_FORMAT_DP_BPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4403</mode-id>
+        <state>
+          <mode-id>4403</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4404</mode-id>
+        <state>
+          <mode-id>4404</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_QPSK</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4405</mode-id>
+        <state>
+          <mode-id>4405</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4406</mode-id>
+        <state>
+          <mode-id>4406</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_8QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4407</mode-id>
+        <state>
+          <mode-id>4407</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4408</mode-id>
+        <state>
+          <mode-id>4408</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_16QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4409</mode-id>
+        <state>
+          <mode-id>4409</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4410</mode-id>
+        <state>
+          <mode-id>4410</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_32QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4411</mode-id>
+        <state>
+          <mode-id>4411</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+      <mode-descriptor>
+        <mode-id>4412</mode-id>
+        <state>
+          <mode-id>4412</mode-id>
+          <mode-type xmlns:oc-opt-term-prop-types="http://example.net/yang/openconfig-terminal-device-property-types">oc-opt-term-prop-types:TRANSCEIVER_MODE_TYPE_EXPLICIT</mode-type>
+        </state>
+        <explicit-mode>
+          <operational-mode-capabilities>
+            <state>
+              <modulation-format>openconfig-terminal-device-property-types:MODULATION_FORMAT_DP_64QAM</modulation-format>
+              <bit-rate xmlns:oc-opt-types="http://openconfig.net/yang/transport-types">oc-opt-types:TRIB_RATE_400G</bit-rate>
+            </state>
+            <fec>
+              <state>
+                <fec-coding>openconfig-terminal-device-property-types:FEC_E</fec-coding>
+              </state>
+            </fec>
+          </operational-mode-capabilities>
+        </explicit-mode>
+      </mode-descriptor>
+    </operational-modes>
+  </data>
+</rpc-reply>

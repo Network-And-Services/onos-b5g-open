@@ -1,0 +1,13 @@
+<components xmlns="http://openconfig.net/yang/platform">
+<component>
+<name>cfp2-opt-1-1</name>
+<optical-channel xmlns="http://openconfig.net/yang/terminal-device">
+<config>
+<frequency>193700000</frequency>
+<target-output-power>0</target-output-power>
+<operational-mode>4308</operational-mode>
+<line-als xmlns="http://nec.com/yang/nec-optical-openconfig-platform-optical-channel">NONE</line-als>
+</config>
+</optical-channel>
+</component>
+</components>

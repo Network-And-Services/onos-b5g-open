@@ -22,6 +22,7 @@ import com.google.common.collect.Sets;
 import org.onosproject.net.*;
 import org.onosproject.net.intent.*;
 import org.onosproject.net.optical.OmsPort;
+import org.onosproject.net.intent.OpticalConnectivityIntent;
 import org.onosproject.net.resource.Resource;
 import org.onosproject.net.resource.ResourceAllocation;
 import org.onosproject.net.resource.ResourceService;
@@ -59,7 +60,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static org.onosproject.net.optical.device.OpticalDeviceServiceView.opticalView;
 
 /**
- * An intent compiler for {@link org.onosproject.net.intent.OpticalConnectivityIntent}.
+ * An intent compiler for {@link OpticalConnectivityIntent}.
  */
 @Component(immediate = true)
 public class OpticalConnectivityIntentCompiler implements IntentCompiler<OpticalConnectivityIntent> {

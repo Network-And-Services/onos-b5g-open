@@ -1,0 +1,17 @@
+{
+  "devices" : {
+    "netconf:192.168.88.13:830" : {
+        "basic" : {
+        "name":"Phoenix-1",
+        "driver":"phoenix-nec-1.2.8"
+      },
+      "netconf" : {
+        "ip" : "192.168.88.13",
+        "port" : "830",
+        "username" : "root",
+        "password" : "password",
+        "idle-timeout" : "0"
+      }
+    }
+  }
+}

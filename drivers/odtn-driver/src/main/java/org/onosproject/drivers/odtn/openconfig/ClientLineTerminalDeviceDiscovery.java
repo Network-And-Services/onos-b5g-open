@@ -31,8 +31,8 @@ import org.onosproject.net.PortNumber;
 import org.onosproject.net.CltSignalType;
 import org.onosproject.net.OduSignalType;
 import org.onosproject.net.optical.device.OduCltPortHelper;
-import org.onosproject.net.OperationalMode;
-import org.onosproject.net.optical.rest.OperationalModesManager;
+import org.onosproject.net.OcOperationalMode;
+import org.onosproject.net.optical.ocopmode.OcOperationalModesManager;
 import org.slf4j.Logger;
 
 import java.util.*;
@@ -330,7 +330,7 @@ public class ClientLineTerminalDeviceDiscovery
      */
     @Override
     public DeviceDescription discoverDeviceDetails() {
-        OperationalModesManager modesManager = checkNotNull(handler().get(OperationalModesManager.class));
+        OcOperationalModesManager modesManager = checkNotNull(handler().get(OcOperationalModesManager.class));
 
         boolean defaultAvailable = true;
         SparseAnnotations annotations = DefaultAnnotations.builder().build();
@@ -376,9 +376,9 @@ public class ClientLineTerminalDeviceDiscovery
         log.info("CHASSISID {}", chassisId);
 
         if (vendor.equals("CTTC")) {
-            List<OperationalMode> modes = discoverOperationalModes();
+            List<OcOperationalMode> modes = discoverOperationalModes();
 
-            for (OperationalMode mode : modes) {
+            for (OcOperationalMode mode : modes) {
                 modesManager.addToDatabase(mode);
             }
         }
@@ -491,7 +491,7 @@ public class ClientLineTerminalDeviceDiscovery
      * }</pre>
      * //CHECKSTYLE:ON
      */
-    protected List<OperationalMode> parseOperationalModes(HierarchicalConfiguration modes) {
+    protected List<OcOperationalMode> parseOperationalModes(HierarchicalConfiguration modes) {
         return modes.configurationsAt("mode-descriptor").stream()
                 .map(mode -> {
                             try {
@@ -506,7 +506,7 @@ public class ClientLineTerminalDeviceDiscovery
                 .collect(Collectors.toList());
     }
 
-    public List<OperationalMode> discoverOperationalModes() {
+    public List<OcOperationalMode> discoverOperationalModes() {
 
         try {
             XPathExpressionEngine xpe = new XPathExpressionEngine();
@@ -676,7 +676,7 @@ public class ClientLineTerminalDeviceDiscovery
      *
      * @return null
      */
-    private OperationalMode parseOperationalMode(HierarchicalConfiguration mode, HierarchicalConfiguration modes) {
+    private OcOperationalMode parseOperationalMode(HierarchicalConfiguration mode, HierarchicalConfiguration modes) {
         //Map<String, String> annotations = new HashMap<>();
         int id = Integer.decode(mode.getString("state/mode-id"));
         String type = mode.getString("state/mode-type");
@@ -684,7 +684,7 @@ public class ClientLineTerminalDeviceDiscovery
         log.info("Parsing Operational Mode id {} type {}", id, type);
 
         //OperationalMode opMode = new OperationalMode(id, type);
-        OperationalMode opMode = OperationalMode.decodeFromXml(mode);
+        OcOperationalMode opMode = OcOperationalMode.decodeFromXml(mode);
         return opMode;
 
         /*annotations.put(OdtnDeviceDescriptionDiscovery.OC_NAME, name);

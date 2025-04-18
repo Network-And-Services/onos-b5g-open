@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<edit-config>
+<target><running/></target>
+<config xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+<org-openroadm-device xmlns='http://org/openroadm/device'  xmlns:nc='urn:ietf:params:xml:ns:netconf:base:1.0'>
+  <interface nc:operation='merge'> 
+    <name>MC-TTP-DEG3-TTP-TX-193.7</name>
+    <description>Media-Channel</description>
+    <type xmlns:openROADM-if='http://org/openroadm/interfaces'>openROADM-if:mediaChannelTrailTerminationPoint</type>
+    <administrative-state>inService</administrative-state>
+    <supporting-circuit-pack-name>DEG3-AMPTX</supporting-circuit-pack-name>
+    <supporting-port>DEG3-AMPTX-OUT</supporting-port>
+    <supporting-interface-list>OMS-DEG3-TTP-TX</supporting-interface-list>
+    <mc-ttp xmlns='http://org/openroadm/media-channel-interfaces'>
+      <min-freq>193.675</min-freq>
+      <max-freq>193.725</max-freq>
+    </mc-ttp>
+  </interface>
+</org-openroadm-device>
+</config>
+</edit-config>

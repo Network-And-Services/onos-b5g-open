@@ -1,0 +1,35 @@
+
+{
+  "devices" : {
+    "netconf:192.168.88.11:830" : {
+      "basic" : {
+	"locType" : "grid",
+        "gridX" : 0,
+        "gridY" : 200,
+        "name" : "CASSINI-1",
+        "driver" : "cassini-ocnos5"
+      },
+      "netconf" : {
+        "ip" : "192.168.88.11",
+        "port" : "830",
+        "username" : "ocnos",
+        "password" : "ocnos"
+      }
+    },
+    "netconf:192.168.88.12:830" : {
+      "basic" : {
+	"locType" : "grid",
+        "gridX" : 200,
+        "gridY" : 200,
+        "name" : "CASSINI-2",
+        "driver" : "cassini-ocnos5"
+      },
+      "netconf" : {
+        "ip" : "192.168.88.12",
+        "port" : "830",
+        "username" : "ocnos",
+        "password" : "ocnos"
+      }
+    }
+  }
+}

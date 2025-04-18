@@ -1,0 +1,21 @@
+{
+  "devices": {
+   "netconf:172.18.0.32:830": {
+      "netconf": {
+        "ip": "172.18.0.32",
+        "port": "830",
+        "username": "openroadm",
+        "password": "openroadm"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 800,
+        "gridY" : 900,
+        "name": "ROADM2",
+        "driver": "openroadm12"
+      }
+    }
+
+  }
+}
+

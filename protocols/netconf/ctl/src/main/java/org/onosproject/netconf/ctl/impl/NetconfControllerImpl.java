@@ -574,6 +574,8 @@ public class NetconfControllerImpl implements NetconfController {
     @Override
     public boolean pingDevice(DeviceId deviceId) {
         try {
+            log.warn("Checking device availability {}", deviceId);
+
             CompletableFuture<CharSequence> future = getNetconfDevice(deviceId).getSession().asyncGet();
             CharSequence reply = Tools.futureGetOrElse(future, NETCONF_REPLY_TIMEOUT_DEFAULT, TimeUnit.SECONDS,
                                   "Unable to read netconf data tree from device");

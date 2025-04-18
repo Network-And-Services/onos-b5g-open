@@ -1,11 +1,10 @@
-package org.onosproject.net.optical.ocopmode;
+package org.onosproject.net;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.apache.commons.configuration.HierarchicalConfiguration;
-import org.onosproject.net.DeviceId;
 import org.slf4j.Logger;
 
 import java.util.*;

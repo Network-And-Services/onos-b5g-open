@@ -1,0 +1,50 @@
+{
+  "devices": {
+    "netconf:192.168.88.31:830": {
+      "netconf": {
+        "ip": "192.168.88.31",
+        "port": "830",
+        "username": "superuser",
+        "password": "Sup%9User"
+      },
+      "basic": {
+	"locType" : "grid",
+	"gridX" : 0,
+	"gridY" : 400,
+	"name": "ROADM-1",
+        "driver": "lumentum-roadm20whitebox-netconf"
+      }
+    },
+    "netconf:192.168.88.32:830": {
+      "netconf": {
+        "ip": "192.168.88.32",
+        "port": "830",
+        "username": "superuser",
+        "password": "Sup%9User"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 300,
+        "gridY" : 400,
+	"name": "ROADM-2",
+        "driver": "lumentum-roadm20whitebox-netconf"
+      }
+    },
+    "netconf:192.168.88.33:830": {
+      "netconf": {
+        "ip": "192.168.88.33",
+        "port": "830",
+        "username": "superuser",
+        "password": "Sup%9User"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 600,
+        "gridY" : 400,
+        "name": "ROADM-3",
+        "driver": "lumentum-roadm20whitebox-netconf"
+      }
+    }
+  }
+}
+
