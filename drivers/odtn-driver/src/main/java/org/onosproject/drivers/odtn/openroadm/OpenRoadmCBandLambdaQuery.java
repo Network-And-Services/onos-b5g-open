@@ -54,6 +54,8 @@ public abstract class OpenRoadmCBandLambdaQuery
     @Override
     public Set<OchSignal> queryLambdas(PortNumber port) {
         // 193.1 THz corresponds to C36 instead of C48 (halfway between 1 and 96)
+
+        //Questo codice non funziona, ritorna null
         long minFreq = C_BAND_FIRST_CENTER_FREQ.asHz();
         long centerFreq = Spectrum.CENTER_FREQUENCY.asHz();
         int offset = (int) ((centerFreq - minFreq) / (channelSpacing.frequency().asHz()));

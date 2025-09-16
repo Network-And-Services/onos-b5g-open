@@ -88,7 +88,7 @@ public class MultiBandLambdaQuery extends AbstractHandlerBehaviour implements La
 
         Frequency startFreq = OpticalBandUtils.startFrequency(bandType);
 
-        for (int i = 0; i < lambdaCount; i++) {
+        for (int i = 1; i < lambdaCount; i++) {
             OchSignal ochSignal = OpticalChannelUtility.createOchSignalFromBounds(
                     startFreq.add(channelSpacing.frequency().multiply(i)),
                     startFreq.add(channelSpacing.frequency().multiply(i + 1)),

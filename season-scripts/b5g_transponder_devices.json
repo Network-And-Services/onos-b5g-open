@@ -1,0 +1,65 @@
+{
+  "devices": {
+    "netconf:10.100.101.21:2022": {
+      "netconf": {
+        "ip": "10.100.101.21",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 0,
+        "gridY" : 400,
+        "name": "Transp-1",
+        "driver": "client-line-terminal-device"
+      }
+    },
+    "netconf:10.100.101.22:2022": {
+      "netconf": {
+        "ip": "10.100.101.22",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 0,
+        "gridY" : 850,
+        "name": "Transp-2",
+        "driver": "client-line-terminal-device"
+      }
+    },
+    "netconf:10.100.101.23:2022": {
+      "netconf": {
+        "ip": "10.100.101.23",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 600,
+        "gridY" : 400,
+        "name": "Transp-3",
+        "driver": "client-line-terminal-device"
+      }
+    },
+    "netconf:10.100.101.24:2022": {
+      "netconf": {
+        "ip": "10.100.101.24",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin"
+      },
+      "basic": {
+	"locType" : "grid",
+        "gridX" : 600,
+        "gridY" : 850,
+        "name": "Transp-4",
+        "driver": "client-line-terminal-device"
+      }
+    }
+  }
+}
+

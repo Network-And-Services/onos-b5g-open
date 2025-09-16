@@ -1,0 +1,12 @@
+{
+  "links": {
+	"netconf:172.18.0.31:830/11-netconf:172.18.0.33:830/10": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:172.18.0.33:830/11-netconf:172.18.0.31:830/10": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+
+	"netconf:172.18.0.31:830/21-netconf:172.18.0.32:830/10": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:172.18.0.32:830/11-netconf:172.18.0.31:830/20": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+
+	"netconf:172.18.0.32:830/21-netconf:172.18.0.33:830/20": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}},
+	"netconf:172.18.0.33:830/21-netconf:172.18.0.32:830/20": {"basic" : {"type": "OPTICAL", "bidirectional": false, "metric": 1}}
+   }
+}

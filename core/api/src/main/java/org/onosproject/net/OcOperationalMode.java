@@ -7,7 +7,11 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.apache.commons.configuration.HierarchicalConfiguration;
 import org.slf4j.Logger;
 
-import java.util.*;
+import java.util.Set;
+import java.util.List;
+import java.util.HashSet;
+import java.util.Arrays;
+import java.util.Random;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -219,27 +223,32 @@ public class OcOperationalMode {
 
         log.debug("STEP 1 keysOpModeCaps");
         for (String key : keysOpModeCaps) {
-            opMode.addOpModeCaps(key, mode.getString("explicit-mode/operational-mode-capabilities/state/" + key));
+            opMode.addOpModeCaps(key, mode.getString(
+                    "explicit-mode/operational-mode-capabilities/state/" + key));
         }
 
         log.debug("STEP 2 keysOpModeCapsFec");
         for (String key : keysOpModeCapsFec) {
-            opMode.addOpModeCaps(key, mode.getString("explicit-mode/operational-mode-capabilities/fec/state/" + key));
+            opMode.addOpModeCaps(key, mode.getString(
+                    "explicit-mode/operational-mode-capabilities/fec/state/" + key));
         }
 
         log.debug("STEP 3 keysOpModeCapsFilter");
         for (String key : keysOpModeCapsFilter) {
-            opMode.addOpModeCaps(key, mode.getString("explicit-mode/operational-mode-capabilities/filter/state/" + key));
+            opMode.addOpModeCaps(key, mode.getString(
+                    "explicit-mode/operational-mode-capabilities/filter/state/" + key));
         }
 
         log.debug("STEP 4 keysOpModeCapsConstraints");
         for (String key : keysOpModeCapsConstraints) {
-            opMode.addOpModeCaps(key, mode.getString("explicit-mode/optical-channel-config-value-constraints/state/" + key));
+            opMode.addOpModeCaps(key, mode.getString(
+                    "explicit-mode/optical-channel-config-value-constraints/state/" + key));
         }
 
         if (mode.containsKey("penalty")) {
             log.debug("STEP 5 penalties");
-            HierarchicalConfiguration penalties = mode.configurationAt("explicit-mode/operational-mode-capabilities/penalties");
+            HierarchicalConfiguration penalties = mode.configurationAt(
+                    "explicit-mode/operational-mode-capabilities/penalties");
             List<HierarchicalConfiguration> listPenalties = penalties.configurationsAt("penalty");
 
             for (HierarchicalConfiguration penalty : listPenalties) {

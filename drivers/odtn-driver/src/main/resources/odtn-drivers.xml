@@ -51,7 +51,7 @@
         <behaviour api ="org.onosproject.net.optical.OpticalDevice"
                    impl="org.onosproject.net.optical.DefaultOpticalDevice"/>
         <behaviour api ="org.onosproject.net.behaviour.LambdaQuery"
-                   impl="org.onosproject.drivers.odtn.openconfig.MultiBand10LambdaQuery"/>
+                   impl="org.onosproject.drivers.odtn.openconfig.MultiBandCbandLambdaQuery"/>
         <behaviour api="org.onosproject.net.flow.FlowRuleProgrammable"
                    impl="org.onosproject.drivers.odtn.openconfig.ClientLineTerminalDeviceFlowRuleProgrammable"/>
         <behaviour api="org.onosproject.net.behaviour.InternalConnectivity"
@@ -103,7 +103,7 @@
         <behaviour api="org.onosproject.net.flow.FlowRuleProgrammable"
                    impl="org.onosproject.drivers.odtn.openroadm.OpenRoadmFlowRuleProgrammable"/>
         <behaviour api ="org.onosproject.net.behaviour.LambdaQuery"
-                   impl="org.onosproject.drivers.odtn.openconfig.MultiBandBerlinLambdaQuery"/>
+                   impl="org.onosproject.drivers.odtn.openconfig.MultiBandCbandLambdaQuery"/>
         <behaviour api ="org.onosproject.net.optical.OpticalDevice"
                    impl="org.onosproject.net.optical.DefaultOpticalDevice"/>
    </driver>
@@ -114,9 +114,33 @@
         <behaviour api="org.onosproject.net.flow.FlowRuleProgrammable"
                    impl="org.onosproject.drivers.odtn.openroadm.OpenRoadmFlowRuleProgrammable12"/>
         <behaviour api ="org.onosproject.net.behaviour.LambdaQuery"
-                   impl="org.onosproject.drivers.odtn.openconfig.TerminalDeviceLambdaQuery"/>
+                   impl="org.onosproject.drivers.odtn.openconfig.MultiBandCbandLambdaQuery"/>
         <behaviour api ="org.onosproject.net.optical.OpticalDevice"
                    impl="org.onosproject.net.optical.DefaultOpticalDevice"/>
+    </driver>
+
+    <driver name="openroadm-season" extends="" manufacturer="CTTC/CNIT" hwVersion="0.0.1" swVersion="0.0.1">
+        <behaviour api ="org.onosproject.net.device.DeviceDescriptionDiscovery"
+                   impl="org.onosproject.drivers.odtn.openroadm.SeasonDeviceDescription"/>
+        <behaviour api="org.onosproject.net.flow.FlowRuleProgrammable"
+                   impl="org.onosproject.drivers.odtn.openroadm.SeasonFlowRuleProgrammable"/>
+        <behaviour api ="org.onosproject.net.behaviour.LambdaQuery"
+                   impl="org.onosproject.drivers.odtn.openconfig.SeasonLambdaQuery"/>
+        <behaviour api ="org.onosproject.net.optical.OpticalDevice"
+                   impl="org.onosproject.net.optical.DefaultOpticalDevice"/>
+    </driver>
+
+    <driver name="openconfig-season"  manufacturer="CNIT" hwVersion="" swVersion="">
+        <behaviour api="org.onosproject.net.device.DeviceDescriptionDiscovery"
+                   impl="org.onosproject.drivers.odtn.openconfig.ClientLineTerminalDeviceDiscovery"/>
+        <behaviour api ="org.onosproject.net.optical.OpticalDevice"
+                   impl="org.onosproject.net.optical.DefaultOpticalDevice"/>
+        <behaviour api ="org.onosproject.net.behaviour.LambdaQuery"
+                   impl="org.onosproject.drivers.odtn.openconfig.SeasonLambdaQuery"/>
+        <behaviour api="org.onosproject.net.flow.FlowRuleProgrammable"
+                   impl="org.onosproject.drivers.odtn.openconfig.ClientLineTerminalDeviceFlowRuleProgrammable"/>
+        <behaviour api="org.onosproject.net.behaviour.InternalConnectivity"
+                   impl="org.onosproject.drivers.odtn.FullMeshInternalConnectivity"/>
     </driver>
 
     <driver name="infinera-xt3300" manufacturer="infinera" hwVersion="xt3300" swVersion="18.0">

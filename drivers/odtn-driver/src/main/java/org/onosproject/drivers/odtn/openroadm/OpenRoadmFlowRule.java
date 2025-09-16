@@ -18,6 +18,8 @@
 package org.onosproject.drivers.odtn.openroadm;
 
 import static com.google.common.base.Preconditions.checkArgument;
+import static org.onosproject.net.ChannelSpacing.CHL_6P25GHZ;
+import static org.onosproject.net.GridType.FLEX;
 import static org.onosproject.net.flow.criteria.Criterion.Type.IN_PORT;
 import static org.onosproject.net.flow.criteria.Criterion.Type.OCH_SIGID;
 
@@ -62,6 +64,7 @@ public class OpenRoadmFlowRule extends DefaultFlowRule {
 
     private OchSignalType ochSignalType;
 
+    private static OchSignal dummyOchSignal = new OchSignal(FLEX, CHL_6P25GHZ, 0, 4);
     /**
      * Constructor. Build an OpenRoadm flow rule from the passed rule.
      *
@@ -86,6 +89,8 @@ public class OpenRoadmFlowRule extends DefaultFlowRule {
         // checkArgument(osc != null, "Missing OCH_SIGID Criterion");
         if (osc != null) {
             ochSignal = osc.lambda();
+        } else {
+            ochSignal = dummyOchSignal;
         }
 
         TrafficTreatment trafficTreatment = rule.treatment();

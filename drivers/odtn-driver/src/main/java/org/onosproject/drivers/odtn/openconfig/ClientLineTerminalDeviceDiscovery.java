@@ -608,7 +608,7 @@ public class ClientLineTerminalDeviceDiscovery
         String name = component.getString("name");
         String type = component.getString("state/type");
 
-        log.info("Parsing Component {} type {}", name, type);
+        log.debug("Parsing Component {} type {}", name, type);
 
         annotations.put(OdtnDeviceDescriptionDiscovery.OC_NAME, name);
         annotations.put(OdtnDeviceDescriptionDiscovery.OC_TYPE, type);
