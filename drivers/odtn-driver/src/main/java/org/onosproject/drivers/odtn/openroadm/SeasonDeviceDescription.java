@@ -801,27 +801,23 @@ public class SeasonDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
                           HierarchicalConfiguration extLink) {
         String nodeId = getDevice().annotations().value(AnnotationKeys.OPENROADM_NODEID);
         Map<String, String> annotations = new HashMap<>();
+
         annotations.putAll(opticalAnnotations);
+
         String portName = port.getString("port-name");
+
         annotations.put(AnnotationKeys.OPENROADM_NODEID, nodeId);
-        annotations.put(AnnotationKeys.OPENROADM_CIRCUIT_PACK_NAME,
-                circuitPackName);
+        annotations.put(AnnotationKeys.OPENROADM_CIRCUIT_PACK_NAME, circuitPackName);
         annotations.put(org.onosproject.net.AnnotationKeys.PORT_NAME, portName);
         annotations.put(AnnotationKeys.OPENROADM_PORT_NAME, portName);
-        annotations.put(AnnotationKeys.OPENROADM_PARTNER_CIRCUIT_PACK_NAME,
-                port.getString("partner-port/circuit-pack-name", ""));
-        annotations.put(AnnotationKeys.OPENROADM_PARTNER_PORT_NAME,
-                port.getString("partner-port/port-name", ""));
-        annotations.put(AnnotationKeys.OPENROADM_LOGICAL_CONNECTION_POINT,
-                port.getString("logical-connection-point", ""));
-        annotations.put(AnnotationKeys.OPENROADM_PORT_POWER_CAP_MIN_RX,
-                port.getString("roadm-port/port-power-capability-min-rx", ""));
-        annotations.put(AnnotationKeys.OPENROADM_PORT_POWER_CAP_MIN_TX,
-                port.getString("roadm-port/port-power-capability-min-tx", ""));
-        annotations.put(AnnotationKeys.OPENROADM_PORT_POWER_CAP_MAX_RX,
-                port.getString("roadm-port/port-power-capability-max-rx", ""));
-        annotations.put(AnnotationKeys.OPENROADM_PORT_POWER_CAP_MAX_TX,
-                port.getString("roadm-port/port-power-capability-max-tx", ""));
+        annotations.put(AnnotationKeys.OPENROADM_PARTNER_CIRCUIT_PACK_NAME, port.getString("partner-port/circuit-pack-name", ""));
+        annotations.put(AnnotationKeys.OPENROADM_PARTNER_PORT_NAME, port.getString("partner-port/port-name", ""));
+        annotations.put(AnnotationKeys.OPENROADM_LOGICAL_CONNECTION_POINT, port.getString("logical-connection-point", ""));
+        annotations.put(AnnotationKeys.OPENROADM_PORT_POWER_CAP_MIN_RX, port.getString("roadm-port/port-power-capability-min-rx", ""));
+        annotations.put(AnnotationKeys.OPENROADM_PORT_POWER_CAP_MIN_TX, port.getString("roadm-port/port-power-capability-min-tx", ""));
+        annotations.put(AnnotationKeys.OPENROADM_PORT_POWER_CAP_MAX_RX, port.getString("roadm-port/port-power-capability-max-rx", ""));
+        annotations.put(AnnotationKeys.OPENROADM_PORT_POWER_CAP_MAX_TX, port.getString("roadm-port/port-power-capability-max-tx", ""));
+
         // Annotate the reverse port, this is needed for bidir intents
         // (Partner port is present in the datastore only for
         // unidirectional ports).
@@ -846,21 +842,17 @@ public class SeasonDeviceDescription extends OpenRoadmNetconfHandlerBehaviour
         //For SEASON fiber ports
         log.info("[SEASON] degree port discovery port-name {}", portName);
         if (portName.contains("SRG")) {
-            annotations.put("type", "och");
             annotations.put("openroadm-port-type", "if-OCH");
         }
 
         if (portName.contains("DEG")) {
-            annotations.put("type", "oms");
             annotations.put("openroadm-port-type", "if-OMS");
         }
 
         //Specific for SEASON testbed
         if (portName.contains("DEG1") || portName.contains("DEG2")) {
-            annotations.put("type", "ots");
-            annotations.put("openroadm-port-type", "if-ots");
+            annotations.put("openroadm-port-type", "if-OTS");
         }
-
 
         return DefaultAnnotations.builder().putAll(annotations).build();
     }
