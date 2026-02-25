@@ -1,0 +1,17 @@
+{
+  "devices" : {
+    "netconf:192.168.88.34:830" : {
+        "basic" : {
+        "name":"Phoenix-2",
+        "driver":"pegatron-nec-3.1.25"
+      },
+      "netconf" : {
+        "ip" : "192.168.88.34",
+        "port" : "830",
+        "username" : "admin",
+        "password" : "admin123",
+        "idle-timeout" : "0"
+      }
+    }
+  }
+}

@@ -27,8 +27,9 @@ import org.apache.sshd.client.channel.ClientChannel;
 import org.apache.sshd.client.future.ConnectFuture;
 import org.apache.sshd.client.future.OpenFuture;
 import org.apache.sshd.client.session.ClientSession;
-import org.apache.sshd.common.FactoryManager;
-import org.apache.sshd.server.keyprovider.SimpleGeneratorHostKeyProvider;
+import org.apache.sshd.common.signature.BuiltinSignatures;
+import org.apache.sshd.common.NamedFactory;
+import org.apache.sshd.common.signature.Signature;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openssl.PEMKeyPair;
 import org.bouncycastle.openssl.PEMParser;
@@ -54,10 +55,7 @@ import org.slf4j.Logger;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
+import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.ArrayList;
@@ -232,14 +230,48 @@ public class NetconfSessionMinaImpl extends AbstractNetconfSession {
                 deviceInfo.getDeviceId());
 
         client = SshClient.setUpDefaultClient();
+
+           // Add proposed signature schemes: rsa-sha2 added from version
+        //client.setSignatureFactoriesNames(
+                //"rsa-sha2-512,rsa-sha2-256,ssh-rsa,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521"
+        //);
+        for (BuiltinSignatures sig: BuiltinSignatures.VALUES) {
+            log.info("Supported signature: {}", sig.name().toString());
+        }
+
+        for (NamedFactory<Signature> sig: client.getSignatureFactories()) {
+            log.info("Announced signature: {}", sig.getName().toString());
+        }
+
+        // Get the default signature factories
+        List<NamedFactory<Signature>> defaultSignatures = client.getSignatureFactories();
+
+        // Add default (fallback)
+        List<NamedFactory<Signature>> signatures = new ArrayList<>();
+        if (defaultSignatures != null) {
+            signatures.addAll(defaultSignatures);
+        }
+
+        // Add rsa-sha2-512/256 (High priority)
+        signatures.add(BuiltinSignatures.rsaSHA512);
+        signatures.add(BuiltinSignatures.rsaSHA256);
+        signatures.add(BuiltinSignatures.rsa);
+
+        client.setSignatureFactories(signatures);
+
+        for (NamedFactory<Signature> sig: client.getSignatureFactories()) {
+            log.info("New announced signature: {}", sig.getName().toString());
+        }
+
         if (idleTimeout != NetconfControllerImpl.netconfIdleTimeout) {
-            client.getProperties().putIfAbsent(FactoryManager.IDLE_TIMEOUT,
+            client.getProperties().putIfAbsent("idle-timeout",
                     TimeUnit.SECONDS.toMillis(idleTimeout));
-            client.getProperties().putIfAbsent(FactoryManager.NIO2_READ_TIMEOUT,
+            client.getProperties().putIfAbsent("nio2-read-timeout",
                     TimeUnit.SECONDS.toMillis(idleTimeout + 15L));
+
         }
         client.start();
-        client.setKeyPairProvider(new SimpleGeneratorHostKeyProvider());
+        //client.setKeyPairProvider(new SimpleGeneratorHostKeyProvider());
         startSession();
 
         disconnected = false;

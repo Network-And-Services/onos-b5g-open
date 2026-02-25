@@ -51,19 +51,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static org.onosproject.drivers.odtn.openconfig.PegatronTerminalDeviceDiscovery.*;
+import static org.onosproject.drivers.odtn.openconfig.PegatronTerminalDeviceDiscovery.pegatronPortName;
 import static org.onosproject.drivers.odtn.openconfig.PegatronTerminalDeviceDiscovery.pegatronPortNumber;
-import static org.onosproject.drivers.odtn.openconfig.PhoenixTerminalDeviceDiscovery.phoenixPortName;
-import static org.onosproject.drivers.odtn.openconfig.PhoenixTerminalDeviceDiscovery.phoenixPortNumber;
-import static org.onosproject.drivers.odtn.openconfig.PhoenixTerminalDeviceDiscovery.phoenixTransceiverName;
-import static org.onosproject.drivers.odtn.openconfig.PhoenixTerminalDeviceDiscovery.phoenixOpticalChannelName;
+import static org.onosproject.drivers.odtn.openconfig.PegatronTerminalDeviceDiscovery.pegatronTransceiverName;
+import static org.onosproject.drivers.odtn.openconfig.PegatronTerminalDeviceDiscovery.pegatronOpticalChannelName;
 
-
-public class PhoenixTerminalDeviceFlowRuleProgrammable
+public class PegatronTerminalDeviceFlowRuleProgrammable
         extends AbstractHandlerBehaviour implements FlowRuleProgrammable {
 
     private static final Logger log =
-            LoggerFactory.getLogger(PhoenixTerminalDeviceFlowRuleProgrammable.class);
+            LoggerFactory.getLogger(PegatronTerminalDeviceFlowRuleProgrammable.class);
 
     private static final String RPC_TAG_NETCONF_BASE =
             "<rpc xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">";
@@ -392,7 +389,7 @@ public class PhoenixTerminalDeviceFlowRuleProgrammable
         }
     }
 
-    private void setOpticalChannels(NetconfSession session, String operation, String opticalChannelName)
+    private void setOpticalChannel(NetconfSession session, String operation, String opticalChannelName)
             throws NetconfException {
         StringBuilder sb = new StringBuilder();
 
@@ -450,7 +447,7 @@ public class PhoenixTerminalDeviceFlowRuleProgrammable
         sb.append("<frequency>" + (long) freq.asMHz() + "</frequency>");
         sb.append("<target-output-power>" + DEFAULT_TARGET_POWER + "</target-output-power>");
         sb.append("<operational-mode>" + DEFAULT_OPERATIONAL_MODE + "</operational-mode>");
-        sb.append("<line-als xmlns='http://nec.com/yang/nec-optical-openconfig-platform-optical-channel'>" + "NONE" + "</line-als>");
+        //sb.append("<line-als xmlns='http://nec.com/yang/nec-optical-openconfig-platform-optical-channel'>" + "NONE" + "</line-als>");
         sb.append("</config>");
         sb.append("</optical-channel>");
         sb.append("</component>");
@@ -525,9 +522,9 @@ public class PhoenixTerminalDeviceFlowRuleProgrammable
 
             FlowRuleParser frp = new FlowRuleParser(rule);
 
-            String portName = phoenixPortNumber(frp.getPortNumber().toLong());
-            String transceiverName = phoenixTransceiverName(portName);
-            String opticalChannelName = phoenixOpticalChannelName(portName);
+            String portName = pegatronPortNumber(frp.getPortNumber().toLong());
+            String transceiverName = pegatronTransceiverName(portName);
+            String opticalChannelName = pegatronOpticalChannelName(portName);
 
             Frequency centralFrequency = frp.getCentralFrequency();
 
@@ -581,11 +578,11 @@ public class PhoenixTerminalDeviceFlowRuleProgrammable
             String clientPortName;
             String linePortName;
             if (rule.type == TerminalDeviceFlowRule.Type.CLIENT_INGRESS) {
-                clientPortName = phoenixPortNumber(frp.getInputPortNumber().toLong());
-                linePortName = phoenixPortNumber(frp.getOutputPortNumber().toLong());
+                clientPortName = pegatronPortNumber(frp.getInputPortNumber().toLong());
+                linePortName = pegatronPortNumber(frp.getOutputPortNumber().toLong());
             } else {
-                clientPortName = phoenixPortNumber(frp.getOutputPortNumber().toLong());
-                linePortName = phoenixPortNumber(frp.getInputPortNumber().toLong());
+                clientPortName = pegatronPortNumber(frp.getOutputPortNumber().toLong());
+                linePortName = pegatronPortNumber(frp.getInputPortNumber().toLong());
             }
 
             log.info("Sending CLIENT FlowRule to device {} CLIENT port: {}, LINE port {}",
@@ -621,7 +618,7 @@ public class PhoenixTerminalDeviceFlowRuleProgrammable
                 rule.type == TerminalDeviceFlowRule.Type.LINE_EGRESS) {
 
             FlowRuleParser frp = new FlowRuleParser(rule);
-            String portName = phoenixPortNumber(frp.getPortNumber().toLong());
+            String portName = pegatronPortNumber(frp.getPortNumber().toLong());
 
             log.info("Removing LINE FlowRule device {} line port {}", did(), portName);
 
@@ -644,11 +641,11 @@ public class PhoenixTerminalDeviceFlowRuleProgrammable
             String clientPortName;
             String linePortName;
             if (rule.type == TerminalDeviceFlowRule.Type.CLIENT_INGRESS) {
-                clientPortName = phoenixPortNumber(frp.getInputPortNumber().toLong());
-                linePortName = phoenixPortNumber(frp.getOutputPortNumber().toLong());
+                clientPortName = pegatronPortNumber(frp.getInputPortNumber().toLong());
+                linePortName = pegatronPortNumber(frp.getOutputPortNumber().toLong());
             } else {
-                clientPortName = phoenixPortNumber(frp.getOutputPortNumber().toLong());
-                linePortName = phoenixPortNumber(frp.getInputPortNumber().toLong());
+                clientPortName = pegatronPortNumber(frp.getOutputPortNumber().toLong());
+                linePortName = pegatronPortNumber(frp.getInputPortNumber().toLong());
             }
 
             log.debug("Removing CLIENT FlowRule device {} client port: {}, line port {}",

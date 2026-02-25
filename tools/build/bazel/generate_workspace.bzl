@@ -1402,12 +1402,25 @@ def generated_maven_jars():
             jar_sha256 = "83ee748b12d06afb0ad4050a591132b3e8025fbb1990f1ed002e8b73293e69b4",
             licenses = ["notice"],
             jar_urls = ["https://repo1.maven.org/maven2/org/codehaus/plexus/plexus-utils/3.0.24/plexus-utils-3.0.24.jar"],        )
-    if "sshd_core" not in native.existing_rules():
+    #if "sshd_common" not in native.existing_rules():
+    #    java_import_external(
+    #        name = "sshd_common",
+    #        jar_sha256 = "ef912297d2355031f8f574f507f7ae4b8ec6d09381ee5724378496ba0b2114d1",
+    #        licenses = ["notice"],
+    #        jar_urls = ["https://repo1.maven.org/maven2/org/apache/sshd/sshd-common/2.9.2/sshd-common-2.9.2.jar"],        )
+    #if "sshd_core" not in native.existing_rules():
+    #    java_import_external(
+    #        name = "sshd_core",
+    #        jar_sha256 = "b4b66fe8c65af57895eabc1aab6b3104922e1dbca7b2525e32a8ca5b7312848e",
+    #        licenses = ["notice"],
+    #        jar_urls = ["https://repo1.maven.org/maven2/org/apache/sshd/sshd-core/2.9.2/sshd-core-2.9.2.jar"],         
+    #        deps = ["@sshd_common//:sshd_common"],        )
+    if "sshd_osgi" not in native.existing_rules():
         java_import_external(
-            name = "sshd_core",
-            jar_sha256 = "2b4793548bdf172705686c34615c5397b2258d07dd1492f4de936e09985aa3c7",
+            name = "sshd_osgi",
+            jar_sha256 = "90c18a63613159ba508047ba28300ab805e85a66905675b1a338124eadbda042",
             licenses = ["notice"],
-            jar_urls = ["https://repo1.maven.org/maven2/org/apache/sshd/sshd-core/1.7.0/sshd-core-1.7.0.jar"],        )
+            jar_urls = ["https://repo1.maven.org/maven2/org/apache/sshd/sshd-osgi/2.5.1/sshd-osgi-2.5.1.jar"],        )
     if "bcpkix_jdk15on" not in native.existing_rules():
         java_import_external(
             name = "bcpkix_jdk15on",
@@ -1688,7 +1701,9 @@ artifact_map["@onos_yang_serializers_xml//:onos_yang_serializers_xml"] = "mvn:or
 artifact_map["@onos_yang_serializers_utils//:onos_yang_serializers_utils"] = "mvn:org.onosproject:onos-yang-serializers-utils:jar:2.6.1"
 artifact_map["@org_apache_servicemix_bundles_dom4j//:org_apache_servicemix_bundles_dom4j"] = "mvn:org.apache.servicemix.bundles:org.apache.servicemix.bundles.dom4j:jar:1.6.1_5"
 artifact_map["@plexus_utils//:plexus_utils"] = "mvn:org.codehaus.plexus:plexus-utils:jar:NON-OSGI:3.0.24"
-artifact_map["@sshd_core//:sshd_core"] = "mvn:org.apache.sshd:sshd-core:jar:1.7.0"
+#artifact_map["@sshd_core//:sshd_core"] = "mvn:org.apache.sshd:sshd-core:jar:2.9.2"
+#artifact_map["@sshd_common//:sshd_common"] = "mvn:org.apache.sshd:sshd-common:jar:2.9.2"
+artifact_map["@sshd_osgi//:sshd_osgi"] = "mvn:org.apache.sshd:sshd-osgi:jar:2.9.2"
 artifact_map["@bcpkix_jdk15on//:bcpkix_jdk15on"] = "mvn:org.bouncycastle:bcpkix-jdk15on:jar:1.66"
 artifact_map["@bcprov_jdk15on//:bcprov_jdk15on"] = "mvn:org.bouncycastle:bcprov-jdk15on:jar:1.66"
 artifact_map["@hamcrest_optional//:hamcrest_optional"] = "mvn:com.spotify:hamcrest-optional:jar:NON-OSGI:1.1.0"

@@ -46,6 +46,7 @@ public class FlowRuleParser {
             }
             if (c instanceof PortCriterion) {
                 portNumber = ((PortCriterion) c).port();
+                inputPortNumber = ((PortCriterion) c).port();
             }
         }
 
@@ -58,6 +59,7 @@ public class FlowRuleParser {
             }
             if (i instanceof Instructions.OutputInstruction) {
                 portNumber = ((Instructions.OutputInstruction) i).port();
+                outputPortNumber = ((Instructions.OutputInstruction) i).port();
             }
         }
     }
@@ -74,6 +76,14 @@ public class FlowRuleParser {
         return portNumber;
     }
 
+    public PortNumber getInputPortNumber() {
+        return inputPortNumber;
+    }
+
+    public PortNumber getOutputPortNumber() {
+        return outputPortNumber;
+    }
+
     public Frequency getCentralFrequency() {
         return ochSignal.centralFrequency();
     }
@@ -81,4 +91,6 @@ public class FlowRuleParser {
     private boolean rx = false;
     private OchSignal ochSignal = null;
     private PortNumber portNumber = null;
+    private PortNumber inputPortNumber = null;
+    private PortNumber outputPortNumber = null;
 }

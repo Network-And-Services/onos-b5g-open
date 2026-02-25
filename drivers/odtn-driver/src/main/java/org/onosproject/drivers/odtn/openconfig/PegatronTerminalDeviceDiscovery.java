@@ -71,83 +71,39 @@ import org.onosproject.odtn.behaviour.OdtnDeviceDescriptionDiscovery;
  * Driver Implementation of the DeviceDescription discovery for OpenConfig terminal devices.
  * Developed and tested for NEC OpenConfig implementation
  *
- * As defined in OpenConfig each PORT component includes a subcomponent:
- * --- client ports are of type: oc-opt-types:TERMINAL_CLIENT
- * --- line   ports are of type: oc-opt-types:TERMINAL_LINE
+ * As defined in OpenConfig each PORT component is identified because the <state></state> section includes:
+ * --- <type>oc-platform-types:PORT</type
+ *
+ * Moreover:
+ * --- client ports, include an <optical-port></optical-port> section of type: oc-opt-types:TERMINAL_CLIENT
+ * --- line   ports, include an <optical-port></optical-port> section of type: oc-opt-types:TERMINAL_LINE
  *
  *
  * Other assumptions:
- * --- The port name is in the format "cfp2-xx" for line ports
- * --- The port name is in the format "qsfp-xx" for client ports
- * --- The subcomponent of type TRANSCEIVER has a name in the format "cfp2-transceiver-xx"
- * --- The subcomponent of type OPTICAL_CHANNEL has a name in the format "cfp2-opt-xx-1"
+ * --- The port name is in the format "linecard-y-line-port-xx" for line ports
+ * --- The port name is in the format "linecard-y-client-port-xx" for client ports
+ * --- The subcomponents of type TRANSCEIVER have a name in the format "linecard-y-transceiver-xx"
+ * --- The subcomponents of type OPTICAL_CHANNEL has a name in the format "linecard-y-line-opt-xx-1"
  *
- * Where xxx is an integer number (ranging from 1 to 99)
+ * Where xx is an integer number (ranging from 1 to 99), it is typically the index of the port in the module
+ * Where yy is an integer number (ranging from 1 to 9), is typically the index of the linecard
+ *
+ * The components hierarchy is typically:
+ * -- PORT
+ * ---- TRANSCEIVER (parent PORT)
+ * ------ OPTICAL CHANNEL (parent TRANSCEIVER)
+ *
+ * This driver loads the isEnabled() of each port from the field <empty></empty> of the PORT component.
+ * If the port does is empty (there is not a transceiver) the core DOES NOT perform the LambdaQuery.
  *
  *  --- FINO A QUI
  *
  * --- In the section <terminal-device><logical-channels> the channel with index xxx is associated to transceiver-xxx
  *
- * See simplified example of a port component:
  *
- * //CHECKSTYLE:OFF
- * <component>
- *     <name>port-11801</name>
- *     <state>
- *         <name>port-11801</name>
- *         <type>oc-platform-types:PORT</type>
- *     </state>
- *     <properties>
- *         <property>
- *             <name>odtn-port-type</name>
- *             <state>
- *                 <name>odtn-port-type</name>
- *                 <value>client</value>
- *             </state>
- *         </property>
- *         <property>
- *             <name>onos-index</name>
- *             <state>
- *                 <name>onos-index</name>
- *                 <value>11801</value>
- *             </state>
- *             </property>
- *     </properties>
- *     <subcomponents>
- *         <subcomponent>
- *             <name>transceiver-11801</name>
- *             <state>
- *                 <name>transceiver-11801</name>
- *             </state>
- *         </subcomponent>
- *     </subcomponents>
- * </component>
- * <terminal-device>
- *     <logical-channels>
- *         <channel>
- *             <index>11801</index>
- *             <state>
- *                 <index>11801</index>
- *                 <description>Logical channel 11801</description>
- *                 <admin-state>DISABLED</admin-state>
- *                 <rate-class>oc-opt-types:TRIB_RATE_10G</rate-class>
- *                 <trib-protocol>oc-opt-types:PROT_10GE_LAN</trib-protocol>
- *                 <logical-channel-type>oc-opt-types:PROT_ETHERNET</logical-channel-type>
- *                 <loopback-mode>NONE</loopback-mode>
- *                 <test-signal>false</test-signal>
- *                 <link-state>UP</link-state>
- *             </state>
- *             <ingress>
- *                 <state>
- *                     <transceiver>transceiver-11801</transceiver>
- *                 </state>
- *             </ingress>
- *         </channel>
- *     <logical-channels>
- * <terminal-device>
  * //CHECKSTYLE:ON
  */
-public class PhoenixTerminalDeviceDiscovery
+public class PegatronTerminalDeviceDiscovery
         extends AbstractHandlerBehaviour
         implements OdtnDeviceDescriptionDiscovery, DeviceDescriptionDiscovery {
 
@@ -174,7 +130,7 @@ public class PhoenixTerminalDeviceDiscovery
     private static final String OC_PLATFORM_TYPES_INACTIVE =
             "oc-platform-types:INACTIVE";
 
-    private static final Logger log = getLogger(PhoenixTerminalDeviceDiscovery.class);
+    private static final Logger log = getLogger(PegatronTerminalDeviceDiscovery.class);
 
     private Set<Integer> supportedOpModeIds;
 
@@ -655,18 +611,20 @@ public class PhoenixTerminalDeviceDiscovery
 
         log.info("Parsing Component {} type {}", name, type);
 
+        annotations.put("name",name);
         annotations.put(OdtnDeviceDescriptionDiscovery.OC_NAME, name);
         annotations.put(OdtnDeviceDescriptionDiscovery.OC_TYPE, type);
         annotations.put(OdtnDeviceDescriptionDiscovery.OC_STATUS, "empty-" + empty);
-        annotations.put(OC_TRANSCEIVER_NAME, phoenixTransceiverName(name));
-        annotations.put(OC_OPTICAL_CHANNEL_NAME, phoenixOpticalChannelName(name));
+        annotations.put(OC_TRANSCEIVER_NAME, pegatronTransceiverName(name));
+        annotations.put(OC_OPTICAL_CHANNEL_NAME, pegatronOpticalChannelName(name));
 
         // Assing an ONOS port number
-        PortNumber portNum = phoenixPortName(name);
+        PortNumber portNum = pegatronPortName(name);
 
         log.info("PORT: {} assigned ONOS number: {}", name, portNum);
-        log.info("PORT: {} associated to TRANSCEIVER {}", name, phoenixTransceiverName(name));
-        log.info("PORT: {} associated to OPTICAL_CHANNEL {}", name, phoenixOpticalChannelName(name));
+        log.info("PORT: {} associated to TRANSCEIVER {}", name, pegatronTransceiverName(name));
+        log.info("PORT: {} associated to OPTICAL_CHANNEL {}", name, pegatronOpticalChannelName(name));
+        //log.warn("PORT: check reverse map {}", name.equals(pegatronPortNumber(portNum.toLong())));
 
         // The heuristic to know if it is client or line side
         if (!annotations.containsKey(PORT_TYPE)) {
@@ -712,64 +670,77 @@ public class PhoenixTerminalDeviceDiscovery
         return null;
     }
 
-    protected static PortNumber phoenixPortName(String portName) {
+    protected static PortNumber pegatronPortName(String portName) {
 
-        if (portName == null || !portName.matches("(cfp2|qsfp)-\\d+")) {
+        if (portName == null || !portName.matches("linecard-\\d-(?:line|client)-port-\\d{1,2}")) {
             log.error("Port name is not in the expected format: {}", portName);
             throw new IllegalArgumentException("Invalid module format");
         }
 
         String[] parts = portName.split("-");
         String prefix = parts[0];
-        int index = Integer.parseInt(parts[1]);
+        int card_index = Integer.parseInt(parts[1]);
+        String port_type = parts[2];
+        String port_suffix = parts[3];
+        int port_index = Integer.parseInt(parts[4]);
 
         int portIndex = 0;
-        if (prefix.equals("cfp2")) {
-            portIndex = 100 + index;
-        } else if (prefix.equals("qsfp")) {
-            portIndex = 1000 + index;
+        if (port_type.equals("line")) {
+            portIndex = 100 * card_index + port_index;
+        } else if (port_type.equals("client")) {
+            portIndex = 1000 * card_index + port_index;
         }
 
         return PortNumber.portNumber(portIndex);
     }
 
-    protected static String phoenixPortNumber(Long value) {
-        if (value >= 100 && value < 200) {
-            return "cfp2-" + (value - 100);
-        } else if (value >= 1000 && value < 1100) {
-            return "qsfp-" + (value - 1000);
+    protected static String pegatronPortNumber(Long value) {
+        if (value >= 100 && value < 999) {
+            return "linecard-" + value/100 + "-line-port-" + (value - 100 * (value/100));
+        } else if (value >= 1000 && value < 9999) {
+            return "linecard-" + value/1000 + "-client-port-" + (value - 1000 * (value/1000));
         } else {
             log.error("Port number is not in the expected range: {}", value);
             throw new IllegalArgumentException("Invalid value for module");
         }
     }
 
-    protected static String phoenixTransceiverName(String portName) {
-        if (portName == null || !portName.matches("(cfp2|qsfp)-\\d+")) {
+    protected static String pegatronTransceiverName(String portName) {
+        if (portName == null || !portName.matches("linecard-\\d-(?:line|client)-port-\\d{1,2}")) {
             log.error("Port name is not in the expected format: {}", portName);
             throw new IllegalArgumentException("Invalid module format");
         }
 
         String[] parts = portName.split("-");
         String prefix = parts[0];
-        int index = Integer.parseInt(parts[1]);
+        int card_index = Integer.parseInt(parts[1]);
+        String port_type = parts[2];
+        String port_suffix = parts[3];
+        int port_index = Integer.parseInt(parts[4]);
 
-        String transceiver = prefix + "-transceiver-" + String.valueOf(index);
+        String transceiver = prefix + "-" + card_index + "-" + port_type + "-transceiver-" + port_index;
+
+        log.debug("Loaded transceiver name: {}", transceiver);
 
         return transceiver;
     }
 
-    protected static String phoenixOpticalChannelName(String portName) {
-        if (portName == null || !portName.matches("(cfp2|qsfp)-\\d+")) {
+    protected static String pegatronOpticalChannelName(String portName) {
+        if (portName == null || !portName.matches("linecard-\\d-(?:line|client)-port-\\d{1,2}")) {
             log.error("Port name is not in the expected format: {}", portName);
             throw new IllegalArgumentException("Invalid module format");
         }
 
         String[] parts = portName.split("-");
         String prefix = parts[0];
-        int index = Integer.parseInt(parts[1]);
+        int card_index = Integer.parseInt(parts[1]);
+        String port_type = parts[2];
+        String port_suffix = parts[3];
+        int port_index = Integer.parseInt(parts[4]);
 
-        String channel = prefix + "-opt-" + String.valueOf(index) + "-1";
+        String channel = prefix + "-" + card_index + "-" + port_type + "-opt-" + port_index + "-1";
+
+        log.debug("Loaded optical_channel name: {}", channel);
 
         return channel;
     }

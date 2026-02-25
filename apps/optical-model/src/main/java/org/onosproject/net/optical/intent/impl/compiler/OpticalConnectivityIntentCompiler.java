@@ -166,7 +166,7 @@ public class OpticalConnectivityIntentCompiler implements IntentCompiler<Optical
                 List<Resource> resourcesLocal =  new LinkedList<>();
                 resourcesLocal.addAll(ochPortResources);
                 resourcesLocal.addAll(convertToResources(path, convertToFlexChannels(intent.ochSignal().get())));
-                log.debug("Current resources {}", resourcesLocal);
+                log.info("Current resources {}", resourcesLocal);
                 attempt = allocateResourcesAttempt(intent, resourcesLocal);
             } else {
                 log.error("This request do not include a suggested lambda");
