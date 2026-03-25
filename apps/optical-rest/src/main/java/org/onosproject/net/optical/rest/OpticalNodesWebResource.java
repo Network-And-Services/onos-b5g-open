@@ -65,7 +65,9 @@ public class OpticalNodesWebResource extends AbstractWebResource {
     private static final Set<String> allowedAnnotationKeysPorts = new HashSet<>(Arrays.asList(
             AnnotationKeys.INTERDOMAIN_CONNECT_POINT,
             AnnotationKeys.INCOMING_INTERDOMAIN_LINK,
-            AnnotationKeys.OUTGOING_INTERDOMAIN_LINK));
+            AnnotationKeys.OUTGOING_INTERDOMAIN_LINK,
+            AnnotationKeys.LOCAL_HOST_DATA_IP,
+            AnnotationKeys.LOCAL_HOST_MGMT_IP));
 
     /**
      * Get the optical nodes on the network.

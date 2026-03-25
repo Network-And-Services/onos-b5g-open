@@ -298,6 +298,8 @@ public final class AnnotationKeys {
     public static final String INTERDOMAIN_CONNECT_POINT = "interdomain-connect-point";
     public static final String INCOMING_INTERDOMAIN_LINK = "incoming-interdomain-link";
     public static final String OUTGOING_INTERDOMAIN_LINK = "outgoing-interdomain-link";
+    public static final String LOCAL_HOST_DATA_IP = "host-data-plane-ip";
+    public static final String LOCAL_HOST_MGMT_IP = "host-mgmt-plane-ip";
 
     /**
      * Returns the value annotated object for the specified annotation key.
