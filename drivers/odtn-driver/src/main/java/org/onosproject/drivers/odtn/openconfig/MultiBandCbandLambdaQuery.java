@@ -22,7 +22,7 @@ public class MultiBandCbandLambdaQuery extends MultiBandLambdaQuery {
 
         //log.info("LambdaQuery C-band: queried lambdas C for port {}", port);
         lBandLambdaCount = 0;
-        cBandLambdaCount = 96;
+        cBandLambdaCount = 85;
         sBandLambdaCount = 0;
         oBandLambdaCount = 0;
 

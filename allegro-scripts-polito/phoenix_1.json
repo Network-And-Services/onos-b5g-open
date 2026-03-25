@@ -2,6 +2,9 @@
   "devices" : {
     "netconf:192.168.88.13:830" : {
         "basic" : {
+        "locType" : "grid",
+        "gridX" : 660,
+        "gridY" : 775,
         "name":"Phoenix-1",
         "driver":"phoenix-nec-1.2.8"
       },
