@@ -807,7 +807,7 @@ public class PegatronTerminalDeviceDiscovery
 
             log.debug("REPLY OP_MODES {}", rpcReply);
 
-            if (rpcReply.equals("operational-modes")) {
+            if (rpcReply.contains("operational-modes")) {
                 XMLConfiguration xconf = (XMLConfiguration) XmlConfigParser.loadXmlString(rpcReply);
                 xconf.setExpressionEngine(xpe);
 
