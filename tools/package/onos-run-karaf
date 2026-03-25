@@ -114,7 +114,7 @@ export ONOS_HOME=$PWD
 echo "$!" > /tmp/onos.pid
 
 # Hang-on a bit and then start tailing the ONOS log output
-MAX_RETRY=30
+MAX_RETRY=300
 echo "Waiting for karaf.log"
 until [ $MAX_RETRY -le 0 ]; do
     KARAF_LOG=$(find $ONOS_HOME -type f -name karaf.log)

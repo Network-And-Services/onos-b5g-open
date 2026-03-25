@@ -538,6 +538,9 @@ public class OpenRoadmDeviceDescription12 extends OpenRoadmNetconfHandlerBehavio
     discoverDegreePorts(NetconfSession session,
                         List<PortDescription> list,
                         List<HierarchicalConfiguration> externalLinks) {
+
+        log.info("[OPENROADM] Device {} discovering DEGREE ports", did());
+
         int degreeNumber = 0;
         String nodeId = getDevice().annotations().value(AnnotationKeys.OPENROADM_NODEID);
         List<HierarchicalConfiguration> degrees = getDegrees(session);
@@ -577,6 +580,9 @@ public class OpenRoadmDeviceDescription12 extends OpenRoadmNetconfHandlerBehavio
                 String portName = cport.getString("port-name", "");
                 PortNumber reversepNum = findDegreeReversePort(degreeNumber, portIndex, connectionPorts);
                 HierarchicalConfiguration eLink = parseExternalLink(externalLinks, cpName, portName);
+
+                log.info("[OPENROADM] Device {} DEGREE port discovered name {} number {}", did(), portName, pNum.toLong());
+
                 HierarchicalConfiguration port = getPortState(session, cpName, portName);
                 DefaultAnnotations annotations = createPortAnnotations(degreeAnnotations,
                         cpName,
@@ -638,6 +644,9 @@ public class OpenRoadmDeviceDescription12 extends OpenRoadmNetconfHandlerBehavio
     discoverSrgPorts(NetconfSession session,
                      List<PortDescription> list,
                      List<HierarchicalConfiguration> externalLinks) {
+
+        log.info("[OPENROADM] Device {} discovering SRG ports", did());
+
         int srgNumber = 0;
         List<HierarchicalConfiguration> srgs = getSrgs(session);
         for (HierarchicalConfiguration s : srgs) {
@@ -691,6 +700,9 @@ public class OpenRoadmDeviceDescription12 extends OpenRoadmNetconfHandlerBehavio
                         }
                         PortNumber pNum = PortNumber.portNumber(portNum);
                         PortNumber reversepNum = PortNumber.portNumber(revPortNum);
+
+                        log.info("[OPENROADM] Device {} SRG port discovered name {} number {}", did(), portName, pNum.toLong());
+
                         HierarchicalConfiguration eLink = parseExternalLink(externalLinks, srgCpName, portName);
                         DefaultAnnotations annotations = createPortAnnotations(srgAnnotations,
                                 srgCpName,
