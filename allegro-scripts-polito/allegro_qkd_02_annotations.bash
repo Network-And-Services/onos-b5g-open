@@ -1,0 +1,5 @@
+curl -u karaf:karaf -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' 'http://montebianco:8181/onos/optical/nodes/annotate/onePort?connectPoint=netconf%3A192.168.88.13%3A830%2F1001&key=host-mgmt-plane-ip&value=192.168.88.139'
+curl -u karaf:karaf -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' 'http://montebianco:8181/onos/optical/nodes/annotate/onePort?connectPoint=netconf%3A192.168.88.13%3A830%2F1001&key=host-data-plane-ip&value=10.20.10.11'
+curl -u karaf:karaf -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' 'http://montebianco:8181/onos/optical/nodes/annotate/onePort?connectPoint=netconf%3A192.168.88.34%3A830%2F1001&key=host-mgmt-plane-ip&value=192.168.88.141'
+curl -u karaf:karaf -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' 'http://montebianco:8181/onos/optical/nodes/annotate/onePort?connectPoint=netconf%3A192.168.88.34%3A830%2F1001&key=host-data-plane-ip&value=10.20.10.21'
+
