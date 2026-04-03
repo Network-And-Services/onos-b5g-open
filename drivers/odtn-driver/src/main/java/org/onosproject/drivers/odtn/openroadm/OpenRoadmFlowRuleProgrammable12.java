@@ -186,7 +186,7 @@ public class OpenRoadmFlowRuleProgrammable12
         List<FlowRule> added = new ArrayList<>();
         for (FlowRule r : rules) {
             openRoadmLog("TO APPLY RULE {}", r);
-            OpenRoadmFlowRule xc = new OpenRoadmFlowRule(r, getLinePorts());
+            OpenRoadmFlowRule xc = new OpenRoadmFlowRule(r, getLinePorts(),0);
             openRoadmInfo("OpenRoadmRule {}", xc);
             if (editConfigCreateConnection(xc)) {
                 added.add(xc);
@@ -207,7 +207,7 @@ public class OpenRoadmFlowRuleProgrammable12
     public Collection<FlowRule> removeFlowRules(Collection<FlowRule> rules) {
         List<FlowRule> removed = new ArrayList<>();
         for (FlowRule r : rules) {
-            OpenRoadmFlowRule xc = new OpenRoadmFlowRule(r, getLinePorts());
+            OpenRoadmFlowRule xc = new OpenRoadmFlowRule(r, getLinePorts(),0);
             openRoadmLog("TO REMOVE RULE {}", xc);
             if (editConfigDeleteConnection(xc)) {
                 removed.add(r);
@@ -436,6 +436,7 @@ public class OpenRoadmFlowRuleProgrammable12
                 return false;
             }
         }
+        // Creation of MC in output
         if ((conn.getType() != OpenRoadmFlowRule.Type.DROP_LINK) &&
             (conn.getType() != OpenRoadmFlowRule.Type.LOCAL)) {
             StringBuilder sb = new StringBuilder();

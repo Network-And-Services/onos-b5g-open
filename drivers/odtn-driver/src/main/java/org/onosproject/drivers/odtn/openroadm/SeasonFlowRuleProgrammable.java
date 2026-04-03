@@ -185,7 +185,7 @@ public class SeasonFlowRuleProgrammable
 
         for (FlowRule r : rules) {
             openRoadmLog("TO APPLY RULE {}", r);
-            OpenRoadmFlowRule xc = new OpenRoadmFlowRule(r, getLinePorts());
+            OpenRoadmFlowRule xc = new OpenRoadmFlowRule(r, getLinePorts(),0);
             openRoadmInfo("OpenRoadmRule {}", xc);
             if (editConfigCreateConnection(xc)) {
                 added.add(xc);
@@ -206,7 +206,7 @@ public class SeasonFlowRuleProgrammable
     public Collection<FlowRule> removeFlowRules(Collection<FlowRule> rules) {
         List<FlowRule> removed = new ArrayList<>();
         for (FlowRule r : rules) {
-            OpenRoadmFlowRule xc = new OpenRoadmFlowRule(r, getLinePorts());
+            OpenRoadmFlowRule xc = new OpenRoadmFlowRule(r, getLinePorts(),0);
             openRoadmLog("TO REMOVE RULE {}", xc);
             if (editConfigDeleteConnection(xc)) {
                 removed.add(r);

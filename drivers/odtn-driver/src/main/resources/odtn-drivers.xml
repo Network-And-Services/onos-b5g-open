@@ -132,6 +132,17 @@
                    impl="org.onosproject.net.optical.DefaultOpticalDevice"/>
     </driver>
 
+    <driver name="openroadmP2MP" extends="" manufacturer="CTTC/CNIT" hwVersion="0.0.1" swVersion="0.0.1">
+        <behaviour api ="org.onosproject.net.device.DeviceDescriptionDiscovery"
+                   impl="org.onosproject.drivers.odtn.openroadm.OpenRoadmDeviceDescription12"/>
+        <behaviour api="org.onosproject.net.flow.FlowRuleProgrammable"
+                   impl="org.onosproject.drivers.odtn.openroadm.OpenRoadmFlowRuleProgrammableP2MP"/>
+        <behaviour api ="org.onosproject.net.behaviour.LambdaQuery"
+                   impl="org.onosproject.drivers.odtn.openconfig.MultiBandCbandLambdaQuery"/>
+        <behaviour api ="org.onosproject.net.optical.OpticalDevice"
+                   impl="org.onosproject.net.optical.DefaultOpticalDevice"/>
+    </driver>
+
     <driver name="openroadm-season" extends="" manufacturer="CTTC/CNIT" hwVersion="0.0.1" swVersion="0.0.1">
         <behaviour api ="org.onosproject.net.device.DeviceDescriptionDiscovery"
                    impl="org.onosproject.drivers.odtn.openroadm.SeasonDeviceDescription"/>

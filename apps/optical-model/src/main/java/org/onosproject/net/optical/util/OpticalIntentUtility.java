@@ -16,22 +16,18 @@
 
 package org.onosproject.net.optical.util;
 
+import org.onosproject.net.*;
+import org.onosproject.net.flow.DefaultTrafficSelector;
+import org.onosproject.net.flow.DefaultTrafficTreatment;
+import org.onosproject.net.flow.TrafficSelector;
+import org.onosproject.net.flow.TrafficTreatment;
+import org.onosproject.net.flow.criteria.Criteria;
+import org.onosproject.net.flow.instructions.Instructions;
+import org.onosproject.net.intent.*;
 import org.onosproject.net.optical.OduCltPort;
 
 import org.onosproject.core.ApplicationId;
-import org.onosproject.net.CltSignalType;
-import org.onosproject.net.ConnectPoint;
-import org.onosproject.net.Device;
-import org.onosproject.net.OchSignal;
-import org.onosproject.net.OduSignalType;
-import org.onosproject.net.Port;
-import org.onosproject.net.Path;
 import org.onosproject.net.device.DeviceService;
-import org.onosproject.net.intent.Intent;
-import org.onosproject.net.intent.Key;
-import org.onosproject.net.intent.OpticalCircuitIntent;
-import org.onosproject.net.intent.OpticalConnectivityIntent;
-import org.onosproject.net.intent.OpticalOduIntent;
 import org.onosproject.net.optical.OchPort;
 
 import static org.onosproject.net.Device.Type;
@@ -40,7 +36,10 @@ import static org.onosproject.net.optical.device.OpticalDeviceServiceView.optica
 import org.onosproject.net.optical.OmsPort;
 import org.slf4j.Logger;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -264,5 +263,161 @@ public final class OpticalIntentUtility {
                     srcPort.type(), dstPort.type());
 
         return null;
+    }
+
+    public static Intent createP2mpOpticalIntent(ConnectPoint ingress, Set<ConnectPoint> egressSet,
+                                                 DeviceService deviceService, Key key, ApplicationId appId,
+                                                 OchSignal signal) {
+        Intent intent = null;
+
+        if (ingress == null) {
+            throw new IllegalArgumentException("Ingress connect point cannot be null");
+        }
+        if (egressSet == null || egressSet.isEmpty()) {
+            throw new IllegalArgumentException("Egress connect point set cannot be null or empty");
+        }
+        if (deviceService == null) {
+            throw new IllegalArgumentException("DeviceService cannot be null");
+        }
+
+        if (!connectPointExists(ingress, deviceService)) {
+            throw new IllegalArgumentException("Ingress connect point does not exist: " + ingress);
+        }
+
+        for (ConnectPoint egress : egressSet) {
+            if (egress == null) {
+                throw new IllegalArgumentException("Egress connect point cannot be null");
+            }
+            if (!connectPointExists(egress, deviceService)) {
+                throw new IllegalArgumentException("Egress connect point does not exist: " + egress);
+            }
+        }
+
+        if (egressSet.contains(ingress)) {
+            throw new IllegalArgumentException("Egress set must not contain ingress");
+        }
+
+        log.info("Creating P2MP intent - ingress: {}, egressList: {}", ingress, egressSet);
+
+        FilteredConnectPoint filteredIngress = new FilteredConnectPoint(ingress);
+
+        Set<FilteredConnectPoint> filteredEgressSet = egressSet.stream()
+                .map(FilteredConnectPoint::new)
+                .collect(Collectors.toSet());
+
+        OchSignalType signalType;
+
+        switch (signal.gridType()) {
+            case FLEX:
+                signalType = OchSignalType.FLEX_GRID;
+                break;
+            case DWDM:
+                signalType = OchSignalType.FIXED_GRID;
+                break;
+            default:
+                throw new IllegalArgumentException("Unsupported grid type: " + signal.gridType());
+        }
+
+        TrafficSelector selector = DefaultTrafficSelector.builder()
+                .add(Criteria.matchLambda(signal))
+                .add(Criteria.matchOchSignalType(signalType))
+                .build();
+
+        TrafficTreatment treatment = DefaultTrafficTreatment.builder()
+                .add(Instructions.modL0Lambda(signal))
+                .build();
+
+        intent = SinglePointToMultiPointIntent.builder()
+                .appId(appId)
+                .key(key)
+                .filteredIngressPoint(filteredIngress)
+                .filteredEgressPoints(filteredEgressSet)
+                .selector(selector)
+                //.treatment(treatment)
+                .build();
+
+        return intent;
+    }
+
+    //TODO: to be checked and tested, REST API to be implemented
+    public static Intent createMp2pOpticalIntent(Set<ConnectPoint> ingressSet, ConnectPoint egress,
+                                                 DeviceService deviceService, Key key, ApplicationId appId,
+                                                 OchSignal signal) {
+        Intent intent = null;
+
+        if (ingressSet == null || ingressSet.isEmpty()) {
+            throw new IllegalArgumentException("Ingress connect point set cannot be null or empty");
+        }
+        if (egress == null) {
+            throw new IllegalArgumentException("Egress connect point cannot be null");
+        }
+        if (deviceService == null) {
+            throw new IllegalArgumentException("DeviceService cannot be null");
+        }
+        if (signal == null) {
+            throw new IllegalArgumentException("OchSignal cannot be null");
+        }
+
+        if (!connectPointExists(egress, deviceService)) {
+            throw new IllegalArgumentException("Egress connect point does not exist: " + egress);
+        }
+
+        for (ConnectPoint ingress : ingressSet) {
+            if (ingress == null) {
+                throw new IllegalArgumentException("Ingress connect point cannot be null");
+            }
+            if (!connectPointExists(ingress, deviceService)) {
+                throw new IllegalArgumentException("Ingress connect point does not exist: " + ingress);
+            }
+        }
+
+        if (ingressSet.contains(egress)) {
+            throw new IllegalArgumentException("Ingress set must not contain egress");
+        }
+
+        log.info("Creating M2SP intent - ingressSet: {}, egress: {}", ingressSet, egress);
+
+        Set<FilteredConnectPoint> filteredIngressSet = ingressSet.stream()
+                .map(FilteredConnectPoint::new)
+                .collect(Collectors.toSet());
+
+        FilteredConnectPoint filteredEgress = new FilteredConnectPoint(egress);
+
+        OchSignalType signalType;
+        switch (signal.gridType()) {
+            case FLEX:
+                signalType = OchSignalType.FLEX_GRID;
+                break;
+            case DWDM:
+                signalType = OchSignalType.FIXED_GRID;
+                break;
+            default:
+                throw new IllegalArgumentException("Unsupported grid type: " + signal.gridType());
+        }
+
+        TrafficSelector selector = DefaultTrafficSelector.builder()
+                .add(Criteria.matchLambda(signal))
+                .add(Criteria.matchOchSignalType(signalType))
+                .build();
+
+        TrafficTreatment treatment = DefaultTrafficTreatment.builder()
+                .add(Instructions.modL0Lambda(signal))
+                .build();
+
+        intent = MultiPointToSinglePointIntent.builder()
+                .appId(appId)
+                .key(key)
+                .filteredIngressPoints(filteredIngressSet)
+                .filteredEgressPoint(filteredEgress)
+                .selector(selector)
+                //.treatment(treatment)
+                .build();
+
+        return intent;
+    }
+
+    private static boolean connectPointExists(ConnectPoint cp, DeviceService deviceService) {
+        return deviceService.getDevice(cp.deviceId()) != null &&
+                deviceService.getPort(cp.deviceId(), cp.port()) != null;
     }
 }

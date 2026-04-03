@@ -1,0 +1,46 @@
+{
+  "links": {
+    "netconf:172.18.0.10:2022/11-netconf:172.18.0.11:2022/10": {
+      "basic": {
+        "type": "OPTICAL",
+        "bidirectional": false,
+        "metric": 1
+      }
+    },
+    "netconf:172.18.0.11:2022/11-netconf:172.18.0.10:2022/10": {
+      "basic": {
+        "type": "OPTICAL",
+        "bidirectional": false,
+        "metric": 1
+      }
+    },
+    "netconf:172.18.0.11:2022/21-netconf:172.18.0.12:2022/10": {
+      "basic": {
+        "type": "OPTICAL",
+        "bidirectional": false,
+        "metric": 1
+      }
+    },
+    "netconf:172.18.0.12:2022/11-netconf:172.18.0.11:2022/20": {
+      "basic": {
+        "type": "OPTICAL",
+        "bidirectional": false,
+        "metric": 1
+      }
+    },
+    "netconf:172.18.0.11:2022/31-netconf:172.18.0.13:2022/10": {
+      "basic": {
+        "type": "OPTICAL",
+        "bidirectional": false,
+        "metric": 1
+      }
+    },
+    "netconf:172.18.0.13:2022/11-netconf:172.18.0.11:2022/30": {
+      "basic": {
+        "type": "OPTICAL",
+        "bidirectional": false,
+        "metric": 1
+      }
+    }
+  }
+}

@@ -17,23 +17,20 @@ package org.onosproject.net.intent.impl.compiler;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
-import org.onosproject.net.ConnectPoint;
-import org.onosproject.net.DeviceId;
-import org.onosproject.net.Link;
-import org.onosproject.net.Path;
-import org.onosproject.net.intent.Intent;
-import org.onosproject.net.intent.IntentException;
-import org.onosproject.net.intent.LinkCollectionIntent;
-import org.onosproject.net.intent.MultiPointToSinglePointIntent;
+import org.onosproject.net.*;
+import org.onosproject.net.flow.criteria.Criterion;
+import org.onosproject.net.flow.criteria.OchSignalCriterion;
+import org.onosproject.net.intent.*;
+import org.onosproject.net.resource.Resource;
+import org.onosproject.net.resource.ResourceAllocation;
+import org.onosproject.net.resource.Resources;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.onosproject.net.intent.constraint.PartialFailureConstraint.intentAllowsPartialFailure;
@@ -114,6 +111,8 @@ public class MultiPointToSinglePointIntentCompiler
 
         allocateBandwidth(intent, pathCPs);
 
+        allocateOpticalResources(intent, pathCPs);
+
         if (!hasPaths) {
             throw new IntentException("Cannot find any path between ingress and egress points.");
         } else if (!allowMissingPaths && missingSomePaths) {
@@ -134,5 +133,92 @@ public class MultiPointToSinglePointIntentCompiler
                 .build();
 
         return Collections.singletonList(result);
+    }
+
+    private void allocateOpticalResources(MultiPointToSinglePointIntent intent, List<ConnectPoint> pathCPs) {
+        if (intent == null) {
+            throw new IntentException("Intent cannot be null");
+        }
+
+        Criterion criterion = intent.selector().getCriterion(Criterion.Type.OCH_SIGID);
+        if (!(criterion instanceof OchSignalCriterion)) {
+            return;
+        }
+
+        OchSignal signal = ((OchSignalCriterion) criterion).lambda();
+        List<OchSignal> channels = convertToFlexChannels(signal);
+        if (channels.isEmpty()) {
+            throw new IntentException("Unable to derive optical slots from signal " + signal);
+        }
+
+        Set<ConnectPoint> uniquePathCPs = new HashSet<>(pathCPs);
+
+        Set<ConnectPoint> terminalCPs = new HashSet<>();
+        terminalCPs.addAll(intent.ingressPoints());
+        terminalCPs.add(intent.egressPoint());
+
+        Set<Resource> resources = new HashSet<>();
+
+        // 1) Allocate terminal OCH ports, if terminal ports are OCH
+        for (ConnectPoint cp : terminalCPs) {
+            Port port = deviceService.getPort(cp.deviceId(), cp.port());
+            if (port == null) {
+                throw new IntentException("Port not found for terminal connect point " + cp);
+            }
+
+            if (port.type() == Port.Type.OCH) {
+                Resource portResource = Resources.discrete(cp.deviceId(), cp.port()).resource();
+                if (!resourceService.isAvailable(portResource)) {
+                    throw new IntentException("OCH port not available: " + cp);
+                }
+                resources.add(portResource);
+            }
+        }
+
+        // 2) Allocate optical spectrum on all ports traversed by the intent tree
+        for (ConnectPoint cp : uniquePathCPs) {
+            Port port = deviceService.getPort(cp.deviceId(), cp.port());
+            if (port == null) {
+                throw new IntentException("Port not found for path connect point " + cp);
+            }
+
+            Resource portResource = Resources.discrete(cp.deviceId(), cp.port()).resource();
+
+            for (OchSignal channel : channels) {
+                Resource lambdaResource = portResource.child(channel);
+                if (!resourceService.isAvailable(lambdaResource)) {
+                    throw new IntentException("Optical slot not available on " + cp + ": " + channel);
+                }
+                resources.add(lambdaResource);
+            }
+        }
+
+        List<ResourceAllocation> allocations =
+                resourceService.allocate(intent.key(), new ArrayList<>(resources));
+
+        if (allocations.isEmpty()) {
+            throw new IntentException("Unable to allocate optical resources for intent " + intent.key());
+        }
+    }
+
+    private List<OchSignal> convertToFlexChannels(OchSignal ochSignal) {
+        if (ochSignal.gridType() == GridType.FLEX) {
+            int startMultiplier = (int) (1 - ochSignal.slotGranularity() + ochSignal.spacingMultiplier());
+
+            return IntStream.range(0, ochSignal.slotGranularity())
+                    .mapToObj(x -> OchSignal.newFlexGridSlot(startMultiplier + (2 * x)))
+                    .collect(Collectors.toList());
+
+        } else if (ochSignal.gridType() == GridType.DWDM) {
+            int startMultiplier = (int) (1 - ochSignal.slotGranularity()
+                    + ochSignal.spacingMultiplier() * ochSignal.channelSpacing().frequency().asHz()
+                    / ChannelSpacing.CHL_6P25GHZ.frequency().asHz());
+
+            return IntStream.range(0, ochSignal.slotGranularity())
+                    .mapToObj(x -> OchSignal.newFlexGridSlot(startMultiplier + (2 * x)))
+                    .collect(Collectors.toList());
+        }
+
+        return Collections.emptyList();
     }
 }

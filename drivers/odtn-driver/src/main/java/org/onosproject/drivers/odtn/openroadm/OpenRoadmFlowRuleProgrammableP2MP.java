@@ -52,11 +52,11 @@ import org.slf4j.LoggerFactory;
 /**
  * Implementation of FlowRuleProgrammable interface for OpenROADM devices.
  */
-public class OpenRoadmFlowRuleProgrammable
+public class OpenRoadmFlowRuleProgrammableP2MP
   extends AbstractHandlerBehaviour implements FlowRuleProgrammable {
 
     private static final Logger log =
-      LoggerFactory.getLogger(OpenRoadmFlowRuleProgrammable.class);
+      LoggerFactory.getLogger(OpenRoadmFlowRuleProgrammableP2MP.class);
 
     private static final String RPC_TAG_NETCONF_BASE =
       "<rpc xmlns='urn:ietf:params:xml:ns:netconf:base:1.0'>";
@@ -84,7 +84,7 @@ public class OpenRoadmFlowRuleProgrammable
      * <p>
      */
     private void openRoadmLog(String format, Object... arguments) {
-        log.debug("OPENROADM {}: " + format, did(), arguments);
+        log.info("OPENROADM {}: " + format, did(), arguments);
     }
 
     /**
@@ -158,8 +158,11 @@ public class OpenRoadmFlowRuleProgrammable
     public Collection<FlowEntry> getFlowEntries() {
         List<HierarchicalConfiguration> conf = getDeviceConnections();
         List<FlowEntry> entries = new ArrayList<>();
+        openRoadmLog("Device {} getFlowEntries ()", did());
+
+        //Retrieve list of flowrules from device
         for (HierarchicalConfiguration c : conf) {
-            openRoadmLog("Existing connection {}", c);
+            openRoadmLog("Device {} existing connections {}", did(), conf.size());
             FlowRule r = buildFlowrule(c);
             if (r != null) {
                 FlowEntry e = new DefaultFlowEntry(r, FlowEntry.FlowEntryState.ADDED, 0, 0, 0);
@@ -167,6 +170,8 @@ public class OpenRoadmFlowRuleProgrammable
                 entries.add(e);
             }
         }
+
+        //Returns confirmed rules
         return entries;
     }
 
@@ -181,12 +186,33 @@ public class OpenRoadmFlowRuleProgrammable
         List<FlowRule> added = new ArrayList<>();
         for (FlowRule r : rules) {
             openRoadmLog("TO APPLY RULE {}", r);
+
             OpenRoadmFlowRule xc = new OpenRoadmFlowRule(r, getLinePorts(),0);
-            openRoadmInfo("OpenRoadmRule {}", xc);
-            if (editConfigCreateConnection(xc)) {
-                added.add(xc);
-                openRoadmLog("RULE APPLIED {}", r);
+
+            if (xc.outPorts() > 2) {
+                log.error("P2MP rules are supported only with 2 output ports");
+                return null;
             }
+
+            if (xc.outPorts() == 2) {
+                OpenRoadmFlowRule xc0 = new OpenRoadmFlowRule(r, getLinePorts(), 0);
+                OpenRoadmFlowRule xc1 = new OpenRoadmFlowRule(r, getLinePorts(), 1);
+
+                openRoadmInfo("OpenRoadmRule info {}", xc0);
+                openRoadmInfo("OpenRoadmRule info {}", xc1);
+
+                if ((editConfigCreateConnection(xc0) && editConfigCreateConnection(xc1))) {
+                    added.add(r);
+                    openRoadmLog("P2MP RULE APPLIED {}", r);
+                }
+            } else {
+                openRoadmInfo("OpenRoadmRule info {}", xc);
+                if (editConfigCreateConnection(xc)) {
+                    added.add(r);
+                    openRoadmLog("P2P RULE APPLIED {}", r);
+                }
+            }
+
         }
         openRoadmLog("applyFlowRules added {}", added.size());
         return added;
@@ -201,12 +227,25 @@ public class OpenRoadmFlowRuleProgrammable
     @Override
     public Collection<FlowRule> removeFlowRules(Collection<FlowRule> rules) {
         List<FlowRule> removed = new ArrayList<>();
+
         for (FlowRule r : rules) {
+            openRoadmLog("TO REMOVE RULE {}", r);
+
             OpenRoadmFlowRule xc = new OpenRoadmFlowRule(r, getLinePorts(),0);
-            openRoadmLog("TO REMOVE RULE {}", xc);
-            if (editConfigDeleteConnection(xc)) {
-                removed.add(r);
-                openRoadmLog("RULE REMOVED {}", r);
+
+            if (xc.outPorts() == 2) {
+                OpenRoadmFlowRule xc0 = new OpenRoadmFlowRule(r, getLinePorts(), 0);
+                OpenRoadmFlowRule xc1 = new OpenRoadmFlowRule(r, getLinePorts(), 1);
+
+                if (editConfigDeleteConnection(xc0) && editConfigDeleteConnection(xc1)) {
+                    removed.add(r);
+                    openRoadmLog("P2MP RULE REMOVED {}", r);
+                }
+            } else {
+                if (editConfigDeleteConnection(xc)) {
+                    removed.add(r);
+                    openRoadmLog("P2P RULE REMOVED {}", r);
+                }
             }
         }
         openRoadmLog("removedFlowRules removed {}", removed.size());
@@ -267,8 +306,11 @@ public class OpenRoadmFlowRuleProgrammable
         }
         // If the flow entry is not in the cache: return null
         FlowRule flowRule = getConnectionCache().get(did(), name);
+
+        log.info("Retrieved name from device {}", name);
+
         if (flowRule == null) {
-            log.error("OPENROADM {}: name {} not in cache. delete editConfig", did(), name);
+            log.error("OPENROADM {}: name {} not in cache... delete editConfig triggered", did(), name);
             editConfigDeleteConnection(name);
             return null;
         } else {
@@ -291,7 +333,7 @@ public class OpenRoadmFlowRuleProgrammable
         sb.append("  </interface>");
         sb.append(ORG_OPENROADM_DEVICE_CLOSE_TAG);
         if (!editConfig(sb.toString())) {
-            log.error("OPENROADM {}: failed to delete interface{}", did(), interfaceName);
+            log.error("OPENROADM {}: failed to delete interface {}", did(), interfaceName);
         }
     }
 
@@ -416,7 +458,7 @@ public class OpenRoadmFlowRuleProgrammable
                     conn.srcMcSupportingCircuitPack +
                     "</supporting-circuit-pack-name>");
             sb.append("  <supporting-port>" + conn.srcMcSupportingPort + "</supporting-port>");
-            sb.append("  <supporting-interface>" + conn.srcMcSupportingInterface + "</supporting-interface>");
+            sb.append("  <supporting-interface-list>" + conn.srcMcSupportingInterface + "</supporting-interface-list>");
             sb.append("  <mc-ttp xmlns='http://org/openroadm/media-channel-interfaces'>");
             sb.append("    <min-freq>" + conn.srcMcMinFrequency.asTHz() + "</min-freq>");
             sb.append("    <max-freq>" + conn.srcMcMaxFrequency.asTHz() + "</max-freq>");
@@ -424,10 +466,11 @@ public class OpenRoadmFlowRuleProgrammable
             sb.append("</interface>");
             sb.append(ORG_OPENROADM_DEVICE_CLOSE_TAG);
             if (!editConfig(sb.toString())) {
-                log.error("OPENROADM {}: failed to create interface\n {}", did(), sb.toString());
+                log.error("OPENROADM {}: failed to create interface {}", did(), sb.toString());
                 return false;
             }
         }
+        // Creation of MC in output
         if ((conn.getType() != OpenRoadmFlowRule.Type.DROP_LINK) &&
             (conn.getType() != OpenRoadmFlowRule.Type.LOCAL)) {
             StringBuilder sb = new StringBuilder();
@@ -443,7 +486,7 @@ public class OpenRoadmFlowRuleProgrammable
                 conn.dstMcSupportingCircuitPack +
                 "</supporting-circuit-pack-name>");
             sb.append("  <supporting-port>" + conn.dstMcSupportingPort + "</supporting-port>");
-            sb.append("  <supporting-interface>" + conn.dstMcSupportingInterface + "</supporting-interface>");
+            sb.append("  <supporting-interface-list>" + conn.dstMcSupportingInterface + "</supporting-interface-list>");
             sb.append("  <mc-ttp xmlns='http://org/openroadm/media-channel-interfaces'>");
             sb.append("    <min-freq>" + conn.dstMcMinFrequency.asTHz() + "</min-freq>");
             sb.append("    <max-freq>" + conn.dstMcMaxFrequency.asTHz() + "</max-freq>");
@@ -451,7 +494,7 @@ public class OpenRoadmFlowRuleProgrammable
             sb.append("</interface>");
             sb.append(ORG_OPENROADM_DEVICE_CLOSE_TAG);
             if (!editConfig(sb.toString())) {
-                log.error("OPENROADM {}: failed to create interface\n {}", did(), sb.toString());
+                log.error("OPENROADM {}: failed to create interface {}", did(), sb.toString());
                 return false;
             }
         }
@@ -483,7 +526,7 @@ public class OpenRoadmFlowRuleProgrammable
         sb.append("  <supporting-port>" + conn.srcNmcSupportingPort + "</supporting-port>");
         if ((conn.getType() != OpenRoadmFlowRule.Type.ADD_LINK) &&
             (conn.getType() != OpenRoadmFlowRule.Type.LOCAL)) {
-            sb.append("<supporting-interface>" + conn.srcNmcSupportingInterface + "</supporting-interface>");
+            sb.append("<supporting-interface-list>" + conn.srcNmcSupportingInterface + "</supporting-interface-list>");
         }
         sb.append("  <nmc-ctp xmlns='http://org/openroadm/network-media-channel-interfaces'>");
         sb.append("    <frequency>" + conn.srcNmcFrequency.asTHz() + "</frequency>");
@@ -511,7 +554,7 @@ public class OpenRoadmFlowRuleProgrammable
         sb.append("  <supporting-port>" + conn.dstNmcSupportingPort + "</supporting-port>");
         if ((conn.getType() != OpenRoadmFlowRule.Type.DROP_LINK) &&
             (conn.getType() != OpenRoadmFlowRule.Type.LOCAL)) {
-            sb.append("<supporting-interface>" + conn.dstNmcSupportingInterface + "</supporting-interface>");
+            sb.append("<supporting-interface-list>" + conn.dstNmcSupportingInterface + "</supporting-interface-list>");
         }
         sb.append("  <nmc-ctp xmlns='http://org/openroadm/network-media-channel-interfaces'>");
         sb.append("    <frequency>" + conn.dstNmcFrequency.asTHz() + "</frequency>");

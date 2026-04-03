@@ -37,19 +37,13 @@ import org.onosproject.net.ModulationScheme;
 import org.onosproject.net.OchSignal;
 import org.onosproject.net.DeviceId;
 import org.onosproject.net.OcOperationalMode;
+import org.onosproject.net.intent.*;
 import org.onosproject.net.optical.ocopmode.OcOperationalModesManager;
 import org.onosproject.net.behaviour.ModulationConfig;
 import org.onosproject.net.behaviour.PowerConfig;
 import org.onosproject.net.device.DeviceService;
 import org.onosproject.net.flow.criteria.Criterion;
 import org.onosproject.net.flow.criteria.OchSignalCriterion;
-import org.onosproject.net.intent.Intent;
-import org.onosproject.net.intent.IntentService;
-import org.onosproject.net.intent.FlowRuleIntent;
-import org.onosproject.net.intent.IntentState;
-import org.onosproject.net.intent.Key;
-import org.onosproject.net.intent.OpticalConnectivityIntent;
-import org.onosproject.net.intent.OpticalCircuitIntent;
 import org.onosproject.net.link.LinkService;
 import org.onosproject.net.optical.json.OchSignalCodec;
 import org.onosproject.net.provider.ProviderId;
@@ -70,13 +64,10 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
-import static org.onosproject.net.optical.util.OpticalIntentUtility.createExplicitOpticalIntent;
+import static org.onosproject.net.optical.util.OpticalIntentUtility.*;
 import static org.slf4j.LoggerFactory.getLogger;
 
 import static org.onlab.util.Tools.readTreeFromStream;
@@ -317,6 +308,70 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
     }
 
     /**
+     * Submits a new p2mp optical intent.
+     * Creates and submits p2mp intents from the JSON request.
+     *
+     * @param stream input JSON
+     * @return status of the request - CREATED if the JSON is correct,
+     * BAD_REQUEST if the JSON is invalid
+     * @onos.rsModel CreateP2mpIntent
+     */
+    @POST
+    @Path("p2mpIntent")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createP2mpIntent(InputStream stream) {
+        try {
+            IntentService service = get(IntentService.class);
+            ObjectNode root = readTreeFromStream(mapper(), stream);
+            Intent intent = decodeP2mp(root);
+            service.submit(intent);
+
+            UriBuilder locationBuilder = uriInfo.getBaseUriBuilder()
+                    .path("intents")
+                    .path(intent.appId().name())
+                    .path(Long.toString(intent.id().fingerprint()));
+            return Response
+                    .created(locationBuilder.build())
+                    .build();
+        } catch (IOException ioe) {
+            throw new IllegalArgumentException(ioe);
+        }
+    }
+
+    /**
+     * Submits a new mp2p optical intent.
+     * Creates and submits mp2p intents from the JSON request.
+     *
+     * @param stream input JSON
+     * @return status of the request - CREATED if the JSON is correct,
+     * BAD_REQUEST if the JSON is invalid
+     * @onos.rsModel CreateMp2pIntent
+     */
+    @POST
+    @Path("mp2pIntent")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createMp2pIntent(InputStream stream) {
+        try {
+            IntentService service = get(IntentService.class);
+            ObjectNode root = readTreeFromStream(mapper(), stream);
+            Intent intent = decodeMp2p(root);
+            service.submit(intent);
+
+            UriBuilder locationBuilder = uriInfo.getBaseUriBuilder()
+                    .path("intents")
+                    .path(intent.appId().name())
+                    .path(Long.toString(intent.id().fingerprint()));
+            return Response
+                    .created(locationBuilder.build())
+                    .build();
+        } catch (IOException ioe) {
+            throw new IllegalArgumentException(ioe);
+        }
+    }
+
+    /**
      * Get the optical intents on the network.
      *
      * @return 200 OK
@@ -330,7 +385,7 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
         IntentService intentService = get(IntentService.class);
         Iterator intentItr = intentService.getIntents().iterator();
 
-        ArrayNode arrayFlows = mapper().createArrayNode();
+        ArrayNode arrayIntents = mapper().createArrayNode();
 
         while (intentItr.hasNext()) {
 
@@ -391,6 +446,7 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
 
                         objectNode.put("ochSignal", signal.toString());
                         objectNode.put("centralFreq", signal.centralFrequency().asTHz() + " THz");
+                        objectNode.put("slotWidth", signal.slotWidth().asGHz() + " GHz");
                     }
 
                     //Retrieve path and print it to REST
@@ -414,11 +470,41 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
                     }
                 }
 
-                arrayFlows.add(objectNode);
+                arrayIntents.add(objectNode);
+            }
+
+            if (intent instanceof SinglePointToMultiPointIntent) {
+
+                SinglePointToMultiPointIntent sp2mpIntent = (SinglePointToMultiPointIntent) intent;
+
+                ObjectNode objectNode = mapper().createObjectNode();
+
+                objectNode.put("appId", sp2mpIntent.appId().name());
+                objectNode.put("key", sp2mpIntent.key().toString());
+                objectNode.put("state", intentService.getIntentState(sp2mpIntent.key()).toString());
+                objectNode.put("ingress", sp2mpIntent.ingressPoint().toString());
+
+                ArrayNode egressArray = mapper().createArrayNode();
+                sp2mpIntent.egressPoints().stream()
+                        .map(ConnectPoint::toString)
+                        .sorted()
+                        .forEach(egressArray::add);
+                objectNode.set("egresses", egressArray);
+
+                Criterion criterion = sp2mpIntent.selector().getCriterion(Criterion.Type.OCH_SIGID);
+                if (criterion instanceof OchSignalCriterion) {
+                    OchSignal signal = ((OchSignalCriterion) criterion).lambda();
+
+                    objectNode.put("ochSignal", signal.toString());
+                    objectNode.put("centralFreq", signal.centralFrequency().asTHz() + " THz");
+                    objectNode.put("slotWidth", signal.slotWidth().asGHz() + " GHz");
+                }
+
+                arrayIntents.add(objectNode);
             }
         }
 
-        ObjectNode root = this.mapper().createObjectNode().putPOJO("Intents", arrayFlows);
+        ObjectNode root = this.mapper().createObjectNode().putPOJO("Intents", arrayIntents);
         return ok(root).build();
     }
 
@@ -445,10 +531,11 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
         }
         nullIsNotFound(intent, "Intent Id is not found");
 
-        if ((intent instanceof OpticalConnectivityIntent) || (intent instanceof OpticalCircuitIntent)) {
+        if ((intent instanceof OpticalConnectivityIntent) || (intent instanceof OpticalCircuitIntent) ||
+                (intent instanceof SinglePointToMultiPointIntent) || (intent instanceof MultiPointToSinglePointIntent)) {
             intentService.withdraw(intent);
         } else {
-            throw new IllegalArgumentException("Specified intent is not of type OpticalConnectivityIntent");
+            throw new IllegalArgumentException("Specified intent is not within supported optical type");
         }
 
         return Response.noContent().build();
@@ -605,6 +692,196 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
 
         return createExplicitOpticalIntent(
                 ingress, egress, deviceService, key, appId, bidirectional, signal, suggestedPath);
+    }
+
+    private Intent decodeP2mp(ObjectNode json) {
+        JsonNode ingressJson = json.get(INGRESS_POINT);
+        if (!ingressJson.isObject()) {
+            throw new IllegalArgumentException(JSON_INVALID);
+        }
+
+        ConnectPoint ingress = codec(ConnectPoint.class).decode((ObjectNode) ingressJson, this);
+
+        JsonNode egressJson = json.get(EGRESS_POINT);
+        if (egressJson == null || !egressJson.isArray()) {
+            throw new IllegalArgumentException(JSON_INVALID);
+        }
+
+        Set<ConnectPoint> egressSet = new HashSet<>();
+        for (JsonNode node : egressJson) {
+            if (!node.isObject()) {
+                throw new IllegalArgumentException(JSON_INVALID);
+            }
+            egressSet.add(codec(ConnectPoint.class).decode((ObjectNode) node, this));
+        }
+
+        JsonNode bidirectionalJson = json.get(BIDIRECTIONAL);
+        boolean bidirectional = bidirectionalJson != null ? bidirectionalJson.asBoolean() : false;
+
+        JsonNode signalJson = json.get(SIGNAL);
+        OchSignal signal = null;
+        if (signalJson != null) {
+            if (!signalJson.isObject()) {
+                throw new IllegalArgumentException(JSON_INVALID);
+            } else {
+                signal = OchSignalCodec.decode((ObjectNode) signalJson);
+
+                if (signal.gridType() == GridType.FLEX) {
+                    if (signal.channelSpacing() != ChannelSpacing.CHL_6P25GHZ) {
+                        throw new IllegalArgumentException("FLEX grid requires CHL_6P25GHZ spacing");
+                    }
+                    if (isOdd(signal.slotGranularity()) && !isOdd(signal.spacingMultiplier())) {
+                        throw new IllegalArgumentException("FLEX grid using odd Granularity requires odd Multiplier");
+                    }
+                    if (!isOdd(signal.slotGranularity()) && isOdd(signal.spacingMultiplier())) {
+                        throw new IllegalArgumentException("FLEX grid using even Granularity requires even Multiplier");
+                    }
+                }
+
+                if (signal.gridType() == GridType.DWDM) {
+                    if (signal.channelSpacing() == ChannelSpacing.CHL_6P25GHZ) {
+                        throw new IllegalArgumentException("DWDM grid requires spacing CHL_12P5GHZ, " +
+                                "CHL_25GHZ, CHL_50GHZ or CHL_100GHZ");
+                    }
+
+                    if (signal.channelSpacing() == ChannelSpacing.CHL_12P5GHZ) {
+                        if (signal.slotGranularity() != 1) {
+                            throw new IllegalArgumentException("Spacing CHL_12P5GHZ requires granularity 1");
+                        }
+                    }
+
+                    if (signal.channelSpacing() == ChannelSpacing.CHL_25GHZ) {
+                        if (signal.slotGranularity() != 2) {
+                            throw new IllegalArgumentException("Spacing CHL_25GHZ requires granularity 2");
+                        }
+                    }
+
+                    if (signal.channelSpacing() == ChannelSpacing.CHL_50GHZ) {
+                        if (signal.slotGranularity() != 4) {
+                            throw new IllegalArgumentException("Spacing CHL_50GHZ requires granularity 4");
+                        }
+                    }
+
+                    if (signal.channelSpacing() == ChannelSpacing.CHL_100GHZ) {
+                        if (signal.slotGranularity() != 8) {
+                            throw new IllegalArgumentException("Spacing CHL_100GHZ requires granularity 8");
+                        }
+                    }
+                }
+            }
+        }
+
+        String appIdString = nullIsIllegal(json.get(APP_ID), APP_ID + MISSING_MEMBER_MESSAGE).asText();
+        CoreService service = getService(CoreService.class);
+        ApplicationId appId = nullIsNotFound(service.getAppId(appIdString), E_APP_ID_NOT_FOUND);
+
+        Key key = null;
+        DeviceService deviceService = get(DeviceService.class);
+
+        String uuIdString = json.get("uuid").asText();
+        if (uuIdString != null) {
+            log.warn("Received intent request with uuid {}", uuIdString);
+        } else {
+            log.warn("Received intent request without uuid");
+        }
+
+        Intent intent = createP2mpOpticalIntent(ingress, egressSet, deviceService, key, appId, signal);
+        return intent;
+    }
+
+    private Intent decodeMp2p(ObjectNode json) {
+        JsonNode ingressJson = json.get(INGRESS_POINT);
+        if (ingressJson == null || !ingressJson.isArray()) {
+            throw new IllegalArgumentException(JSON_INVALID);
+        }
+
+        Set<ConnectPoint> ingressSet = new HashSet<>();
+        for (JsonNode node : ingressJson) {
+            if (!node.isObject()) {
+                throw new IllegalArgumentException(JSON_INVALID);
+            }
+            ingressSet.add(codec(ConnectPoint.class).decode((ObjectNode) node, this));
+        }
+
+        JsonNode egressJson = json.get(EGRESS_POINT);
+        if (!egressJson.isObject()) {
+            throw new IllegalArgumentException(JSON_INVALID);
+        }
+
+        ConnectPoint egress = codec(ConnectPoint.class).decode((ObjectNode) egressJson, this);
+
+        JsonNode bidirectionalJson = json.get(BIDIRECTIONAL);
+        boolean bidirectional = bidirectionalJson != null ? bidirectionalJson.asBoolean() : false;
+
+        JsonNode signalJson = json.get(SIGNAL);
+        OchSignal signal = null;
+        if (signalJson != null) {
+            if (!signalJson.isObject()) {
+                throw new IllegalArgumentException(JSON_INVALID);
+            } else {
+                signal = OchSignalCodec.decode((ObjectNode) signalJson);
+
+                if (signal.gridType() == GridType.FLEX) {
+                    if (signal.channelSpacing() != ChannelSpacing.CHL_6P25GHZ) {
+                        throw new IllegalArgumentException("FLEX grid requires CHL_6P25GHZ spacing");
+                    }
+                    if (isOdd(signal.slotGranularity()) && !isOdd(signal.spacingMultiplier())) {
+                        throw new IllegalArgumentException("FLEX grid using odd Granularity requires odd Multiplier");
+                    }
+                    if (!isOdd(signal.slotGranularity()) && isOdd(signal.spacingMultiplier())) {
+                        throw new IllegalArgumentException("FLEX grid using even Granularity requires even Multiplier");
+                    }
+                }
+
+                if (signal.gridType() == GridType.DWDM) {
+                    if (signal.channelSpacing() == ChannelSpacing.CHL_6P25GHZ) {
+                        throw new IllegalArgumentException("DWDM grid requires spacing CHL_12P5GHZ, " +
+                                "CHL_25GHZ, CHL_50GHZ or CHL_100GHZ");
+                    }
+
+                    if (signal.channelSpacing() == ChannelSpacing.CHL_12P5GHZ) {
+                        if (signal.slotGranularity() != 1) {
+                            throw new IllegalArgumentException("Spacing CHL_12P5GHZ requires granularity 1");
+                        }
+                    }
+
+                    if (signal.channelSpacing() == ChannelSpacing.CHL_25GHZ) {
+                        if (signal.slotGranularity() != 2) {
+                            throw new IllegalArgumentException("Spacing CHL_25GHZ requires granularity 2");
+                        }
+                    }
+
+                    if (signal.channelSpacing() == ChannelSpacing.CHL_50GHZ) {
+                        if (signal.slotGranularity() != 4) {
+                            throw new IllegalArgumentException("Spacing CHL_50GHZ requires granularity 4");
+                        }
+                    }
+
+                    if (signal.channelSpacing() == ChannelSpacing.CHL_100GHZ) {
+                        if (signal.slotGranularity() != 8) {
+                            throw new IllegalArgumentException("Spacing CHL_100GHZ requires granularity 8");
+                        }
+                    }
+                }
+            }
+        }
+
+        String appIdString = nullIsIllegal(json.get(APP_ID), APP_ID + MISSING_MEMBER_MESSAGE).asText();
+        CoreService service = getService(CoreService.class);
+        ApplicationId appId = nullIsNotFound(service.getAppId(appIdString), E_APP_ID_NOT_FOUND);
+
+        Key key = null;
+        DeviceService deviceService = get(DeviceService.class);
+
+        String uuIdString = json.get("uuid").asText();
+        if (uuIdString != null) {
+            log.warn("Received intent request with uuid {}", uuIdString);
+        } else {
+            log.warn("Received intent request without uuid");
+        }
+
+        Intent intent = createMp2pOpticalIntent(ingressSet, egress, deviceService, key, appId, signal);
+        return intent;
     }
 
     private boolean isPathContiguous(List<Link> path) {

@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "title": "createIntent",
+  "title": "createMp2pIntent",
   "required": [
     "ingressPoint",
     "egressPoint"
@@ -9,29 +9,43 @@
     "uuid": {
       "type": "string",
       "format": "uuid",
-      "example": "123e4567-e89b-12d3-a456-426614174000"
+      "example": "123e9a67-e89b-12d3-a456-4266141740a0"
     },
     "appId": {
       "type": "string",
       "example": "org.onosproject.optical-rest"
     },
     "ingressPoint": {
-      "type": "object",
+      "type": "array",
       "title": "ingressPoint",
-      "required": [
-        "device",
-        "port"
-      ],
-      "properties": {
-        "device": {
-          "type": "string",
-          "example": "netconf:10.100.101.22:2022"
-        },
-        "port": {
-          "type": "string",
-          "example": "11003"
+      "items": {
+        "type": "object",
+        "title": "ingressConnectPoint",
+        "required": [
+          "device",
+          "port"
+        ],
+        "properties": {
+          "device": {
+            "type": "string",
+            "example": "netconf:172.18.0.12:2022"
+          },
+          "port": {
+            "type": "string",
+            "example": "1011"
+          }
         }
-      }
+      },
+      "example": [
+        {
+          "device": "netconf:172.18.0.12:2022",
+          "port": "1011"
+        },
+        {
+          "device": "netconf:172.18.0.13:2022",
+          "port": "1011"
+        }
+      ]
     },
     "egressPoint": {
       "type": "object",
@@ -43,17 +57,13 @@
       "properties": {
         "device": {
           "type": "string",
-          "example": "netconf:10.100.101.24:2022"
+          "example": "netconf:172.18.0.10:2022"
         },
         "port": {
           "type": "string",
-          "example": "11003"
+          "example": "1010"
         }
       }
-    },
-    "bidirectional": {
-      "type": "boolean",
-      "example": true
     },
     "signal": {
       "type": "object",
@@ -94,40 +104,6 @@
           "type": "integer",
           "format": "int32",
           "example": 4
-        }
-      }
-    },
-    "suggestedPath": {
-      "type": "object",
-      "title": "suggestedPath",
-      "required": [
-        "links"
-      ],
-      "properties": {
-        "links": {
-          "type": "array",
-          "title": "suggestedPath",
-          "required": [
-            "link"
-          ],
-          "items": {
-            "type": "object",
-            "title": "link",
-            "required": [
-              "src",
-              "dst"
-            ],
-            "properties" : {
-              "src": {
-                "type": "string",
-                "example": "netconf:10.10.255.14:2022/10102"
-              },
-              "dst": {
-                "type": "string",
-                "example": "netconf:10.10.255.15:2022/10102"
-              }
-            }
-          }
         }
       }
     }

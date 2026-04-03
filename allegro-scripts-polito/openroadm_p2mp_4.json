@@ -1,0 +1,68 @@
+{
+  "devices": {
+    "netconf:172.18.0.10:2022": {
+      "basic": {
+        "locType": "grid",
+        "gridX": 300,
+        "gridY": 450,
+        "name": "OpenROADM-p2mp-1",
+        "driver": "openroadmP2MP"
+      },
+      "netconf": {
+        "ip": "172.18.0.10",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin",
+        "idle-timeout": "0"
+      }
+    },
+    "netconf:172.18.0.11:2022": {
+      "basic": {
+        "locType": "grid",
+        "gridX": 600,
+        "gridY": 500,
+        "name": "OpenROADM-p2mp-2",
+        "driver": "openroadmP2MP"
+      },
+      "netconf": {
+        "ip": "172.18.0.11",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin",
+        "idle-timeout": "0"
+      }
+    },
+    "netconf:172.18.0.12:2022": {
+      "basic": {
+        "locType": "grid",
+        "gridX": 800,
+        "gridY": 600,
+        "name": "OpenROADM-p2mp-3",
+        "driver": "openroadmP2MP"
+      },
+      "netconf": {
+        "ip": "172.18.0.12",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin",
+        "idle-timeout": "0"
+      }
+    },
+    "netconf:172.18.0.13:2022": {
+      "basic": {
+        "locType": "grid",
+        "gridX": 800,
+        "gridY": 400,
+        "name": "OpenROADM-p2mp-4",
+        "driver": "openroadmP2MP"
+      },
+      "netconf": {
+        "ip": "172.18.0.13",
+        "port": "2022",
+        "username": "admin",
+        "password": "admin",
+        "idle-timeout": "0"
+      }
+    }
+  }
+}

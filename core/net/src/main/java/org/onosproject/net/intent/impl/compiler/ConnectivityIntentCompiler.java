@@ -18,22 +18,15 @@ package org.onosproject.net.intent.impl.compiler;
 import com.google.common.collect.FluentIterable;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import org.onosproject.net.*;
+import org.onosproject.net.intent.*;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.onlab.graph.DefaultEdgeWeigher;
 import org.onlab.graph.ScalarWeight;
 import org.onlab.graph.Weight;
 import org.onlab.util.Bandwidth;
-import org.onosproject.net.ConnectPoint;
-import org.onosproject.net.DeviceId;
-import org.onosproject.net.DisjointPath;
-import org.onosproject.net.ElementId;
-import org.onosproject.net.Path;
 import org.onosproject.net.device.DeviceService;
-import org.onosproject.net.intent.ConnectivityIntent;
-import org.onosproject.net.intent.Constraint;
-import org.onosproject.net.intent.IntentCompiler;
-import org.onosproject.net.intent.IntentExtensionService;
 import org.onosproject.net.intent.constraint.BandwidthConstraint;
 import org.onosproject.net.intent.constraint.HashedPathSelectionConstraint;
 import org.onosproject.net.intent.constraint.MarkerConstraint;
@@ -53,12 +46,7 @@ import org.onosproject.net.topology.TopologyVertex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
