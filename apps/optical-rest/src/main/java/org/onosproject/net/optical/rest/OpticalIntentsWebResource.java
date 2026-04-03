@@ -502,6 +502,36 @@ public class OpticalIntentsWebResource extends AbstractWebResource {
 
                 arrayIntents.add(objectNode);
             }
+
+            if (intent instanceof MultiPointToSinglePointIntent) {
+
+                MultiPointToSinglePointIntent mp2spIntent = (MultiPointToSinglePointIntent) intent;
+
+                ObjectNode objectNode = mapper().createObjectNode();
+
+                objectNode.put("appId", mp2spIntent.appId().name());
+                objectNode.put("key", mp2spIntent.key().toString());
+                objectNode.put("state", intentService.getIntentState(mp2spIntent.key()).toString());
+                objectNode.put("egress", mp2spIntent.egressPoint().toString());
+
+                ArrayNode ingressArray = mapper().createArrayNode();
+                mp2spIntent.ingressPoints().stream()
+                        .map(ConnectPoint::toString)
+                        .sorted()
+                        .forEach(ingressArray::add);
+                objectNode.set("ingresses", ingressArray);
+
+                Criterion criterion = mp2spIntent.selector().getCriterion(Criterion.Type.OCH_SIGID);
+                if (criterion instanceof OchSignalCriterion) {
+                    OchSignal signal = ((OchSignalCriterion) criterion).lambda();
+
+                    objectNode.put("ochSignal", signal.toString());
+                    objectNode.put("centralFreq", signal.centralFrequency().asTHz() + " THz");
+                    objectNode.put("slotWidth", signal.slotWidth().asGHz() + " GHz");
+                }
+
+                arrayIntents.add(objectNode);
+            }
         }
 
         ObjectNode root = this.mapper().createObjectNode().putPOJO("Intents", arrayIntents);
