@@ -26,10 +26,10 @@ public final class OpticalBandUtils {
 
     private static final Logger log = LoggerFactory.getLogger(OpticalBandUtils.class);
     private static final Frequency L_BAND_START_FREQ = Frequency.ofGHz(184500);
-    private static final Frequency L_BAND_STOP_FREQ = Frequency.ofGHz(191500);
-    private static final Frequency C_BAND_START_FREQ = Frequency.ofGHz(191500);
-    private static final Frequency C_BAND_STOP_FREQ = Frequency.ofGHz(195900);
-    private static final Frequency S_BAND_START_FREQ = Frequency.ofGHz(195900);
+    private static final Frequency L_BAND_STOP_FREQ = Frequency.ofGHz(191300);
+    private static final Frequency C_BAND_START_FREQ = Frequency.ofGHz(191300);
+    private static final Frequency C_BAND_STOP_FREQ = Frequency.ofGHz(196200);
+    private static final Frequency S_BAND_START_FREQ = Frequency.ofGHz(196200);
     private static final Frequency S_BAND_STOP_FREQ = Frequency.ofGHz(205300);
     private static final Frequency O_BAND_START_FREQ = Frequency.ofGHz(227975); //220500
     private static final Frequency O_BAND_STOP_FREQ = Frequency.ofGHz(232000); //238000
